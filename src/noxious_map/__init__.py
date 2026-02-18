@@ -234,7 +234,10 @@ def main(here: Path):
             'id': tile_map['id'],
             'file': filename,
             'size': [extended_map.width, extended_map.height],
+            'paddings': [paddings.top, paddings.right, paddings.bottom, paddings.left],
             'pos': [0, 0],
+            'columns': tile_map['width'],
+            'rows': tile_map['height'],
         })
     print()
 
