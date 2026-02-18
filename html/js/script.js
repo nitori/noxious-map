@@ -38,7 +38,6 @@ const ENABLE_DRAG = false;
 
         map.on('zoomend', function () {
             const zoom = map.getZoom();
-            console.log(zoom);
             for (let i = 0; i < resolutions.length; i++) {
                 const res = resolutions[i];
                 if (zoom >= res.zoom) {
@@ -75,6 +74,8 @@ const ENABLE_DRAG = false;
                 let [y, x] = [bounds.getSouth(), bounds.getWest()];
                 mapConfig.pos = [x, y];
                 mapsConfig.sort((a, b) => a.id.toLocaleLowerCase().localeCompare(b.id.toLocaleLowerCase()));
+
+                // output object, to copy-paste it
                 console.log(mapsConfig);
             });
         }
