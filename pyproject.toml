@@ -1,0 +1,20 @@
+[project]
+name = "noxious-map"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Sani", email = "nitori@chireiden.net" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "pillow>=12.1.1",
+    "requests>=2.32.5",
+]
+
+[project.scripts]
+noxious-map = "noxious_map:main"
+
+[build-system]
+requires = ["uv_build>=0.9.28,<0.10.0"]
+build-backend = "uv_build"
