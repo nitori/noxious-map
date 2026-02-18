@@ -252,3 +252,4 @@ def main(here: Path):
 
     with metadata_file.open('w', encoding='utf-8') as f:
         json.dump(metadata, f, indent=2)
+        f.write('\n')
