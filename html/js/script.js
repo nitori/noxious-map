@@ -137,7 +137,6 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
 
         mapMarkers[id].forEach(marker => {
 
-            console.log(marker);
             let markerPos = [
                 origin[0] - (marker.x + marker.y) * 16,
                 origin[1] + (marker.x - marker.y) * 32
