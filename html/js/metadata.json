@@ -680,6 +680,26 @@
     "rows": 30
   },
   {
+    "id": "cd74e196-759a-4711-a1fc-ed356c2cdf23",
+    "file": "North winter town.webp",
+    "size": [
+      2176,
+      1088
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -6864,
+      -1472
+    ],
+    "columns": 34,
+    "rows": 34
+  },
+  {
     "id": "cfd1dadf-473a-4fa6-af95-999d67ab17f7",
     "file": "Reaper boss.webp",
     "size": [
