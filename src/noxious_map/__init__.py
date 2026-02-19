@@ -235,13 +235,16 @@ def main(here: Path):
         extended_map = Image.new("RGBA", obj_im.size, (0, 0, 0, 0))
         extended_map.alpha_composite(map_im, (paddings.left, paddings.top))
         extended_map.alpha_composite(obj_im)
-        name = tile_map["name"].replace("/", "_").replace("\\", "_")
 
+        name = tile_map["name"]
+        name = name.replace("/", "_")
+        name = name.replace("\\", "_")
+        name = name.replace(" ", "_")
         filename = f"{name}.webp"
 
         folders = [["default", 1], ["low", 2], ["small", 3], ["tiny", 4], ["micro", 5]]
         for folder, resize in folders:
-            filepath = map_folder / folder / f"{name}.webp"
+            filepath = map_folder / folder / filename
             filepath.parent.mkdir(parents=True, exist_ok=True)
             if filepath.exists():
                 raise FileExistsError(str(filepath))
