@@ -16,6 +16,8 @@
 
 const ENABLE_DRAG = false;
 
+const metadataMtime = document.querySelector('meta[name="metadata-mtime"]').getAttribute('content');
+
 /**
  * @param mapsConfig {MapConfig[]}
  * @return {Promise<*>}
@@ -38,12 +40,14 @@ async function buildMap(mapsConfig) {
 
         const bounds = [[y, x], [y + h, x + w]];
 
+        const fileName = mapConfig.file.replace(/\.webp$/, `.${metadataMtime}.webp`);
+
         const resolutions = [
-            {url: `./maps/default/${mapConfig.file}`, zoom: 0},
-            {url: `./maps/low/${mapConfig.file}`, zoom: -2},
-            {url: `./maps/small/${mapConfig.file}`, zoom: -4},
-            {url: `./maps/tiny/${mapConfig.file}`, zoom: -6},
-            {url: `./maps/micro/${mapConfig.file}`, zoom: -9999},
+            {url: `./maps/default/${fileName}`, zoom: 0},
+            {url: `./maps/low/${fileName}`, zoom: -2},
+            {url: `./maps/small/${fileName}`, zoom: -4},
+            {url: `./maps/tiny/${fileName}`, zoom: -6},
+            {url: `./maps/micro/${fileName}`, zoom: -9999},
         ];
 
         let current = resolutions[resolutions.length - 1].url;
@@ -169,12 +173,12 @@ function iconUrl(color) {
 
 (async () => {
 
-    let resp = await fetch('./js/metadata.json');
+    let resp = await fetch(`./js/metadata.${metadataMtime}.json`);
     const mapsConfig = await resp.json();
 
     const map = await buildMap(mapsConfig);
 
-    let resp2 = await fetch('./js/markers.json');
+    let resp2 = await fetch(`./js/markers.${metadataMtime}.json`);
     let markers = await resp2.json();
 
     await addMarkers(mapsConfig, markers, map);

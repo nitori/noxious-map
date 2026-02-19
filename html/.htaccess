@@ -1,0 +1,8 @@
+RewriteEngine On
+
+RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+RewriteRule ^.*$ - [E=CWD:%2]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)\.(\d+)\.(php|js|mjs|json|css|png|jpg|gif|svg|avif|webp|gz)$ %{ENV:CWD}$1.$3 [L]
