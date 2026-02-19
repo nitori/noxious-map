@@ -9,7 +9,7 @@ from functools import cmp_to_key
 import hashlib
 
 import requests
-from PIL import Image, ImageDraw, ImageDraw2
+from PIL import Image
 
 from .types import Map, BaseMapObject
 from .utils import cmp_func
@@ -32,9 +32,9 @@ class Paddings:
 
 
 def checksum_file(path: Path | str) -> str:
-    with open(path, 'rb') as f:
+    with open(path, "rb") as f:
         digest = hashlib.md5()
-        for chunk in iter(lambda: f.read(1 << 14), b''):
+        for chunk in iter(lambda: f.read(1 << 14), b""):
             digest.update(chunk)
     return digest.hexdigest().lower()
 
@@ -45,11 +45,11 @@ class DataFetcher:
 
     def update_data(self):
         filename = self._here / "bundle.zip"
-        bundle_dir = self._here / 'bundle'
+        bundle_dir = self._here / "bundle"
         url = "https://server.noxious.gg/data/bundle"
 
         r = requests.head(url)
-        checksum = r.headers['Etag'].strip('"\'').lower()
+        checksum = r.headers["Etag"].strip("\"'").lower()
 
         if checksum != checksum_file(filename):
             r = requests.get(url, stream=True)
@@ -86,16 +86,16 @@ class DataFetcher:
             return json.load(f)
 
     def get_base_map_size(self, tile_map: Map) -> tuple[int, int]:
-        width = tile_map['width']
-        height = tile_map['height']
+        width = tile_map["width"]
+        height = tile_map["height"]
         size = (width + height) * 32, (width + height) * 16
         return size
 
     def generate_base_map(self, tile_map: Map) -> Image.Image:
         tiles_texture_dir = self._here / "bundle" / "textures" / "mapTiles"
         size = self.get_base_map_size(tile_map)
-        map_im = Image.new('RGBA', size, (0, 0, 0, 0))
-        rows = tile_map['height']
+        map_im = Image.new("RGBA", size, (0, 0, 0, 0))
+        rows = tile_map["height"]
 
         tile_images = {}
 
@@ -107,7 +107,7 @@ class DataFetcher:
                     raise ValueError(f"missing tile texture: {tiles_texture_filename}")
 
                 im = Image.open(tiles_texture_filename)
-                im = im.convert('RGBA')
+                im = im.convert("RGBA")
                 tile_images[stem] = im
 
             grid_x = tile["x"]
@@ -120,7 +120,7 @@ class DataFetcher:
 
     def generate_map_objects(self, tile_map: Map) -> tuple[Image.Image, Paddings]:
         obj_texture_dir = self._here / "bundle" / "textures" / "mapObjects"
-        rows = tile_map['height']
+        rows = tile_map["height"]
         base_width, base_height = self.get_base_map_size(tile_map)
 
         obj_images = {}
@@ -144,12 +144,12 @@ class DataFetcher:
             base_obj = map_objects[id]
 
             if id not in obj_images:
-                obj_texture_file = obj_texture_dir / f'{id}.png'
+                obj_texture_file = obj_texture_dir / f"{id}.png"
                 if not obj_texture_file.exists():
-                    raise ValueError(f'missing tile object texture: {obj_texture_file}')
+                    raise ValueError(f"missing tile object texture: {obj_texture_file}")
 
                 obj_im = Image.open(obj_texture_file)
-                obj_im = obj_im.convert('RGBA')
+                obj_im = obj_im.convert("RGBA")
                 obj_images[id] = obj_im
 
             obj_im: Image.Image = obj_images[id]
@@ -158,10 +158,16 @@ class DataFetcher:
                 obj_im = obj_im.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
 
             origin_screen_x = ((obj["x"] - obj["y"]) * 32) + (rows * 32)
-            origin_screen_y = ((obj["x"] + obj["y"] + 1) * 16)
+            origin_screen_y = (obj["x"] + obj["y"] + 1) * 16
 
-            pos_x = round(origin_screen_x - (obj.get('originX', base_obj["originX"]) * obj_im.width))
-            pos_y = round(origin_screen_y - (obj.get('originY', base_obj["originY"]) * obj_im.height))
+            pos_x = round(
+                origin_screen_x
+                - (obj.get("originX", base_obj["originX"]) * obj_im.width)
+            )
+            pos_y = round(
+                origin_screen_y
+                - (obj.get("originY", base_obj["originY"]) * obj_im.height)
+            )
 
             bbox = (pos_x, pos_y, pos_x + obj_im.width, pos_y + obj_im.height)
 
@@ -172,15 +178,17 @@ class DataFetcher:
             ranges.max_x = max(ranges.max_x, obj_right)
             ranges.max_y = max(ranges.max_y, obj_bottom)
 
-            objects_to_draw.append({
-                'obj': obj,
-                'base_obj': base_obj,
-                'bbox': bbox,
-                "im": obj_im,
-                "pos": (pos_x, pos_y),
-                "origin_screen_x": origin_screen_x,
-                "origin_screen_y": origin_screen_y,
-            })
+            objects_to_draw.append(
+                {
+                    "obj": obj,
+                    "base_obj": base_obj,
+                    "bbox": bbox,
+                    "im": obj_im,
+                    "pos": (pos_x, pos_y),
+                    "origin_screen_x": origin_screen_x,
+                    "origin_screen_y": origin_screen_y,
+                }
+            )
 
         objects_to_draw.sort(key=cmp_to_key(cmp_func))
 
@@ -193,10 +201,10 @@ class DataFetcher:
 
         canvas_width = base_width + paddings.left + paddings.right
         canvas_height = base_height + paddings.top + paddings.bottom
-        obj_map_im = Image.new('RGBA', (canvas_width, canvas_height), (0, 0, 0, 0))
+        obj_map_im = Image.new("RGBA", (canvas_width, canvas_height), (0, 0, 0, 0))
 
         for obj in objects_to_draw:
-            x, y = obj['pos']
+            x, y = obj["pos"]
             obj_map_im.alpha_composite(obj["im"], (paddings.left + x, paddings.top + y))
 
         return obj_map_im, paddings
@@ -211,7 +219,7 @@ def main(here: Path):
     gen = DataFetcher(here)
     gen.update_data()
 
-    map_folder = here / 'html' / 'maps'
+    map_folder = here / "html" / "maps"
     shutil.rmtree(map_folder)
     map_folder.mkdir(parents=True, exist_ok=True)
 
@@ -220,20 +228,20 @@ def main(here: Path):
     metadata = []
 
     for i, tile_map in enumerate(maps):
-        print(f'\r{(i + 1) * 100 / len(maps):.1f}%', end='')
+        print(f"\r{(i + 1) * 100 / len(maps):.1f}%", end="")
         map_im = gen.generate_base_map(tile_map)
         obj_im, paddings = gen.generate_map_objects(tile_map)
 
-        extended_map = Image.new('RGBA', obj_im.size, (0, 0, 0, 0))
+        extended_map = Image.new("RGBA", obj_im.size, (0, 0, 0, 0))
         extended_map.alpha_composite(map_im, (paddings.left, paddings.top))
         extended_map.alpha_composite(obj_im)
-        name = tile_map["name"].replace('/', '_').replace('\\', '_')
+        name = tile_map["name"].replace("/", "_").replace("\\", "_")
 
-        filename = f'{name}.webp'
+        filename = f"{name}.webp"
 
-        folders = [['default', 1], ['low', 2], ['small', 3], ['tiny', 4], ['micro', 5]]
+        folders = [["default", 1], ["low", 2], ["small", 3], ["tiny", 4], ["micro", 5]]
         for folder, resize in folders:
-            filepath = map_folder / folder / f'{name}.webp'
+            filepath = map_folder / folder / f"{name}.webp"
             filepath.parent.mkdir(parents=True, exist_ok=True)
             if filepath.exists():
                 raise FileExistsError(str(filepath))
@@ -242,32 +250,41 @@ def main(here: Path):
                 extended_map.save(filepath, quality=75)
             else:
                 w, h = extended_map.size
-                tmp_map = extended_map.resize((max(1, w // resize), max(1, h // resize)), Image.Resampling.BICUBIC)
+                tmp_map = extended_map.resize(
+                    (max(1, w // resize), max(1, h // resize)), Image.Resampling.BICUBIC
+                )
                 tmp_map.save(filepath, quality=75)
 
-        metadata.append({
-            'id': tile_map['id'],
-            'file': filename,
-            'size': [extended_map.width, extended_map.height],
-            'paddings': [paddings.top, paddings.right, paddings.bottom, paddings.left],
-            'pos': [0, 0],
-            'columns': tile_map['width'],
-            'rows': tile_map['height'],
-        })
+        metadata.append(
+            {
+                "id": tile_map["id"],
+                "file": filename,
+                "size": [extended_map.width, extended_map.height],
+                "paddings": [
+                    paddings.top,
+                    paddings.right,
+                    paddings.bottom,
+                    paddings.left,
+                ],
+                "pos": [0, 0],
+                "columns": tile_map["width"],
+                "rows": tile_map["height"],
+            }
+        )
     print()
 
-    metadata.sort(key=lambda item: item['id'].casefold())
+    metadata.sort(key=lambda item: item["id"].casefold())
 
-    metadata_file = map_folder.parent / 'js' / 'metadata.json'
-    with metadata_file.open('r', encoding='utf-8') as f:
+    metadata_file = map_folder.parent / "js" / "metadata.json"
+    with metadata_file.open("r", encoding="utf-8") as f:
         old_metadata = json.load(f)
-        remap_metadata = {old_md['id']: old_md for old_md in old_metadata}
+        remap_metadata = {old_md["id"]: old_md for old_md in old_metadata}
 
     for md in metadata:
-        old_md = remap_metadata.get(md['id'], None)
+        old_md = remap_metadata.get(md["id"], None)
         if old_md:
-            md['pos'] = old_md['pos']
+            md["pos"] = old_md["pos"]
 
-    with metadata_file.open('w', encoding='utf-8') as f:
+    with metadata_file.open("w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
-        f.write('\n')
+        f.write("\n")

@@ -36,6 +36,7 @@ class Light(TypedDict):
     """
     skipped some fields related to 'flicker' or 'pulse', as we only generate static images.
     """
+
     id: str
     x: float  # there were some float values
     y: float
@@ -48,6 +49,7 @@ class Light(TypedDict):
 
 class Map(TypedDict):
     """Fields might still be missing. Have to see later."""
+
     id: str  # uuid
     name: str
     fogDensity: int
