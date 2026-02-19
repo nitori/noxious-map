@@ -6,6 +6,7 @@ import json
 import random
 import base64
 from functools import cmp_to_key
+import hashlib
 
 import requests
 from PIL import Image, ImageDraw, ImageDraw2
@@ -30,21 +31,35 @@ class Paddings:
     bottom: int
 
 
+def checksum_file(path: Path | str) -> str:
+    with open(path, 'rb') as f:
+        digest = hashlib.md5()
+        for chunk in iter(lambda: f.read(1 << 14), b''):
+            digest.update(chunk)
+    return digest.hexdigest().lower()
+
+
 class DataFetcher:
     def __init__(self, base_path: Path):
         self._here = base_path
 
     def update_data(self):
-        url = "https://server.noxious.gg/data/bundle"
-
-        r = requests.get(url, stream=True)
         filename = self._here / "bundle.zip"
         bundle_dir = self._here / 'bundle'
+        url = "https://server.noxious.gg/data/bundle"
 
-        print("downloading...")
-        with filename.open("wb") as f:
-            for chunk in r.iter_content(1 << 16):
-                f.write(chunk)
+        r = requests.head(url)
+        checksum = r.headers['Etag'].strip('"\'').lower()
+
+        if checksum != checksum_file(filename):
+            r = requests.get(url, stream=True)
+
+            print("downloading...")
+            with filename.open("wb") as f:
+                for chunk in r.iter_content(1 << 16):
+                    f.write(chunk)
+        else:
+            print("skipping download.")
 
         print("unzipping...")
         shutil.rmtree(bundle_dir)
