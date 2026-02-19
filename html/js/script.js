@@ -14,7 +14,13 @@
  * @typedef {Object.<string, Marker[]>} Markers
  */
 
-const ENABLE_DRAG = false;
+/*
+ Enable drag by setting cookie
+     document.cookie = 'admin=1; path=/';
+ disable with:
+     document.cookie = 'admin=0; path=/';
+ */
+const ENABLE_DRAG = document.cookie.match(/\badmin=1\b/) !== null;
 
 const metadataMtime = document.querySelector('meta[name="metadata-mtime"]').getAttribute('content');
 
