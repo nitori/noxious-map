@@ -194,7 +194,7 @@ class Generator:
 
 def main(here: Path):
     gen = DataFetcher(here)
-    # gen.update_data()
+    gen.update_data()
 
     map_folder = here / 'html' / 'maps'
     shutil.rmtree(map_folder)
