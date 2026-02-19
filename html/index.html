@@ -26,6 +26,18 @@
         #map {
             position: fixed;
             inset: 0;
+            z-index: 1;
+        }
+
+        #compass-rose {
+            position: fixed;
+            z-index: 2;
+            top: 10px;
+            right: 30px;
+            width: 64px;
+            height: auto;
+            transform-origin: center;
+            transform: scale(2.3) scale(0.7071) scaleY(0.5) rotate(45deg);
         }
 
         .leaflet-container {
@@ -37,9 +49,9 @@
 <body>
 
 
-<div id="map">
-
-</div>
+<div id="map"></div>
+<img id="compass-rose" width="64" height="64" src="./js/compass.svg"
+     alt="Red shows north" title="Red shows north">
 
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
