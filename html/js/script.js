@@ -159,6 +159,9 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
     mapMarkers.connections.forEach(connection => {
         if (connection.points.length === 0) return;
 
+        let names = connection.points.map(point => idMap[point.map].name);
+        let nameString = names.join(' ⇆ ');
+
         connection.points.forEach(point => {
             let mapConfig = idMap[point.map];
             let markerPos = translateTilePos(point.x, point.y, mapConfig);
@@ -169,7 +172,7 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
             })
             let marker = new L.Marker(markerPos, {icon: icon});
             marker.addTo(map);
-            marker.bindTooltip(connection.name, {direction: 'top'});
+            marker.bindTooltip(connection.name || nameString, {direction: 'top'});
         });
     });
 
