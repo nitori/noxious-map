@@ -128,7 +128,21 @@ async function buildMap(mapsConfig) {
         }
     });
 
-    map.fitBounds(overallBounds);
+    let mapBounds = JSON.parse(localStorage.getItem('mapBounds') || 'null');
+    if (Array.isArray(mapBounds) && mapBounds.length === 2) {
+        mapBounds = L.latLngBounds(mapBounds[0], mapBounds[1]);
+    } else {
+        mapBounds = overallBounds;
+    }
+    map.fitBounds(mapBounds);
+
+    map.on('moveend', (e) => {
+        let bounds = map.getBounds();
+        const sw = bounds.getSouthWest();
+        const ne = bounds.getNorthEast();
+        localStorage.setItem('mapBounds', JSON.stringify([sw, ne]));
+    });
+
     return map;
 }
 
@@ -211,26 +225,22 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
     });
 
 
-    const updateMarkers = (zoom) => {
-        if (zoom >= -5 && globalSettings.enablePoi) {
+    const updateMarkers = () => {
+        if (globalSettings.enablePoi) {
             poiMarkers.forEach(marker => marker.addTo(map));
         } else {
             poiMarkers.forEach(marker => marker.remove(map));
         }
 
-        if (zoom >= -4 && globalSettings.enableConnections) {
+        if (globalSettings.enableConnections) {
             connectionMarkers.forEach(marker => marker.addTo(map));
         } else {
             connectionMarkers.forEach(marker => marker.remove(map));
         }
     }
 
-    map.on('zoomend', function (e) {
-        updateMarkers(map.getZoom());
-    });
-
     window.settingCallbacks.push(() => {
-        updateMarkers(map.getZoom());
+        updateMarkers();
     });
 
 }
@@ -271,11 +281,18 @@ function poiIconUrl(color) {
 
     const poisButton = document.querySelector('#toggle-pois');
     const connectionsButton = document.querySelector('#toggle-connections');
-    window.settingCallbacks.push(() => {
+    settingCallbacks.push(() => {
         poisButton.classList.toggle('active', globalSettings.enablePoi);
         connectionsButton.classList.toggle('active', globalSettings.enableConnections);
     });
+    settingCallbacks.push(() => {
+        localStorage.setItem('globalSettings', JSON.stringify(globalSettings));
+    });
 
-    window.settingCallbacks.forEach(callback => callback());
+    let tmp = JSON.parse(localStorage.getItem('globalSettings') || '{}');
+    globalSettings.enablePoi = tmp.enablePoi !== undefined ? tmp.enablePoi : globalSettings.enablePoi;
+    globalSettings.enableConnections = tmp.enableConnections !== undefined ? tmp.enableConnections : globalSettings.enableConnections;
 
+    // run once, after everything's set up
+    settingCallbacks.forEach(callback => callback());
 })();
