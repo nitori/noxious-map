@@ -53,11 +53,31 @@
       0
     ],
     "pos": [
-      6732,
-      2944
+      6608,
+      3000
     ],
     "columns": 30,
     "rows": 30
+  },
+  {
+    "id": "1bcbafff-ad5f-4126-b480-b578823e488c",
+    "file": "Modern_Town_Barber.webp",
+    "size": [
+      704,
+      464
+    ],
+    "paddings": [
+      112,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      3634,
+      3978
+    ],
+    "columns": 11,
+    "rows": 11
   },
   {
     "id": "2146baf3-7cbc-4d28-9726-415486af698c",
@@ -313,8 +333,8 @@
       0
     ],
     "pos": [
-      -9788,
-      864
+      3080,
+      4156
     ],
     "columns": 19,
     "rows": 10
@@ -383,21 +403,21 @@
     "id": "9119eba6-7a56-4f12-9c40-3d07be0baf1a",
     "file": "East_Caves_lv_3.webp",
     "size": [
-      1280,
-      736
+      1920,
+      1024
     ],
     "paddings": [
-      96,
+      64,
       0,
       0,
       0
     ],
     "pos": [
-      6564,
-      3747
+      7136,
+      3879
     ],
-    "columns": 20,
-    "rows": 20
+    "columns": 30,
+    "rows": 30
   },
   {
     "id": "97514d7d-c023-48b1-85d5-a65367ef17cc",
@@ -518,6 +538,26 @@
     ],
     "columns": 20,
     "rows": 35
+  },
+  {
+    "id": "aabb052f-f302-4d9b-aea7-1682251ed2ae",
+    "file": "Feo_Jera_Underground_City.webp",
+    "size": [
+      2880,
+      1520
+    ],
+    "paddings": [
+      80,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      716,
+      -1112
+    ],
+    "columns": 45,
+    "rows": 45
   },
   {
     "id": "abec70e0-d3c4-47fb-8319-b6e18697803c",
@@ -680,6 +720,26 @@
     "rows": 30
   },
   {
+    "id": "cd6e72b0-2dba-46c6-a587-5df41fd9860e",
+    "file": "Path_to_Cave_City.webp",
+    "size": [
+      1760,
+      993
+    ],
+    "paddings": [
+      112,
+      0,
+      1,
+      0
+    ],
+    "pos": [
+      -1936,
+      420
+    ],
+    "columns": 20,
+    "rows": 35
+  },
+  {
     "id": "cd74e196-759a-4711-a1fc-ed356c2cdf23",
     "file": "North_winter_town.webp",
     "size": [
@@ -818,6 +878,26 @@
     ],
     "columns": 20,
     "rows": 20
+  },
+  {
+    "id": "f5fea8ae-fc18-4c89-bb09-00229986ba6c",
+    "file": "Winter_Town_General_Shop.webp",
+    "size": [
+      512,
+      368
+    ],
+    "paddings": [
+      112,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -608,
+      -152
+    ],
+    "columns": 8,
+    "rows": 8
   },
   {
     "id": "f76ef63b-ae22-43d3-ab51-1df52ea7545e",
