@@ -24,6 +24,11 @@
             background: black;
         }
 
+        .leaflet-container {
+            background: #111;
+            outline: 0;
+        }
+
         #map {
             position: fixed;
             inset: 0;
@@ -41,16 +46,51 @@
             transform: scale(2.3) scale(0.7071) scaleY(0.5) rotate(45deg);
         }
 
-        .leaflet-container {
-            background: #111;
-            outline: 0;
+        #bar {
+            display: flex;
+            gap: 10px;
+            position: fixed;
+            z-index: 2;
+            top: 12px;
+            left: 60px;
         }
+
+        button {
+            padding: 5px;
+            border: 0;
+            background: white;
+            margin: 0;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button img {
+            display: block;
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            filter: brightness(0);
+            transition: filter .3s ease-in-out;
+        }
+
+        button.active img {
+            filter: brightness(50%) sepia(100%) saturate(10000%);
+        }
+
     </style>
 </head>
 <body>
 
 
 <div id="map"></div>
+<div id="bar">
+    <button id="toggle-pois" class="active" onclick="toggle('enablePoi')">
+        <img src="js/marker-location.svg">
+    </button>
+    <button id="toggle-connections" class="active" onclick="toggle('enableConnections')">
+        <img src="js/marker-base.svg">
+    </button>
+</div>
 <img id="compass-rose" width="64" height="64" src="./js/compass.svg"
      alt="Red shows north" title="Red shows north">
 

@@ -35,6 +35,19 @@ const ENABLE_DRAG = document.cookie.match(/\badmin=1\b/) !== null;
 
 const metadataMtime = document.querySelector('meta[name="metadata-mtime"]').getAttribute('content');
 
+
+window.globalSettings = {
+    enablePoi: true,
+    enableConnections: true,
+};
+
+window.settingCallbacks = [];
+
+function toggle(which) {
+    window.globalSettings[which] = !window.globalSettings[which];
+    window.settingCallbacks.forEach(callback => callback());
+}
+
 /**
  * @param mapsConfig {MapConfig[]}
  * @return {Promise<*>}
@@ -197,19 +210,29 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
         poiMarkers.push(marker);
     });
 
-    map.on('zoomend', function (e) {
-        if (map.getZoom() < -5) {
-            poiMarkers.forEach(marker => marker.remove(map));
-        } else {
+
+    const updateMarkers = (zoom) => {
+        if (zoom >= -5 && globalSettings.enablePoi) {
             poiMarkers.forEach(marker => marker.addTo(map));
+        } else {
+            poiMarkers.forEach(marker => marker.remove(map));
         }
 
-        if (map.getZoom() < -4) {
-            connectionMarkers.forEach(marker => marker.remove(map));
-        } else {
+        if (zoom >= -4 && globalSettings.enableConnections) {
             connectionMarkers.forEach(marker => marker.addTo(map));
+        } else {
+            connectionMarkers.forEach(marker => marker.remove(map));
         }
+    }
+
+    map.on('zoomend', function (e) {
+        updateMarkers(map.getZoom());
     });
+
+    window.settingCallbacks.push(() => {
+        updateMarkers(map.getZoom());
+    });
+
 }
 
 function htmlEscape(text) {
@@ -245,5 +268,14 @@ function poiIconUrl(color) {
     let markers = await resp2.json();
 
     await addMarkers(mapsConfig, markers, map);
+
+    const poisButton = document.querySelector('#toggle-pois');
+    const connectionsButton = document.querySelector('#toggle-connections');
+    window.settingCallbacks.push(() => {
+        poisButton.classList.toggle('active', globalSettings.enablePoi);
+        connectionsButton.classList.toggle('active', globalSettings.enableConnections);
+    });
+
+    window.settingCallbacks.forEach(callback => callback());
 
 })();
