@@ -6,6 +6,7 @@ from http.server import test  # noqa
 import contextlib
 import socket
 import os
+import io
 
 if __name__ == "__main__":
     # ensure dual-stack is not disabled; ref #38907
@@ -24,10 +25,18 @@ if __name__ == "__main__":
     class HTTPDualStackServer(DualStackServerMixin, ThreadingHTTPServer):
         pass
 
+    class RequestHandler(SimpleHTTPRequestHandler):
+
+        def translate_path(self, path):
+            path = super().translate_path(path)
+            path = path.replace('.%%METADATA_MTIME%%', '')
+            path = path.replace('.%%SCRIPT_MTIME%%', '')
+            return path
+
     ServerClass = HTTPDualStackServer
 
     test(
-        HandlerClass=SimpleHTTPRequestHandler,
+        HandlerClass=RequestHandler,
         ServerClass=HTTPDualStackServer,
         port=4354,
         bind="127.0.0.1",
