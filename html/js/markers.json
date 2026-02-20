@@ -30,29 +30,14 @@
       "color": "#00dd00",
       "points": [
         {
-          "map": "e3b6cbdc-a715-4ece-b2fd-29a36c0c0393",
-          "x": 20,
-          "y": 0
-        },
-        {
           "map": "0d7a8cee-6a06-4784-a3ff-ae87fdda16cd",
-          "x": 9,
-          "y": 19
-        }
-      ]
-    },
-    {
-      "color": "#3333ff",
-      "points": [
-        {
-          "map": "f0afb1a1-a467-4cba-ab6f-b012c0b3d02b",
-          "x": 0,
-          "y": 19
+          "x": 14,
+          "y": 3
         },
         {
-          "map": "3295d905-6891-4675-b439-2eae1b35a95f",
-          "x": 25,
-          "y": 0
+          "map": "6e7e8ffe-fb42-406a-a856-8dea06efb427",
+          "x": 0,
+          "y": 2
         }
       ]
     },
