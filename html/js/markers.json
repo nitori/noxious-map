@@ -1,17 +1,14 @@
 {
   "pois": [
     {
-      "name": "Feo Jera Underground City",
       "color": "#fff",
       "map": "aabb052f-f302-4d9b-aea7-1682251ed2ae"
     },
     {
-      "name": "Winter Town",
       "color": "#800",
       "map": "793b0a25-7d04-44fd-9022-72f0717f76a0"
     },
     {
-      "name": "Modern Town",
       "color": "#fff",
       "map": "e3b6cbdc-a715-4ece-b2fd-29a36c0c0393"
     }

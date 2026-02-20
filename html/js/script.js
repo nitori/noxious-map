@@ -3,6 +3,7 @@
  *
  * @typedef {{
  *     id: string,
+ *     name: string,
  *     file: string,
  *     size: number[],
  *     pos: number[],
@@ -184,7 +185,7 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
             })
             let marker = new L.Marker(markerPos, {icon: icon});
             marker.addTo(map);
-            marker.bindTooltip(poi.name, {direction: 'top'});
+            marker.bindTooltip(poi.name || mapConfig.name, {direction: 'top'});
     });
 }
 

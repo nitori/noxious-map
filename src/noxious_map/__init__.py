@@ -261,6 +261,7 @@ def main(here: Path):
         metadata.append(
             {
                 "id": tile_map["id"],
+                "name": tile_map["name"],
                 "file": filename,
                 "size": [extended_map.width, extended_map.height],
                 "paddings": [
