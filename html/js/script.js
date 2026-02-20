@@ -10,8 +10,15 @@
  *     columns: number,
  *     rows: number,
  * }} MapConfig
- * @typedef {{x: number, y: number, color: string}} Marker
- * @typedef {Object.<string, Marker[]>} Markers
+ *
+ * @typedef {{map: string, x: int, y: int}} ConnectionPoint
+ * @typedef {{
+ *     name: string,
+ *     color: string,
+ *     points: ConnectionPoint[],
+ * }} Connection
+ * @typedef {{connections: Connection[]}} MarkersFile
+ *
  */
 
 /*
@@ -110,7 +117,7 @@ async function buildMap(mapsConfig) {
 
 /**
  * @param mapsConfig {MapConfig[]}
- * @param mapMarkers {Markers}
+ * @param mapMarkers {MarkersFile}
  * @param map {L.Map}
  * @return {Promise<void>}
  */
@@ -122,44 +129,41 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
         idMap[mapConfig.id] = mapConfig;
     });
 
-    let id;
-    for (id in mapMarkers) {
-        if (!mapMarkers.hasOwnProperty(id)) continue;
-        if (!idMap.hasOwnProperty(id)) continue;
+    mapMarkers.connections.forEach(connection => {
+        if (connection.points.length === 0) return;
 
-        let mapConfig = idMap[id];
+        connection.points.forEach(point => {
+            let mapConfig = idMap[point.map];
 
-        // coords are bottom left of the image layer
-        let [map_x, map_y] = mapConfig.pos;
-        let [map_w, map_h] = mapConfig.size;
-        let [pad_top, pad_right, pad_bottom, pad_left] = mapConfig.paddings;
+            // coords are bottom left of the image layer
+            let [map_x, map_y] = mapConfig.pos;
+            let [map_w, map_h] = mapConfig.size;
+            let [pad_top, pad_right, pad_bottom, pad_left] = mapConfig.paddings;
 
-        // remove paddings to get tile map pos (bottom-left) and size
-        map_x += pad_left;
-        map_y += pad_bottom;
-        map_w -= (pad_left + pad_right);
-        map_h -= (pad_top + pad_bottom);
+            // remove paddings to get tile map pos (bottom-left) and size
+            map_x += pad_left;
+            map_y += pad_bottom;
+            map_w -= (pad_left + pad_right);
+            map_h -= (pad_top + pad_bottom);
 
-        let origin = [
-            map_y + map_h - 16,
-            map_x + (mapConfig.rows * 32)
-        ];
-
-        mapMarkers[id].forEach(marker => {
+            let origin = [
+                map_y + map_h - 16,
+                map_x + (mapConfig.rows * 32)
+            ];
 
             let markerPos = [
-                origin[0] - (marker.x + marker.y) * 16,
-                origin[1] + (marker.x - marker.y) * 32
+                origin[0] - (point.x + point.y) * 16,
+                origin[1] + (point.x - point.y) * 32
             ];
 
             let icon = L.icon({
-                iconUrl: iconUrl(marker.color),
+                iconUrl: iconUrl(connection.color),
                 iconAnchor: [13, 42],
             })
 
             L.marker(markerPos, {icon: icon}).addTo(map);
         });
-    }
+    });
 }
 
 function htmlEscape(text) {

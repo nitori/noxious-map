@@ -1,78 +1,100 @@
 {
-  "e3b6cbdc-a715-4ece-b2fd-29a36c0c0393": [
+  "connections": [
     {
-      "x": 20,
-      "y": 0,
-      "color": "#00dd00"
-    }
-  ],
-  "0d7a8cee-6a06-4784-a3ff-ae87fdda16cd": [
-    {
-      "x": 9,
-      "y": 19,
-      "color": "#00dd00"
-    }
-  ],
-  "f0afb1a1-a467-4cba-ab6f-b012c0b3d02b": [
-    {
-      "x": 0,
-      "y": 19,
-      "color": "#3333FF"
-    }
-  ],
-  "3295d905-6891-4675-b439-2eae1b35a95f": [
-    {
-      "x": 25,
-      "y": 0,
-      "color": "#3333FF"
+      "name": "#00dd00",
+      "color": "#00dd00",
+      "points": [
+        {
+          "map": "e3b6cbdc-a715-4ece-b2fd-29a36c0c0393",
+          "x": 20,
+          "y": 0
+        },
+        {
+          "map": "0d7a8cee-6a06-4784-a3ff-ae87fdda16cd",
+          "x": 9,
+          "y": 19
+        }
+      ]
     },
     {
-      "x": 1,
-      "y": 15,
-      "color": "#aaaaaa"
-    }
-  ],
-  "19266afc-d99b-466c-a118-6b45e39b71e7": [
-    {
-      "x": 21,
-      "y": 29,
-      "color": "#FF33FF"
+      "name": "#3333ff",
+      "color": "#3333ff",
+      "points": [
+        {
+          "map": "f0afb1a1-a467-4cba-ab6f-b012c0b3d02b",
+          "x": 0,
+          "y": 19
+        },
+        {
+          "map": "3295d905-6891-4675-b439-2eae1b35a95f",
+          "x": 25,
+          "y": 0
+        }
+      ]
     },
     {
-      "x": 1,
-      "y": 0,
-      "color": "#00FFFF"
-    }
-  ],
-  "98c3586a-b93d-43aa-8df2-9067f87e1563": [
-    {
-      "x": 3,
-      "y": 3,
-      "color": "#FF33FF"
-    }
-  ],
-  "9119eba6-7a56-4f12-9c40-3d07be0baf1a": [
-    {
-      "x": 0,
-      "y": 25,
-      "color": "#dd8800"
+      "name": "#aaaaaa",
+      "color": "#aaaaaa",
+      "points": [
+        {
+          "map": "3295d905-6891-4675-b439-2eae1b35a95f",
+          "x": 1,
+          "y": 15
+        },
+        {
+          "map": "cd6e72b0-2dba-46c6-a587-5df41fd9860e",
+          "x": 19,
+          "y": 3
+        }
+      ]
     },
     {
-      "x": 25,
-      "y": 0,
-      "color": "#dd8800"
+      "name": "#ff33ff",
+      "color": "#ff33ff",
+      "points": [
+        {
+          "map": "19266afc-d99b-466c-a118-6b45e39b71e7",
+          "x": 21,
+          "y": 29
+        },
+        {
+          "map": "98c3586a-b93d-43aa-8df2-9067f87e1563",
+          "x": 3,
+          "y": 3
+        }
+      ]
     },
     {
-      "x": 8,
-      "y": 0,
-      "color": "#00FFFF"
-    }
-  ],
-  "cd6e72b0-2dba-46c6-a587-5df41fd9860e": [
+      "name": "#00ffff",
+      "color": "#00ffff",
+      "points": [
+        {
+          "map": "19266afc-d99b-466c-a118-6b45e39b71e7",
+          "x": 1,
+          "y": 0
+        },
+        {
+          "map": "9119eba6-7a56-4f12-9c40-3d07be0baf1a",
+          "x": 8,
+          "y": 0
+        }
+      ]
+    },
     {
-      "x": 19,
-      "y": 3,
-      "color": "#aaaaaa"
+      "name": "#dd8800",
+      "color": "#dd8800",
+      "points": [
+        {
+          "map": "9119eba6-7a56-4f12-9c40-3d07be0baf1a",
+          "x": 0,
+          "y": 25
+        },
+        {
+          "map": "9119eba6-7a56-4f12-9c40-3d07be0baf1a",
+          "x": 25,
+          "y": 0
+        }
+      ]
     }
   ]
 }
