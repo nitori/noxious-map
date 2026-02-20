@@ -252,6 +252,27 @@
     "rows": 30
   },
   {
+    "id": "6dc235dd-ab13-4c77-a77a-cc06fc4c6a1b",
+    "name": "North Jab/stab",
+    "file": "North_Jab_stab.webp",
+    "size": [
+      1920,
+      1072
+    ],
+    "paddings": [
+      112,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -12696,
+      -1592
+    ],
+    "columns": 30,
+    "rows": 30
+  },
+  {
     "id": "6e7e8ffe-fb42-406a-a856-8dea06efb427",
     "name": "North Flower Fields",
     "file": "North_Flower_Fields.webp",
@@ -571,14 +592,14 @@
     "name": "East of town Desert",
     "file": "East_of_town_Desert.webp",
     "size": [
-      4480,
+      4546,
       2240
     ],
     "paddings": [
       0,
       0,
       0,
-      0
+      66
     ],
     "pos": [
       -14616,
