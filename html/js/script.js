@@ -156,12 +156,15 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
                 origin[1] + (point.x - point.y) * 32
             ];
 
-            let icon = L.icon({
+            let icon = new L.Icon({
                 iconUrl: iconUrl(connection.color),
                 iconAnchor: [13, 42],
+                tooltipAnchor: [0, -42],
             })
 
-            L.marker(markerPos, {icon: icon, title: connection.name}).addTo(map);
+            let marker = new L.Marker(markerPos, {icon: icon});
+            marker.addTo(map);
+            marker.bindTooltip(connection.name, {direction: 'top'});
         });
     });
 }
