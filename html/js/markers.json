@@ -11,6 +11,13 @@
     {
       "color": "#fff",
       "map": "e3b6cbdc-a715-4ece-b2fd-29a36c0c0393"
+    },
+    {
+      "name": "Reaper Cave",
+      "color": "#f00",
+      "map": "06bce23a-4159-475f-9474-96ecb8ff5272",
+      "x": 22,
+      "y": -1
     }
   ],
   "connections": [
