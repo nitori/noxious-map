@@ -1,7 +1,7 @@
 {
   "connections": [
     {
-      "name": "#00dd00",
+      "name": "Modern Town Northway",
       "color": "#00dd00",
       "points": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "name": "#3333ff",
+      "name": "Goblin Cave Entrance",
       "color": "#3333ff",
       "points": [
         {
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "name": "#aaaaaa",
+      "name": "Goblin Cave Hidden Entrance",
       "color": "#aaaaaa",
       "points": [
         {
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "name": "#ff33ff",
+      "name": "Cave Exit to Winter Town",
       "color": "#ff33ff",
       "points": [
         {
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "name": "#00ffff",
+      "name": "Winter Cave",
       "color": "#00ffff",
       "points": [
         {
@@ -81,7 +81,7 @@
       ]
     },
     {
-      "name": "#dd8800",
+      "name": "Path to Feo Jera Underground City",
       "color": "#dd8800",
       "points": [
         {

@@ -161,7 +161,7 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
                 iconAnchor: [13, 42],
             })
 
-            L.marker(markerPos, {icon: icon}).addTo(map);
+            L.marker(markerPos, {icon: icon, title: connection.name}).addTo(map);
         });
     });
 }
