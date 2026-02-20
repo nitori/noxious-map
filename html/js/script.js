@@ -126,6 +126,10 @@ async function buildMap(mapsConfig) {
  * @return {Promise<void>}
  */
 async function addMarkers(mapsConfig, mapMarkers, map) {
+    /** @type {L.Marker[]} */
+    let poiMarkers = [];
+    /** @type {L.Marker[]} */
+    let connectionMarkers = [];
 
     /** @type {Object.<string, MapConfig>} */
     const idMap = {};
@@ -173,6 +177,7 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
             let marker = new L.Marker(markerPos, {icon: icon});
             marker.addTo(map);
             marker.bindTooltip(connection.name || nameString, {direction: 'top'});
+            connectionMarkers.push(marker);
         });
     });
 
@@ -181,14 +186,29 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
         let x = Number.isInteger(poi.x) ? poi.x : Math.floor(mapConfig.columns / 2);
         let y = Number.isInteger(poi.y) ? poi.y : Math.floor(mapConfig.rows / 2);
         let markerPos = translateTilePos(x, y, mapConfig);
-            let icon = new L.Icon({
-                iconUrl: poiIconUrl(poi.color),
-                iconAnchor: [16, 32],
-                tooltipAnchor: [0, -32],
-            })
-            let marker = new L.Marker(markerPos, {icon: icon});
-            marker.addTo(map);
-            marker.bindTooltip(poi.name || mapConfig.name, {direction: 'top'});
+        let icon = new L.Icon({
+            iconUrl: poiIconUrl(poi.color),
+            iconAnchor: [16, 32],
+            tooltipAnchor: [0, -32],
+        })
+        let marker = new L.Marker(markerPos, {icon: icon});
+        marker.addTo(map);
+        marker.bindTooltip(poi.name || mapConfig.name, {direction: 'top'});
+        poiMarkers.push(marker);
+    });
+
+    map.on('zoomend', function (e) {
+        if (map.getZoom() < -5) {
+            poiMarkers.forEach(marker => marker.remove(map));
+        } else {
+            poiMarkers.forEach(marker => marker.addTo(map));
+        }
+
+        if (map.getZoom() < -4) {
+            connectionMarkers.forEach(marker => marker.remove(map));
+        } else {
+            connectionMarkers.forEach(marker => marker.addTo(map));
+        }
     });
 }
 
