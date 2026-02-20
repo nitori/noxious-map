@@ -11,13 +11,16 @@
  *     rows: number,
  * }} MapConfig
  *
- * @typedef {{map: string, x: int, y: int}} ConnectionPoint
+ * @typedef {{name: string, color: string, map: string, x: [number], y: [number]}} Poi
+ * @typedef {{map: string, x: number, y: number}} ConnectionPoint
  * @typedef {{
  *     name: string,
  *     color: string,
  *     points: ConnectionPoint[],
  * }} Connection
- * @typedef {{connections: Connection[]}} MarkersFile
+ *
+ *
+ * @typedef {{pois: Poi[], connections: Connection[]}} MarkersFile
  *
  */
 
@@ -129,43 +132,59 @@ async function addMarkers(mapsConfig, mapMarkers, map) {
         idMap[mapConfig.id] = mapConfig;
     });
 
+    const translateTilePos = (x, y, mapConfig) => {
+        // coords are bottom left of the image layer
+        let [map_x, map_y] = mapConfig.pos;
+        let [map_w, map_h] = mapConfig.size;
+        let [pad_top, pad_right, pad_bottom, pad_left] = mapConfig.paddings;
+
+        // remove paddings to get tile map pos (bottom-left) and size
+        map_x += pad_left;
+        map_y += pad_bottom;
+        map_w -= (pad_left + pad_right);
+        map_h -= (pad_top + pad_bottom);
+
+        let origin = [
+            map_y + map_h - 16,
+            map_x + (mapConfig.rows * 32)
+        ];
+
+        return [
+            origin[0] - (x + y) * 16,
+            origin[1] + (x - y) * 32
+        ];
+    };
+
     mapMarkers.connections.forEach(connection => {
         if (connection.points.length === 0) return;
 
         connection.points.forEach(point => {
             let mapConfig = idMap[point.map];
-
-            // coords are bottom left of the image layer
-            let [map_x, map_y] = mapConfig.pos;
-            let [map_w, map_h] = mapConfig.size;
-            let [pad_top, pad_right, pad_bottom, pad_left] = mapConfig.paddings;
-
-            // remove paddings to get tile map pos (bottom-left) and size
-            map_x += pad_left;
-            map_y += pad_bottom;
-            map_w -= (pad_left + pad_right);
-            map_h -= (pad_top + pad_bottom);
-
-            let origin = [
-                map_y + map_h - 16,
-                map_x + (mapConfig.rows * 32)
-            ];
-
-            let markerPos = [
-                origin[0] - (point.x + point.y) * 16,
-                origin[1] + (point.x - point.y) * 32
-            ];
-
+            let markerPos = translateTilePos(point.x, point.y, mapConfig);
             let icon = new L.Icon({
-                iconUrl: iconUrl(connection.color),
-                iconAnchor: [13, 42],
+                iconUrl: connectionIconUrl(connection.color),
+                iconAnchor: [16, 42],
                 tooltipAnchor: [0, -42],
             })
-
             let marker = new L.Marker(markerPos, {icon: icon});
             marker.addTo(map);
             marker.bindTooltip(connection.name, {direction: 'top'});
         });
+    });
+
+    mapMarkers.pois.forEach(poi => {
+        let mapConfig = idMap[poi.map];
+        let x = Number.isInteger(poi.x) ? poi.x : Math.floor(mapConfig.columns / 2);
+        let y = Number.isInteger(poi.y) ? poi.y : Math.floor(mapConfig.rows / 2);
+        let markerPos = translateTilePos(x, y, mapConfig);
+            let icon = new L.Icon({
+                iconUrl: poiIconUrl(poi.color),
+                iconAnchor: [16, 32],
+                tooltipAnchor: [0, -32],
+            })
+            let marker = new L.Marker(markerPos, {icon: icon});
+            marker.addTo(map);
+            marker.bindTooltip(poi.name, {direction: 'top'});
     });
 }
 
@@ -177,9 +196,16 @@ function htmlEscape(text) {
         .replace("'", '&apos;');
 }
 
-function iconUrl(color) {
-    let svg = `<svg width="26" height="42" version="1.1" viewBox="0 0 6.8792 11.112" xmlns="http://www.w3.org/2000/svg">`
-        + `<path fill="${htmlEscape(color)}" d="m3.44 0c-2.3042 0-3.4396 1.8023-3.4396 3.4396 0 4.1562 3.4396 7.6729 3.4396 7.6729s3.4396-3.7567 3.4396-7.6729c0-1.685-1.1354-3.4396-3.4396-3.4396zm0 1.8521a1.5875 1.5875 0 0 1 1.5875 1.5875 1.5875 1.5875 0 0 1-1.5875 1.5875 1.5875 1.5875 0 0 1-1.5875-1.5875 1.5875 1.5875 0 0 1 1.5875-1.5875z"/>`
+function connectionIconUrl(color) {
+    let svg = `<svg version="1.1" width="32" height="42" viewBox="0 0 32 42" xmlns="http://www.w3.org/2000/svg">`
+        + `<path fill="${htmlEscape(color)}" d="m16.009 0c-10.473 0-15.984 8.5816-16.009 15.681-0.027134 7.6056 4.2516 10.894 16.035 26.319 10.968-14.496 15.965-19.02 15.965-26.344 0-6.6659-5.3362-15.656-15.991-15.656zm-0.039977 11.245a4.6046 4.5705 0 0 1 4.6054 4.5706 4.6046 4.5705 0 0 1-4.6054 4.5706 4.6046 4.5705 0 0 1-4.6054-4.5706 4.6046 4.5705 0 0 1 4.6054-4.5706z"/>`
+        + `</svg>`;
+    return `data:image/svg+xml;base64,${btoa(svg)}`;
+}
+
+function poiIconUrl(color) {
+    let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 640 640">`
+        + `<path fill="${htmlEscape(color)}" d="M96 96L32 96L32 320L64 320L64 576L576 576L576 320L608 320L608 96L544 96L544 160L512 160L512 96L448 96L448 160L416 160L416 96L352 96L352 224L288 224L288 96L224 96L224 160L192 160L192 96L128 96L128 160L96 160L96 96zM384 384L384 528L256 528L256 384L384 384z"/>`
         + `</svg>`;
     return `data:image/svg+xml;base64,${btoa(svg)}`;
 }
