@@ -139,9 +139,17 @@ class DataFetcher:
             max_y=base_height,
         )
 
+        first_print = True
         for obj in tile_map["mapObjects"]:
             id = obj["type"]
-            base_obj = map_objects[id]
+            try:
+                base_obj = map_objects[id]
+            except KeyError:
+                if first_print:
+                    print()
+                first_print = False
+                print(f'Map object {id!r} is missing but used in map {tile_map['id']} ({tile_map['name']!r})')
+                continue
 
             if id not in obj_images:
                 obj_texture_file = obj_texture_dir / f"{id}.png"
