@@ -315,27 +315,6 @@
     "rows": 40
   },
   {
-    "id": "7ab74f56-39f0-4964-aa5c-8a196073930e",
-    "name": "Mob test",
-    "file": "Mob_test.webp",
-    "size": [
-      320,
-      186
-    ],
-    "paddings": [
-      26,
-      0,
-      0,
-      0
-    ],
-    "pos": [
-      -7260,
-      -752
-    ],
-    "columns": 5,
-    "rows": 5
-  },
-  {
     "id": "7d95a5b5-1ae1-4615-aa4a-7dcf6038759b",
     "name": "Modern Town Guild Hall",
     "file": "Modern_Town_Guild_Hall.webp",
@@ -602,8 +581,8 @@
       66
     ],
     "pos": [
-      -14616,
-      -976
+      1696,
+      1196
     ],
     "columns": 50,
     "rows": 90
@@ -670,6 +649,48 @@
     ],
     "columns": 20,
     "rows": 20
+  },
+  {
+    "id": "bd2407f5-d727-4eb9-bb26-c20174ae877e",
+    "name": "Desert gear Shop",
+    "file": "Desert_gear_Shop.webp",
+    "size": [
+      800,
+      400
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -10864,
+      1112
+    ],
+    "columns": 10,
+    "rows": 15
+  },
+  {
+    "id": "c1764fae-696d-4569-9f08-eb6b0ca1967e",
+    "name": "Desert Medicine Store",
+    "file": "Desert_Medicine_Store.webp",
+    "size": [
+      800,
+      400
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -9864,
+      640
+    ],
+    "columns": 10,
+    "rows": 15
   },
   {
     "id": "c56f0091-38f4-4e1f-9849-c4ed3ed293df",
@@ -782,10 +803,10 @@
     "file": "North_winter_town.webp",
     "size": [
       2176,
-      1088
+      1295
     ],
     "paddings": [
-      0,
+      207,
       0,
       0,
       0
@@ -924,6 +945,27 @@
     "rows": 20
   },
   {
+    "id": "f2f66692-3cf6-4486-97d7-5b7dba8dc93e",
+    "name": "Desert Abandoned Building",
+    "file": "Desert_Abandoned_Building.webp",
+    "size": [
+      800,
+      400
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -10312,
+      824
+    ],
+    "columns": 10,
+    "rows": 15
+  },
+  {
     "id": "f5fea8ae-fc18-4c89-bb09-00229986ba6c",
     "name": "Winter Town General Shop",
     "file": "Winter_Town_General_Shop.webp",
@@ -1027,26 +1069,5 @@
     ],
     "columns": 8,
     "rows": 14
-  },
-  {
-    "id": "town",
-    "name": "Guard town",
-    "file": "Guard_town.webp",
-    "size": [
-      1120,
-      706
-    ],
-    "paddings": [
-      146,
-      0,
-      0,
-      0
-    ],
-    "pos": [
-      -10416,
-      496
-    ],
-    "columns": 20,
-    "rows": 15
   }
 ]
