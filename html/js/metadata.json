@@ -14,8 +14,8 @@
       0
     ],
     "pos": [
-      -420,
-      1556
+      -1104,
+      1340
     ],
     "columns": 30,
     "rows": 30
@@ -182,11 +182,53 @@
       0
     ],
     "pos": [
-      -672,
-      3368
+      -1192,
+      3504
     ],
     "columns": 30,
     "rows": 30
+  },
+  {
+    "id": "377e6b08-6a72-4156-901f-b2a90864f974",
+    "name": "ROOT TEST",
+    "file": "ROOT_TEST.webp",
+    "size": [
+      1280,
+      640
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -5472,
+      -2016
+    ],
+    "columns": 20,
+    "rows": 20
+  },
+  {
+    "id": "37ef19fb-14b3-4547-ba2b-29d2545e4d0b",
+    "name": "Under Corn Field",
+    "file": "Under_Corn_Field.webp",
+    "size": [
+      1120,
+      560
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -6124,
+      -2660
+    ],
+    "columns": 15,
+    "rows": 20
   },
   {
     "id": "4d61e5e0-25ec-420b-981f-2003617415d9",
@@ -424,8 +466,8 @@
     "name": "Corn Fields",
     "file": "Corn_Fields.webp",
     "size": [
-      1920,
-      1095
+      2560,
+      1415
     ],
     "paddings": [
       135,
@@ -434,10 +476,10 @@
       0
     ],
     "pos": [
-      344,
-      2872
+      -272,
+      2256
     ],
-    "columns": 20,
+    "columns": 40,
     "rows": 40
   },
   {
@@ -476,8 +518,8 @@
       0
     ],
     "pos": [
-      -1072,
-      2400
+      -1608,
+      2088
     ],
     "columns": 30,
     "rows": 30
@@ -571,21 +613,21 @@
     "name": "East of town Desert",
     "file": "East_of_town_Desert.webp",
     "size": [
-      4546,
-      2240
+      4736,
+      2368
     ],
     "paddings": [
       0,
       0,
       0,
-      66
+      0
     ],
     "pos": [
-      1696,
-      1196
+      2112,
+      812
     ],
-    "columns": 50,
-    "rows": 90
+    "columns": 55,
+    "rows": 93
   },
   {
     "id": "b0c9c1f7-9838-45f9-82d6-6a58b5495467",
@@ -602,8 +644,8 @@
       0
     ],
     "pos": [
-      -764,
-      2052
+      -1432,
+      1844
     ],
     "columns": 10,
     "rows": 10
@@ -770,8 +812,8 @@
       0
     ],
     "pos": [
-      1052,
-      2346
+      1064,
+      1746
     ],
     "columns": 30,
     "rows": 30
@@ -907,8 +949,8 @@
     "name": "Modern town",
     "file": "Modern_town.webp",
     "size": [
-      2880,
-      1577
+      3520,
+      1897
     ],
     "paddings": [
       137,
@@ -917,16 +959,16 @@
       0
     ],
     "pos": [
-      1120,
-      3348
+      500,
+      3024
     ],
     "columns": 50,
-    "rows": 40
+    "rows": 60
   },
   {
     "id": "f0afb1a1-a467-4cba-ab6f-b012c0b3d02b",
-    "name": "Golbin Cave Start",
-    "file": "Golbin_Cave_Start.webp",
+    "name": "Goblin Cave Start",
+    "file": "Goblin_Cave_Start.webp",
     "size": [
       1280,
       722
