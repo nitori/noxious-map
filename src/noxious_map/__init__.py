@@ -156,7 +156,8 @@ class DataFetcher:
             if id not in obj_images:
                 obj_texture_file = obj_texture_dir / f"{id}.png"
                 if not obj_texture_file.exists():
-                    raise ValueError(f"missing tile object texture: {obj_texture_file}")
+                    print(f'Map object {id!r} is missing tile object texture: {obj_texture_file.name} ({tile_map['name']!r})')
+                    continue
 
                 obj_im = Image.open(obj_texture_file)
                 obj_im = obj_im.convert("RGBA")
@@ -346,7 +347,6 @@ def main(here: Path):
     gen = DataFetcher(here)
     gen.update_data()
     gen.generate_mob_drop_list()
-    return
 
     map_folder = here / "html" / "maps"
     shutil.rmtree(map_folder)
