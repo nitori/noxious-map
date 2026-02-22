@@ -15,11 +15,11 @@
             height: auto;
         }
         .td-img {width:246px;}
-        .td-name {width:246px;}
-        .td-level {width:246px;}
+        .td-name {width:auto;}
+        .td-level {width:100px;}
         .td-hostile {width:100px;}
         .td-health {width:100px;}
-        .td-drops {width:auto;}
+        .td-drops {width:50%;}
 
         #simple-list:checked ~ .table .td-img,
         #simple-list:checked ~ .table .td-drops {
@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 <input id="simple-list" type="checkbox"> <label for="simple-list">Simplified list</label>
 <table class="table">
 <thead>
@@ -52,7 +52,7 @@
     <td class="td-level">1</td>
     <td class="td-health">100/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Energy Sword</td><td>×1</td><td>0.1%</td></tr><tr><td>Energy Sword</td><td>×1</td><td>0.1%</td></tr><tr><td>Purple Energy Sword</td><td>×1</td><td>0.1%</td></tr><tr><td>Blue Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Yellow Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Green Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Black Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>White Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Brown Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Purple Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Pink Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Grey Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Green Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Gold</td><td>×200</td><td>30%</td></tr><tr><td>Gold</td><td>×250</td><td>25%</td></tr><tr><td>Neros Staff </td><td>×1</td><td>0.009%</td></tr><tr><td>Demon ring</td><td>×1</td><td>0.009%</td></tr><tr><td>Legendary Sword</td><td>×1</td><td>0.009%</td></tr><tr><td>Butcher</td><td>×1</td><td>0.009%</td></tr><tr><td>Delfang</td><td>×1</td><td>0.009%</td></tr><tr><td>Health potion</td><td>×1</td><td>5%</td></tr><tr><td>Sneak Boots</td><td>×1</td><td>0.4%</td></tr><tr><td>Mana potion</td><td>×1</td><td>4%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Energy Sword</td><td>×1</td><td>0.1% (1:1000)</td></tr><tr><td>Energy Sword</td><td>×1</td><td>0.1% (1:1000)</td></tr><tr><td>Purple Energy Sword</td><td>×1</td><td>0.1% (1:1000)</td></tr><tr><td>Blue Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Yellow Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Green Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Black Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>White Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Brown Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Purple Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Pink Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Grey Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Green Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Gold</td><td>×200</td><td>30% (1:3.33)</td></tr><tr><td>Gold</td><td>×250</td><td>25% (1:4.00)</td></tr><tr><td>Neros Staff </td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Demon ring</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Legendary Sword</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Butcher</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Delfang</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Health potion</td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Sneak Boots</td><td>×1</td><td>0.4% (1:250)</td></tr><tr><td>Mana potion</td><td>×1</td><td>4% (1:25)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster102.webp" width="246" height="246" class="sprite"
              alt="Sprite of White present">
@@ -62,7 +62,7 @@
     <td class="td-level">1</td>
     <td class="td-health">100/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Blue Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Yellow Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Green Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Black Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>White Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Brown Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Grey Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Purple Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Pink Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Green Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Neros Staff </td><td>×1</td><td>0.009%</td></tr><tr><td>Demon ring</td><td>×1</td><td>0.009%</td></tr><tr><td>Legendary Sword</td><td>×1</td><td>0.009%</td></tr><tr><td>Butcher</td><td>×1</td><td>0.009%</td></tr><tr><td>Gold</td><td>×200</td><td>30%</td></tr><tr><td>Gold</td><td>×200</td><td>20%</td></tr><tr><td>Quietus </td><td>×1</td><td>0.01%</td></tr><tr><td>Health potion</td><td>×1</td><td>5%</td></tr><tr><td>Fancy White Hat</td><td>×1</td><td>0.5%</td></tr><tr><td>Mana potion</td><td>×1</td><td>4%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Blue Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Yellow Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Green Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Black Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>White Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Brown Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Grey Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Purple Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Pink Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Green Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Neros Staff </td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Demon ring</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Legendary Sword</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Butcher</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Gold</td><td>×200</td><td>30% (1:3.33)</td></tr><tr><td>Gold</td><td>×200</td><td>20% (1:5.00)</td></tr><tr><td>Quietus </td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Health potion</td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Fancy White Hat</td><td>×1</td><td>0.5% (1:200)</td></tr><tr><td>Mana potion</td><td>×1</td><td>4% (1:25)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster111.webp" width="246" height="246" class="sprite"
              alt="Sprite of Blob">
@@ -72,7 +72,7 @@
     <td class="td-level">1</td>
     <td class="td-health">100/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×5</td><td>10%</td></tr><tr><td>Black pants</td><td>×1</td><td>10%</td></tr><tr><td>Rag Shirt</td><td>×1</td><td>10%</td></tr><tr><td>Black Boots</td><td>×1</td><td>10%</td></tr><tr><td>Club</td><td>×1</td><td>10%</td></tr><tr><td>Gold</td><td>×20</td><td>10%</td></tr><tr><td>Peasant Hat</td><td>×1</td><td>10%</td></tr><tr><td>Energy Sword</td><td>×1</td><td>0.02%</td></tr><tr><td>Energy Sword</td><td>×1</td><td>0.02%</td></tr><tr><td>Purple Energy Sword</td><td>×1</td><td>0.01%</td></tr><tr><td>Light Spaulders </td><td>×1</td><td>1%</td></tr><tr><td>Health potion</td><td>×1</td><td>1%</td></tr><tr><td>Mana potion</td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×5</td><td>10% (1:10.00)</td></tr><tr><td>Black pants</td><td>×1</td><td>10% (1:10.00)</td></tr><tr><td>Rag Shirt</td><td>×1</td><td>10% (1:10.00)</td></tr><tr><td>Black Boots</td><td>×1</td><td>10% (1:10.00)</td></tr><tr><td>Club</td><td>×1</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×20</td><td>10% (1:10.00)</td></tr><tr><td>Peasant Hat</td><td>×1</td><td>10% (1:10.00)</td></tr><tr><td>Energy Sword</td><td>×1</td><td>0.02% (1:5000)</td></tr><tr><td>Energy Sword</td><td>×1</td><td>0.02% (1:5000)</td></tr><tr><td>Purple Energy Sword</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Light Spaulders </td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Health potion</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Mana potion</td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster122.webp" width="246" height="246" class="sprite"
              alt="Sprite of Blue blob">
@@ -82,7 +82,7 @@
     <td class="td-level">1</td>
     <td class="td-health">100/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×5</td><td>15%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×5</td><td>15% (1:6.67)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster33.webp" width="246" height="246" class="sprite"
              alt="Sprite of Fish">
@@ -122,7 +122,7 @@
     <td class="td-level">1</td>
     <td class="td-health">100/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Blue Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Yellow Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Green Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Black Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>White Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Brown Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Purple Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Pink Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Grey Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Green Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Neros Staff </td><td>×1</td><td>0.009%</td></tr><tr><td>Demon ring</td><td>×1</td><td>0.009%</td></tr><tr><td>Legendary Sword</td><td>×1</td><td>0.009%</td></tr><tr><td>Butcher</td><td>×1</td><td>0.009%</td></tr><tr><td>Gold</td><td>×250</td><td>25%</td></tr><tr><td>Gold</td><td>×200</td><td>25%</td></tr><tr><td>Tetrablade</td><td>×1</td><td>0.02%</td></tr><tr><td>Viper</td><td>×1</td><td>1%</td></tr><tr><td>Health potion</td><td>×1</td><td>5%</td></tr><tr><td>Sandals</td><td>×1</td><td>0.4%</td></tr><tr><td>Blue Cape</td><td>×1</td><td>0.5%</td></tr><tr><td>Mana potion</td><td>×1</td><td>4%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Blue Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Yellow Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Green Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Black Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>White Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Brown Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Purple Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Pink Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Grey Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Green Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Neros Staff </td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Demon ring</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Legendary Sword</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Butcher</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Gold</td><td>×250</td><td>25% (1:4.00)</td></tr><tr><td>Gold</td><td>×200</td><td>25% (1:4.00)</td></tr><tr><td>Tetrablade</td><td>×1</td><td>0.02% (1:5000)</td></tr><tr><td>Viper</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Health potion</td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Sandals</td><td>×1</td><td>0.4% (1:250)</td></tr><tr><td>Blue Cape</td><td>×1</td><td>0.5% (1:200)</td></tr><tr><td>Mana potion</td><td>×1</td><td>4% (1:25)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster98.webp" width="246" height="246" class="sprite"
              alt="Sprite of Mint present">
@@ -132,7 +132,7 @@
     <td class="td-level">1</td>
     <td class="td-health">100/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Blue Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Yellow Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Black Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Green Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>White Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Brown Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Purple Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Pink Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Grey Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Green Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Demon ring</td><td>×1</td><td>0.009%</td></tr><tr><td>Butcher</td><td>×1</td><td>0.009%</td></tr><tr><td>Legendary Sword</td><td>×1</td><td>0.009%</td></tr><tr><td>Neros Staff </td><td>×1</td><td>0.009%</td></tr><tr><td>Demon Cleaver </td><td>×1</td><td>0.009%</td></tr><tr><td>Health potion</td><td>×1</td><td>5%</td></tr><tr><td>Aristobrand</td><td>×1</td><td>0.02%</td></tr><tr><td>Grekh Wand </td><td>×1</td><td>0.02%</td></tr><tr><td>Mana potion</td><td>×1</td><td>4%</td></tr><tr><td>Gold</td><td>×200</td><td>25%</td></tr><tr><td>Gold</td><td>×250</td><td>20%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Blue Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Yellow Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Black Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Green Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>White Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Brown Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Purple Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Pink Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Grey Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Green Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Demon ring</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Butcher</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Legendary Sword</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Neros Staff </td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Demon Cleaver </td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Health potion</td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Aristobrand</td><td>×1</td><td>0.02% (1:5000)</td></tr><tr><td>Grekh Wand </td><td>×1</td><td>0.02% (1:5000)</td></tr><tr><td>Mana potion</td><td>×1</td><td>4% (1:25)</td></tr><tr><td>Gold</td><td>×200</td><td>25% (1:4.00)</td></tr><tr><td>Gold</td><td>×250</td><td>20% (1:5.00)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster99.webp" width="246" height="246" class="sprite"
              alt="Sprite of Green present">
@@ -142,7 +142,7 @@
     <td class="td-level">1</td>
     <td class="td-health">100/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Blue Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Yellow Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Green Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Black Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>White Nugget egg</td><td>×1</td><td>0.001%</td></tr><tr><td>Brown Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Purple Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Pink Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Grey Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Green Threnn egg</td><td>×1</td><td>0.01%</td></tr><tr><td>Demon ring</td><td>×1</td><td>0.009%</td></tr><tr><td>Legendary Sword</td><td>×1</td><td>0.009%</td></tr><tr><td>Butcher</td><td>×1</td><td>0.009%</td></tr><tr><td>Neros Staff </td><td>×1</td><td>0.009%</td></tr><tr><td>Gold</td><td>×250</td><td>30%</td></tr><tr><td>Gold</td><td>×200</td><td>25%</td></tr><tr><td>Energy Sword</td><td>×1</td><td>0.01%</td></tr><tr><td>Energy Sword</td><td>×1</td><td>0.01%</td></tr><tr><td>Purple Energy Sword</td><td>×1</td><td>0.01%</td></tr><tr><td>Quietus </td><td>×1</td><td>0.01%</td></tr><tr><td>Thanatos </td><td>×1</td><td>0.01%</td></tr><tr><td>Health potion</td><td>×1</td><td>5%</td></tr><tr><td>Reaper Scyth</td><td>×1</td><td>0.01%</td></tr><tr><td>Mana potion</td><td>×1</td><td>4%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Blue Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Yellow Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Green Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Black Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>White Nugget egg</td><td>×1</td><td>0.001% (1:100000)</td></tr><tr><td>Brown Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Purple Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Pink Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Grey Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Green Threnn egg</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Demon ring</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Legendary Sword</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Butcher</td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Neros Staff </td><td>×1</td><td>0.009% (1:11111)</td></tr><tr><td>Gold</td><td>×250</td><td>30% (1:3.33)</td></tr><tr><td>Gold</td><td>×200</td><td>25% (1:4.00)</td></tr><tr><td>Energy Sword</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Energy Sword</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Purple Energy Sword</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Quietus </td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Thanatos </td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Health potion</td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Reaper Scyth</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Mana potion</td><td>×1</td><td>4% (1:25)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster100.webp" width="246" height="246" class="sprite"
              alt="Sprite of Slime">
@@ -152,7 +152,7 @@
     <td class="td-level">2</td>
     <td class="td-health">115/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Green Boots</td><td>×1</td><td>5%</td></tr><tr><td>Gold</td><td>×10</td><td>5%</td></tr><tr><td>Brown Hat</td><td>×1</td><td>1%</td></tr><tr><td>Silver Cape</td><td>×1</td><td>0.5%</td></tr><tr><td>Gold</td><td>×5</td><td>5%</td></tr><tr><td>Health potion</td><td>×1</td><td>1.5%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Green Boots</td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Gold</td><td>×10</td><td>5% (1:20)</td></tr><tr><td>Brown Hat</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Silver Cape</td><td>×1</td><td>0.5% (1:200)</td></tr><tr><td>Gold</td><td>×5</td><td>5% (1:20)</td></tr><tr><td>Health potion</td><td>×1</td><td>1.5% (1:67)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster107.webp" width="246" height="246" class="sprite"
              alt="Sprite of Seed snapper">
@@ -162,7 +162,7 @@
     <td class="td-level">3</td>
     <td class="td-health">130/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Adventurer Cape </td><td>×1</td><td>3%</td></tr><tr><td>Gold</td><td>×11</td><td>5%</td></tr><tr><td>Gold</td><td>×13</td><td>5%</td></tr><tr><td>Gold</td><td>×9</td><td>5%</td></tr><tr><td>Druid Staff </td><td>×1</td><td>2%</td></tr><tr><td>Green Shirt</td><td>×1</td><td>5%</td></tr><tr><td>Health potion</td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Adventurer Cape </td><td>×1</td><td>3% (1:33)</td></tr><tr><td>Gold</td><td>×11</td><td>5% (1:20)</td></tr><tr><td>Gold</td><td>×13</td><td>5% (1:20)</td></tr><tr><td>Gold</td><td>×9</td><td>5% (1:20)</td></tr><tr><td>Druid Staff </td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Green Shirt</td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Health potion</td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster125.webp" width="246" height="246" class="sprite"
              alt="Sprite of Purple flower">
@@ -172,7 +172,7 @@
     <td class="td-level">4</td>
     <td class="td-health">150/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Petal Cap</td><td>×1</td><td>5%</td></tr><tr><td>Gold</td><td>×10</td><td>10%</td></tr><tr><td>Gold</td><td>×14</td><td>10%</td></tr><tr><td>Purple Boots</td><td>×1</td><td>1%</td></tr><tr><td>Purple Scarf</td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Petal Cap</td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Gold</td><td>×10</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×14</td><td>10% (1:10.00)</td></tr><tr><td>Purple Boots</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Purple Scarf</td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster61.webp" width="246" height="246" class="sprite"
              alt="Sprite of Pale ant">
@@ -182,7 +182,7 @@
     <td class="td-level">4</td>
     <td class="td-health">175/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×7</td><td>10%</td></tr><tr><td>Gold</td><td>×10</td><td>10%</td></tr><tr><td>Gold</td><td>×14</td><td>10%</td></tr><tr><td>Iron Destroyer</td><td>×1</td><td>2%</td></tr><tr><td>Hylian Shield</td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×7</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×10</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×14</td><td>10% (1:10.00)</td></tr><tr><td>Iron Destroyer</td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Hylian Shield</td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster131.webp" width="246" height="246" class="sprite"
              alt="Sprite of Squirly">
@@ -192,7 +192,7 @@
     <td class="td-level">5</td>
     <td class="td-health">200/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Druid Staff </td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Druid Staff </td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster2.webp" width="246" height="246" class="sprite"
              alt="Sprite of Snake">
@@ -202,7 +202,7 @@
     <td class="td-level">5</td>
     <td class="td-health">250/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×25</td><td>10%</td></tr><tr><td>Gold</td><td>×15</td><td>20%</td></tr><tr><td>Peasant Hat</td><td>×1</td><td>10%</td></tr><tr><td>Adventurer Cape </td><td>×1</td><td>2%</td></tr><tr><td>Battle Axe</td><td>×1</td><td>0.1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×25</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×15</td><td>20% (1:5.00)</td></tr><tr><td>Peasant Hat</td><td>×1</td><td>10% (1:10.00)</td></tr><tr><td>Adventurer Cape </td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Battle Axe</td><td>×1</td><td>0.1% (1:1000)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster126.webp" width="246" height="246" class="sprite"
              alt="Sprite of Blue flower">
@@ -212,7 +212,7 @@
     <td class="td-level">6</td>
     <td class="td-health">280/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Petal Cap</td><td>×1</td><td>5%</td></tr><tr><td>Gold</td><td>×10</td><td>10%</td></tr><tr><td>Gold</td><td>×16</td><td>10%</td></tr><tr><td>Blue Boots</td><td>×1</td><td>2%</td></tr><tr><td>Blue Scarf</td><td>×1</td><td>2%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Petal Cap</td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Gold</td><td>×10</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×16</td><td>10% (1:10.00)</td></tr><tr><td>Blue Boots</td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Blue Scarf</td><td>×1</td><td>2% (1:50)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster59.webp" width="246" height="246" class="sprite"
              alt="Sprite of Ant">
@@ -222,7 +222,7 @@
     <td class="td-level">6</td>
     <td class="td-health">350/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×7</td><td>10%</td></tr><tr><td>Gold</td><td>×12</td><td>10%</td></tr><tr><td>Gold</td><td>×9</td><td>10%</td></tr><tr><td>Defender </td><td>×1</td><td>2.5%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×7</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×12</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×9</td><td>10% (1:10.00)</td></tr><tr><td>Defender </td><td>×1</td><td>2.5% (1:40)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster127.webp" width="246" height="246" class="sprite"
              alt="Sprite of Yellow flower">
@@ -232,7 +232,7 @@
     <td class="td-level">7</td>
     <td class="td-health">450/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Green Cap</td><td>×1</td><td>5%</td></tr><tr><td>Gold</td><td>×17</td><td>10%</td></tr><tr><td>Yellow Boots</td><td>×1</td><td>2%</td></tr><tr><td>Yellow Scarf</td><td>×1</td><td>2%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Green Cap</td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Gold</td><td>×17</td><td>10% (1:10.00)</td></tr><tr><td>Yellow Boots</td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Yellow Scarf</td><td>×1</td><td>2% (1:50)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster4.webp" width="246" height="246" class="sprite"
              alt="Sprite of Snowman">
@@ -242,7 +242,7 @@
     <td class="td-level">8</td>
     <td class="td-health">500/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Divine Shot </td><td>×1</td><td>0.01%</td></tr><tr><td>Gold</td><td>×30</td><td>10%</td></tr><tr><td>Gold</td><td>×15</td><td>15%</td></tr><tr><td>Frost Blade</td><td>×1</td><td>0.02%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Divine Shot </td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Gold</td><td>×30</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×15</td><td>15% (1:6.67)</td></tr><tr><td>Frost Blade</td><td>×1</td><td>0.02% (1:5000)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster87.webp" width="246" height="246" class="sprite"
              alt="Sprite of Corn">
@@ -252,7 +252,7 @@
     <td class="td-level">9</td>
     <td class="td-health">659/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×26</td><td>21%</td></tr><tr><td>Gold</td><td>×21</td><td>25%</td></tr><tr><td>Yellow Boots</td><td>×1</td><td>10%</td></tr><tr><td>Scythe </td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×26</td><td>21% (1:4.76)</td></tr><tr><td>Gold</td><td>×21</td><td>25% (1:4.00)</td></tr><tr><td>Yellow Boots</td><td>×1</td><td>10% (1:10.00)</td></tr><tr><td>Scythe </td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster94.webp" width="246" height="246" class="sprite"
              alt="Sprite of Green goblin">
@@ -262,7 +262,7 @@
     <td class="td-level">9</td>
     <td class="td-health">900/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Steel Dagger </td><td>×1</td><td>2%</td></tr><tr><td>Gold</td><td>×30</td><td>10%</td></tr><tr><td>Gold</td><td>×25</td><td>10%</td></tr><tr><td>Gold</td><td>×35</td><td>10%</td></tr><tr><td>Green Beret </td><td>×1</td><td>2%</td></tr><tr><td>Goblin Mask</td><td>×1</td><td>0.5%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Steel Dagger </td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Gold</td><td>×30</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×25</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×35</td><td>10% (1:10.00)</td></tr><tr><td>Green Beret </td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Goblin Mask</td><td>×1</td><td>0.5% (1:200)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster78.webp" width="246" height="246" class="sprite"
              alt="Sprite of Suspicious hay">
@@ -282,7 +282,7 @@
     <td class="td-level">11</td>
     <td class="td-health">1165/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×30</td><td>15%</td></tr><tr><td>Gold</td><td>×35</td><td>25%</td></tr><tr><td>Black Shirt</td><td>×1</td><td>2%</td></tr><tr><td>Black Shoulder Pads </td><td>×1</td><td>2%</td></tr><tr><td>Black Beret</td><td>×1</td><td>2%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×30</td><td>15% (1:6.67)</td></tr><tr><td>Gold</td><td>×35</td><td>25% (1:4.00)</td></tr><tr><td>Black Shirt</td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Black Shoulder Pads </td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Black Beret</td><td>×1</td><td>2% (1:50)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster89.webp" width="246" height="246" class="sprite"
              alt="Sprite of Suspicious pale hay">
@@ -292,7 +292,7 @@
     <td class="td-level">12</td>
     <td class="td-health">100/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×10</td><td>5%</td></tr><tr><td>Pirate Cutlas </td><td>×1</td><td>2%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×10</td><td>5% (1:20)</td></tr><tr><td>Pirate Cutlas </td><td>×1</td><td>2% (1:50)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/default.png" width="64" height="64" class="sprite"
              alt="Sprite of Green HobGoblin">
@@ -302,7 +302,7 @@
     <td class="td-level">12</td>
     <td class="td-health">1325/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Steel Blade</td><td>×1</td><td>2%</td></tr><tr><td>Gold</td><td>×37</td><td>11%</td></tr><tr><td>Gold</td><td>×36</td><td>13%</td></tr><tr><td>Gold</td><td>×29</td><td>11%</td></tr><tr><td>Katar</td><td>×1</td><td>2%</td></tr><tr><td>Goblin Mask</td><td>×1</td><td>0.5%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Steel Blade</td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Gold</td><td>×37</td><td>11% (1:9.09)</td></tr><tr><td>Gold</td><td>×36</td><td>13% (1:7.69)</td></tr><tr><td>Gold</td><td>×29</td><td>11% (1:9.09)</td></tr><tr><td>Katar</td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Goblin Mask</td><td>×1</td><td>0.5% (1:200)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster88.webp" width="246" height="246" class="sprite"
              alt="Sprite of Cactus">
@@ -312,7 +312,7 @@
     <td class="td-level">14</td>
     <td class="td-health">1400/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×50</td><td>15%</td></tr><tr><td>Health potion</td><td>×1</td><td>10%</td></tr><tr><td>Jagged Knife </td><td>×1</td><td>5%</td></tr><tr><td>Longsword</td><td>×1</td><td>1.5%</td></tr><tr><td>Gold</td><td>×30</td><td>25%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×50</td><td>15% (1:6.67)</td></tr><tr><td>Health potion</td><td>×1</td><td>10% (1:10.00)</td></tr><tr><td>Jagged Knife </td><td>×1</td><td>5% (1:20)</td></tr><tr><td>Longsword</td><td>×1</td><td>1.5% (1:67)</td></tr><tr><td>Gold</td><td>×30</td><td>25% (1:4.00)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster76.webp" width="246" height="246" class="sprite"
              alt="Sprite of Guard">
@@ -322,7 +322,7 @@
     <td class="td-level">15</td>
     <td class="td-health">1525/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×25</td><td>15%</td></tr><tr><td>Gold</td><td>×15</td><td>15%</td></tr><tr><td>Spear</td><td>×1</td><td>1%</td></tr><tr><td>Gold</td><td>×10</td><td>10%</td></tr><tr><td>Swallow</td><td>×1</td><td>0.5%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×25</td><td>15% (1:6.67)</td></tr><tr><td>Gold</td><td>×15</td><td>15% (1:6.67)</td></tr><tr><td>Spear</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Gold</td><td>×10</td><td>10% (1:10.00)</td></tr><tr><td>Swallow</td><td>×1</td><td>0.5% (1:200)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster77.webp" width="246" height="246" class="sprite"
              alt="Sprite of Town Guard">
@@ -332,7 +332,7 @@
     <td class="td-level">17</td>
     <td class="td-health">2000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×50</td><td>10%</td></tr><tr><td>Gold</td><td>×25</td><td>20%</td></tr><tr><td>Spear</td><td>×1</td><td>1%</td></tr><tr><td>Gold</td><td>×10</td><td>15%</td></tr><tr><td>Swallow</td><td>×1</td><td>0.5%</td></tr><tr><td>Captain&#x27;s Claw</td><td>×1</td><td>0.2%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×50</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×25</td><td>20% (1:5.00)</td></tr><tr><td>Spear</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Gold</td><td>×10</td><td>15% (1:6.67)</td></tr><tr><td>Swallow</td><td>×1</td><td>0.5% (1:200)</td></tr><tr><td>Captain&#x27;s Claw</td><td>×1</td><td>0.2% (1:500)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster90.webp" width="246" height="246" class="sprite"
              alt="Sprite of Zombie">
@@ -342,7 +342,7 @@
     <td class="td-level">20</td>
     <td class="td-health">2544/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Sneaky Pants </td><td>×1</td><td>2%</td></tr><tr><td>Zombie ring</td><td>×1</td><td>0.01%</td></tr><tr><td>Gold</td><td>×35</td><td>20%</td></tr><tr><td>Gold</td><td>×45</td><td>15%</td></tr><tr><td>Slayer</td><td>×1</td><td>1%</td></tr><tr><td>Sneak Boots</td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Sneaky Pants </td><td>×1</td><td>2% (1:50)</td></tr><tr><td>Zombie ring</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Gold</td><td>×35</td><td>20% (1:5.00)</td></tr><tr><td>Gold</td><td>×45</td><td>15% (1:6.67)</td></tr><tr><td>Slayer</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Sneak Boots</td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster13.webp" width="246" height="246" class="sprite"
              alt="Sprite of Butterfly">
@@ -352,7 +352,7 @@
     <td class="td-level">22</td>
     <td class="td-health">3356/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×30</td><td>11%</td></tr><tr><td>Flutter Wings</td><td>×1</td><td>0.09%</td></tr><tr><td>Gold</td><td>×20</td><td>15%</td></tr><tr><td>Gold</td><td>×25</td><td>15%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×30</td><td>11% (1:9.09)</td></tr><tr><td>Flutter Wings</td><td>×1</td><td>0.09% (1:1111)</td></tr><tr><td>Gold</td><td>×20</td><td>15% (1:6.67)</td></tr><tr><td>Gold</td><td>×25</td><td>15% (1:6.67)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster51.webp" width="246" height="246" class="sprite"
              alt="Sprite of Winged red ape">
@@ -362,7 +362,7 @@
     <td class="td-level">23</td>
     <td class="td-health">13000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×30</td><td>5%</td></tr><tr><td>Gold</td><td>×50</td><td>3%</td></tr><tr><td>Guardian Wings</td><td>×1</td><td>1%</td></tr><tr><td>Dark Wings </td><td>×1</td><td>0.5%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×30</td><td>5% (1:20)</td></tr><tr><td>Gold</td><td>×50</td><td>3% (1:33)</td></tr><tr><td>Guardian Wings</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Dark Wings </td><td>×1</td><td>0.5% (1:200)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster12.webp" width="246" height="246" class="sprite"
              alt="Sprite of Putterfly">
@@ -372,7 +372,7 @@
     <td class="td-level">24</td>
     <td class="td-health">4446/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×35</td><td>9%</td></tr><tr><td>Gold</td><td>×15</td><td>15%</td></tr><tr><td>Gold</td><td>×25</td><td>15%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×35</td><td>9% (1:11)</td></tr><tr><td>Gold</td><td>×15</td><td>15% (1:6.67)</td></tr><tr><td>Gold</td><td>×25</td><td>15% (1:6.67)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster117.webp" width="246" height="246" class="sprite"
              alt="Sprite of Jab Jab">
@@ -382,7 +382,7 @@
     <td class="td-level">25</td>
     <td class="td-health">5000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×35</td><td>20%</td></tr><tr><td>Gold</td><td>×25</td><td>15%</td></tr><tr><td>Mystic Dagger</td><td>×1</td><td>1%</td></tr><tr><td>Golden Dagger </td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×35</td><td>20% (1:5.00)</td></tr><tr><td>Gold</td><td>×25</td><td>15% (1:6.67)</td></tr><tr><td>Mystic Dagger</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Golden Dagger </td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster86.webp" width="246" height="246" class="sprite"
              alt="Sprite of Blue drake">
@@ -392,7 +392,7 @@
     <td class="td-level">34</td>
     <td class="td-health">11000/250</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×150</td><td>5%</td></tr><tr><td>Carrion Sword </td><td>×1</td><td>0.09%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×150</td><td>5% (1:20)</td></tr><tr><td>Carrion Sword </td><td>×1</td><td>0.09% (1:1111)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster103.webp" width="246" height="246" class="sprite"
              alt="Sprite of Goblin">
@@ -412,7 +412,7 @@
     <td class="td-level">35</td>
     <td class="td-health">12900/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×55</td><td>20%</td></tr><tr><td>Gold</td><td>×25</td><td>25%</td></tr><tr><td>Golden Dagger </td><td>×1</td><td>1%</td></tr><tr><td>Mystic Dagger</td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×55</td><td>20% (1:5.00)</td></tr><tr><td>Gold</td><td>×25</td><td>25% (1:4.00)</td></tr><tr><td>Golden Dagger </td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Mystic Dagger</td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster6.webp" width="246" height="246" class="sprite"
              alt="Sprite of Imp">
@@ -422,7 +422,7 @@
     <td class="td-level">39</td>
     <td class="td-health">14000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Demon ring</td><td>×1</td><td>0.09%</td></tr><tr><td>Demon Horns</td><td>×1</td><td>0.5%</td></tr><tr><td>Hammar</td><td>×1</td><td>0.5%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Demon ring</td><td>×1</td><td>0.09% (1:1111)</td></tr><tr><td>Demon Horns</td><td>×1</td><td>0.5% (1:200)</td></tr><tr><td>Hammar</td><td>×1</td><td>0.5% (1:200)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster10.webp" width="246" height="246" class="sprite"
              alt="Sprite of Giant goblin">
@@ -442,7 +442,7 @@
     <td class="td-level">50</td>
     <td class="td-health">26876/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×75</td><td>20%</td></tr><tr><td>Flora Bow </td><td>×1</td><td>0.2%</td></tr><tr><td>Alfea Wand </td><td>×1</td><td>0.5%</td></tr><tr><td>Gold</td><td>×65</td><td>15%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×75</td><td>20% (1:5.00)</td></tr><tr><td>Flora Bow </td><td>×1</td><td>0.2% (1:500)</td></tr><tr><td>Alfea Wand </td><td>×1</td><td>0.5% (1:200)</td></tr><tr><td>Gold</td><td>×65</td><td>15% (1:6.67)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster35.webp" width="246" height="246" class="sprite"
              alt="Sprite of Twisted Worm">
@@ -462,7 +462,7 @@
     <td class="td-level">50</td>
     <td class="td-health">33000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Pickaxe</td><td>×1</td><td>3%</td></tr><tr><td>Gold</td><td>×105</td><td>10%</td></tr><tr><td>Gold</td><td>×75</td><td>25%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Pickaxe</td><td>×1</td><td>3% (1:33)</td></tr><tr><td>Gold</td><td>×105</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×75</td><td>25% (1:4.00)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster62.webp" width="246" height="246" class="sprite"
              alt="Sprite of Snol">
@@ -472,7 +472,7 @@
     <td class="td-level">55</td>
     <td class="td-health">35434/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×150</td><td>10%</td></tr><tr><td>Gold</td><td>×50</td><td>25%</td></tr><tr><td>Gold</td><td>×100</td><td>10%</td></tr><tr><td>Quietus </td><td>×1</td><td>0.2%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×150</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×50</td><td>25% (1:4.00)</td></tr><tr><td>Gold</td><td>×100</td><td>10% (1:10.00)</td></tr><tr><td>Quietus </td><td>×1</td><td>0.2% (1:500)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster116.webp" width="246" height="246" class="sprite"
              alt="Sprite of Geldric Soldier">
@@ -502,7 +502,7 @@
     <td class="td-level">75</td>
     <td class="td-health">7500/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Health potion</td><td>×1</td><td>4%</td></tr><tr><td>Gold</td><td>×25</td><td>10%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Health potion</td><td>×1</td><td>4% (1:25)</td></tr><tr><td>Gold</td><td>×25</td><td>10% (1:10.00)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster58.webp" width="246" height="246" class="sprite"
              alt="Sprite of Rat king">
@@ -512,7 +512,7 @@
     <td class="td-level">75</td>
     <td class="td-health">45000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×100</td><td>15%</td></tr><tr><td>Zombie ring</td><td>×1</td><td>0.03%</td></tr><tr><td>Skeleton Bow </td><td>×1</td><td>0.08%</td></tr><tr><td>Gold</td><td>×90</td><td>10%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×100</td><td>15% (1:6.67)</td></tr><tr><td>Zombie ring</td><td>×1</td><td>0.03% (1:3333)</td></tr><tr><td>Skeleton Bow </td><td>×1</td><td>0.08% (1:1250)</td></tr><tr><td>Gold</td><td>×90</td><td>10% (1:10.00)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster134.webp" width="246" height="246" class="sprite"
              alt="Sprite of Reaper">
@@ -522,7 +522,7 @@
     <td class="td-level">100</td>
     <td class="td-health">150000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Sniper Shot</td><td>×1</td><td>0.5%</td></tr><tr><td>Dim Blade</td><td>×1</td><td>0.5%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Sniper Shot</td><td>×1</td><td>0.5% (1:200)</td></tr><tr><td>Dim Blade</td><td>×1</td><td>0.5% (1:200)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster1.webp" width="246" height="246" class="sprite"
              alt="Sprite of Gloom Spirit">
@@ -532,7 +532,7 @@
     <td class="td-level">150</td>
     <td class="td-health">40000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Photon Sabre</td><td>×1</td><td>0.006%</td></tr><tr><td>Gold</td><td>×450</td><td>10%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Photon Sabre</td><td>×1</td><td>0.006% (1:16667)</td></tr><tr><td>Gold</td><td>×450</td><td>10% (1:10.00)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/default.png" width="64" height="64" class="sprite"
              alt="Sprite of Jack Frost">
@@ -542,7 +542,7 @@
     <td class="td-level">150</td>
     <td class="td-health">165000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Divine Shot </td><td>×1</td><td>0.02%</td></tr><tr><td>Gold</td><td>×1000</td><td>25%</td></tr><tr><td>Gold</td><td>×739</td><td>15%</td></tr><tr><td>Frost Blade</td><td>×1</td><td>0.05%</td></tr><tr><td>Scroll: Spell 25</td><td>×1</td><td>0.1%</td></tr><tr><td>Gold</td><td>×500</td><td>25%</td></tr><tr><td>Cool Wrap </td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Divine Shot </td><td>×1</td><td>0.02% (1:5000)</td></tr><tr><td>Gold</td><td>×1000</td><td>25% (1:4.00)</td></tr><tr><td>Gold</td><td>×739</td><td>15% (1:6.67)</td></tr><tr><td>Frost Blade</td><td>×1</td><td>0.05% (1:2000)</td></tr><tr><td>Scroll: Spell 25</td><td>×1</td><td>0.1% (1:1000)</td></tr><tr><td>Gold</td><td>×500</td><td>25% (1:4.00)</td></tr><tr><td>Cool Wrap </td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster108.webp" width="246" height="246" class="sprite"
              alt="Sprite of Moogle">
@@ -552,7 +552,7 @@
     <td class="td-level">200</td>
     <td class="td-health">165000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Mog Hat</td><td>×1</td><td>0.1%</td></tr><tr><td>Gold</td><td>×100</td><td>10%</td></tr><tr><td>Gold</td><td>×50</td><td>15%</td></tr><tr><td>Gold</td><td>×25</td><td>10%</td></tr><tr><td>Lividus</td><td>×1</td><td>0.05%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Mog Hat</td><td>×1</td><td>0.1% (1:1000)</td></tr><tr><td>Gold</td><td>×100</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×50</td><td>15% (1:6.67)</td></tr><tr><td>Gold</td><td>×25</td><td>10% (1:10.00)</td></tr><tr><td>Lividus</td><td>×1</td><td>0.05% (1:2000)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster17.webp" width="246" height="246" class="sprite"
              alt="Sprite of Kraj">
@@ -562,7 +562,7 @@
     <td class="td-level">250</td>
     <td class="td-health">170000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×500</td><td>100%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×500</td><td>100% (1:1.00)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster34.webp" width="246" height="246" class="sprite"
              alt="Sprite of Gourdath">
@@ -572,7 +572,7 @@
     <td class="td-level">250</td>
     <td class="td-health">200000/100000</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Fallen Helm</td><td>×1</td><td>0.02%</td></tr><tr><td>Gold</td><td>×673</td><td>10%</td></tr><tr><td>Gold</td><td>×700</td><td>10%</td></tr><tr><td>Fallen Plate</td><td>×1</td><td>0.02%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Fallen Helm</td><td>×1</td><td>0.02% (1:5000)</td></tr><tr><td>Gold</td><td>×673</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×700</td><td>10% (1:10.00)</td></tr><tr><td>Fallen Plate</td><td>×1</td><td>0.02% (1:5000)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster104.webp" width="246" height="246" class="sprite"
              alt="Sprite of Plum spider">
@@ -682,7 +682,7 @@
     <td class="td-level">500</td>
     <td class="td-health">3500/3</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×100</td><td>10%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×100</td><td>10% (1:10.00)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster120.webp" width="246" height="246" class="sprite"
              alt="Sprite of Moley">
@@ -692,7 +692,7 @@
     <td class="td-level">500</td>
     <td class="td-health">3000/100</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×100</td><td>10%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×100</td><td>10% (1:10.00)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster121.webp" width="246" height="246" class="sprite"
              alt="Sprite of Crab drone">
@@ -772,7 +772,7 @@
     <td class="td-level">500</td>
     <td class="td-health">55000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×100</td><td>10%</td></tr><tr><td>Gold</td><td>×150</td><td>10%</td></tr><tr><td>Flail</td><td>×1</td><td>0.5%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×100</td><td>10% (1:10.00)</td></tr><tr><td>Gold</td><td>×150</td><td>10% (1:10.00)</td></tr><tr><td>Flail</td><td>×1</td><td>0.5% (1:200)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster15.webp" width="246" height="246" class="sprite"
              alt="Sprite of Minced beef">
@@ -1052,7 +1052,7 @@
     <td class="td-level">500</td>
     <td class="td-health">8000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×30</td><td>5%</td></tr><tr><td>Gold</td><td>×50</td><td>3%</td></tr><tr><td>Guardian Wings</td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×30</td><td>5% (1:20)</td></tr><tr><td>Gold</td><td>×50</td><td>3% (1:33)</td></tr><tr><td>Guardian Wings</td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster52.webp" width="246" height="246" class="sprite"
              alt="Sprite of Sloffy">
@@ -1112,7 +1112,7 @@
     <td class="td-level">500</td>
     <td class="td-health">400/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×50</td><td>25%</td></tr><tr><td>Gold</td><td>×25</td><td>10%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×50</td><td>25% (1:4.00)</td></tr><tr><td>Gold</td><td>×25</td><td>10% (1:10.00)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster64.webp" width="246" height="246" class="sprite"
              alt="Sprite of Snol">
@@ -1372,7 +1372,7 @@
     <td class="td-level">600</td>
     <td class="td-health">400000/20000</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×10000</td><td>0.7%</td></tr><tr><td>Plasma ring</td><td>×1</td><td>0.2%</td></tr><tr><td>Fallen Plate</td><td>×1</td><td>0.01%</td></tr><tr><td>Bokubokuchagma</td><td>×1</td><td>1%</td></tr><tr><td>Zombie ring</td><td>×1</td><td>1%</td></tr><tr><td>Infernal Wings</td><td>×1</td><td>0.05%</td></tr><tr><td>Gold</td><td>×1300</td><td>1%</td></tr><tr><td>Sinister Wings </td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Gold</td><td>×10000</td><td>0.7% (1:143)</td></tr><tr><td>Plasma ring</td><td>×1</td><td>0.2% (1:500)</td></tr><tr><td>Fallen Plate</td><td>×1</td><td>0.01% (1:10000)</td></tr><tr><td>Bokubokuchagma</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Zombie ring</td><td>×1</td><td>1% (1:100)</td></tr><tr><td>Infernal Wings</td><td>×1</td><td>0.05% (1:2000)</td></tr><tr><td>Gold</td><td>×1300</td><td>1% (1:100)</td></tr><tr><td>Sinister Wings </td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster18.webp" width="246" height="246" class="sprite"
              alt="Sprite of Water dragon">
@@ -1382,7 +1382,7 @@
     <td class="td-level">1000</td>
     <td class="td-health">100000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Water Ring</td><td>×1</td><td>0.2%</td></tr><tr><td>Tusk Slasher</td><td>×1</td><td>1%</td></tr></table></td></tr><tr>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Water Ring</td><td>×1</td><td>0.2% (1:500)</td></tr><tr><td>Tusk Slasher</td><td>×1</td><td>1% (1:100)</td></tr></table></td></tr><tr>
     <td class="td-img p-0">
         <img src="sprites/monster47.webp" width="246" height="246" class="sprite"
              alt="Sprite of Hank">
@@ -1392,7 +1392,7 @@
     <td class="td-level">1200</td>
     <td class="td-health">1000000/0</td>
     <td class="td-drops p-0">
-<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Cursed Hecate</td><td>×1</td><td>25%</td></tr><tr><td>Cursed Slasher</td><td>×1</td><td>25%</td></tr></table></td></tr></tbody>
+<table class="table"><tr><th>Item</th><th>Amount</th><th>Chance</th></tr><tr><td>Cursed Hecate</td><td>×1</td><td>25% (1:4.00)</td></tr><tr><td>Cursed Slasher</td><td>×1</td><td>25% (1:4.00)</td></tr></table></td></tr></tbody>
 </table>
 </div>
 </body>

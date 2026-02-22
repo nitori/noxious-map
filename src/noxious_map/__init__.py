@@ -264,11 +264,11 @@ class DataFetcher:
                     height: auto;
                 }
                 .td-img {width:246px;}
-                .td-name {width:246px;}
-                .td-level {width:246px;}
+                .td-name {width:auto;}
+                .td-level {width:100px;}
                 .td-hostile {width:100px;}
                 .td-health {width:100px;}
-                .td-drops {width:auto;}
+                .td-drops {width:50%;}
 
                 #simple-list:checked ~ .table .td-img,
                 #simple-list:checked ~ .table .td-drops {
@@ -277,7 +277,7 @@ class DataFetcher:
             </style>
         </head>
         <body>
-        <div class="container">
+        <div class="container-fluid">
         <input id="simple-list" type="checkbox"> <label for="simple-list">Simplified list</label>
         <table class="table">
         <thead>
@@ -333,10 +333,17 @@ class DataFetcher:
             for drop in monster.get('drops', []):
                 item = items_data[drop['item']]
                 drop_icon = item['dropIcon']
+                chance = drop['chance']
+
                 html += '<tr>'
                 html += f'<td>{escape(item['name'])}</td>'
                 html += f'<td>×{escape(str(drop['amount']))}</td>'
-                html += f'<td>{escape(str(drop['chance']))}%</td>'
+                if chance >= 10.0:
+                    html += f'<td>{escape(str(chance))}% (1:{100/chance:.2f})</td>'
+                elif chance > 0.0:
+                    html += f'<td>{escape(str(chance))}% (1:{round(100/chance)})</td>'
+                else:
+                    html += f'<td>0%</td>'
                 html += '</tr>'
             html += '</table>'
 
