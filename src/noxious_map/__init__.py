@@ -279,7 +279,7 @@ class DataFetcher:
         <body>
         <div class="container-fluid">
         <input id="simple-list" type="checkbox"> <label for="simple-list">Simplified list</label>
-        <table class="table">
+        <table class="table table-striped">
         <thead>
         <tr>
             <th class="td-img p-0"></th>
@@ -324,11 +324,18 @@ class DataFetcher:
                 <td class="td-drops p-0">
             ''')
 
-            html += '<table class="table">'
+            html += '<table class="table table-striped">'
+            html += '<colgroup>'
+            html += '<col width="40%" style="width:40%">'
+            html += '<col width="20%" style="width:20%">'
+            html += '<col width="20%" style="width:20%">'
+            html += '<col width="20%" style="width:20%">'
+            html += '</colgroup>'
             html += '<tr>'
             html += '<th>Item</th>'
             html += '<th>Amount</th>'
             html += '<th>Chance</th>'
+            html += '<th>Ratio</th>'
             html += '</tr>'
             for drop in monster.get('drops', []):
                 item = items_data[drop['item']]
@@ -338,12 +345,16 @@ class DataFetcher:
                 html += '<tr>'
                 html += f'<td>{escape(item['name'])}</td>'
                 html += f'<td>×{escape(str(drop['amount']))}</td>'
-                if chance >= 10.0:
-                    html += f'<td>{escape(str(chance))}% (1:{100/chance:.2f})</td>'
-                elif chance > 0.0:
-                    html += f'<td>{escape(str(chance))}% (1:{round(100/chance)})</td>'
+                if chance > 0:
+                    html += f'<td>{escape(str(chance))}%</td>'
+                    prop = 100/chance
+                    if prop.is_integer() or prop >= 10:
+                        html += f'<td>1 : {int(prop):_}</td>'
+                    else:
+                        html += f'<td>1 : {prop:_.2f}</td>'
                 else:
                     html += f'<td>0%</td>'
+                    html += f'<td>1 : 0</td>'
                 html += '</tr>'
             html += '</table>'
 
