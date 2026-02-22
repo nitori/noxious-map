@@ -321,9 +321,9 @@ class DataFetcher:
                 item = items_data[drop['item']]
                 drop_icon = item['dropIcon']
                 html += '<tr>'
-                html += f'<td>{item['name']}</td>'
-                html += f'<td>×{drop['amount']}</td>'
-                html += f'<td>{drop['chance']}%</td>'
+                html += f'<td>{escape(item['name'])}</td>'
+                html += f'<td>×{escape(str(drop['amount']))}</td>'
+                html += f'<td>{escape(str(drop['chance']))}%</td>'
                 html += '</tr>'
             html += '</table>'
 
@@ -346,6 +346,7 @@ def main(here: Path):
     gen = DataFetcher(here)
     gen.update_data()
     gen.generate_mob_drop_list()
+    return
 
     map_folder = here / "html" / "maps"
     shutil.rmtree(map_folder)
