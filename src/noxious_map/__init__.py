@@ -266,17 +266,27 @@ class DataFetcher:
                 .td-img {width:246px;}
                 .td-name {width:246px;}
                 .td-level {width:246px;}
+                .td-hostile {width:100px;}
+                .td-health {width:100px;}
                 .td-drops {width:auto;}
+
+                #simple-list:checked ~ .table .td-img,
+                #simple-list:checked ~ .table .td-drops {
+                    display: none;
+                }
             </style>
         </head>
         <body>
         <div class="container">
+        <input id="simple-list" type="checkbox"> <label for="simple-list">Simplified list</label>
         <table class="table">
         <thead>
         <tr>
             <th class="td-img p-0"></th>
             <th class="td-name">Name</th>
+            <th class="td-hostile">Hostility</th>
             <th class="td-level">Level</th>
+            <th class="td-health">Health/Mana</th>
             <th class="td-drops p-0">Drops</th>
         </tr>
         </thead>
@@ -308,7 +318,9 @@ class DataFetcher:
                          alt="Sprite of {escape(monster['name'])}">
                 </td>
                 <td class="td-name">{escape(monster['name'])}</td>
+                <td class="td-hostile">{escape(monster['hostility'])}</td>
                 <td class="td-level">{escape(str(monster['level']))}</td>
+                <td class="td-health">{escape(str(monster['maxHealth']))}/{escape(str(monster['maxMana']))}</td>
                 <td class="td-drops p-0">
             ''')
 
