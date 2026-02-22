@@ -1,6 +1,7 @@
 .idea/
 node_modules/
 html/maps/
+html/sprites/
 bundle/
 bundle.zip
 

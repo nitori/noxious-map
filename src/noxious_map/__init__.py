@@ -7,6 +7,8 @@ import random
 import base64
 from functools import cmp_to_key
 import hashlib
+import textwrap
+from html import escape
 
 import requests
 from PIL import Image
@@ -217,15 +219,133 @@ class DataFetcher:
 
         return obj_map_im, paddings
 
+    def generate_mob_drop_list(self):
+        bundle_dir = self._here / "bundle"
+        data_dir = bundle_dir / 'data'
+        sprites_dir = bundle_dir / 'textures' / 'sprites'
 
-class Generator:
-    def __init__(self):
-        pass
+        monsters_file = data_dir / 'monsters.json'
+
+        html_dir = self._here / 'html'
+        out_sprites_dir = html_dir / 'sprites'
+
+        shutil.rmtree(out_sprites_dir)
+        out_sprites_dir.mkdir(parents=True, exist_ok=True)
+
+        textures_data = (data_dir / 'textures.json').read_text(encoding='utf-8')
+        textures_data = json.loads(textures_data)
+        textures_data = {t['id']: t for t in textures_data}
+
+        items_data = (data_dir / 'items.json').read_text(encoding='utf-8')
+        items_data = json.loads(items_data)
+        items_data = {item['id']: item for item in items_data}
+
+        with monsters_file.open('r', encoding='utf-8') as f:
+            monsters = json.load(f)
+
+        monsters.sort(key=lambda m: m['level'])
+
+        html = textwrap.dedent('''\
+        <!doctype html>
+        <html lang="en" data-bs-theme="dark">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="metadata-mtime" content="%%METADATA_MTIME%%">
+            <title>Noxious monster list</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+                  rel="stylesheet"
+                  integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+                  crossorigin="anonymous">
+            <style>
+                img.sprite {
+                    max-width: 246px;
+                    height: auto;
+                }
+                .td-img {width:246px;}
+                .td-name {width:246px;}
+                .td-level {width:246px;}
+                .td-drops {width:auto;}
+            </style>
+        </head>
+        <body>
+        <div class="container">
+        <table class="table">
+        <thead>
+        <tr>
+            <th class="td-img p-0"></th>
+            <th class="td-name">Name</th>
+            <th class="td-level">Level</th>
+            <th class="td-drops p-0">Drops</th>
+        </tr>
+        </thead>
+        <tbody>
+        ''')
+
+        print('Generating monster drop table...')
+        for i, monster in enumerate(monsters):
+            print(f"\r{(i + 1) * 100 / len(monsters):.1f}%", end="")
+            monster_sprite = sprites_dir / f'{monster["sprite"]}.png'
+
+            sprite_path = 'sprites/default.png'
+            width, height = 64, 64
+            if monster_sprite.exists():
+                im = Image.open(monster_sprite).convert('RGBA')
+                tdata = textures_data.get(monster['id'])
+                if tdata:
+                    w, h = tdata['cellWidth'], tdata['cellHeight']
+                    im = im.crop((0, 0, w, h))
+                    out_monster = (out_sprites_dir / monster_sprite.name).with_suffix('.webp')
+                    im.save(out_monster, quality=80)
+                    sprite_path = f'sprites/{out_monster.name}'
+                    width, height = im.size
+
+            html += textwrap.dedent(f'''\
+            <tr>
+                <td class="td-img p-0">
+                    <img src="{escape(sprite_path)}" width="{width}" height="{height}" class="sprite"
+                         alt="Sprite of {escape(monster['name'])}">
+                </td>
+                <td class="td-name">{escape(monster['name'])}</td>
+                <td class="td-level">{escape(str(monster['level']))}</td>
+                <td class="td-drops p-0">
+            ''')
+
+            html += '<table class="table">'
+            html += '<tr>'
+            html += '<th>Item</th>'
+            html += '<th>Amount</th>'
+            html += '<th>Chance</th>'
+            html += '</tr>'
+            for drop in monster.get('drops', []):
+                item = items_data[drop['item']]
+                drop_icon = item['dropIcon']
+                html += '<tr>'
+                html += f'<td>{item['name']}</td>'
+                html += f'<td>×{drop['amount']}</td>'
+                html += f'<td>{drop['chance']}%</td>'
+                html += '</tr>'
+            html += '</table>'
+
+            html += '</td></tr>'
+        print()
+
+        html += textwrap.dedent('''\
+        </tbody>
+        </table>
+        </div>
+        </body>
+        </html>
+        ''')
+
+        with (html_dir / 'mobs.html').open('w', encoding='utf-8') as f:
+            f.write(html)
 
 
 def main(here: Path):
     gen = DataFetcher(here)
     gen.update_data()
+    gen.generate_mob_drop_list()
 
     map_folder = here / "html" / "maps"
     shutil.rmtree(map_folder)
