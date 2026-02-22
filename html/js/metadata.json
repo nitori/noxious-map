@@ -1,5 +1,26 @@
 [
   {
+    "id": "027fc37a-2e23-4486-9dbc-b0680cb6f26f",
+    "name": "Adexxin-ChillZone",
+    "file": "Adexxin-ChillZone.webp",
+    "size": [
+      1280,
+      640
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -2400,
+      -3288
+    ],
+    "columns": 20,
+    "rows": 20
+  },
+  {
     "id": "06bce23a-4159-475f-9474-96ecb8ff5272",
     "name": "Forest map",
     "file": "Forest_map.webp",
@@ -189,27 +210,6 @@
     "rows": 30
   },
   {
-    "id": "377e6b08-6a72-4156-901f-b2a90864f974",
-    "name": "ROOT TEST",
-    "file": "ROOT_TEST.webp",
-    "size": [
-      1280,
-      640
-    ],
-    "paddings": [
-      0,
-      0,
-      0,
-      0
-    ],
-    "pos": [
-      -5472,
-      -2016
-    ],
-    "columns": 20,
-    "rows": 20
-  },
-  {
     "id": "37ef19fb-14b3-4547-ba2b-29d2545e4d0b",
     "name": "Under Corn Field",
     "file": "Under_Corn_Field.webp",
@@ -228,6 +228,48 @@
       -2660
     ],
     "columns": 15,
+    "rows": 20
+  },
+  {
+    "id": "4560e808-189c-4a75-9e22-9973dc13df41",
+    "name": "north winter house inside",
+    "file": "north_winter_house_inside.webp",
+    "size": [
+      1664,
+      832
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -4104,
+      -3904
+    ],
+    "columns": 26,
+    "rows": 26
+  },
+  {
+    "id": "4a24bde5-8b1b-484a-9b53-74338b20abc7",
+    "name": "ROOT TEST",
+    "file": "ROOT_TEST.webp",
+    "size": [
+      1280,
+      640
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -5048,
+      -3200
+    ],
+    "columns": 20,
     "rows": 20
   },
   {
@@ -334,6 +376,27 @@
     ],
     "columns": 30,
     "rows": 30
+  },
+  {
+    "id": "6effb3ea-0dc4-4295-a4f0-b3297115b2e7",
+    "name": "Adexxin-castle-hall",
+    "file": "Adexxin-castle-hall.webp",
+    "size": [
+      1280,
+      864
+    ],
+    "paddings": [
+      224,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -1168,
+      -3152
+    ],
+    "columns": 20,
+    "rows": 20
   },
   {
     "id": "793b0a25-7d04-44fd-9022-72f0717f76a0",
@@ -672,6 +735,27 @@
     "rows": 8
   },
   {
+    "id": "b790c30a-1303-44ff-826a-1b8ec11ae97f",
+    "name": "Adexxin-Optic",
+    "file": "Adexxin-Optic.webp",
+    "size": [
+      1920,
+      1024
+    ],
+    "paddings": [
+      64,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -2944,
+      -2528
+    ],
+    "columns": 30,
+    "rows": 30
+  },
+  {
     "id": "bc991cc1-1c4c-4b72-b9c1-6e017fa96778",
     "name": "West of Town",
     "file": "West_of_Town.webp",
@@ -877,6 +961,27 @@
     "pos": [
       902,
       2040
+    ],
+    "columns": 20,
+    "rows": 20
+  },
+  {
+    "id": "cfe95fd0-528d-4656-a133-1d25e1f55838",
+    "name": "Adexxin-Castle-outdoor",
+    "file": "Adexxin-Castle-outdoor.webp",
+    "size": [
+      1280,
+      704
+    ],
+    "paddings": [
+      64,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      -4072,
+      -1952
     ],
     "columns": 20,
     "rows": 20
