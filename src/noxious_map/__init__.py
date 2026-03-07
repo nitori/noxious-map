@@ -160,8 +160,15 @@ class DataFetcher:
                         f'Map object {id!r} is missing tile object texture: {obj_texture_file.name} ({tile_map['name']!r})')
                     continue
 
+                frame_width = base_obj.get("frameWidth")
+                frame_height = base_obj.get("frameHeight")
+
                 obj_im = Image.open(obj_texture_file)
                 obj_im = obj_im.convert("RGBA")
+
+                if frame_width is not None and frame_height is not None:
+                    obj_im = obj_im.crop((0, 0, frame_width, frame_height))
+
                 obj_images[id] = obj_im
 
             obj_im: Image.Image = obj_images[id]
