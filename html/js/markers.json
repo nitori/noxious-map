@@ -2,31 +2,31 @@
   "pois": [
     {
       "color": "#fff",
-      "map": "aabb052f-f302-4d9b-aea7-1682251ed2ae"
+      "map": "azwvz644734yo1q"
     },
     {
       "color": "#800",
-      "map": "793b0a25-7d04-44fd-9022-72f0717f76a0"
+      "map": "8gqycwevoy4twrs"
     },
     {
       "color": "#fff",
-      "map": "e3b6cbdc-a715-4ece-b2fd-29a36c0c0393"
+      "map": "ypq398r4by3g4xw"
     },
     {
       "name": "Old Starter Town",
       "color": "#fff",
-      "map": "993340d4-5773-47b2-a1dd-cb45f76dd8d6"
+      "map": "al468vokoe5jdhz"
     },
     {
       "name": "Reaper Cave",
       "color": "#f00",
-      "map": "06bce23a-4159-475f-9474-96ecb8ff5272",
+      "map": "a2f5vu1iw2okj2o",
       "x": 22,
       "y": -1
     },
     {
       "color": "#00f",
-      "map": "abec70e0-d3c4-47fb-8319-b6e18697803c"
+      "map": "fi0e5h2l1lxfvor"
     }
   ],
   "connections": [
@@ -34,12 +34,12 @@
       "color": "#00dd00",
       "points": [
         {
-          "map": "0d7a8cee-6a06-4784-a3ff-ae87fdda16cd",
+          "map": "t2kxa7kjmhxi0wa",
           "x": 14,
           "y": 3
         },
         {
-          "map": "6e7e8ffe-fb42-406a-a856-8dea06efb427",
+          "map": "51kif0exobz5qkg",
           "x": 0,
           "y": 2
         }
@@ -49,12 +49,12 @@
       "color": "#aaaaaa",
       "points": [
         {
-          "map": "3295d905-6891-4675-b439-2eae1b35a95f",
+          "map": "ix6nv0n25r37xb1",
           "x": 0,
           "y": 23
         },
         {
-          "map": "cd6e72b0-2dba-46c6-a587-5df41fd9860e",
+          "map": "q7hnmi8hnjtsism",
           "x": 19,
           "y": 3
         }
@@ -64,12 +64,12 @@
       "color": "#ff33ff",
       "points": [
         {
-          "map": "19266afc-d99b-466c-a118-6b45e39b71e7",
+          "map": "yajbd8rxqd0pwdw",
           "x": 21,
           "y": 29
         },
         {
-          "map": "98c3586a-b93d-43aa-8df2-9067f87e1563",
+          "map": "v5zr5mlohl110kd",
           "x": 3,
           "y": 3
         }
@@ -79,12 +79,12 @@
       "color": "#00ffff",
       "points": [
         {
-          "map": "19266afc-d99b-466c-a118-6b45e39b71e7",
+          "map": "yajbd8rxqd0pwdw",
           "x": 1,
           "y": 0
         },
         {
-          "map": "9119eba6-7a56-4f12-9c40-3d07be0baf1a",
+          "map": "eerh1qgc2ubmdp2",
           "x": 8,
           "y": 0
         }
@@ -94,12 +94,12 @@
       "color": "#dd8800",
       "points": [
         {
-          "map": "9119eba6-7a56-4f12-9c40-3d07be0baf1a",
+          "map": "eerh1qgc2ubmdp2",
           "x": 0,
           "y": 25
         },
         {
-          "map": "9119eba6-7a56-4f12-9c40-3d07be0baf1a",
+          "map": "eerh1qgc2ubmdp2",
           "x": 25,
           "y": 0
         }

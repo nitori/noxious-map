@@ -156,7 +156,8 @@ class DataFetcher:
             if id not in obj_images:
                 obj_texture_file = obj_texture_dir / f"{id}.png"
                 if not obj_texture_file.exists():
-                    print(f'Map object {id!r} is missing tile object texture: {obj_texture_file.name} ({tile_map['name']!r})')
+                    print(
+                        f'Map object {id!r} is missing tile object texture: {obj_texture_file.name} ({tile_map['name']!r})')
                     continue
 
                 obj_im = Image.open(obj_texture_file)
@@ -339,15 +340,26 @@ class DataFetcher:
             html += '</tr>'
             for drop in monster.get('drops', []):
                 item = items_data[drop['item']]
-                drop_icon = item['dropIcon']
                 chance = drop['chance']
+
+                if 'minAmount' in drop and 'maxAmount' in drop:
+                    min_amount = drop['minAmount']
+                    max_amount = drop['maxAmount']
+                elif 'amount' in drop:
+                    min_amount = drop['amount']
+                    max_amount = drop['amount']
+
+                if min_amount < max_amount:
+                    amount_str = f'{min_amount}-{max_amount}'
+                else:
+                    amount_str = str(min_amount)
 
                 html += '<tr>'
                 html += f'<td>{escape(item['name'])}</td>'
-                html += f'<td>×{escape(str(drop['amount']))}</td>'
+                html += f'<td>×{escape(amount_str)}</td>'
                 if chance > 0:
                     html += f'<td>{escape(str(chance))}%</td>'
-                    prop = 100/chance
+                    prop = 100 / chance
                     if prop.is_integer() or prop >= 10:
                         html += f'<td>1 : {int(prop):_}</td>'
                     else:
@@ -385,6 +397,7 @@ def main(here: Path):
     maps: list[Map] = gen.load_json("maps.json")
 
     metadata = []
+    map_ids = {}
 
     for i, tile_map in enumerate(maps):
         print(f"\r{(i + 1) * 100 / len(maps):.1f}%", end="")
@@ -429,14 +442,27 @@ def main(here: Path):
                     paddings.bottom,
                     paddings.left,
                 ],
-                "pos": [0, 0],
+                "pos": [0, -25_000],
                 "columns": tile_map["width"],
                 "rows": tile_map["height"],
             }
         )
+        map_ids[tile_map["id"]] = tile_map["name"]
     print()
 
     metadata.sort(key=lambda item: item["id"].casefold())
+    map_ids = dict(sorted(map_ids.items()))
+
+    old_map_ids_file = map_folder.parent / "js" / "map-ids-old.json"
+    old_map_ids = json.loads(old_map_ids_file.read_text(encoding="utf-8"))
+    rev_old_map_ids = {}
+    for id, name in old_map_ids.items():
+        assert name not in rev_old_map_ids, f"{name} already in rev_old_map_ids"
+        rev_old_map_ids[name] = id
+
+    def find_old_id(newid: str):
+        map_name = map_ids[newid]
+        return rev_old_map_ids.get(map_name)
 
     metadata_file = map_folder.parent / "js" / "metadata.json"
     with metadata_file.open("r", encoding="utf-8") as f:
@@ -445,9 +471,19 @@ def main(here: Path):
 
     for md in metadata:
         old_md = remap_metadata.get(md["id"], None)
+        if old_md is None:
+            old_id = find_old_id(md["id"])
+            old_md = remap_metadata.get(old_id, None)
         if old_md:
             md["pos"] = old_md["pos"]
+            if md["pos"] == [0, 0]:
+                md["pos"] = [0, -25_000]
 
     with metadata_file.open("w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
+        f.write("\n")
+
+    map_ids_file = map_folder.parent / "js" / "map-ids.json"
+    with map_ids_file.open("w", encoding="utf-8") as f:
+        json.dump(map_ids, f, indent=2)
         f.write("\n")
