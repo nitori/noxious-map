@@ -147,6 +147,27 @@
     "rows": 30
   },
   {
+    "id": "29e98dea-0d33-41e1-a602-dbc0f67558bb",
+    "name": "New map",
+    "file": "New_map.webp",
+    "size": [
+      1280,
+      688
+    ],
+    "paddings": [
+      48,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      0
+    ],
+    "columns": 20,
+    "rows": 20
+  },
+  {
     "id": "2e56ac76-26d6-473b-94dd-959d38729487",
     "name": "Hat shop map",
     "file": "Hat_shop_map.webp",
@@ -235,21 +256,21 @@
     "name": "north winter house inside",
     "file": "north_winter_house_inside.webp",
     "size": [
-      1664,
-      832
+      1152,
+      820
     ],
     "paddings": [
+      112,
       0,
-      0,
-      0,
+      132,
       0
     ],
     "pos": [
       -4104,
       -3904
     ],
-    "columns": 26,
-    "rows": 26
+    "columns": 18,
+    "rows": 18
   },
   {
     "id": "4a24bde5-8b1b-484a-9b53-74338b20abc7",
@@ -292,6 +313,27 @@
     ],
     "columns": 15,
     "rows": 15
+  },
+  {
+    "id": "5ba23233-b6ae-4701-8357-45c0c7a7d77b",
+    "name": "Threnn",
+    "file": "Threnn.webp",
+    "size": [
+      1440,
+      777
+    ],
+    "paddings": [
+      57,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      0
+    ],
+    "columns": 25,
+    "rows": 20
   },
   {
     "id": "6035afff-e00f-4493-9730-d3e03e56297f",
@@ -383,10 +425,10 @@
     "file": "Adexxin-castle-hall.webp",
     "size": [
       1280,
-      864
+      684
     ],
     "paddings": [
-      224,
+      44,
       0,
       0,
       0
@@ -572,10 +614,10 @@
     "file": "StartingTown.webp",
     "size": [
       1920,
-      960
+      976
     ],
     "paddings": [
-      0,
+      16,
       0,
       0,
       0
@@ -971,10 +1013,10 @@
     "file": "Adexxin-Castle-outdoor.webp",
     "size": [
       1280,
-      704
+      656
     ],
     "paddings": [
-      64,
+      16,
       0,
       0,
       0
