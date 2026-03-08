@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="metadata-mtime" content="%%METADATA_MTIME%%">
+    <title>Noxious monster list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+    <style>
+        img.sprite {
+            max-width: 246px;
+            height: auto;
+        }
+
+        .td-img {
+            width: 246px;
+        }
+
+        .td-name {
+            width: auto;
+        }
+
+        .td-level {
+            width: 100px;
+        }
+
+        .td-hostile {
+            width: 100px;
+        }
+
+        .td-health {
+            width: 100px;
+        }
+
+        .td-drops {
+            width: 50%;
+        }
+
+        #simple-list:checked ~ .table .td-img,
+        #simple-list:checked ~ .table .td-drops {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <input id="simple-list" type="checkbox"> <label for="simple-list">Simplified list</label>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th class="td-img p-0"></th>
+            <th class="td-name">Name</th>
+            <th class="td-hostile">Hostility</th>
+            <th class="td-level">Level</th>
+            <th class="td-health">Health/Mana</th>
+            <th class="td-drops p-0">Drops</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for monster in monsters %}
+            <tr>
+                <td class="td-img p-0">
+                    <img src="{{ monster.sprite.path }}"
+                         width="{{ monster.sprite.width }}"
+                         height="{{ monster.sprite.height }}"
+                         class="sprite" alt="Sprite of {{ monster.name }}">
+                </td>
+                <td class="td-name">{{ monster.name }}</td>
+                <td class="td-hostile">{{ monster.hostility }}</td>
+                <td class="td-level">{{ monster.level }}</td>
+                <td class="td-health">{{ monster.maxHealth }}/{{ monster.maxMana }}</td>
+                <td class="td-drops p-0">
+
+
+                    <table class="table table-striped">
+                        <colgroup>
+                            <col width="40%" style="width:40%">
+                            <col width="20%" style="width:20%">
+                            <col width="20%" style="width:20%">
+                            <col width="20%" style="width:20%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Amount</th>
+                            <th>Chance</th>
+                            <th>Ratio</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for drop in monster.drops %}
+                            <tr>
+                                <td>{{ drop.item.name }}</td>
+                                <td>×{{ drop.amount }}</td>
+                                <td>{{ drop.chance }}%</td>
+                                <td>{{ drop.probability }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

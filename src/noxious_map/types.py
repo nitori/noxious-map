@@ -13,9 +13,10 @@ class BaseMapObject(TypedDict):
     originY: float
     updatedAt: int
     depthPoints: NotRequired[list[DepthPoint]]
-    frameWidth: int
-    frameHeight: int
-    frameRate: int
+    frameWidth: NotRequired[int]
+    frameHeight: NotRequired[int]
+    frameRate: NotRequired[int]
+    image: NotRequired[str]
 
 
 class MapTile(TypedDict):

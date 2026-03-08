@@ -1,3 +1,31 @@
+from pathlib import Path
+import hashlib
+import math
+
+
+def checksum_file(path: Path | str) -> str:
+    with open(path, "rb") as f:
+        digest = hashlib.md5()
+        for chunk in iter(lambda: f.read(1 << 14), b""):
+            digest.update(chunk)
+    return digest.hexdigest().lower()
+
+
+def pretty_size(size: int, *, space: bool = True) -> str:
+    if size < 0:
+        raise ValueError(f"Invalid size. Must not be negative: {size}")
+    space_char = " " if space else ""
+    if size == 0:
+        return f"0{space_char}B"
+
+    prefixes = ["", "K", "M", "G", "T"]
+    exp = int(math.log(size, 1024))
+    exp = min(exp, len(prefixes) - 1)
+    fsize = size / 1024**exp
+    ssize = f"{fsize:.1f}".replace(".0", "")
+    return f"{ssize}{space_char}{prefixes[exp]}iB"
+
+
 def cmp_func(A, B):
     # Extract for A and B (assume each is a dict with 'obj', 'base_obj', 'obj_im', and precomputed 'origin_screen_x', 'origin_screen_y', 'bbox')
     if A == B:

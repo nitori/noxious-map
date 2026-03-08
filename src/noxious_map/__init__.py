@@ -1,18 +1,13 @@
 from dataclasses import dataclass
 from pathlib import Path
 import shutil
-import zipfile
 import json
-import random
-import base64
 from functools import cmp_to_key
-import hashlib
-import textwrap
-from html import escape
 
-import requests
 from PIL import Image
 
+from .downloader import download_data
+from .generator import BaseGenerator, MobGenerator
 from .types import Map, BaseMapObject
 from .utils import cmp_func
 
@@ -33,54 +28,9 @@ class Paddings:
     bottom: int
 
 
-def checksum_file(path: Path | str) -> str:
-    with open(path, "rb") as f:
-        digest = hashlib.md5()
-        for chunk in iter(lambda: f.read(1 << 14), b""):
-            digest.update(chunk)
-    return digest.hexdigest().lower()
-
-
 class DataFetcher:
     def __init__(self, base_path: Path):
         self._here = base_path
-
-    def update_data(self):
-        filename = self._here / "bundle.zip"
-        bundle_dir = self._here / "bundle"
-        url = "https://server.noxious.gg/data/bundle"
-
-        r = requests.head(url)
-        checksum = r.headers["Etag"].strip("\"'").lower()
-
-        if checksum != checksum_file(filename):
-            r = requests.get(url, stream=True)
-
-            print("downloading...")
-            with filename.open("wb") as f:
-                for chunk in r.iter_content(1 << 16):
-                    f.write(chunk)
-        else:
-            print("skipping download.")
-
-        print("unzipping...")
-        shutil.rmtree(bundle_dir)
-        with zipfile.ZipFile(filename, "r") as zf:
-            zf.extractall(bundle_dir)
-
-        print("formatting json files in bundle/data/ ...")
-        for json_file in (bundle_dir / "data").glob("*.json"):
-            with json_file.open("r", encoding="utf-8") as f:
-                data = json.load(f)
-
-            rval = base64.urlsafe_b64encode(random.randbytes(12)).decode("ascii")
-            tmp_json_file = json_file.with_stem(f"{json_file.stem}_{rval}")
-
-            with tmp_json_file.open("w", encoding="utf-8") as f:
-                json.dump(data, f, indent=2)
-
-            shutil.copyfile(tmp_json_file, json_file)
-            tmp_json_file.unlink()
 
     def load_json(self, data_file: str):
         file_path = self._here / "bundle" / "data" / data_file
@@ -150,16 +100,19 @@ class DataFetcher:
                 if first_print:
                     print()
                 first_print = False
-                print(f'Map object {id!r} is missing but used in map {tile_map['id']} ({tile_map['name']!r})')
+                print(
+                    f"Map object {id!r} is missing but used in map {tile_map['id']} ({tile_map['name']!r})"
+                )
                 continue
 
             if id not in obj_images:
                 base_image_name = base_obj.get("image", "foo.png")
-                _, _, base_image_ext = base_image_name.rpartition('.')
+                _, _, base_image_ext = base_image_name.rpartition(".")
                 obj_texture_file = obj_texture_dir / f"{id}.{base_image_ext}"
                 if not obj_texture_file.exists():
                     print(
-                        f'Map object {id!r} is missing tile object texture: {obj_texture_file.name} ({tile_map['name']!r})')
+                        f"Map object {id!r} is missing tile object texture: {obj_texture_file.name} ({tile_map['name']!r})"
+                    )
                     continue
 
                 frame_width = base_obj.get("frameWidth")
@@ -230,179 +183,23 @@ class DataFetcher:
 
         return obj_map_im, paddings
 
-    def generate_mob_drop_list(self):
-        bundle_dir = self._here / "bundle"
-        data_dir = bundle_dir / 'data'
-        sprites_dir = bundle_dir / 'textures' / 'sprites'
-
-        monsters_file = data_dir / 'monsters.json'
-
-        html_dir = self._here / 'html'
-        out_sprites_dir = html_dir / 'sprites'
-
-        shutil.rmtree(out_sprites_dir)
-        out_sprites_dir.mkdir(parents=True, exist_ok=True)
-
-        textures_data = (data_dir / 'textures.json').read_text(encoding='utf-8')
-        textures_data = json.loads(textures_data)
-        textures_data = {t['id']: t for t in textures_data}
-
-        items_data = (data_dir / 'items.json').read_text(encoding='utf-8')
-        items_data = json.loads(items_data)
-        items_data = {item['id']: item for item in items_data}
-
-        with monsters_file.open('r', encoding='utf-8') as f:
-            monsters = json.load(f)
-
-        monsters.sort(key=lambda m: m['level'])
-
-        html = textwrap.dedent('''\
-        <!doctype html>
-        <html lang="en" data-bs-theme="dark">
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta name="metadata-mtime" content="%%METADATA_MTIME%%">
-            <title>Noxious monster list</title>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-                  rel="stylesheet"
-                  integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-                  crossorigin="anonymous">
-            <style>
-                img.sprite {
-                    max-width: 246px;
-                    height: auto;
-                }
-                .td-img {width:246px;}
-                .td-name {width:auto;}
-                .td-level {width:100px;}
-                .td-hostile {width:100px;}
-                .td-health {width:100px;}
-                .td-drops {width:50%;}
-
-                #simple-list:checked ~ .table .td-img,
-                #simple-list:checked ~ .table .td-drops {
-                    display: none;
-                }
-            </style>
-        </head>
-        <body>
-        <div class="container-fluid">
-        <input id="simple-list" type="checkbox"> <label for="simple-list">Simplified list</label>
-        <table class="table table-striped">
-        <thead>
-        <tr>
-            <th class="td-img p-0"></th>
-            <th class="td-name">Name</th>
-            <th class="td-hostile">Hostility</th>
-            <th class="td-level">Level</th>
-            <th class="td-health">Health/Mana</th>
-            <th class="td-drops p-0">Drops</th>
-        </tr>
-        </thead>
-        <tbody>
-        ''')
-
-        print('Generating monster drop table...')
-        for i, monster in enumerate(monsters):
-            print(f"\r{(i + 1) * 100 / len(monsters):.1f}%", end="")
-            monster_sprite = sprites_dir / f'{monster["sprite"]}.png'
-
-            sprite_path = 'sprites/default.png'
-            width, height = 64, 64
-            if monster_sprite.exists():
-                im = Image.open(monster_sprite).convert('RGBA')
-                tdata = textures_data.get(monster['id'])
-                if tdata:
-                    w, h = tdata['cellWidth'], tdata['cellHeight']
-                    im = im.crop((0, 0, w, h))
-                    out_monster = (out_sprites_dir / monster_sprite.name).with_suffix('.webp')
-                    im.save(out_monster, quality=80)
-                    sprite_path = f'sprites/{out_monster.name}'
-                    width, height = im.size
-
-            html += textwrap.dedent(f'''\
-            <tr>
-                <td class="td-img p-0">
-                    <img src="{escape(sprite_path)}" width="{width}" height="{height}" class="sprite"
-                         alt="Sprite of {escape(monster['name'])}">
-                </td>
-                <td class="td-name">{escape(monster['name'])}</td>
-                <td class="td-hostile">{escape(monster['hostility'])}</td>
-                <td class="td-level">{escape(str(monster['level']))}</td>
-                <td class="td-health">{escape(str(monster['maxHealth']))}/{escape(str(monster['maxMana']))}</td>
-                <td class="td-drops p-0">
-            ''')
-
-            html += '<table class="table table-striped">'
-            html += '<colgroup>'
-            html += '<col width="40%" style="width:40%">'
-            html += '<col width="20%" style="width:20%">'
-            html += '<col width="20%" style="width:20%">'
-            html += '<col width="20%" style="width:20%">'
-            html += '</colgroup>'
-            html += '<tr>'
-            html += '<th>Item</th>'
-            html += '<th>Amount</th>'
-            html += '<th>Chance</th>'
-            html += '<th>Ratio</th>'
-            html += '</tr>'
-            for drop in monster.get('drops', []):
-                item = items_data[drop['item']]
-                chance = drop['chance']
-
-                if 'minAmount' in drop and 'maxAmount' in drop:
-                    min_amount = drop['minAmount']
-                    max_amount = drop['maxAmount']
-                elif 'amount' in drop:
-                    min_amount = drop['amount']
-                    max_amount = drop['amount']
-
-                if min_amount < max_amount:
-                    amount_str = f'{min_amount}-{max_amount}'
-                else:
-                    amount_str = str(min_amount)
-
-                html += '<tr>'
-                html += f'<td>{escape(item['name'])}</td>'
-                html += f'<td>×{escape(amount_str)}</td>'
-                if chance > 0:
-                    html += f'<td>{escape(str(chance))}%</td>'
-                    prop = 100 / chance
-                    if prop.is_integer() or prop >= 10:
-                        html += f'<td>1 : {int(prop):_}</td>'
-                    else:
-                        html += f'<td>1 : {prop:_.2f}</td>'
-                else:
-                    html += f'<td>0%</td>'
-                    html += f'<td>1 : 0</td>'
-                html += '</tr>'
-            html += '</table>'
-
-            html += '</td></tr>'
-        print()
-
-        html += textwrap.dedent('''\
-        </tbody>
-        </table>
-        </div>
-        </body>
-        </html>
-        ''')
-
-        with (html_dir / 'mobs.html').open('w', encoding='utf-8') as f:
-            f.write(html)
-
 
 def main(here: Path):
-    gen = DataFetcher(here)
-    gen.update_data()
-    gen.generate_mob_drop_list()
+    download_data(here)
+
+    generators: list[BaseGenerator] = [
+        MobGenerator(here),
+    ]
+
+    # noinspection PyShadowingNames
+    for generator in generators:
+        generator.generate()
 
     map_folder = here / "html" / "maps"
     shutil.rmtree(map_folder)
     map_folder.mkdir(parents=True, exist_ok=True)
 
+    gen = DataFetcher(here)
     maps: list[Map] = gen.load_json("maps.json")
 
     metadata = []
