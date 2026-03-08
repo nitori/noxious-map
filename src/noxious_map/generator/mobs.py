@@ -7,9 +7,6 @@ from .base import BaseGenerator
 
 
 class MobGenerator(BaseGenerator):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
     def generate(self):
         bundle_dir = self.root / "bundle"
 

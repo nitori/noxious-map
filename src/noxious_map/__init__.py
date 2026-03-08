@@ -7,7 +7,7 @@ from functools import cmp_to_key
 from PIL import Image
 
 from .downloader import download_data
-from .generator import BaseGenerator, MobGenerator
+from .generator import BaseGenerator
 from .types import Map, BaseMapObject
 from .utils import cmp_func
 
@@ -187,13 +187,10 @@ class DataFetcher:
 def main(here: Path):
     download_data(here)
 
-    generators: list[BaseGenerator] = [
-        MobGenerator(here),
-    ]
-
-    # noinspection PyShadowingNames
-    for generator in generators:
-        generator.generate()
+    for gen_cls, _kwargs in BaseGenerator.get_subclasses():
+        print(f'Invoking generator: {gen_cls.__name__}')
+        gen = gen_cls(here)
+        gen.generate()
 
     map_folder = here / "html" / "maps"
     shutil.rmtree(map_folder)
