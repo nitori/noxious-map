@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="64" height="20" tilewidth="64" tileheight="32" infinite="1" nextlayerid="11" nextobjectid="46">
+ <tileset firstgid="1" source="maps.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="64" height="20" visible="0">
+  <data encoding="csv"/>
+ </layer>
+ <objectgroup id="5" name="Maps">
+  <object id="1" gid="2" x="397.667" y="245.788" width="3520" height="1897"/>
+  <object id="6" gid="65" x="1507.45" y="1581.15" width="1920" height="996"/>
+  <object id="7" name="South_of_jab_stab" gid="19" x="-2460.73" y="723.273" width="1632" height="943"/>
+  <object id="8" name="StartingTown" gid="21" x="-138.485" y="2606.12" width="1920" height="976"/>
+  <object id="11" name="Corn_Fields" gid="71" x="530.848" y="1622.85" width="2560" height="1415"/>
+  <object id="12" name="Forest_map" gid="84" x="833" y="3093" width="1920" height="1078"/>
+  <object id="13" name="East_of_town_Desert" gid="81" x="3656" y="1368" width="4736" height="2368"/>
+  <object id="19" name="East_Caves_lv_3" gid="78" x="2536" y="-2480" width="1920" height="1023"/>
+  <object id="20" name="East_Caves_lv_1" gid="76" x="1480" y="-1970" width="1760" height="1138"/>
+  <object id="21" name="East_Caves_lv_2" gid="77" x="1482" y="-3050" width="960" height="591"/>
+  <object id="44" name="stab_jab_forest" gid="20" x="-1971.75" y="-100.25" width="2567" height="1535"/>
+  <object id="45" name="West_of_Town" gid="28" x="-1316" y="-588" width="1280" height="863"/>
+ </objectgroup>
+ <objectgroup id="8" name="Winter">
+  <object id="14" name="Winter_Town" gid="29" x="5109" y="-5579" width="2578" height="1434"/>
+  <object id="15" name="Winter_Wonderland" gid="31" x="4927" y="-4589" width="1920" height="1098"/>
+  <object id="16" name="North_winter_town" gid="10" x="4952" y="-6888" width="2176" height="1295"/>
+  <object id="17" name="Cave_Exit_For_Winter_Town" gid="67" x="4561" y="-3999" width="1280" height="714"/>
+  <object id="18" name="Cave_to_Winter_Town" gid="70" x="3567" y="-4799" width="1920" height="1071"/>
+  <object id="28" name="Path_to_Cave_City" gid="12" x="3362.3" y="-2394.06" width="1760" height="992"/>
+  <object id="29" name="Feo_Jera_Underground_City" gid="82" x="4786.3" y="-1466.06" width="2880" height="1519"/>
+  <object id="32" name="Somewhere_small_(boss_map)" gid="18" x="3901" y="-4605" width="652" height="551"/>
+ </objectgroup>
+ <objectgroup id="10" name="Gobbo Cave">
+  <object id="35" name="Cave_Map_-_Level_2" gid="69" x="-1356" y="-2948" width="1440" height="799"/>
+  <object id="36" name="Cave_Map_-_Level_2.5" gid="68" x="-1460" y="-1836" width="1920" height="1007"/>
+  <object id="37" name="Goblin_Caves_-_Level_1" gid="86" x="-484" y="-3260" width="1920" height="1039"/>
+ </objectgroup>
+ <objectgroup id="6" name="North">
+  <object id="4" name="Goblin_Cave_Start" gid="85" x="-70.879" y="-4238.64" width="1280" height="722"/>
+  <object id="9" name="North_of_Town" gid="8" x="-1286.2" y="-5271.92" width="1120" height="560"/>
+  <object id="10" name="North_Flower_Fields" gid="6" x="-359.03" y="-4885.82" width="1920" height="991"/>
+  <object id="5" name="East_of_town" gid="80" x="1154.7" y="-852.818" width="1676" height="994"/>
+ </objectgroup>
+ <objectgroup id="9" name="Connections">
+  <object id="24" x="1093.64" y="-1208.79">
+   <properties>
+    <property name="path" type="object" value="25"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="25" x="1625.45" y="-1122.42">
+   <point/>
+  </object>
+  <object id="26" x="-635.152" y="-1564.85">
+   <properties>
+    <property name="path" type="object" value="27"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" x="-1507.09" y="-5266.48">
+   <point/>
+  </object>
+  <object id="33" x="3279" y="-4819">
+   <properties>
+    <property name="path" type="object" value="34"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="34" x="3955" y="-4455">
+   <point/>
+  </object>
+  <object id="38" x="2654" y="-5758">
+   <point/>
+  </object>
+  <object id="39" x="1858" y="-3426">
+   <properties>
+    <property name="path" type="object" value="38"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="40" x="3196.3" y="-3292.06">
+   <properties>
+    <property name="path" type="object" value="41"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="41" x="-1418" y="-3462">
+   <point/>
+  </object>
+  <object id="42" x="2374" y="-3438">
+   <point/>
+  </object>
+  <object id="43" x="1586" y="-2634">
+   <properties>
+    <property name="path" type="object" value="42"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+</map>
