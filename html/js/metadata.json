@@ -802,11 +802,11 @@
     "name": "Hank Mistwood Sewers",
     "file": "Hank_Mistwood_Sewers.webp",
     "size": [
-      3840,
-      1920
+      5120,
+      2671
     ],
     "paddings": [
-      0,
+      111,
       0,
       0,
       0
@@ -815,8 +815,8 @@
       -1680,
       -18856
     ],
-    "columns": 60,
-    "rows": 60
+    "columns": 80,
+    "rows": 80
   },
   {
     "id": "ehp1kuhognmxymc",
@@ -1202,10 +1202,10 @@
     "file": "Adexxin-jungle2.webp",
     "size": [
       1951,
-      1048
+      1288
     ],
     "paddings": [
-      88,
+      328,
       31,
       0,
       0
