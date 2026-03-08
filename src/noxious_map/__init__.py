@@ -154,7 +154,9 @@ class DataFetcher:
                 continue
 
             if id not in obj_images:
-                obj_texture_file = obj_texture_dir / f"{id}.png"
+                base_image_name = base_obj.get("image", "foo.png")
+                _, _, base_image_ext = base_image_name.rpartition('.')
+                obj_texture_file = obj_texture_dir / f"{id}.{base_image_ext}"
                 if not obj_texture_file.exists():
                     print(
                         f'Map object {id!r} is missing tile object texture: {obj_texture_file.name} ({tile_map['name']!r})')
