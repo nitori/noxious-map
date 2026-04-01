@@ -76,15 +76,16 @@ class MobGenerator(BaseGenerator):
                         if tdata:
                             w, h = tdata["cellWidth"], tdata["cellHeight"]
                             im = im.crop((0, 0, w, h))
-                            out_drop_sprite = (
-                                out_sprites_dir / drop_sprite.name
-                            ).with_suffix(".webp")
-                            im.save(out_drop_sprite, quality=80)
-                            drop["sprite"] = {
-                                "path": f"sprites/{out_drop_sprite.name}",
-                                "width": im.width,
-                                "height": im.height,
-                            }
+
+                        out_drop_sprite = (
+                            out_sprites_dir / drop_sprite.name
+                        ).with_suffix(".webp")
+                        im.save(out_drop_sprite, quality=80)
+                        drop["sprite"] = {
+                            "path": f"sprites/{out_drop_sprite.name}",
+                            "width": im.width,
+                            "height": im.height,
+                        }
 
                 if "minAmount" in drop and "maxAmount" in drop:
                     min_amount = drop["minAmount"]

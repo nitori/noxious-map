@@ -106,11 +106,11 @@
                         {% for drop in monster.drops %}
                             <tr>
                                 <td>
-                                    {% if drop.sprite %}
+                                    {%- if drop.sprite -%}
                                         <img src="{{ drop.sprite.path }}"
                                              width="{{ drop.sprite.width }}"
                                              height="{{ drop.sprite.height }}">
-                                    {% endif %}
+                                    {%- endif -%}
                                 </td>
                                 <td>{{ drop.item.name }}</td>
                                 <td>×{{ drop.amount }}</td>
