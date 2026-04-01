@@ -15,6 +15,10 @@
             height: auto;
         }
 
+        .d-none {
+            display: none !important;
+        }
+
         .td-img {
             width: 246px;
         }
@@ -36,18 +40,23 @@
         }
 
         .td-drops {
-            width: 50%;
+            width: 60%;
         }
 
-        #simple-list:checked ~ .table .td-img,
-        #simple-list:checked ~ .table .td-drops {
-            display: none;
+        input[type=text] {
+            display: block;
+            width: 100%;
+            padding: 5px 10px;
+        }
+
+        #search {
+
         }
     </style>
 </head>
 <body>
 <div class="container-fluid">
-    <input id="simple-list" type="checkbox"> <label for="simple-list">Simplified list</label>
+    <input id="search" type="text" aria-label="Search" placeholder="Search">
     <table class="table table-striped">
         <thead>
         <tr>
@@ -62,7 +71,7 @@
         <tbody>
 
         {% for monster in monsters %}
-            <tr>
+            <tr class="monster-row">
                 <td class="td-img p-0">
                     <img src="{{ monster.sprite.path }}"
                          width="{{ monster.sprite.width }}"
@@ -78,13 +87,15 @@
 
                     <table class="table table-striped">
                         <colgroup>
-                            <col width="40%" style="width:40%">
+                            <col width="246px" style="width:246px">
+                            <col width="auto" style="width:auto">
                             <col width="20%" style="width:20%">
                             <col width="20%" style="width:20%">
                             <col width="20%" style="width:20%">
                         </colgroup>
                         <thead>
                         <tr>
+                            <th></th>
                             <th>Item</th>
                             <th>Amount</th>
                             <th>Chance</th>
@@ -94,6 +105,13 @@
                         <tbody>
                         {% for drop in monster.drops %}
                             <tr>
+                                <td>
+                                    {% if drop.sprite %}
+                                        <img src="{{ drop.sprite.path }}"
+                                             width="{{ drop.sprite.width }}"
+                                             height="{{ drop.sprite.height }}">
+                                    {% endif %}
+                                </td>
                                 <td>{{ drop.item.name }}</td>
                                 <td>×{{ drop.amount }}</td>
                                 <td>{{ drop.chance }}%</td>
@@ -110,5 +128,31 @@
         </tbody>
     </table>
 </div>
+<script>
+    Q = (selector, root) => Array.from((root || document).querySelectorAll(selector));
+    Q1 = (selector, root) => (root || document).querySelector(selector);
+
+    const allMonsters = Q('.monster-row');
+
+    function toWords(text) {
+        return text.toLowerCase().split(/\s+/).map(s => s.trim()).filter(s => s !== '');
+    }
+
+    Q1('#search').addEventListener('input', ev => {
+        let words = toWords(ev.currentTarget.value);
+        if (words.length === 0) {
+            allMonsters.forEach(tr => tr.classList.remove('d-none'));
+        } else {
+            allMonsters.forEach(tr => {
+                if (words.every(word => tr.textContent.toLowerCase().includes(word))) {
+                    tr.classList.remove('d-none');
+                } else {
+                    tr.classList.add('d-none');
+                }
+            });
+        }
+    });
+
+</script>
 </body>
 </html>

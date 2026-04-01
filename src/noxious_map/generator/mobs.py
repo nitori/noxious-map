@@ -59,6 +59,33 @@ class MobGenerator(BaseGenerator):
                 # get the actual item
                 drop["item"] = items_data[drop["item"]]
 
+                drop_sprite_id = drop["item"].get(
+                    "icon", drop["item"].get("drop_icon", drop["item"].get("sprite"))
+                )
+                if drop_sprite_id:
+                    drop_sprite = self.bundle(
+                        f"textures/itemIcons/{drop_sprite_id}.png"
+                    )
+                    if not drop_sprite.exists():
+                        drop_sprite = self.bundle(
+                            f"textures/itemDropIcons/{drop_sprite_id}.png"
+                        )
+                    if drop_sprite.exists():
+                        im = Image.open(drop_sprite).convert("RGBA")
+                        tdata = textures_data.get(drop_sprite_id)
+                        if tdata:
+                            w, h = tdata["cellWidth"], tdata["cellHeight"]
+                            im = im.crop((0, 0, w, h))
+                            out_drop_sprite = (
+                                out_sprites_dir / drop_sprite.name
+                            ).with_suffix(".webp")
+                            im.save(out_drop_sprite, quality=80)
+                            drop["sprite"] = {
+                                "path": f"sprites/{out_drop_sprite.name}",
+                                "width": im.width,
+                                "height": im.height,
+                            }
+
                 if "minAmount" in drop and "maxAmount" in drop:
                     min_amount = drop["minAmount"]
                     max_amount = drop["maxAmount"]

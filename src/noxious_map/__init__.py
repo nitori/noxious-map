@@ -192,7 +192,7 @@ def main(here: Path):
         print(f"Invoking generator: {gen_cls.__name__}")
         gen = gen_cls(here)
         gen.generate()
-
+    return
     map_folder = here / "html" / "maps"
     shutil.rmtree(map_folder)
     map_folder.mkdir(parents=True, exist_ok=True)
