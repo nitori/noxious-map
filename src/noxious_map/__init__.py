@@ -3,6 +3,7 @@ from pathlib import Path
 import shutil
 import json
 from functools import cmp_to_key
+import re
 
 from PIL import Image
 
@@ -212,9 +213,7 @@ def main(here: Path):
         extended_map.alpha_composite(obj_im)
 
         name = tile_map["name"]
-        name = name.replace("/", "_")
-        name = name.replace("\\", "_")
-        name = name.replace(" ", "_")
+        name = re.sub(r'[/\\ <>":|?*]', '_', name)
         filename = f"{name}.webp"
 
         folders = [["default", 1], ["low", 2], ["small", 3], ["tiny", 4], ["micro", 5]]
