@@ -105,6 +105,48 @@
     "rows": 5
   },
   {
+    "id": "13dx254lum9jiyj",
+    "name": "Connor-castle-hall",
+    "file": "Connor-castle-hall.webp",
+    "size": [
+      1280,
+      695
+    ],
+    "paddings": [
+      55,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 20,
+    "rows": 20
+  },
+  {
+    "id": "158q03prz9fbayj",
+    "name": "Mistwood North East Connect",
+    "file": "Mistwood_North_East_Connect.webp",
+    "size": [
+      2560,
+      1387
+    ],
+    "paddings": [
+      107,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 40,
+    "rows": 40
+  },
+  {
     "id": "19l8udjg66todw0",
     "name": "Adexxin-jungle-hut",
     "file": "Adexxin-jungle-hut.webp",
@@ -127,15 +169,15 @@
   },
   {
     "id": "1bgg36cir78kcvh",
-    "name": "East of town",
-    "file": "East_of_town.webp",
+    "name": "North East of Mistwood Village",
+    "file": "North_East_of_Mistwood_Village.webp",
     "size": [
-      1676,
-      994
+      3840,
+      2114
     ],
     "paddings": [
       194,
-      76,
+      0,
       0,
       0
     ],
@@ -143,29 +185,50 @@
       3298,
       3162
     ],
-    "columns": 25,
-    "rows": 25
+    "columns": 60,
+    "rows": 60
   },
   {
-    "id": "2bj2xayi4mo9zzo",
-    "name": "north winter house inside",
-    "file": "north_winter_house_inside.webp",
+    "id": "1jvvsfb7l2k63ko",
+    "name": "Omen ---- idkyet<3",
+    "file": "Omen_----_idkyet_3.webp",
     "size": [
-      1152,
-      688
+      7925,
+      4320
     ],
     "paddings": [
-      112,
+      480,
+      245,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 120,
+    "rows": 120
+  },
+  {
+    "id": "2njf96ni9enyog1",
+    "name": "Connor castle garden.",
+    "file": "Connor_castle_garden..webp",
+    "size": [
+      4800,
+      2744
+    ],
+    "paddings": [
+      344,
       0,
       0,
       0
     ],
     "pos": [
-      -4104,
-      -3904
+      0,
+      -25000
     ],
-    "columns": 18,
-    "rows": 18
+    "columns": 50,
+    "rows": 100
   },
   {
     "id": "3nqg0ljk1jaaee6",
@@ -232,14 +295,14 @@
   },
   {
     "id": "51kif0exobz5qkg",
-    "name": "North Flower Fields",
-    "file": "North_Flower_Fields.webp",
+    "name": "Mistwood Village West Flower Fields",
+    "file": "Mistwood_Village_West_Flower_Fields.webp",
     "size": [
-      1920,
-      991
+      3840,
+      1998
     ],
     "paddings": [
-      31,
+      78,
       0,
       0,
       0
@@ -248,8 +311,8 @@
       5600,
       6202
     ],
-    "columns": 30,
-    "rows": 30
+    "columns": 50,
+    "rows": 70
   },
   {
     "id": "5cg68jm32cxms1i",
@@ -294,6 +357,27 @@
     "rows": 20
   },
   {
+    "id": "5pp68fjqh8ud829",
+    "name": "Tomboclat - Xville",
+    "file": "Tomboclat_-_Xville.webp",
+    "size": [
+      1280,
+      718
+    ],
+    "paddings": [
+      78,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 20,
+    "rows": 20
+  },
+  {
     "id": "5uvyyihw1zzjazh",
     "name": "Adexxin-church",
     "file": "Adexxin-church.webp",
@@ -319,11 +403,11 @@
     "name": "Goblin Cave Start",
     "file": "Goblin_Cave_Start.webp",
     "size": [
-      1280,
-      722
+      2880,
+      1556
     ],
     "paddings": [
-      82,
+      116,
       0,
       0,
       0
@@ -332,8 +416,8 @@
       5558,
       5730
     ],
-    "columns": 20,
-    "rows": 20
+    "columns": 45,
+    "rows": 45
   },
   {
     "id": "69rewofvwukq2ou",
@@ -376,6 +460,27 @@
     ],
     "columns": 20,
     "rows": 20
+  },
+  {
+    "id": "6fde0ejz5t66083",
+    "name": "Character Selection Screen",
+    "file": "Character_Selection_Screen.webp",
+    "size": [
+      651,
+      489
+    ],
+    "paddings": [
+      169,
+      10,
+      0,
+      1
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 10,
+    "rows": 10
   },
   {
     "id": "6y7m63rtgrbc3yg",
@@ -421,8 +526,8 @@
   },
   {
     "id": "8gqycwevoy4twrs",
-    "name": "Winter Town",
-    "file": "Winter_Town.webp",
+    "name": "Floor 2: Evergreen Hollow",
+    "file": "Floor_2__Evergreen_Hollow.webp",
     "size": [
       2578,
       1434
@@ -463,8 +568,8 @@
   },
   {
     "id": "8qm9rjkv6zlwf77",
-    "name": "Adexxin-ice",
-    "file": "Adexxin-ice.webp",
+    "name": "Floor 2:  E Evergreen Hollow ",
+    "file": "Floor_2___E_Evergreen_Hollow_.webp",
     "size": [
       1280,
       772
@@ -484,14 +589,14 @@
   },
   {
     "id": "97t061u2pl83vsl",
-    "name": "Modern Town Guild Hall",
-    "file": "Modern_Town_Guild_Hall.webp",
+    "name": "Mistwood Village Assassin's Guild",
+    "file": "Mistwood_Village_Assassin's_Guild.webp",
     "size": [
       928,
-      543
+      660
     ],
     "paddings": [
-      79,
+      196,
       0,
       0,
       0
@@ -523,6 +628,27 @@
     ],
     "columns": 20,
     "rows": 20
+  },
+  {
+    "id": "9we3qxtk1ozav5a",
+    "name": "Mistwood Village Church",
+    "file": "Mistwood_Village_Church.webp",
+    "size": [
+      2560,
+      1671
+    ],
+    "paddings": [
+      391,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 40,
+    "rows": 40
   },
   {
     "id": "a2f5vu1iw2okj2o",
@@ -567,6 +693,27 @@
     "rows": 30
   },
   {
+    "id": "aml1w51urebwkf6",
+    "name": "Mistwood Village Assassin's Guild Top Floor",
+    "file": "Mistwood_Village_Assassin's_Guild_Top_Floor.webp",
+    "size": [
+      928,
+      592
+    ],
+    "paddings": [
+      128,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 19,
+    "rows": 10
+  },
+  {
     "id": "an1gdc84jcd9a5v",
     "name": "twilight zone",
     "file": "twilight_zone.webp",
@@ -609,9 +756,30 @@
     "rows": 10
   },
   {
+    "id": "azlf7zp7tyg66bm",
+    "name": "Mistwood Village Steel Smith",
+    "file": "Mistwood_Village_Steel_Smith.webp",
+    "size": [
+      1280,
+      800
+    ],
+    "paddings": [
+      160,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 20,
+    "rows": 20
+  },
+  {
     "id": "azwvz644734yo1q",
-    "name": "Feo Jera Underground City",
-    "file": "Feo_Jera_Underground_City.webp",
+    "name": "Hank Feo Jera Underground City",
+    "file": "Hank_Feo_Jera_Underground_City.webp",
     "size": [
       2880,
       1519
@@ -631,8 +799,8 @@
   },
   {
     "id": "b5apw8ooyjc7eh4",
-    "name": "North winter town",
-    "file": "North_winter_town.webp",
+    "name": "Floor 2: N Evergreen Hollow",
+    "file": "Floor_2__N_Evergreen_Hollow.webp",
     "size": [
       2176,
       1295
@@ -649,6 +817,69 @@
     ],
     "columns": 34,
     "rows": 34
+  },
+  {
+    "id": "bftd2eqs4io10pk",
+    "name": "General Store Mistwood Village",
+    "file": "General_Store_Mistwood_Village.webp",
+    "size": [
+      1920,
+      1129
+    ],
+    "paddings": [
+      169,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 30,
+    "rows": 30
+  },
+  {
+    "id": "bqiswcdzl3nnx4q",
+    "name": "Floor 2: NW  Evergreen Hollow Village ",
+    "file": "Floor_2__NW__Evergreen_Hollow_Village_.webp",
+    "size": [
+      3200,
+      1738
+    ],
+    "paddings": [
+      138,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 60,
+    "rows": 40
+  },
+  {
+    "id": "c8aqhny3fi2knxn",
+    "name": "Mistwood Village Barber",
+    "file": "Mistwood_Village_Barber.webp",
+    "size": [
+      1280,
+      784
+    ],
+    "paddings": [
+      144,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 20,
+    "rows": 20
   },
   {
     "id": "cgj12s28mqwgixq",
@@ -673,8 +904,8 @@
   },
   {
     "id": "ciieinxa4ewjrtb",
-    "name": "Winter Wonderland Boss",
-    "file": "Winter_Wonderland_Boss.webp",
+    "name": "Floor 2: Evergreen Hollow Boss 1 ",
+    "file": "Floor_2__Evergreen_Hollow_Boss_1_.webp",
     "size": [
       960,
       592
@@ -714,6 +945,48 @@
     "rows": 20
   },
   {
+    "id": "ct7s5egstiz3nxk",
+    "name": "Astraea's Abode",
+    "file": "Astraea's_Abode.webp",
+    "size": [
+      3840,
+      2062
+    ],
+    "paddings": [
+      142,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 60,
+    "rows": 60
+  },
+  {
+    "id": "cyh2q2olpgyxnhf",
+    "name": "South of MWV",
+    "file": "South_of_MWV.webp",
+    "size": [
+      3840,
+      1920
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 60,
+    "rows": 60
+  },
+  {
     "id": "d334j9q3zk7n92h",
     "name": "Adexxin-castle-hall",
     "file": "Adexxin-castle-hall.webp",
@@ -736,8 +1009,8 @@
   },
   {
     "id": "d8yaadj07aux85e",
-    "name": "winter wonderland house",
-    "file": "winter_wonderland_house.webp",
+    "name": "Floor 2: S Evergreen Hollow House Merchant",
+    "file": "Floor_2__S_Evergreen_Hollow_House_Merchant.webp",
     "size": [
       576,
       399
@@ -754,6 +1027,27 @@
     ],
     "columns": 10,
     "rows": 8
+  },
+  {
+    "id": "drum9ckutzcyue4",
+    "name": "East Of Town MWV",
+    "file": "East_Of_Town_MWV.webp",
+    "size": [
+      2560,
+      1374
+    ],
+    "paddings": [
+      94,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 40,
+    "rows": 40
   },
   {
     "id": "dvcnhrdvl5whe87",
@@ -777,15 +1071,36 @@
     "rows": 20
   },
   {
-    "id": "eerh1qgc2ubmdp2",
-    "name": "East Caves lv 3",
-    "file": "East_Caves_lv_3.webp",
+    "id": "ebq0cpqjsmad68e",
+    "name": "Hank_ map used for no trespassing",
+    "file": "Hank__map_used_for_no_trespassing.webp",
     "size": [
-      1920,
-      1023
+      320,
+      160
     ],
     "paddings": [
-      63,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 5,
+    "rows": 5
+  },
+  {
+    "id": "eerh1qgc2ubmdp2",
+    "name": "East Ant Caves",
+    "file": "East_Ant_Caves.webp",
+    "size": [
+      1920,
+      975
+    ],
+    "paddings": [
+      15,
       0,
       0,
       0
@@ -799,17 +1114,17 @@
   },
   {
     "id": "efpyydqus4zm71i",
-    "name": "Hank Mistwood Sewers",
-    "file": "Hank_Mistwood_Sewers.webp",
+    "name": "Mistwood Sewers",
+    "file": "Mistwood_Sewers.webp",
     "size": [
-      5120,
-      2671
+      5159,
+      2689
     ],
     "paddings": [
-      111,
+      129,
       0,
       0,
-      0
+      39
     ],
     "pos": [
       -1680,
@@ -841,8 +1156,8 @@
   },
   {
     "id": "eztcxlqrgbnockn",
-    "name": "Hank Mistwood Village",
-    "file": "Hank_Mistwood_Village.webp",
+    "name": "Mistwood Village",
+    "file": "Mistwood_Village.webp",
     "size": [
       6400,
       3496
@@ -925,14 +1240,14 @@
   },
   {
     "id": "ftl65qfegc3o7j4",
-    "name": "Hank Adventurers Guild in Mistwood",
-    "file": "Hank_Adventurers_Guild_in_Mistwood.webp",
+    "name": "Adventurers Guild Mistwood Village",
+    "file": "Adventurers_Guild_Mistwood_Village.webp",
     "size": [
-      1280,
-      848
+      2560,
+      1440
     ],
     "paddings": [
-      208,
+      160,
       0,
       0,
       0
@@ -941,8 +1256,29 @@
       6392,
       -24096
     ],
-    "columns": 20,
-    "rows": 20
+    "columns": 40,
+    "rows": 40
+  },
+  {
+    "id": "fvu4v54l9jq05sj",
+    "name": "North East Caves",
+    "file": "North_East_Caves.webp",
+    "size": [
+      3840,
+      1920
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 60,
+    "rows": 60
   },
   {
     "id": "h51bbbxowzu365a",
@@ -1030,14 +1366,14 @@
   },
   {
     "id": "im7tnzcv0euj62h",
-    "name": "Corn Fields",
-    "file": "Corn_Fields.webp",
+    "name": "Mistwood Village South Farms",
+    "file": "Mistwood_Village_South_Farms.webp",
     "size": [
-      2560,
-      1415
+      5120,
+      2826
     ],
     "paddings": [
-      135,
+      266,
       0,
       0,
       0
@@ -1046,8 +1382,8 @@
       -272,
       2256
     ],
-    "columns": 40,
-    "rows": 40
+    "columns": 80,
+    "rows": 80
   },
   {
     "id": "ix6nv0n25r37xb1",
@@ -1092,6 +1428,27 @@
     "rows": 24
   },
   {
+    "id": "jacxp0t9xa4pxca",
+    "name": "(Omen) Hanks Big Ass Library..",
+    "file": "(Omen)_Hanks_Big_Ass_Library...webp",
+    "size": [
+      4189,
+      2313
+    ],
+    "paddings": [
+      233,
+      28,
+      0,
+      1
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 65,
+    "rows": 65
+  },
+  {
     "id": "jycefj51rxaj8ls",
     "name": "South of jab/stab",
     "file": "South_of_jab_stab.webp",
@@ -1114,8 +1471,8 @@
   },
   {
     "id": "k6e5vpu45hkz0of",
-    "name": "Winter Wonderland",
-    "file": "Winter_Wonderland.webp",
+    "name": "Floor 2: S Evergreen Hollow ",
+    "file": "Floor_2__S_Evergreen_Hollow_.webp",
     "size": [
       1920,
       1098
@@ -1134,25 +1491,67 @@
     "rows": 30
   },
   {
-    "id": "lon2i095xy8ddjs",
-    "name": "ROOT TEST",
-    "file": "ROOT_TEST.webp",
+    "id": "kudim6y9nbvedwt",
+    "name": "Floor 2 : Evergreen Hollow Archery Shop ",
+    "file": "Floor_2___Evergreen_Hollow_Archery_Shop_.webp",
     "size": [
-      1280,
-      714
+      704,
+      463
     ],
     "paddings": [
-      74,
+      111,
       0,
       0,
       0
     ],
     "pos": [
-      -5048,
-      -3200
+      0,
+      -25000
     ],
-    "columns": 20,
-    "rows": 20
+    "columns": 10,
+    "rows": 12
+  },
+  {
+    "id": "l1caijse6i6w0ux",
+    "name": "Mistwood Village Mines",
+    "file": "Mistwood_Village_Mines.webp",
+    "size": [
+      3840,
+      2049
+    ],
+    "paddings": [
+      129,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 60,
+    "rows": 60
+  },
+  {
+    "id": "lbc1cxg792rz2f8",
+    "name": "North of Mistwood Village",
+    "file": "North_of_Mistwood_Village.webp",
+    "size": [
+      2560,
+      1374
+    ],
+    "paddings": [
+      94,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 40,
+    "rows": 40
   },
   {
     "id": "ltoqe0r1vfjnpv5",
@@ -1219,8 +1618,8 @@
   },
   {
     "id": "nt7324rr6wyabd6",
-    "name": "Winter Town General Shop",
-    "file": "Winter_Town_General_Shop.webp",
+    "name": "Floor 2:Evergreen Hollow Equipment Shop ",
+    "file": "Floor_2_Evergreen_Hollow_Equipment_Shop_.webp",
     "size": [
       512,
       367
@@ -1300,6 +1699,27 @@
     ],
     "columns": 30,
     "rows": 10
+  },
+  {
+    "id": "ofk9465n65r88l4",
+    "name": "Nightshade Cove East MWV ",
+    "file": "Nightshade_Cove_East_MWV_.webp",
+    "size": [
+      5120,
+      2782
+    ],
+    "paddings": [
+      222,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 80,
+    "rows": 80
   },
   {
     "id": "otoyvair96yxyo2",
@@ -1470,6 +1890,27 @@
     "rows": 30
   },
   {
+    "id": "qx89153xne6uecs",
+    "name": "Hank Creepy Inn MWV",
+    "file": "Hank_Creepy_Inn_MWV.webp",
+    "size": [
+      1280,
+      640
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 20,
+    "rows": 20
+  },
+  {
     "id": "s0ce1zu5gw0h1nk",
     "name": "Adexxin-bnb-upstairs",
     "file": "Adexxin-bnb-upstairs.webp",
@@ -1489,6 +1930,27 @@
     ],
     "columns": 10,
     "rows": 10
+  },
+  {
+    "id": "sfp1hxbrtopcxb2",
+    "name": "Barn MWV",
+    "file": "Barn_MWV.webp",
+    "size": [
+      1303,
+      852
+    ],
+    "paddings": [
+      212,
+      17,
+      0,
+      6
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 20,
+    "rows": 20
   },
   {
     "id": "slptdujic8bfra0",
@@ -1537,11 +1999,11 @@
     "name": "North of Town",
     "file": "North_of_Town.webp",
     "size": [
-      1120,
-      560
+      5120,
+      2782
     ],
     "paddings": [
-      0,
+      222,
       0,
       0,
       0
@@ -1550,8 +2012,29 @@
       2802,
       4388
     ],
-    "columns": 15,
-    "rows": 20
+    "columns": 80,
+    "rows": 80
+  },
+  {
+    "id": "t7w7b6v2yjnausi",
+    "name": "Floor 2: Evergreen Hollow (Szar)",
+    "file": "Floor_2__Evergreen_Hollow_(Szar).webp",
+    "size": [
+      2581,
+      1434
+    ],
+    "paddings": [
+      154,
+      21,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 40,
+    "rows": 40
   },
   {
     "id": "todliy65wbjk8xc",
@@ -1618,8 +2101,8 @@
   },
   {
     "id": "v5zr5mlohl110kd",
-    "name": "Cave Exit For Winter Town",
-    "file": "Cave_Exit_For_Winter_Town.webp",
+    "name": "Floor 2: Cave Exit For S  Evergreen Hollow",
+    "file": "Floor_2__Cave_Exit_For_S__Evergreen_Hollow.webp",
     "size": [
       1280,
       714
@@ -1659,6 +2142,27 @@
     "rows": 20
   },
   {
+    "id": "vjj4wk4xrabkhi7",
+    "name": "South East Mistwood Village",
+    "file": "South_East_Mistwood_Village.webp",
+    "size": [
+      2560,
+      1386
+    ],
+    "paddings": [
+      106,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 40,
+    "rows": 40
+  },
+  {
     "id": "vt1ki0g9o8d1ubv",
     "name": "Somewhere small (boss map)",
     "file": "Somewhere_small_(boss_map).webp",
@@ -1678,6 +2182,48 @@
     ],
     "columns": 10,
     "rows": 10
+  },
+  {
+    "id": "w0fj7hyhvpevkc4",
+    "name": "root test",
+    "file": "root_test.webp",
+    "size": [
+      9600,
+      4800
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 150,
+    "rows": 150
+  },
+  {
+    "id": "woou9bn4iaqlwbq",
+    "name": "Dungeon Forge",
+    "file": "Dungeon_Forge.webp",
+    "size": [
+      1280,
+      800
+    ],
+    "paddings": [
+      160,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 20,
+    "rows": 20
   },
   {
     "id": "wumlzm8sr2onux4",
@@ -1765,8 +2311,8 @@
   },
   {
     "id": "xlt8tejjnirxvhl",
-    "name": "Under Corn Field",
-    "file": "Under_Corn_Field.webp",
+    "name": "Hank Under Ted's Barn",
+    "file": "Hank_Under_Ted's_Barn.webp",
     "size": [
       1120,
       560
@@ -1786,8 +2332,8 @@
   },
   {
     "id": "xv48fu4ghoqueya",
-    "name": "Hank Potions and Magic shop in Mistwood",
-    "file": "Hank_Potions_and_Magic_shop_in_Mistwood.webp",
+    "name": "Mistwood Village Magic shop",
+    "file": "Mistwood_Village_Magic_shop.webp",
     "size": [
       1920,
       1053
@@ -1911,15 +2457,36 @@
     "rows": 30
   },
   {
+    "id": "z4bnhmrtqeolsvd",
+    "name": "North of Nightshade Cove",
+    "file": "North_of_Nightshade_Cove.webp",
+    "size": [
+      5120,
+      2560
+    ],
+    "paddings": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pos": [
+      0,
+      -25000
+    ],
+    "columns": 80,
+    "rows": 80
+  },
+  {
     "id": "zlggmpbhes7v60l",
     "name": "bcave",
     "file": "bcave.webp",
     "size": [
       1984,
-      1162
+      1106
     ],
     "paddings": [
-      170,
+      114,
       0,
       0,
       0
