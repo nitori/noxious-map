@@ -55,7 +55,7 @@ class MobGenerator(BaseGenerator):
             # replace with dict
             monster["sprite"] = sprite
 
-            for drop in monster.get("drops", []):
+            for drop in monster.setdefault("drops", []):
                 # get the actual item
                 drop["item"] = items_data[drop["item"]]
 
@@ -84,6 +84,11 @@ class MobGenerator(BaseGenerator):
                 else:
                     drop["chance"] = 0
                     drop["probability"] = "1 : 0"
+
+            monster['drops'] = sorted(
+                monster['drops'],
+                key=lambda d: (-d["chance"], d["item"]["name"])
+            )
 
         print()
 
