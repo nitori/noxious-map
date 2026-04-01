@@ -85,13 +85,17 @@ class MobGenerator(BaseGenerator):
                     drop["chance"] = 0
                     drop["probability"] = "1 : 0"
 
-            monster['drops'] = sorted(
-                monster['drops'],
-                key=lambda d: (-d["chance"], d["item"]["name"])
+            monster["drops"] = sorted(
+                monster["drops"], key=lambda d: (-d["chance"], d["item"]["name"])
             )
 
         print()
+        monsters = sorted(
+            enumerate(monsters),
+            key=lambda m: (m[1]["level"], m[0]),
+        )
+        monsters = [m for i, m in monsters]
 
         html = self.render_template("mobs.html", monsters=monsters)
-        with self.out("mobs.html").open("w", encoding="utf-8") as f:
+        with self.out("mobs.html").open("w", encoding="utf-8", newline="\n") as f:
             f.write(html)

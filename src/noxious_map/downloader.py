@@ -52,7 +52,7 @@ def download_data(here: Path, *, force=False):
         rval = secrets.token_urlsafe(12)
         tmp_json_file = json_file.with_stem(f"{json_file.stem}_{rval}")
 
-        with tmp_json_file.open("w", encoding="utf-8") as f:
+        with tmp_json_file.open("w", encoding="utf-8", newline="\n") as f:
             json.dump(data, f, indent=2)
 
         shutil.copyfile(tmp_json_file, json_file)

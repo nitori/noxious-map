@@ -189,7 +189,7 @@ def main(here: Path):
     download_data(here)
 
     for gen_cls, _kwargs in BaseGenerator.get_subclasses():
-        print(f'Invoking generator: {gen_cls.__name__}')
+        print(f"Invoking generator: {gen_cls.__name__}")
         gen = gen_cls(here)
         gen.generate()
 
@@ -213,7 +213,7 @@ def main(here: Path):
         extended_map.alpha_composite(obj_im)
 
         name = tile_map["name"]
-        name = re.sub(r'[/\\ <>":|?*]', '_', name)
+        name = re.sub(r'[/\\ <>":|?*]', "_", name)
         filename = f"{name}.webp"
 
         folders = [["default", 1], ["low", 2], ["small", 3], ["tiny", 4], ["micro", 5]]
@@ -281,11 +281,11 @@ def main(here: Path):
             if md["pos"] == [0, 0]:
                 md["pos"] = [0, -25_000]
 
-    with metadata_file.open("w", encoding="utf-8") as f:
+    with metadata_file.open("w", encoding="utf-8", newline="\n") as f:
         json.dump(metadata, f, indent=2)
         f.write("\n")
 
     map_ids_file = map_folder.parent / "js" / "map-ids.json"
-    with map_ids_file.open("w", encoding="utf-8") as f:
+    with map_ids_file.open("w", encoding="utf-8", newline="\n") as f:
         json.dump(map_ids, f, indent=2)
         f.write("\n")
