@@ -15,5 +15,5 @@ def main(here: Path):
 
     print()
     print()
-    print('old remaining code disabled')
+    print("old remaining code disabled")
     print()

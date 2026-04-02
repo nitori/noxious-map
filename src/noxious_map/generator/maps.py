@@ -34,13 +34,13 @@ class MapGenerator(BaseGenerator):
             map_of_maps[loaded_map.id] = loaded_map
 
         for map_id, tile_map in map_of_maps.items():
-            print(f'Teleports of {tile_map.name} [{map_id}]:')
+            print(f"Teleports of {tile_map.name} [{map_id}]:")
             for tp in tile_map.teleports:
                 if tp.toMap in map_of_maps:
                     other_map = map_of_maps[tp.toMap]
-                    print(f'  - {other_map.name} [{other_map.id}]')
+                    print(f"  - {other_map.name} [{other_map.id}]")
                 else:
-                    print(f'  - missing: {tp.toMap}')
+                    print(f"  - missing: {tp.toMap}")
 
             map_im = self.generate_base_map(tile_map)
             obj_im, paddings = self.generate_map_objects(tile_map)
@@ -53,7 +53,13 @@ class MapGenerator(BaseGenerator):
             name = re.sub(r'[/\\ <>":|?*]', "_", name)
             filename = f"{name}.webp"
 
-            folders = [["default", 1], ["low", 2], ["small", 3], ["tiny", 4], ["micro", 5]]
+            folders = [
+                ["default", 1],
+                ["low", 2],
+                ["small", 3],
+                ["tiny", 4],
+                ["micro", 5],
+            ]
             for folder, resize in folders:
                 filepath = map_folder / folder / filename
                 filepath.parent.mkdir(parents=True, exist_ok=True)
@@ -65,7 +71,8 @@ class MapGenerator(BaseGenerator):
                 else:
                     w, h = extended_map.size
                     tmp_map = extended_map.resize(
-                        (max(1, w // resize), max(1, h // resize)), Image.Resampling.BICUBIC
+                        (max(1, w // resize), max(1, h // resize)),
+                        Image.Resampling.BICUBIC,
                     )
                     tmp_map.save(filepath, quality=75)
 
@@ -118,7 +125,9 @@ class MapGenerator(BaseGenerator):
         map_objects_list = self.load("data/mapObjects.json")
         map_objects: dict[str, MapObject] = {}
         for map_object in map_objects_list:
-            map_objects[map_object["id"]] = MapObject.model_validate(map_object, extra="forbid")
+            map_objects[map_object["id"]] = MapObject.model_validate(
+                map_object, extra="forbid"
+            )
 
         objects_to_draw = []
 
@@ -172,12 +181,10 @@ class MapGenerator(BaseGenerator):
             origin_screen_y = (obj.x + obj.y + 1) * 16
 
             pos_x = round(
-                origin_screen_x
-                - (nc(obj.originX, base_obj.originX) * obj_im.width)
+                origin_screen_x - (nc(obj.originX, base_obj.originX) * obj_im.width)
             )
             pos_y = round(
-                origin_screen_y
-                - (nc(obj.originY, base_obj.originY) * obj_im.height)
+                origin_screen_y - (nc(obj.originY, base_obj.originY) * obj_im.height)
             )
 
             bbox = (pos_x, pos_y, pos_x + obj_im.width, pos_y + obj_im.height)

@@ -18,6 +18,7 @@ class MapTile(Position):
 
 class MapObjectOverrides(Position):
     """This extends the base MapObject from mapObjects.json"""
+
     type: str
     x: int
     y: int

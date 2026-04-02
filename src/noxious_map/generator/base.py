@@ -54,7 +54,7 @@ class BaseGenerator:
     def load(self, path: str):
         """Load JSON file from bundle"""
         full_path = self.bundle_dir / path
-        with full_path.open('r', encoding='utf-8') as f:
+        with full_path.open("r", encoding="utf-8") as f:
             return json.load(f)
 
     def generate(self):

@@ -9,7 +9,6 @@ if TYPE_CHECKING:
     from noxious_map.models.map import MapObjectOverrides
     from PIL import Image
 
-
     class SortParam(TypedDict):
         obj: MapObjectOverrides
         base_obj: BaseMapObject
@@ -38,7 +37,7 @@ def pretty_size(size: int, *, space: bool = True) -> str:
     prefixes = ["", "K", "M", "G", "T"]
     exp = int(math.log(size, 1024))
     exp = min(exp, len(prefixes) - 1)
-    fsize = size / 1024 ** exp
+    fsize = size / 1024**exp
     ssize = f"{fsize:.1f}".replace(".0", "")
     return f"{ssize}{space_char}{prefixes[exp]}iB"
 
