@@ -9,8 +9,9 @@ authors = [
 requires-python = ">=3.14"
 dependencies = [
     "jinja2>=3.1.6",
-    "pillow>=12.1.1",
-    "requests>=2.32.5",
+    "pillow>=12.2.0",
+    "pydantic>=2.12.5",
+    "requests>=2.33.1",
 ]
 
 [project.scripts]

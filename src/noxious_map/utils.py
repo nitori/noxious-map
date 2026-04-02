@@ -1,6 +1,23 @@
+from typing import TYPE_CHECKING
 from pathlib import Path
 import hashlib
 import math
+
+if TYPE_CHECKING:
+    from typing import TypedDict
+    from noxious_map.models import MapObject as BaseMapObject
+    from noxious_map.models.map import MapObjectOverrides
+    from PIL import Image
+
+
+    class SortParam(TypedDict):
+        obj: MapObjectOverrides
+        base_obj: BaseMapObject
+        bbox: tuple[int, int, int, int]
+        im: Image.Image
+        pos: tuple[int | float, int | float]
+        origin_screen_x: int
+        origin_screen_y: int
 
 
 def checksum_file(path: Path | str) -> str:
@@ -21,19 +38,27 @@ def pretty_size(size: int, *, space: bool = True) -> str:
     prefixes = ["", "K", "M", "G", "T"]
     exp = int(math.log(size, 1024))
     exp = min(exp, len(prefixes) - 1)
-    fsize = size / 1024**exp
+    fsize = size / 1024 ** exp
     ssize = f"{fsize:.1f}".replace(".0", "")
     return f"{ssize}{space_char}{prefixes[exp]}iB"
 
 
-def cmp_func(A, B):
+def nc(*values):
+    """null coalesce"""
+    for value in values:
+        if value is not None:
+            return value
+    return None
+
+
+def compare_depth_sort(A: SortParam, B: SortParam):
     # Extract for A and B (assume each is a dict with 'obj', 'base_obj', 'obj_im', and precomputed 'origin_screen_x', 'origin_screen_y', 'bbox')
     if A == B:
         return 0
 
     # Default key: grid depth (higher sum is closer/front)
-    key_A = A["obj"]["x"] + A["obj"]["y"]
-    key_B = B["obj"]["x"] + B["obj"]["y"]
+    key_A = A["obj"].x + A["obj"].y
+    key_B = B["obj"].x + B["obj"].y
 
     # Check if screen bboxes overlap (for potential occlusion)
     ax1, ay1, ax2, ay2 = A["bbox"]
@@ -42,19 +67,19 @@ def cmp_func(A, B):
 
     if overlap:
         # If A has depthPoints (assume list of dicts with 'x', 'y'; at least 2 for line)
-        A_depth_points = A["base_obj"].get("depthPoints", [])
-        B_depth_points = B["base_obj"].get("depthPoints", [])
+        A_depth_points = A["base_obj"].depthPoints
+        B_depth_points = B["base_obj"].depthPoints
 
         if len(A_depth_points) >= 2:
-            dp_sorted = sorted(A_depth_points, key=lambda p: p["x"])
+            dp_sorted = sorted(A_depth_points, key=lambda p: p.x)
             # Use leftmost and rightmost for the line (better for >2 points)
             dp1 = dp_sorted[0]
             dp2 = dp_sorted[-1]
             # Line points in screen space (relative to A's origin)
-            p1_x = A["origin_screen_x"] + dp1["x"]
-            p1_y = A["origin_screen_y"] + dp1["y"]
-            p2_x = A["origin_screen_x"] + dp2["x"]
-            p2_y = A["origin_screen_y"] + dp2["y"]
+            p1_x = A["origin_screen_x"] + dp1.x
+            p1_y = A["origin_screen_y"] + dp1.y
+            p2_x = A["origin_screen_x"] + dp2.x
+            p2_y = A["origin_screen_y"] + dp2.y
 
             # Vector for line
             dx = p2_x - p1_x
@@ -64,8 +89,8 @@ def cmp_func(A, B):
             b_eff_x = B["origin_screen_x"]
             b_eff_y = B["origin_screen_y"]
             if len(B_depth_points) > 0:
-                avg_x = sum(p["x"] for p in B_depth_points) / len(B_depth_points)
-                avg_y = sum(p["y"] for p in B_depth_points) / len(B_depth_points)
+                avg_x = sum(p.x for p in B_depth_points) / len(B_depth_points)
+                avg_y = sum(p.y for p in B_depth_points) / len(B_depth_points)
                 b_eff_x += avg_x
                 b_eff_y += avg_y
 
@@ -85,13 +110,13 @@ def cmp_func(A, B):
         # Symmetric check if B has depthPoints
         if len(B_depth_points) >= 2:
             # Same logic, but swapped (compute cross for A's effective point relative to B's line)
-            dp_sorted = sorted(B_depth_points, key=lambda p: p["x"])
+            dp_sorted = sorted(B_depth_points, key=lambda p: p.x)
             dp1 = dp_sorted[0]
             dp2 = dp_sorted[-1]
-            p1_x = B["origin_screen_x"] + dp1["x"]
-            p1_y = B["origin_screen_y"] + dp1["y"]
-            p2_x = B["origin_screen_x"] + dp2["x"]
-            p2_y = B["origin_screen_y"] + dp2["y"]
+            p1_x = B["origin_screen_x"] + dp1.x
+            p1_y = B["origin_screen_y"] + dp1.y
+            p2_x = B["origin_screen_x"] + dp2.x
+            p2_y = B["origin_screen_y"] + dp2.y
             dx = p2_x - p1_x
             dy = p2_y - p1_y
 
@@ -99,8 +124,8 @@ def cmp_func(A, B):
             a_eff_x = A["origin_screen_x"]
             a_eff_y = A["origin_screen_y"]
             if len(A_depth_points) > 0:
-                avg_x = sum(p["x"] for p in A_depth_points) / len(A_depth_points)
-                avg_y = sum(p["y"] for p in A_depth_points) / len(A_depth_points)
+                avg_x = sum(p.x for p in A_depth_points) / len(A_depth_points)
+                avg_y = sum(p.y for p in A_depth_points) / len(A_depth_points)
                 a_eff_x += avg_x
                 a_eff_y += avg_y
 

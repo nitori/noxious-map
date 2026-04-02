@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
@@ -49,6 +50,12 @@ class BaseGenerator:
         if not result.is_relative_to(self.out_dir):
             raise FileNotFoundError(str(result))
         return result
+
+    def load(self, path: str):
+        """Load JSON file from bundle"""
+        full_path = self.bundle_dir / path
+        with full_path.open('r', encoding='utf-8') as f:
+            return json.load(f)
 
     def generate(self):
         raise NotImplementedError()
