@@ -1,5 +1,7 @@
 import shutil
 import json
+import time
+from pathlib import Path
 
 from PIL import Image
 
@@ -8,6 +10,9 @@ from .base import BaseGenerator
 
 class MobGenerator(BaseGenerator):
     def generate(self):
+        max_monster_sprite_width = 0
+        max_drop_icon_width = 0
+
         bundle_dir = self.root / "bundle"
 
         monsters_file = self.bundle("data/monsters.json")
@@ -44,13 +49,19 @@ class MobGenerator(BaseGenerator):
                 if tdata:
                     w, h = tdata["cellWidth"], tdata["cellHeight"]
                     im = im.crop((0, 0, w, h))
-                    out_monster = (out_sprites_dir / monster_sprite.name).with_suffix(
-                        ".webp"
-                    )
-                    im.save(out_monster, quality=80)
-                    sprite["path"] = f"sprites/{out_monster.name}"
-                    sprite["width"] = im.width
-                    sprite["height"] = im.height
+
+                bbox = im.getbbox()
+                if bbox:
+                    im = im.crop(bbox)
+
+                out_monster = (out_sprites_dir / monster_sprite.name).with_suffix(
+                    ".webp"
+                )
+                im.save(out_monster, quality=80)
+                sprite["path"] = f"sprites/{out_monster.name}"
+                sprite["width"] = im.width
+                sprite["height"] = im.height
+                max_monster_sprite_width = max(max_monster_sprite_width, im.width)
 
             # replace with dict
             monster["sprite"] = sprite
@@ -72,10 +83,15 @@ class MobGenerator(BaseGenerator):
                         )
                     if drop_sprite.exists():
                         im = Image.open(drop_sprite).convert("RGBA")
+
                         tdata = textures_data.get(drop_sprite_id)
                         if tdata:
                             w, h = tdata["cellWidth"], tdata["cellHeight"]
                             im = im.crop((0, 0, w, h))
+
+                        bbox = im.getbbox()
+                        if bbox:
+                            im = im.crop(bbox)
 
                         out_drop_sprite = (
                             out_sprites_dir / drop_sprite.name
@@ -86,6 +102,7 @@ class MobGenerator(BaseGenerator):
                             "width": im.width,
                             "height": im.height,
                         }
+                        max_drop_icon_width = max(max_drop_icon_width, im.width)
 
                 if "minAmount" in drop and "maxAmount" in drop:
                     min_amount = drop["minAmount"]
@@ -124,6 +141,16 @@ class MobGenerator(BaseGenerator):
         )
         monsters = [m for i, m in monsters]
 
-        html = self.render_template("mobs.html", monsters=monsters)
+        # check if template or the current python file changed
+        mtime = (self.templates_root / "mobs.html").stat().st_mtime
+        mtime = max(mtime, Path(__file__).stat().st_mtime)
+
+        html = self.render_template(
+            "mobs.html",
+            monsters=monsters,
+            ts=int(mtime),
+            max_monster_sprite_width=max_monster_sprite_width,
+            max_drop_icon_width=max_drop_icon_width,
+        )
         with self.out("mobs.html").open("w", encoding="utf-8", newline="\n") as f:
             f.write(html)

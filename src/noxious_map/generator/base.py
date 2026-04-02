@@ -7,6 +7,7 @@ class BaseGenerator:
     root: Path
     bundle_dir: Path
     out_dir: Path
+    templates_root: Path
     jinja_env: Environment
 
     _subclasses = []
@@ -24,9 +25,9 @@ class BaseGenerator:
         self.out_dir = self.root / "html"
 
         _here = Path(__file__).absolute().parent
-        _tplroot = _here / "templates"
+        self.templates_root = _here / "templates"
 
-        loader = FileSystemLoader(_tplroot)
+        loader = FileSystemLoader(self.templates_root)
         self.jinja_env = Environment(autoescape=True, loader=loader)
         self.setup()
 
