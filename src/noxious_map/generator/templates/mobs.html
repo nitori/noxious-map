@@ -10,6 +10,11 @@
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
           crossorigin="anonymous">
     <style>
+        :root {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
         img.sprite {
             max-width: 246px;
             height: auto;
@@ -124,10 +129,10 @@
         <tbody>
 
         {% for monster in monsters %}
-            <tr class="monster-row">
+            <tr class="monster-row" id="m_{{ monster.id }}">
                 <td class="td-img">
                     <div class="sticky">
-                        <img src="{{ monster.sprite.path }}?ts={{ ts }}"
+                        <img src="{{ monster.sprite.path }}"
                              width="{{ monster.sprite.width }}"
                              height="{{ monster.sprite.height }}"
                              loading="lazy"
@@ -135,7 +140,7 @@
                     </div>
                 </td>
                 <td class="td-name">
-                    <div class="sticky">{{ monster.name }}</div>
+                    <div class="sticky"><a href="#m_{{ monster.id }}">¶</a> {{ monster.name }}</div>
                 </td>
                 <td class="td-hostile">
                     <div class="sticky">{{ monster.hostility }}</div>
@@ -195,7 +200,7 @@
                             <tr>
                                 <td class="td-img">
                                     {%- if drop.sprite -%}
-                                        <img src="{{ drop.sprite.path }}?ts={{ ts }}"
+                                        <img src="{{ drop.sprite.path }}"
                                              width="{{ drop.sprite.width }}"
                                              height="{{ drop.sprite.height }}"
                                              loading="lazy">
