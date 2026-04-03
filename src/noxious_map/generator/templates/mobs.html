@@ -108,7 +108,7 @@
 </head>
 <body>
 <div class="container-fluid">
-    <input id="search" type="text" aria-label="Search" placeholder="Search">
+    <input id="search" type="text" aria-label="Search" placeholder="Search" autocomplete="off">
     <table class="table table-striped monster-table">
         <thead>
         <tr>
@@ -301,6 +301,17 @@
 
         // Apply (or clear) highlights on the rows that are now visible
         applyHighlights(visibleRows, words);
+    });
+
+    // Escape key clears the search (works from anywhere on the page)
+    document.addEventListener('keydown', ev => {
+        if (ev.key === 'Escape') {
+            const search = Q1('#search');
+            if (search && search.value !== '') {
+                search.value = '';
+                search.dispatchEvent(new Event('input')); // triggers your filter + highlights
+            }
+        }
     });
 </script>
 </body>
