@@ -146,8 +146,8 @@ def float_str(value: float) -> str:
 
 @dataclass
 class Property:
-    type: str
     value: str
+    type: str | None = None
 
     def copy(self) -> Property:
         return Property(type=self.type, value=self.value)
@@ -232,10 +232,12 @@ class ImageObject(TiledObject):
 
 @dataclass
 class PointObject(TiledObject):
+    name: str | None = None
     properties: dict[str, Property] = field(default_factory=dict)
 
     def copy(self) -> PointObject:
         return PointObject(
+            name=self.name,
             id=self.id,
             x=self.x,
             y=self.y,
@@ -247,11 +249,12 @@ class PointObject(TiledObject):
         properties = {}
         for prop in elem.findall("properties/property"):
             name = prop.attrib["name"]
-            type = prop.attrib["type"]
+            type = prop.attrib.get("type")
             value = prop.attrib["value"]
-            properties[name] = Property(type, value)
+            properties[name] = Property(type=type, value=value)
 
         return cls(
+            name=elem.attrib.get("name"),
             id=int(elem.attrib["id"]),
             x=float(elem.attrib["x"]),
             y=float(elem.attrib["y"]),
@@ -260,16 +263,18 @@ class PointObject(TiledObject):
 
     def to_xml(self) -> ET.Element:
         root = super().to_xml()
+        if self.name is not None:
+            root.attrib["name"] = self.name
         props = ET.Element("properties")
         for name, prop in self.properties.items():
+            attrs = {"name": name}
+            if prop.type is not None and prop.type != 'string':
+                attrs['type'] = prop.type
+            attrs["value"] = prop.value
             props.append(
                 ET.Element(
                     "property",
-                    {
-                        "name": name,
-                        "type": prop.type,
-                        "value": prop.value,
-                    },
+                    attrs
                 )
             )
         root.append(props)

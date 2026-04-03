@@ -1,16 +1,25 @@
 from functools import cmp_to_key
-from typing import Generator
+from typing import Generator, TypedDict, Collection
 import re
 import shutil
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 from noxious_map.models import Map, MapObject
 from noxious_map.types import Paddings, ObjectMapRanges
 from noxious_map.utils import compare_depth_sort, nc
-from noxious_map.tiled import parse_world, Tile, Tileset, ImageObject, TiledWorld
+from noxious_map.tiled import parse_world, Tile, ImageObject, PointObject, Property
 from .base import BaseGenerator
+from ..models.map import Teleport
+
+
+class Telepad(TypedDict):
+    src_positions: list[tuple[int, int]]
+    src_center: tuple[int, int]
+    dest_map: str
+    dest_positions: list[tuple[int, int]]
+    dest_center: tuple[int, int]
 
 
 def normalize_name(name: str) -> str:
@@ -37,17 +46,28 @@ class MapGenerator(BaseGenerator):
         map_objects.objects = []
         point_objects.objects = []
 
+        # map_id -> list of (center, PointObject)
+        point_centers: dict[str, list[tuple[float, float, PointObject]]] = {}
+        tile_map_paddings: dict[str, Paddings] = {}
+        tile_map_image_sizes: dict[str, tuple[int, int]] = {}
+        tile_map_image_objects: dict[str, ImageObject] = {}
+
         max_tile_id = max(t.id for t in orig_tileset.tiles) if orig_tileset.tiles else 0
 
         tile_maps_raw = self.load("data/maps.json")
         tile_maps: list[Map] = []
+        id_map_tile_map: dict[str, Map] = {}
         for tile_map_raw in tile_maps_raw:
             loaded_map = Map.model_validate(tile_map_raw, extra="forbid")
             tile_maps.append(loaded_map)
+            id_map_tile_map[loaded_map.id] = loaded_map
 
         for tile_map, img, paddings, default_filepath in self.generate_map_images(
             tile_maps
         ):
+            tile_map_paddings[tile_map.id] = paddings
+            tile_map_image_sizes[tile_map.id] = img.size
+
             tile = orig_tileset.find_tile_by_noxious_id(tile_map.id)
             if tile is None:
                 tile = orig_tileset.find_tile_by_source(default_filepath)
@@ -83,13 +103,131 @@ class MapGenerator(BaseGenerator):
 
             obj.width = tile.width
             obj.height = tile.height
+            tile_map_image_objects[tile_map.id] = obj
 
             map_objects.objects.append(obj)
+
+            for group in self.group_teleport_islands(tile_map.teleports):
+                dest_tile_map = id_map_tile_map[group["dest_map"]]
+                src_x, src_y = group["src_center"]
+                local_xy = self.get_tile_center(src_x, src_y, tile_map, paddings)
+                world_x, world_y = self.to_tiled_image_position(
+                    local_xy, (obj.x, obj.y), img.size
+                )
+                pobject = PointObject(
+                    name=f"To: {dest_tile_map.name}",
+                    id=new_world.nextobjectid,
+                    x=world_x,
+                    y=world_y,
+                    properties={
+                        "attachedTo": Property(type="object", value=str(obj.id)),
+                        "destMapId": Property(type="string", value=dest_tile_map.id),
+                        "destMapX": Property(type="int", value=str(group["dest_center"][0])),
+                        "destMapY": Property(type="int", value=str(group["dest_center"][1])),
+                    },
+                )
+                point_objects.objects.append(pobject)
+                point_centers.setdefault(tile_map.id, []).append((src_x, src_y, pobject))
+                new_world.nextobjectid += 1
+
+        for pobj in point_objects.objects:
+            if not isinstance(pobj, PointObject):
+                continue
+            dest_id = pobj.properties["destMapId"].value
+            dest_x = int(pobj.properties["destMapX"].value)
+            dest_y = int(pobj.properties["destMapY"].value)
+
+            found_dest_point: PointObject | None = None
+            if dest_id in point_centers:
+                dest_centers = point_centers[dest_id]
+                for dx, dy, dest_point in dest_centers:
+                    if dest_x == dx and dest_y == dy:
+                        found_dest_point = dest_point
+                        break
+
+            if found_dest_point:
+                pobj.properties["path"] = Property(type="object", value=str(found_dest_point.id))
+            else:
+                dest_tile_map = id_map_tile_map[dest_id]
+                dest_paddings = tile_map_paddings[dest_id]
+                dest_img_size = tile_map_image_sizes[dest_id]
+                dest_image_object = tile_map_image_objects[dest_id]
+
+                local_xy = self.get_tile_center(dest_x, dest_y, dest_tile_map, dest_paddings)
+                world_x, world_y = self.to_tiled_image_position(
+                    local_xy, (dest_image_object.x, dest_image_object.y), dest_img_size
+                )
+
+                dest_pobject = PointObject(
+                    name=f"To: {dest_tile_map.name}",
+                    id=new_world.nextobjectid,
+                    x=world_x,
+                    y=world_y,
+                    properties={
+                        "attachedTo": Property(type="object", value=str(dest_image_object.id)),
+                        "destMapId": Property(type="string", value=dest_tile_map.id),
+                        "destMapX": Property(type="int", value=str(dest_x)),
+                        "destMapY": Property(type="int", value=str(dest_y)),
+                    },
+                )
+                new_world.nextobjectid += 1
+
+                point_objects.objects.append(dest_pobject)
+                # in case we need it a second time
+                point_centers.setdefault(dest_tile_map.id, []).append((dest_x, dest_y, dest_pobject))
+
+                pobj.properties["path"] = Property(type="object", value=str(dest_pobject.id))
+
+        for pobj in point_objects.objects:
+            if not isinstance(pobj, PointObject):
+                continue
+            if "destMapId" in pobj.properties:
+                del pobj.properties["destMapId"]
+            if "destMapX" in pobj.properties:
+                del pobj.properties["destMapX"]
+            if "destMapY" in pobj.properties:
+                del pobj.properties["destMapY"]
 
         tileset.tiles.sort(key=lambda t: t.id)
         tileset.write_xml()
 
         new_world.write_xml(self.tiled_dir / "world.tmx")
+
+    @staticmethod
+    def to_tiled_image_position(
+        local_xy: tuple[float, float], image_xy: tuple[float, float], image_wh
+    ) -> tuple[float, float]:
+        local_x, local_y = local_xy
+        image_x, image_y = image_xy
+        image_width, image_height = image_wh
+        dx = local_x - image_width / 2
+        dy = local_y - image_height
+        world_x = image_x + dx / 2 + dy
+        world_y = image_y - dx / 2 + dy
+        return world_x, world_y
+
+    @staticmethod
+    def get_tile_center(
+        tile_x: int, tile_y: int, tile_map: Map, paddings
+    ) -> tuple[int, int]:
+        """Convert a tile grid position (column, row) to pixel coordinates
+        on the final padded image, exactly at the center of that isometric tile.
+
+        This matches your base map size calculation and the isometric 64×32 layout.
+        """
+        # Position of the top-center of the isometric diamond (relative to base map)
+        base_x = (tile_x - tile_y) * 32 + tile_map.height * 32
+        base_y = (tile_x + tile_y) * 16
+
+        # Move down 16 px to reach the true center of the 64×32 tile
+        center_x = base_x
+        center_y = base_y + 16
+
+        # Add the padding offsets so the coordinates are correct on the final img
+        pixel_x = paddings.left + center_x
+        pixel_y = paddings.top + center_y
+
+        return pixel_x, pixel_y
 
     def generate_map_images(
         self, tile_maps: list[Map]
@@ -100,7 +238,7 @@ class MapGenerator(BaseGenerator):
 
         for i, tile_map in enumerate(tile_maps):
             print(f"\r{(i + 1) * 100 / len(tile_maps):.1f}%", end="")
-            # if i >= 10:
+            # if i >= 5:
             #     print("")
             #     print("TEMPORARY BREAK")
             #     break
@@ -148,19 +286,21 @@ class MapGenerator(BaseGenerator):
         print()
 
     @staticmethod
-    def group_adjacent(points):
+    def group_adjacent(
+        points: Collection[tuple[int, int]],
+    ) -> list[list[tuple[int, int]]]:
         # AI generated
         """Group 8-connected points into islands. Duplicates removed automatically."""
         if not points:
             return []
         positions = set(points)
         dirs = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-        visited = set()
-        groups = []
+        visited: set[tuple[int, int]] = set()
+        groups: list[list[tuple[int, int]]] = []
         for start in positions:
             if start in visited:
                 continue
-            group = []
+            group: list[tuple[int, int]] = []
             stack = [start]
             visited.add(start)
             while stack:
@@ -175,7 +315,7 @@ class MapGenerator(BaseGenerator):
         return groups
 
     @staticmethod
-    def _get_center(points):
+    def _get_center(points: list[tuple[int, int]]) -> tuple[int, int]:
         # AI generated
         """Most central tile in the group."""
         if len(points) == 1:
@@ -186,7 +326,7 @@ class MapGenerator(BaseGenerator):
         cx, cy = sx / n, sy / n
         return min(points, key=lambda p: (p[0] - cx) ** 2 + (p[1] - cy) ** 2)
 
-    def group_teleport_islands(self, teleports):
+    def group_teleport_islands(self, teleports: list[Teleport]) -> list[Telepad]:
         # AI generated
         """Super-simple version. Returns list of dicts, one per logical portal group."""
         if not teleports:
@@ -194,11 +334,11 @@ class MapGenerator(BaseGenerator):
 
         from collections import defaultdict
 
-        by_map = defaultdict(list)
+        by_map: dict[str, list[Teleport]] = defaultdict(list)
         for tp in teleports:
             by_map[tp.toMap].append(tp)
 
-        result = []
+        result: list[Telepad] = []
         for dmap, tps in by_map.items():
             mapping = {(tp.x, tp.y): (tp.toX, tp.toY) for tp in tps}
             dest_groups = self.group_adjacent(mapping.values())
@@ -286,16 +426,17 @@ class MapGenerator(BaseGenerator):
                     print()
                 first_print = False
                 print(
-                    f"Map object {id!r} is missing but used in map {tile_map['id']} ({tile_map['name']!r})"
+                    f"Map object {id!r} is missing but used in map {tile_map.id} ({tile_map.name!r})"
                 )
                 continue
 
             if id not in obj_images:
+                assert base_obj.image is not None
                 _, _, base_image_ext = base_obj.image.rpartition(".")
                 obj_texture_file = obj_texture_dir / f"{id}.{base_image_ext}"
                 if not obj_texture_file.exists():
                     print(
-                        f"Map object {id!r} is missing tile object texture: {obj_texture_file.name} ({tile_map['name']!r})"
+                        f"Map object {id!r} is missing tile object texture: {obj_texture_file.name} ({tile_map.name!r})"
                     )
                     continue
 

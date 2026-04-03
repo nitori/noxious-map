@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="64" height="20" tilewidth="64" tileheight="32" infinite="1" nextlayerid="3" nextobjectid="115">
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="64" height="20" tilewidth="64" tileheight="32" infinite="1" nextlayerid="3" nextobjectid="539">
  <tileset firstgid="1" source="maps.tsx"/>
  <objectgroup draworder="index" id="1" name="Maps">
   <object id="1" name="Adexxin-ChillZone" gid="45" x="-6952" y="9096" width="1280" height="640"/>
@@ -132,5 +132,3583 @@
   <object id="113" name="Tutorial Cave Level 3" gid="152" x="3264" y="-6688" width="2560" height="1375"/>
   <object id="114" name="Secret Entrance to Astraea's Abode" gid="153" x="-6984" y="232" width="1280" height="671"/>
  </objectgroup>
- <objectgroup id="2" name="Connections"/>
+ <objectgroup id="2" name="Connections">
+  <object id="2" x="-7320" y="8792" name="To: Adexxin-castle-garden">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="321"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="13" x="593" y="2149" name="To: Reaper boss">
+   <properties>
+    <property name="attachedTo" type="object" value="12"/>
+    <property name="path" type="object" value="322"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="14" x="49" y="2501" name="To: Forest house">
+   <properties>
+    <property name="attachedTo" type="object" value="12"/>
+    <property name="path" type="object" value="97"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="15" x="-111" y="2181" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="12"/>
+    <property name="path" type="object" value="323"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="16" x="-6550" y="7494" name="To: Modern town">
+   <properties>
+    <property name="attachedTo" type="object" value="2"/>
+    <property name="path" type="object" value="324"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="33" x="3600" y="-4848" name="To: Cave to Winter Town">
+   <properties>
+    <property name="attachedTo" type="object" value="32"/>
+    <property name="path" type="object" value="43"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="34" x="-9350" y="7590" name="To: Adexxin-Optic">
+   <properties>
+    <property name="attachedTo" type="object" value="3"/>
+    <property name="path" type="object" value="325"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="35" x="-9190" y="7270" name="To: adexxin-Darkside-northpath">
+   <properties>
+    <property name="attachedTo" type="object" value="3"/>
+    <property name="path" type="object" value="326"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="36" x="-7564" y="6876" name="To: Adexxin-Optic">
+   <properties>
+    <property name="attachedTo" type="object" value="4"/>
+    <property name="path" type="object" value="327"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="37" x="-7692" y="6908" name="To: Adexxin-Castle-main">
+   <properties>
+    <property name="attachedTo" type="object" value="4"/>
+    <property name="path" type="object" value="328"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="38" x="-7724" y="6332" name="To: Adexxin-Hidden">
+   <properties>
+    <property name="attachedTo" type="object" value="4"/>
+    <property name="path" type="object" value="329"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="39" x="-1878.2" y="-5287.92" name="To: North of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="9"/>
+    <property name="path" type="object" value="330"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="40" x="-3702.2" y="-7815.92" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="9"/>
+    <property name="path" type="object" value="331"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="41" x="2667.12" y="-5736.94" name="To: South East Ant Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="18"/>
+    <property name="path" type="object" value="332"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="42" x="3307.12" y="-4808.94" name="To: Floor 2: Cave Exit For S  Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="18"/>
+    <property name="path" type="object" value="77"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="43" x="3563.12" y="-4840.94" name="To: Somewhere small (boss map)">
+   <properties>
+    <property name="attachedTo" type="object" value="18"/>
+    <property name="path" type="object" value="33"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="44" x="-276" y="-2588" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="5"/>
+    <property name="path" type="object" value="273"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="45" x="-8380" y="8516" name="To: Adexxin-castle-garden2">
+   <properties>
+    <property name="attachedTo" type="object" value="6"/>
+    <property name="path" type="object" value="333"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="46" x="-8156" y="8516" name="To: Adexxin-castle-garden2">
+   <properties>
+    <property name="attachedTo" type="object" value="6"/>
+    <property name="path" type="object" value="334"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="47" x="-8348" y="8228" name="To: Adexxin-gate">
+   <properties>
+    <property name="attachedTo" type="object" value="6"/>
+    <property name="path" type="object" value="335"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="48" x="-7966" y="7694" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="7"/>
+    <property name="path" type="object" value="336"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="49" x="-8946" y="7042" name="To: Mistwood Village South Farms">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="337"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="50" x="-8834" y="5954" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="9"/>
+    <property name="path" type="object" value="338"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="51" x="-1920" y="4688" name="To: Modern town">
+   <properties>
+    <property name="attachedTo" type="object" value="10"/>
+    <property name="path" type="object" value="139"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="52" x="-6786" y="8082" name="To: Magma Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="11"/>
+    <property name="path" type="object" value="315"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="53" x="-6562" y="6954" name="To: Adexxin-castle-hall">
+   <properties>
+    <property name="attachedTo" type="object" value="12"/>
+    <property name="path" type="object" value="339"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="54" x="-6370" y="6442" name="To: Adexxin-castle=stairs">
+   <properties>
+    <property name="attachedTo" type="object" value="12"/>
+    <property name="path" type="object" value="340"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="55" x="-1076" y="-4012" name="To: Goblin Caves - Level 1">
+   <properties>
+    <property name="attachedTo" type="object" value="37"/>
+    <property name="path" type="object" value="56"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="56" x="-1108" y="-3820" name="To: Goblin Caves - Level 1">
+   <properties>
+    <property name="attachedTo" type="object" value="37"/>
+    <property name="path" type="object" value="55"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="57" x="-628" y="-4204" name="To: Goblin Cave Start">
+   <properties>
+    <property name="attachedTo" type="object" value="37"/>
+    <property name="path" type="object" value="341"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="58" x="-5932" y="3516" name="To: Adexxin-Castle-outdoor">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="342"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="59" x="-5932" y="2940" name="To: Adexxin-Castle-main">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="343"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="60" x="-1808" y="-12720" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="15"/>
+    <property name="path" type="object" value="344"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="61" x="-5988.5" y="4676.5" name="To: Adexxin-Castle-outdoor">
+   <properties>
+    <property name="attachedTo" type="object" value="16"/>
+    <property name="path" type="object" value="345"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="62" x="-6532.5" y="4196.5" name="To: Adexxin-castle-garden2">
+   <properties>
+    <property name="attachedTo" type="object" value="16"/>
+    <property name="path" type="object" value="346"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="63" x="-6084.5" y="4260.5" name="To: Adexxin-ChillZone">
+   <properties>
+    <property name="attachedTo" type="object" value="16"/>
+    <property name="path" type="object" value="347"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="64" x="-2760" y="4568" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="17"/>
+    <property name="path" type="object" value="348"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="65" x="-3208" y="4728" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="17"/>
+    <property name="path" type="object" value="349"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="66" x="-3112" y="4472" name="To: Mistwood Village Assassin's Guild Top Floor">
+   <properties>
+    <property name="attachedTo" type="object" value="17"/>
+    <property name="path" type="object" value="274"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="67" x="-6928" y="4560" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="18"/>
+    <property name="path" type="object" value="350"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="68" x="-10956.5" y="1900.5" name="To: Floor 2: S Evergreen Hollow ">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="87"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="69" x="-11148.5" y="1516.5" name="To: StartingTownBank">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="351"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="70" x="-11148.5" y="1100.5" name="To: Floor 2:Evergreen Hollow Equipment Shop ">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="352"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="71" x="-10956.5" y="652.5" name="To: Floor 2: N Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="353"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="72" x="-10252.5" y="1292.5" name="To: Floor 2:  E Evergreen Hollow ">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="354"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="73" x="-11244.5" y="812.5" name="To: Floor 2 : Evergreen Hollow Archery Shop ">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="355"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="74" x="-7112" y="6168" name="To: stab/jab forest">
+   <properties>
+    <property name="attachedTo" type="object" value="21"/>
+    <property name="path" type="object" value="356"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="75" x="-7560" y="5304" name="To: bcave">
+   <properties>
+    <property name="attachedTo" type="object" value="21"/>
+    <property name="path" type="object" value="357"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="76" x="-6984" y="3160" name="To: Portal Room">
+   <properties>
+    <property name="attachedTo" type="object" value="22"/>
+    <property name="path" type="object" value="358"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="77" x="-8016" y="3408" name="To: Cave to Winter Town">
+   <properties>
+    <property name="attachedTo" type="object" value="23"/>
+    <property name="path" type="object" value="42"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="78" x="-7568" y="3344" name="To: Floor 2: S Evergreen Hollow ">
+   <properties>
+    <property name="attachedTo" type="object" value="23"/>
+    <property name="path" type="object" value="85"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="79" x="-10784" y="3872" name="To: South East of Mistwood">
+   <properties>
+    <property name="attachedTo" type="object" value="24"/>
+    <property name="path" type="object" value="310"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="80" x="-2852.73" y="-68.72699999999998" name="To: stab/jab forest">
+   <properties>
+    <property name="attachedTo" type="object" value="7"/>
+    <property name="path" type="object" value="359"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="81" x="-314.485" y="1918.12" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="158"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="82" x="-154.485" y="2174.12" name="To: Forest map">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="360"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="83" x="-986.485" y="2494.12" name="To: Cape store">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="361"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="84" x="-634.485" y="1662.12" name="To: Adexxin-start">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="362"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="85" x="-10408" y="3272" name="To: Floor 2: Cave Exit For S  Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="25"/>
+    <property name="path" type="object" value="78"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="86" x="-10088" y="2440" name="To: Floor 2: S Evergreen Hollow House Merchant">
+   <properties>
+    <property name="attachedTo" type="object" value="25"/>
+    <property name="path" type="object" value="98"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="87" x="-10440" y="2344" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="25"/>
+    <property name="path" type="object" value="68"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="88" x="-10696" y="3048" name="To: Floor 2: Evergreen Hollow Boss 1 ">
+   <properties>
+    <property name="attachedTo" type="object" value="25"/>
+    <property name="path" type="object" value="146"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="89" x="-11240" y="104" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="26"/>
+    <property name="path" type="object" value="363"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="90" x="-11016" y="-984" name="To: Magma Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="26"/>
+    <property name="path" type="object" value="364"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="91" x="952" y="10696" name="To: Ocean Map">
+   <properties>
+    <property name="attachedTo" type="object" value="27"/>
+    <property name="path" type="object" value="365"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="92" x="1336" y="10728" name="To: Ocean Map">
+   <properties>
+    <property name="attachedTo" type="object" value="27"/>
+    <property name="path" type="object" value="366"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="93" x="4288" y="9568" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="28"/>
+    <property name="path" type="object" value="367"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="94" x="3936" y="10144" name="To: Dungeon Forge">
+   <properties>
+    <property name="attachedTo" type="object" value="28"/>
+    <property name="path" type="object" value="368"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="95" x="688" y="-11440" name="To: South of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="29"/>
+    <property name="path" type="object" value="369"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="96" x="176" y="-8912" name="To: Goblin Cave Start">
+   <properties>
+    <property name="attachedTo" type="object" value="29"/>
+    <property name="path" type="object" value="370"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="97" x="-4824" y="4776" name="To: Forest map">
+   <properties>
+    <property name="attachedTo" type="object" value="30"/>
+    <property name="path" type="object" value="14"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="98" x="-3920" y="5040" name="To: Floor 2: S Evergreen Hollow ">
+   <properties>
+    <property name="attachedTo" type="object" value="31"/>
+    <property name="path" type="object" value="371"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="99" x="-3668" y="4788" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="32"/>
+    <property name="path" type="object" value="111"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="100" x="-2776" y="5400" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="33"/>
+    <property name="path" type="object" value="372"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="101" x="-7988" y="2980" name="To: Modern town">
+   <properties>
+    <property name="attachedTo" type="object" value="35"/>
+    <property name="path" type="object" value="135"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="102" x="4492" y="-988" name="To: stab/jab forest">
+   <properties>
+    <property name="attachedTo" type="object" value="45"/>
+    <property name="path" type="object" value="373"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="103" x="5100" y="-1116" name="To: Modern town">
+   <properties>
+    <property name="attachedTo" type="object" value="45"/>
+    <property name="path" type="object" value="374"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="104" x="-8424" y="1144" name="To: Adexxin-castle-garden">
+   <properties>
+    <property name="attachedTo" type="object" value="36"/>
+    <property name="path" type="object" value="375"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="105" x="-7944" y="536" name="To: Adexxin-castle-garden3">
+   <properties>
+    <property name="attachedTo" type="object" value="36"/>
+    <property name="path" type="object" value="376"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="106" x="-8296" y="536" name="To: Adexxin-castle-garden3">
+   <properties>
+    <property name="attachedTo" type="object" value="36"/>
+    <property name="path" type="object" value="377"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="107" x="-960" y="9856" name="To: Adexxin-castle=stairs">
+   <properties>
+    <property name="attachedTo" type="object" value="37"/>
+    <property name="path" type="object" value="378"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="108" x="-544" y="10464" name="To: Adexxin-Darkside">
+   <properties>
+    <property name="attachedTo" type="object" value="37"/>
+    <property name="path" type="object" value="379"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="109" x="1608" y="-1128" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="380"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="110" x="2184" y="536" name="To: Desert Abandoned Building">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="381"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="111" x="2152" y="1208" name="To: Desert gear Shop">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="382"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="112" x="2408" y="-136" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="383"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="113" x="3272" y="120" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="384"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="114" x="2408" y="-40" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="385"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="115" x="3336" y="-1128" name="To: Threnn">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="386"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="116" x="-8528" y="3632" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="38"/>
+    <property name="path" type="object" value="387"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="117" x="-7716" y="7428" name="To: Forest map">
+   <properties>
+    <property name="attachedTo" type="object" value="39"/>
+    <property name="path" type="object" value="13"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="118" x="563.45" y="1533.15" name="To: Mistwood Village South Farms">
+   <properties>
+    <property name="attachedTo" type="object" value="6"/>
+    <property name="path" type="object" value="388"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="119" x="-9000" y="4072" name="To: Adexxin-castle-hall">
+   <properties>
+    <property name="attachedTo" type="object" value="40"/>
+    <property name="path" type="object" value="389"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="120" x="-9288" y="4008" name="To: Adexxin-castle-garden">
+   <properties>
+    <property name="attachedTo" type="object" value="40"/>
+    <property name="path" type="object" value="390"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="121" x="-9000" y="4424" name="To: Adexxin-start">
+   <properties>
+    <property name="attachedTo" type="object" value="40"/>
+    <property name="path" type="object" value="391"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="122" x="3225.3" y="-3283.06" name="To: Goblin Caves - Level 1">
+   <properties>
+    <property name="attachedTo" type="object" value="28"/>
+    <property name="path" type="object" value="392"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="123" x="3225.3" y="-2451.06" name="To: Hank Feo Jera Underground City">
+   <properties>
+    <property name="attachedTo" type="object" value="28"/>
+    <property name="path" type="object" value="393"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="124" x="-1940" y="-3100" name="To: Gourdath's Lair">
+   <properties>
+    <property name="attachedTo" type="object" value="35"/>
+    <property name="path" type="object" value="44"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="125" x="-1780" y="-3740" name="To: Goblin Caves - Level 1">
+   <properties>
+    <property name="attachedTo" type="object" value="35"/>
+    <property name="path" type="object" value="394"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="126" x="-6792" y="-11608" name="To: NE Caves">
+   <properties>
+    <property name="attachedTo" type="object" value="41"/>
+    <property name="path" type="object" value="395"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="127" x="-5320" y="-10776" name="To: Nightshade Cove East MWV ">
+   <properties>
+    <property name="attachedTo" type="object" value="41"/>
+    <property name="path" type="object" value="396"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="128" x="-6312" y="-9720" name="To: East Of Town MWV">
+   <properties>
+    <property name="attachedTo" type="object" value="41"/>
+    <property name="path" type="object" value="397"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="129" x="-7208" y="-10936" name="To: Mistwood North East Connect">
+   <properties>
+    <property name="attachedTo" type="object" value="41"/>
+    <property name="path" type="object" value="398"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="130" x="-6096" y="2560" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="42"/>
+    <property name="path" type="object" value="399"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="131" x="-5968" y="2080" name="To: Cape store">
+   <properties>
+    <property name="attachedTo" type="object" value="42"/>
+    <property name="path" type="object" value="400"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="132" x="-5712" y="2080" name="To: Hat shop map">
+   <properties>
+    <property name="attachedTo" type="object" value="42"/>
+    <property name="path" type="object" value="48"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="133" x="-5328" y="2144" name="To: Modern town">
+   <properties>
+    <property name="attachedTo" type="object" value="42"/>
+    <property name="path" type="object" value="136"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="134" x="4656" y="8528" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="43"/>
+    <property name="path" type="object" value="401"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="135" x="5213.67" y="-3482.21" name="To: Under Guild Hall">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="101"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="136" x="4061.67" y="-3066.21" name="To: West of Town">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="402"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="137" x="5373.67" y="-3418.21" name="To: Modern Town Barber">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="403"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="138" x="4413.67" y="-2842.21" name="To: Smith in spawn Town">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="404"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="139" x="4413.67" y="-2586.21" name="To: Magic Shop in Modern Town">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="51"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="140" x="5053.67" y="-3354.21" name="To: Mistwood Village Assassin's Guild">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="405"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="141" x="4445.67" y="-2106.21" name="To: Portal Room">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="406"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="142" x="-8612" y="2980" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="44"/>
+    <property name="path" type="object" value="407"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="143" x="-566.879" y="-5662.64" name="To: Mistwood Village South Farms">
+   <properties>
+    <property name="attachedTo" type="object" value="4"/>
+    <property name="path" type="object" value="408"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="144" x="-1494.879" y="-5374.64" name="To: Goblin Caves - Level 1">
+   <properties>
+    <property name="attachedTo" type="object" value="4"/>
+    <property name="path" type="object" value="409"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="145" x="-9392" y="3680" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="45"/>
+    <property name="path" type="object" value="410"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="146" x="-6456" y="2504" name="To: Floor 2: S Evergreen Hollow ">
+   <properties>
+    <property name="attachedTo" type="object" value="46"/>
+    <property name="path" type="object" value="88"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="147" x="-9384" y="2856" name="To: Modern town">
+   <properties>
+    <property name="attachedTo" type="object" value="47"/>
+    <property name="path" type="object" value="138"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="148" x="-7700" y="2660" name="To: Adexxin-Darkside">
+   <properties>
+    <property name="attachedTo" type="object" value="48"/>
+    <property name="path" type="object" value="411"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="149" x="-8808" y="2248" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="412"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="150" x="-8808" y="2440" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="412"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="151" x="-8808" y="2120" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="412"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="152" x="-8808" y="2312" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="412"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="153" x="-8808" y="2184" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="412"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="154" x="-8808" y="2376" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="412"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="155" x="-8552" y="2440" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="413"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="156" x="-8552" y="2120" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="413"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="157" x="-8360" y="2600" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="414"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="158" x="-8360" y="1992" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="414"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="159" x="-1986" y="-790" name="To: West of Town">
+   <properties>
+    <property name="attachedTo" type="object" value="44"/>
+    <property name="path" type="object" value="415"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="160" x="-2850" y="-118" name="To: South of jab/stab">
+   <properties>
+    <property name="attachedTo" type="object" value="44"/>
+    <property name="path" type="object" value="80"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="161" x="-2690" y="-1366" name="To: North Jab/stab">
+   <properties>
+    <property name="attachedTo" type="object" value="44"/>
+    <property name="path" type="object" value="416"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="162" x="4320" y="6848" name="To: Adexxin-castle-garden3">
+   <properties>
+    <property name="attachedTo" type="object" value="50"/>
+    <property name="path" type="object" value="417"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="163" x="4256" y="6368" name="To: Adexxin-town">
+   <properties>
+    <property name="attachedTo" type="object" value="50"/>
+    <property name="path" type="object" value="418"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="164" x="-6224" y="1136" name="To: Modern town">
+   <properties>
+    <property name="attachedTo" type="object" value="51"/>
+    <property name="path" type="object" value="419"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="165" x="-6800" y="944" name="To: twilight zone">
+   <properties>
+    <property name="attachedTo" type="object" value="51"/>
+    <property name="path" type="object" value="420"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="166" x="-9512.25" y="1768.25" name="To: Adexxin-Castle-outdoor">
+   <properties>
+    <property name="attachedTo" type="object" value="52"/>
+    <property name="path" type="object" value="421"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="167" x="-9512.25" y="2376.25" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="52"/>
+    <property name="path" type="object" value="422"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="168" x="-7432" y="2024" name="To: Adexxin-castle=stairs">
+   <properties>
+    <property name="attachedTo" type="object" value="53"/>
+    <property name="path" type="object" value="423"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="169" x="-7432" y="1768" name="To: Adexxin-Jungle">
+   <properties>
+    <property name="attachedTo" type="object" value="53"/>
+    <property name="path" type="object" value="424"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="170" x="6248" y="6568" name="To: Adexxin-smith">
+   <properties>
+    <property name="attachedTo" type="object" value="54"/>
+    <property name="path" type="object" value="425"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="171" x="6536" y="6248" name="To: Adexxin-armor">
+   <properties>
+    <property name="attachedTo" type="object" value="54"/>
+    <property name="path" type="object" value="426"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="172" x="6696" y="6600" name="To: Adexxin-New">
+   <properties>
+    <property name="attachedTo" type="object" value="54"/>
+    <property name="path" type="object" value="427"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="173" x="6600" y="6920" name="To: Adexxin-newtown-house">
+   <properties>
+    <property name="attachedTo" type="object" value="54"/>
+    <property name="path" type="object" value="428"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="174" x="5864" y="6248" name="To: Adexxin-gate">
+   <properties>
+    <property name="attachedTo" type="object" value="54"/>
+    <property name="path" type="object" value="429"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="175" x="-8204" y="1676" name="To: Adexxin-town">
+   <properties>
+    <property name="attachedTo" type="object" value="55"/>
+    <property name="path" type="object" value="430"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="176" x="-9228" y="1484" name="To: Adexxin-town">
+   <properties>
+    <property name="attachedTo" type="object" value="56"/>
+    <property name="path" type="object" value="431"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="177" x="5400" y="5288" name="To: Adexxin-town">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="432"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="178" x="6584" y="5064" name="To: Adexxin-church">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="433"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="179" x="6296" y="5224" name="To: Adexxin-church">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="434"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="180" x="5880" y="5000" name="To: Adexxin-fightmap">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="435"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="181" x="5880" y="4648" name="To: Adexxin-bnb">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="218"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="182" x="5464" y="5000" name="To: Adexxin-Casino">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="436"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="183" x="-11328" y="-10720" name="To: Mistwood Village West Flower Fields">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="437"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="184" x="-9824" y="-11072" name="To: Mistwood Village Magic shop">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="438"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="185" x="-11168" y="-8352" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="439"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="186" x="-8768" y="-11136" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="440"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="187" x="-8576" y="-10464" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="441"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="188" x="-10912" y="-10240" name="To: Mistwood Village Steel Smith">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="442"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="189" x="-10368" y="-11040" name="To: Adventurers Guild Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="443"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="190" x="-11040" y="-9216" name="To: General Store Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="444"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="191" x="-11136" y="-9824" name="To: Mistwood Village Barber">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="445"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="192" x="-9888" y="-8192" name="To: South of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="446"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="193" x="-11040" y="-10976" name="To: Mistwood Village Church">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="447"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="194" x="-8160" y="-9632" name="To: East Of Town MWV">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="448"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="195" x="-9376" y="-11360" name="To: North of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="449"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="196" x="-10112" y="-8608" name="To: Mistwood Village Assassin's Guild">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="450"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="197" x="-8576" y="-8192" name="To: South East of Mistwood">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="451"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="198" x="7912" y="4280" name="To: Adexxin-Hidden">
+   <properties>
+    <property name="attachedTo" type="object" value="60"/>
+    <property name="path" type="object" value="452"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="199" x="7560" y="4344" name="To: Adexxin-jungle-hut">
+   <properties>
+    <property name="attachedTo" type="object" value="60"/>
+    <property name="path" type="object" value="453"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="200" x="7208" y="5048" name="To: Adexxin-jungle2">
+   <properties>
+    <property name="attachedTo" type="object" value="60"/>
+    <property name="path" type="object" value="454"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="201" x="-9156" y="708" name="To: Adexxin-Jungle">
+   <properties>
+    <property name="attachedTo" type="object" value="61"/>
+    <property name="path" type="object" value="455"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="202" x="8976" y="1072" name="To: Adventurers Guild Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="62"/>
+    <property name="path" type="object" value="456"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="203" x="9232" y="1328" name="To: Adventurers Guild Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="62"/>
+    <property name="path" type="object" value="457"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="204" x="9488" y="1808" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="62"/>
+    <property name="path" type="object" value="458"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="205" x="9176" y="-2360" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="63"/>
+    <property name="path" type="object" value="459"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="206" x="9616" y="2640" name="To: Adexxin-New">
+   <properties>
+    <property name="attachedTo" type="object" value="64"/>
+    <property name="path" type="object" value="460"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="207" x="-4660" y="2068" name="To: Adexxin-Pvp">
+   <properties>
+    <property name="attachedTo" type="object" value="65"/>
+    <property name="path" type="object" value="213"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="208" x="-4884" y="2068" name="To: Adexxin-Pvp">
+   <properties>
+    <property name="attachedTo" type="object" value="65"/>
+    <property name="path" type="object" value="215"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="209" x="-4660" y="1844" name="To: Adexxin-Pvp">
+   <properties>
+    <property name="attachedTo" type="object" value="65"/>
+    <property name="path" type="object" value="214"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="210" x="-4884" y="1844" name="To: Adexxin-Pvp">
+   <properties>
+    <property name="attachedTo" type="object" value="65"/>
+    <property name="path" type="object" value="212"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="211" x="-4564" y="1940" name="To: Adexxin-New">
+   <properties>
+    <property name="attachedTo" type="object" value="65"/>
+    <property name="path" type="object" value="461"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="212" x="-9496" y="120" name="To: Adexxin-fightmap">
+   <properties>
+    <property name="attachedTo" type="object" value="66"/>
+    <property name="path" type="object" value="208"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="213" x="-9080" y="-296" name="To: Adexxin-fightmap">
+   <properties>
+    <property name="attachedTo" type="object" value="66"/>
+    <property name="path" type="object" value="209"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="214" x="-9080" y="120" name="To: Adexxin-fightmap">
+   <properties>
+    <property name="attachedTo" type="object" value="66"/>
+    <property name="path" type="object" value="207"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="215" x="-9496" y="-296" name="To: Adexxin-fightmap">
+   <properties>
+    <property name="attachedTo" type="object" value="66"/>
+    <property name="path" type="object" value="210"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="216" x="-4368" y="2720" name="To: Adexxin-town">
+   <properties>
+    <property name="attachedTo" type="object" value="67"/>
+    <property name="path" type="object" value="462"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="217" x="-1412" y="1332" name="To: Adexxin-New">
+   <properties>
+    <property name="attachedTo" type="object" value="68"/>
+    <property name="path" type="object" value="463"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="218" x="-9596" y="1372" name="To: Adexxin-New">
+   <properties>
+    <property name="attachedTo" type="object" value="69"/>
+    <property name="path" type="object" value="464"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="219" x="-9628" y="1308" name="To: Adexxin-bnb-upstairs">
+   <properties>
+    <property name="attachedTo" type="object" value="69"/>
+    <property name="path" type="object" value="220"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="220" x="-5504" y="1504" name="To: Adexxin-bnb">
+   <properties>
+    <property name="attachedTo" type="object" value="70"/>
+    <property name="path" type="object" value="465"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="221" x="-1870.25" y="1646.25" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="466"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="222" x="-2286.25" y="2510.25" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="467"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="223" x="-4142.25" y="4014.25" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="468"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="224" x="-2638.25" y="2510.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="229"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="225" x="-2606.25" y="3950.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="469"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="226" x="-3246.25" y="3470.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="470"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="227" x="-2670.25" y="3918.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="471"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="228" x="-3214.25" y="2766.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="472"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="229" x="-2318.25" y="3150.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="224"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="230" x="-4174.25" y="1742.25" name="To: Mistwood Village Church">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="473"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="231" x="-2798.25" y="3982.25" name="To: Hank Feo Jera Underground City">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="474"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="232" x="-3406.25" y="3342.25" name="To: Mistwood Village Assassin's Guild">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="475"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="233" x="8864.25" y="-544.25" name="To: Adexxin-Jungle">
+   <properties>
+    <property name="attachedTo" type="object" value="72"/>
+    <property name="path" type="object" value="476"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="234" x="9248" y="-1664" name="To: bcave">
+   <properties>
+    <property name="attachedTo" type="object" value="73"/>
+    <property name="path" type="object" value="477"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="235" x="8992" y="-1632" name="To: bcave">
+   <properties>
+    <property name="attachedTo" type="object" value="73"/>
+    <property name="path" type="object" value="478"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="236" x="9728" y="-992" name="To: North Jab/stab">
+   <properties>
+    <property name="attachedTo" type="object" value="73"/>
+    <property name="path" type="object" value="479"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="237" x="8672" y="-1376" name="To: bcavebs">
+   <properties>
+    <property name="attachedTo" type="object" value="73"/>
+    <property name="path" type="object" value="480"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="238" x="-7928" y="5176" name="To: bcave">
+   <properties>
+    <property name="attachedTo" type="object" value="74"/>
+    <property name="path" type="object" value="481"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="239" x="-2864" y="-3840" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="75"/>
+    <property name="path" type="object" value="482"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="240" x="-564" y="756" name="To: Adexxin-ChillZone">
+   <properties>
+    <property name="attachedTo" type="object" value="76"/>
+    <property name="path" type="object" value="483"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="241" x="-564" y="1268" name="To: Adexxin-ChillZone">
+   <properties>
+    <property name="attachedTo" type="object" value="76"/>
+    <property name="path" type="object" value="483"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="242" x="-11216" y="-2960" name="To: Adexxin-ChillZone">
+   <properties>
+    <property name="attachedTo" type="object" value="77"/>
+    <property name="path" type="object" value="483"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="243" x="-10416" y="-4976" name="To: Adexxin-ChillZone">
+   <properties>
+    <property name="attachedTo" type="object" value="77"/>
+    <property name="path" type="object" value="483"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="244" x="-10416" y="-1872" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="77"/>
+    <property name="path" type="object" value="484"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="245" x="-6984" y="-1560" name="To: Floor 2: N Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="79"/>
+    <property name="path" type="object" value="485"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="246" x="1241.5" y="246.5" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="80"/>
+    <property name="path" type="object" value="486"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="247" x="208" y="1296" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="81"/>
+    <property name="path" type="object" value="487"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="248" x="-9776" y="-6128" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="82"/>
+    <property name="path" type="object" value="488"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="249" x="-2880" y="-2336" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="84"/>
+    <property name="path" type="object" value="489"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="250" x="7600" y="-3792" name="To: General Store Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="85"/>
+    <property name="path" type="object" value="490"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="251" x="7856" y="-3536" name="To: General Store Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="85"/>
+    <property name="path" type="object" value="491"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="252" x="7632" y="-3312" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="85"/>
+    <property name="path" type="object" value="492"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="253" x="-3704" y="-3240" name="To: Hank Feo Jera Underground City">
+   <properties>
+    <property name="attachedTo" type="object" value="87"/>
+    <property name="path" type="object" value="493"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="254" x="2389.25" y="9706.75" name="To: Mistwood Village South Farms">
+   <properties>
+    <property name="attachedTo" type="object" value="89"/>
+    <property name="path" type="object" value="494"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="255" x="2133.25" y="9098.75" name="To: Hank Under Ted's Barn">
+   <properties>
+    <property name="attachedTo" type="object" value="89"/>
+    <property name="path" type="object" value="495"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="256" x="2472" y="6424" name="To: South East Ant Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="496"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="257" x="2376" y="7672" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="256"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="258" x="3016" y="7480" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="497"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="259" x="1672" y="6680" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="498"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="260" x="2216" y="7544" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="499"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="261" x="1896" y="6424" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="499"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="262" x="1672" y="7224" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="499"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="263" x="1928" y="7448" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="499"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="264" x="2120" y="7096" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="499"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="265" x="1704" y="7896" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="500"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="266" x="1928" y="8312" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="501"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="267" x="2984" y="6424" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="502"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="268" x="2408" y="8312" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="503"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="269" x="2280" y="7480" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="504"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="270" x="3272" y="6936" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="258"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="271" x="1736" y="7544" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="505"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="272" x="3112" y="8312" name="To: North of Town">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="506"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="273" x="3176" y="6488" name="To: Gourdath's Lair">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="44"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="274" x="-3972" y="-4604" name="To: Mistwood Village Assassin's Guild">
+   <properties>
+    <property name="attachedTo" type="object" value="92"/>
+    <property name="path" type="object" value="66"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="275" x="-2742.25" y="-4521.75" name="To: Tutorial Area">
+   <properties>
+    <property name="attachedTo" type="object" value="93"/>
+    <property name="path" type="object" value="507"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="276" x="2344" y="3224" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="94"/>
+    <property name="path" type="object" value="508"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="277" x="3656" y="2392" name="To: North of Nightshade Cove">
+   <properties>
+    <property name="attachedTo" type="object" value="94"/>
+    <property name="path" type="object" value="509"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="278" x="5466.75" y="-4410.75" name="To: Floor 2: S Evergreen Hollow ">
+   <properties>
+    <property name="attachedTo" type="object" value="95"/>
+    <property name="path" type="object" value="87"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="279" x="5274.75" y="-4794.75" name="To: StartingTownBank">
+   <properties>
+    <property name="attachedTo" type="object" value="95"/>
+    <property name="path" type="object" value="351"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="280" x="5274.75" y="-5210.75" name="To: Floor 2:Evergreen Hollow Equipment Shop ">
+   <properties>
+    <property name="attachedTo" type="object" value="95"/>
+    <property name="path" type="object" value="352"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="281" x="5466.75" y="-5658.75" name="To: Floor 2: N Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="95"/>
+    <property name="path" type="object" value="353"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="282" x="6170.75" y="-5018.75" name="To: Floor 2:  E Evergreen Hollow ">
+   <properties>
+    <property name="attachedTo" type="object" value="95"/>
+    <property name="path" type="object" value="354"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="283" x="5178.75" y="-5498.75" name="To: Floor 2 : Evergreen Hollow Archery Shop ">
+   <properties>
+    <property name="attachedTo" type="object" value="95"/>
+    <property name="path" type="object" value="355"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="284" x="6888" y="3480" name="To: Nightshade Cove East MWV ">
+   <properties>
+    <property name="attachedTo" type="object" value="96"/>
+    <property name="path" type="object" value="510"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="285" x="5544" y="2616" name="To: Astraea's Abode">
+   <properties>
+    <property name="attachedTo" type="object" value="96"/>
+    <property name="path" type="object" value="511"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="286" x="-5824" y="-8160" name="To: North of Nightshade Cove">
+   <properties>
+    <property name="attachedTo" type="object" value="97"/>
+    <property name="path" type="object" value="512"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="287" x="-6912" y="-8000" name="To: Secret Entrance to Astraea's Abode">
+   <properties>
+    <property name="attachedTo" type="object" value="97"/>
+    <property name="path" type="object" value="320"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="288" x="6760" y="-2408" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="99"/>
+    <property name="path" type="object" value="513"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="289" x="7880" y="-1608" name="To: South East Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="99"/>
+    <property name="path" type="object" value="514"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="290" x="7720" y="-2856" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="99"/>
+    <property name="path" type="object" value="515"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="291" x="6496" y="-960" name="To: East Of Town MWV">
+   <properties>
+    <property name="attachedTo" type="object" value="100"/>
+    <property name="path" type="object" value="516"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="292" x="5120" y="544" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="101"/>
+    <property name="path" type="object" value="517"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="293" x="3872" y="-256" name="To: North of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="101"/>
+    <property name="path" type="object" value="518"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="294" x="-3520" y="-8992" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="102"/>
+    <property name="path" type="object" value="519"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="295" x="-3680" y="-10240" name="To: North of Town">
+   <properties>
+    <property name="attachedTo" type="object" value="102"/>
+    <property name="path" type="object" value="520"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="296" x="-3392" y="-9824" name="To: Mistwood North East Connect">
+   <properties>
+    <property name="attachedTo" type="object" value="102"/>
+    <property name="path" type="object" value="521"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="297" x="-8536" y="-4808" name="To: Tutorial 2">
+   <properties>
+    <property name="attachedTo" type="object" value="105"/>
+    <property name="path" type="object" value="522"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="298" x="-8376" y="-3720" name="To: Mistwood Village South Farms">
+   <properties>
+    <property name="attachedTo" type="object" value="105"/>
+    <property name="path" type="object" value="523"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="299" x="-8280" y="-5128" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="105"/>
+    <property name="path" type="object" value="524"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="300" x="-7448" y="-4488" name="To: South East of Mistwood">
+   <properties>
+    <property name="attachedTo" type="object" value="105"/>
+    <property name="path" type="object" value="525"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="301" x="1100" y="-3868" name="To: Character Selection Screen">
+   <properties>
+    <property name="attachedTo" type="object" value="106"/>
+    <property name="path" type="object" value="526"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="302" x="1324" y="-1820" name="To: Tutorial 2">
+   <properties>
+    <property name="attachedTo" type="object" value="106"/>
+    <property name="path" type="object" value="527"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="303" x="136" y="-8104" name="To: Tutorial Area">
+   <properties>
+    <property name="attachedTo" type="object" value="107"/>
+    <property name="path" type="object" value="528"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="304" x="1160" y="-7656" name="To: South of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="107"/>
+    <property name="path" type="object" value="529"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="305" x="168" y="-7240" name="To: Tutorial Blacksmith">
+   <properties>
+    <property name="attachedTo" type="object" value="107"/>
+    <property name="path" type="object" value="530"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="306" x="744" y="-8104" name="To: Tutorial Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="107"/>
+    <property name="path" type="object" value="531"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="307" x="-660" y="-2796" name="To: Tutorial 2">
+   <properties>
+    <property name="attachedTo" type="object" value="108"/>
+    <property name="path" type="object" value="532"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="308" x="-5540" y="-1756" name="To: South of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="109"/>
+    <property name="path" type="object" value="533"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="309" x="-4580" y="-2204" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="109"/>
+    <property name="path" type="object" value="534"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="310" x="-4164" y="-1756" name="To: South East Ant Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="109"/>
+    <property name="path" type="object" value="79"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="311" x="-8208" y="144" name="To: Tutorial 2">
+   <properties>
+    <property name="attachedTo" type="object" value="110"/>
+    <property name="path" type="object" value="535"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="312" x="-8528" y="-176" name="To: Tutorial Cave Level 2 ">
+   <properties>
+    <property name="attachedTo" type="object" value="110"/>
+    <property name="path" type="object" value="316"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="313" x="-6436" y="-2348" name="To: NE Caves">
+   <properties>
+    <property name="attachedTo" type="object" value="111"/>
+    <property name="path" type="object" value="536"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="314" x="-6180" y="-5388" name="To: Secret Entrance to Astraea's Abode">
+   <properties>
+    <property name="attachedTo" type="object" value="111"/>
+    <property name="path" type="object" value="537"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="315" x="-5316" y="-2572" name="To: Mimic Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="111"/>
+    <property name="path" type="object" value="52"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="316" x="-1152" y="-9216" name="To: Tutorial Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="112"/>
+    <property name="path" type="object" value="312"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="317" x="-1824" y="-8416" name="To: Tutorial Cave Level 3">
+   <properties>
+    <property name="attachedTo" type="object" value="112"/>
+    <property name="path" type="object" value="318"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="318" x="2096" y="-7952" name="To: Tutorial Cave Level 2 ">
+   <properties>
+    <property name="attachedTo" type="object" value="113"/>
+    <property name="path" type="object" value="317"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="319" x="-7288" y="216" name="To: Magma Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="114"/>
+    <property name="path" type="object" value="538"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="320" x="-7384" y="-200" name="To: Astraea's Abode">
+   <properties>
+    <property name="attachedTo" type="object" value="114"/>
+    <property name="path" type="object" value="287"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="321" x="-6116.5" y="4260.5" name="To: Adexxin-castle-garden">
+   <properties>
+    <property name="attachedTo" type="object" value="16"/>
+    <property name="path" type="object" value="321"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="322" x="-7716" y="7460" name="To: Reaper boss">
+   <properties>
+    <property name="attachedTo" type="object" value="39"/>
+    <property name="path" type="object" value="322"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="323" x="-186.485" y="2174.12" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="323"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="324" x="5373.67" y="-3386.21" name="To: Modern town">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="324"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="325" x="-544" y="10496" name="To: Adexxin-Optic">
+   <properties>
+    <property name="attachedTo" type="object" value="37"/>
+    <property name="path" type="object" value="325"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="326" x="-7732" y="2628" name="To: adexxin-Darkside-northpath">
+   <properties>
+    <property name="attachedTo" type="object" value="48"/>
+    <property name="path" type="object" value="326"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="327" x="-960" y="9888" name="To: Adexxin-Optic">
+   <properties>
+    <property name="attachedTo" type="object" value="37"/>
+    <property name="path" type="object" value="327"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="328" x="-6370" y="6474" name="To: Adexxin-Castle-main">
+   <properties>
+    <property name="attachedTo" type="object" value="12"/>
+    <property name="path" type="object" value="328"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="329" x="-7400" y="1960" name="To: Adexxin-Hidden">
+   <properties>
+    <property name="attachedTo" type="object" value="53"/>
+    <property name="path" type="object" value="329"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="330" x="-3680" y="-10208" name="To: North of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="102"/>
+    <property name="path" type="object" value="330"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="331" x="3112" y="8280" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="331"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="332" x="-10528" y="3552" name="To: South East Ant Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="24"/>
+    <property name="path" type="object" value="332"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="333" x="-8296" y="568" name="To: Adexxin-castle-garden2">
+   <properties>
+    <property name="attachedTo" type="object" value="36"/>
+    <property name="path" type="object" value="333"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="334" x="-7912" y="568" name="To: Adexxin-castle-garden2">
+   <properties>
+    <property name="attachedTo" type="object" value="36"/>
+    <property name="path" type="object" value="334"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="335" x="4320" y="6816" name="To: Adexxin-gate">
+   <properties>
+    <property name="attachedTo" type="object" value="50"/>
+    <property name="path" type="object" value="335"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="336" x="-922.485" y="2142.12" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="336"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="337" x="-560" y="-11408" name="To: Mistwood Village South Farms">
+   <properties>
+    <property name="attachedTo" type="object" value="29"/>
+    <property name="path" type="object" value="337"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="338" x="3304" y="-1128" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="338"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="339" x="-5900" y="2972" name="To: Adexxin-castle-hall">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="339"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="340" x="-7692" y="6876" name="To: Adexxin-castle=stairs">
+   <properties>
+    <property name="attachedTo" type="object" value="4"/>
+    <property name="path" type="object" value="340"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="341" x="-1462.879" y="-5374.64" name="To: Goblin Cave Start">
+   <properties>
+    <property name="attachedTo" type="object" value="4"/>
+    <property name="path" type="object" value="341"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="342" x="-9000" y="4104" name="To: Adexxin-Castle-outdoor">
+   <properties>
+    <property name="attachedTo" type="object" value="40"/>
+    <property name="path" type="object" value="342"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="343" x="-6530" y="6922" name="To: Adexxin-Castle-main">
+   <properties>
+    <property name="attachedTo" type="object" value="12"/>
+    <property name="path" type="object" value="343"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="344" x="-11296" y="-10720" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="344"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="345" x="-9288" y="4040" name="To: Adexxin-Castle-outdoor">
+   <properties>
+    <property name="attachedTo" type="object" value="40"/>
+    <property name="path" type="object" value="345"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="346" x="-8424" y="1112" name="To: Adexxin-castle-garden2">
+   <properties>
+    <property name="attachedTo" type="object" value="36"/>
+    <property name="path" type="object" value="346"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="347" x="-7288" y="8792" name="To: Adexxin-ChillZone">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="347"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="348" x="-10080" y="-8640" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="348"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="349" x="-3374.25" y="3342.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="349"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="350" x="-7080" y="-11160" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="41"/>
+    <property name="path" type="object" value="350"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="351" x="-8560" y="3632" name="To: StartingTownBank">
+   <properties>
+    <property name="attachedTo" type="object" value="38"/>
+    <property name="path" type="object" value="351"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="352" x="-9424" y="3680" name="To: Floor 2:Evergreen Hollow Equipment Shop ">
+   <properties>
+    <property name="attachedTo" type="object" value="45"/>
+    <property name="path" type="object" value="352"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="353" x="4656" y="8496" name="To: Floor 2: N Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="43"/>
+    <property name="path" type="object" value="353"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="354" x="-2832" y="-3840" name="To: Floor 2:  E Evergreen Hollow ">
+   <properties>
+    <property name="attachedTo" type="object" value="75"/>
+    <property name="path" type="object" value="354"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="355" x="208" y="1264" name="To: Floor 2 : Evergreen Hollow Archery Shop ">
+   <properties>
+    <property name="attachedTo" type="object" value="81"/>
+    <property name="path" type="object" value="355"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="356" x="-2690" y="-1334" name="To: stab/jab forest">
+   <properties>
+    <property name="attachedTo" type="object" value="44"/>
+    <property name="path" type="object" value="356"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="357" x="9696" y="-992" name="To: bcave">
+   <properties>
+    <property name="attachedTo" type="object" value="73"/>
+    <property name="path" type="object" value="357"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="358" x="-6768" y="976" name="To: Portal Room">
+   <properties>
+    <property name="attachedTo" type="object" value="51"/>
+    <property name="path" type="object" value="358"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="359" x="-2850" y="-150" name="To: stab/jab forest">
+   <properties>
+    <property name="attachedTo" type="object" value="44"/>
+    <property name="path" type="object" value="359"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="360" x="-79" y="2181" name="To: Forest map">
+   <properties>
+    <property name="attachedTo" type="object" value="12"/>
+    <property name="path" type="object" value="360"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="361" x="-2776" y="5368" name="To: Cape store">
+   <properties>
+    <property name="attachedTo" type="object" value="33"/>
+    <property name="path" type="object" value="361"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="362" x="-9512.25" y="2344.25" name="To: Adexxin-start">
+   <properties>
+    <property name="attachedTo" type="object" value="52"/>
+    <property name="path" type="object" value="362"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="363" x="-6760" y="-11576" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="41"/>
+    <property name="path" type="object" value="363"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="364" x="-6436" y="-2380" name="To: Magma Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="111"/>
+    <property name="path" type="object" value="364"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="365" x="1336" y="10696" name="To: Ocean Map">
+   <properties>
+    <property name="attachedTo" type="object" value="27"/>
+    <property name="path" type="object" value="365"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="366" x="920" y="10696" name="To: Ocean Map">
+   <properties>
+    <property name="attachedTo" type="object" value="27"/>
+    <property name="path" type="object" value="366"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="367" x="-2766.25" y="4046.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="367"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="368" x="-3736" y="-3240" name="To: Dungeon Forge">
+   <properties>
+    <property name="attachedTo" type="object" value="87"/>
+    <property name="path" type="object" value="368"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="369" x="-8376" y="-3752" name="To: South of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="105"/>
+    <property name="path" type="object" value="369"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="370" x="-566.879" y="-5630.64" name="To: Goblin Cave Start">
+   <properties>
+    <property name="attachedTo" type="object" value="4"/>
+    <property name="path" type="object" value="370"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="371" x="-10056" y="2440" name="To: Floor 2: S Evergreen Hollow ">
+   <properties>
+    <property name="attachedTo" type="object" value="25"/>
+    <property name="path" type="object" value="371"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="372" x="-986.485" y="2558.12" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="372"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="373" x="-2018" y="-790" name="To: stab/jab forest">
+   <properties>
+    <property name="attachedTo" type="object" value="44"/>
+    <property name="path" type="object" value="373"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="374" x="4093.67" y="-3066.21" name="To: Modern town">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="374"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="375" x="-6500.5" y="4228.5" name="To: Adexxin-castle-garden">
+   <properties>
+    <property name="attachedTo" type="object" value="16"/>
+    <property name="path" type="object" value="375"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="376" x="-8156" y="8484" name="To: Adexxin-castle-garden3">
+   <properties>
+    <property name="attachedTo" type="object" value="6"/>
+    <property name="path" type="object" value="376"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="377" x="-8380" y="8484" name="To: Adexxin-castle-garden3">
+   <properties>
+    <property name="attachedTo" type="object" value="6"/>
+    <property name="path" type="object" value="377"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="378" x="-7564" y="6844" name="To: Adexxin-castle=stairs">
+   <properties>
+    <property name="attachedTo" type="object" value="4"/>
+    <property name="path" type="object" value="378"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="379" x="-9318" y="7590" name="To: Adexxin-Darkside">
+   <properties>
+    <property name="attachedTo" type="object" value="3"/>
+    <property name="path" type="object" value="379"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="380" x="-6472" y="-11192" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="41"/>
+    <property name="path" type="object" value="380"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="381" x="-8644" y="2980" name="To: Desert Abandoned Building">
+   <properties>
+    <property name="attachedTo" type="object" value="44"/>
+    <property name="path" type="object" value="381"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="382" x="-3700" y="4788" name="To: Desert gear Shop">
+   <properties>
+    <property name="attachedTo" type="object" value="32"/>
+    <property name="path" type="object" value="382"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="383" x="2408" y="-8" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="383"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="384" x="3080" y="152" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="384"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="385" x="2376" y="-168" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="385"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="386" x="-8802" y="5954" name="To: Threnn">
+   <properties>
+    <property name="attachedTo" type="object" value="9"/>
+    <property name="path" type="object" value="386"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="387" x="-11116.5" y="1516.5" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="387"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="388" x="464" y="-10288" name="To: Mistwood Village South Farms">
+   <properties>
+    <property name="attachedTo" type="object" value="29"/>
+    <property name="path" type="object" value="388"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="389" x="-5900" y="3484" name="To: Adexxin-castle-hall">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="389"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="390" x="-6020.5" y="4676.5" name="To: Adexxin-castle-garden">
+   <properties>
+    <property name="attachedTo" type="object" value="16"/>
+    <property name="path" type="object" value="390"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="391" x="-9512.25" y="1800.25" name="To: Adexxin-start">
+   <properties>
+    <property name="attachedTo" type="object" value="52"/>
+    <property name="path" type="object" value="391"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="392" x="-1396" y="-3468" name="To: Goblin Caves - Level 1">
+   <properties>
+    <property name="attachedTo" type="object" value="37"/>
+    <property name="path" type="object" value="392"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="393" x="3552" y="9664" name="To: Hank Feo Jera Underground City">
+   <properties>
+    <property name="attachedTo" type="object" value="28"/>
+    <property name="path" type="object" value="393"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="394" x="-1364" y="-3724" name="To: Goblin Caves - Level 1">
+   <properties>
+    <property name="attachedTo" type="object" value="37"/>
+    <property name="path" type="object" value="394"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="395" x="-11240" y="72" name="To: NE Caves">
+   <properties>
+    <property name="attachedTo" type="object" value="26"/>
+    <property name="path" type="object" value="395"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="396" x="2376" y="3224" name="To: Nightshade Cove East MWV ">
+   <properties>
+    <property name="attachedTo" type="object" value="94"/>
+    <property name="path" type="object" value="396"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="397" x="7720" y="-2824" name="To: East Of Town MWV">
+   <properties>
+    <property name="attachedTo" type="object" value="99"/>
+    <property name="path" type="object" value="397"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="398" x="5088" y="544" name="To: Mistwood North East Connect">
+   <properties>
+    <property name="attachedTo" type="object" value="101"/>
+    <property name="path" type="object" value="398"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="399" x="-1082.4850000000001" y="1854.12" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="399"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="400" x="-2744" y="5304" name="To: Cape store">
+   <properties>
+    <property name="attachedTo" type="object" value="33"/>
+    <property name="path" type="object" value="400"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="401" x="-10956.5" y="684.5" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="401"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="402" x="5068" y="-1116" name="To: West of Town">
+   <properties>
+    <property name="attachedTo" type="object" value="45"/>
+    <property name="path" type="object" value="402"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="403" x="-6518" y="7462" name="To: Modern Town Barber">
+   <properties>
+    <property name="attachedTo" type="object" value="2"/>
+    <property name="path" type="object" value="403"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="404" x="-9416" y="2856" name="To: Smith in spawn Town">
+   <properties>
+    <property name="attachedTo" type="object" value="47"/>
+    <property name="path" type="object" value="404"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="405" x="-3016" y="4728" name="To: Mistwood Village Assassin's Guild">
+   <properties>
+    <property name="attachedTo" type="object" value="17"/>
+    <property name="path" type="object" value="405"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="406" x="-6256" y="1168" name="To: Portal Room">
+   <properties>
+    <property name="attachedTo" type="object" value="51"/>
+    <property name="path" type="object" value="406"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="407" x="2216" y="536" name="To: East of town Desert">
+   <properties>
+    <property name="attachedTo" type="object" value="13"/>
+    <property name="path" type="object" value="407"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="408" x="176" y="-8944" name="To: Mistwood Village South Farms">
+   <properties>
+    <property name="attachedTo" type="object" value="29"/>
+    <property name="path" type="object" value="408"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="409" x="-628" y="-4172" name="To: Goblin Caves - Level 1">
+   <properties>
+    <property name="attachedTo" type="object" value="37"/>
+    <property name="path" type="object" value="409"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="410" x="-11084.5" y="1100.5" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="410"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="411" x="-9190" y="7302" name="To: Adexxin-Darkside">
+   <properties>
+    <property name="attachedTo" type="object" value="3"/>
+    <property name="path" type="object" value="411"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="412" x="-8712" y="2248" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="412"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="413" x="-8456" y="2312" name="To: moogle map">
+   <properties>
+    <property name="attachedTo" type="object" value="49"/>
+    <property name="path" type="object" value="413"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="414" x="-314.485" y="1950.12" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="414"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="415" x="4524" y="-988" name="To: West of Town">
+   <properties>
+    <property name="attachedTo" type="object" value="45"/>
+    <property name="path" type="object" value="415"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="416" x="-7080" y="6136" name="To: North Jab/stab">
+   <properties>
+    <property name="attachedTo" type="object" value="21"/>
+    <property name="path" type="object" value="416"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="417" x="-8348" y="8260" name="To: Adexxin-castle-garden3">
+   <properties>
+    <property name="attachedTo" type="object" value="6"/>
+    <property name="path" type="object" value="417"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="418" x="5896" y="6248" name="To: Adexxin-town">
+   <properties>
+    <property name="attachedTo" type="object" value="54"/>
+    <property name="path" type="object" value="418"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="419" x="4477.67" y="-2106.21" name="To: Modern town">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="419"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="420" x="-6824" y="3064" name="To: twilight zone">
+   <properties>
+    <property name="attachedTo" type="object" value="22"/>
+    <property name="path" type="object" value="420"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="421" x="-9000" y="4392" name="To: Adexxin-Castle-outdoor">
+   <properties>
+    <property name="attachedTo" type="object" value="40"/>
+    <property name="path" type="object" value="421"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="422" x="-634.485" y="1694.12" name="To: StartingTown">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="422"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="423" x="-7724" y="6364" name="To: Adexxin-castle=stairs">
+   <properties>
+    <property name="attachedTo" type="object" value="4"/>
+    <property name="path" type="object" value="423"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="424" x="7912" y="4312" name="To: Adexxin-Jungle">
+   <properties>
+    <property name="attachedTo" type="object" value="60"/>
+    <property name="path" type="object" value="424"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="425" x="-8236" y="1708" name="To: Adexxin-smith">
+   <properties>
+    <property name="attachedTo" type="object" value="55"/>
+    <property name="path" type="object" value="425"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="426" x="-9196" y="1452" name="To: Adexxin-armor">
+   <properties>
+    <property name="attachedTo" type="object" value="56"/>
+    <property name="path" type="object" value="426"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="427" x="5432" y="5288" name="To: Adexxin-New">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="427"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="428" x="-4400" y="2720" name="To: Adexxin-newtown-house">
+   <properties>
+    <property name="attachedTo" type="object" value="67"/>
+    <property name="path" type="object" value="428"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="429" x="4256" y="6400" name="To: Adexxin-gate">
+   <properties>
+    <property name="attachedTo" type="object" value="50"/>
+    <property name="path" type="object" value="429"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="430" x="6280" y="6568" name="To: Adexxin-town">
+   <properties>
+    <property name="attachedTo" type="object" value="54"/>
+    <property name="path" type="object" value="430"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="431" x="6536" y="6280" name="To: Adexxin-town">
+   <properties>
+    <property name="attachedTo" type="object" value="54"/>
+    <property name="path" type="object" value="431"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="432" x="6664" y="6600" name="To: Adexxin-town">
+   <properties>
+    <property name="attachedTo" type="object" value="54"/>
+    <property name="path" type="object" value="432"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="433" x="9584" y="2672" name="To: Adexxin-church">
+   <properties>
+    <property name="attachedTo" type="object" value="64"/>
+    <property name="path" type="object" value="433"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="434" x="8848" y="3152" name="To: Adexxin-church">
+   <properties>
+    <property name="attachedTo" type="object" value="64"/>
+    <property name="path" type="object" value="434"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="435" x="-4596" y="1940" name="To: Adexxin-fightmap">
+   <properties>
+    <property name="attachedTo" type="object" value="65"/>
+    <property name="path" type="object" value="435"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="436" x="-1412" y="1300" name="To: Adexxin-Casino">
+   <properties>
+    <property name="attachedTo" type="object" value="68"/>
+    <property name="path" type="object" value="436"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="437" x="-1840" y="-12720" name="To: Mistwood Village West Flower Fields">
+   <properties>
+    <property name="attachedTo" type="object" value="15"/>
+    <property name="path" type="object" value="437"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="438" x="9144" y="-2456" name="To: Mistwood Village Magic shop">
+   <properties>
+    <property name="attachedTo" type="object" value="63"/>
+    <property name="path" type="object" value="438"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="439" x="-4110.25" y="4014.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="439"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="440" x="-1838.25" y="1646.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="440"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="441" x="-2254.25" y="2510.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="441"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="442" x="1209.5" y="246.5" name="To: Mistwood Village Steel Smith">
+   <properties>
+    <property name="attachedTo" type="object" value="80"/>
+    <property name="path" type="object" value="442"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="443" x="9488" y="1776" name="To: Adventurers Guild Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="62"/>
+    <property name="path" type="object" value="443"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="444" x="7600" y="-3344" name="To: General Store Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="85"/>
+    <property name="path" type="object" value="444"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="445" x="-2912" y="-2336" name="To: Mistwood Village Barber">
+   <properties>
+    <property name="attachedTo" type="object" value="84"/>
+    <property name="path" type="object" value="445"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="446" x="-8280" y="-5096" name="To: South of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="105"/>
+    <property name="path" type="object" value="446"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="447" x="-9840" y="-6160" name="To: Mistwood Village Church">
+   <properties>
+    <property name="attachedTo" type="object" value="82"/>
+    <property name="path" type="object" value="447"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="448" x="6792" y="-2408" name="To: East Of Town MWV">
+   <properties>
+    <property name="attachedTo" type="object" value="99"/>
+    <property name="path" type="object" value="448"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="449" x="-3552" y="-9024" name="To: North of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="102"/>
+    <property name="path" type="object" value="449"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="450" x="-2792" y="4600" name="To: Mistwood Village Assassin's Guild">
+   <properties>
+    <property name="attachedTo" type="object" value="17"/>
+    <property name="path" type="object" value="450"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="451" x="-4580" y="-2172" name="To: South East of Mistwood">
+   <properties>
+    <property name="attachedTo" type="object" value="109"/>
+    <property name="path" type="object" value="451"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="452" x="-7432" y="1800" name="To: Adexxin-Hidden">
+   <properties>
+    <property name="attachedTo" type="object" value="53"/>
+    <property name="path" type="object" value="452"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="453" x="-9188" y="708" name="To: Adexxin-jungle-hut">
+   <properties>
+    <property name="attachedTo" type="object" value="61"/>
+    <property name="path" type="object" value="453"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="454" x="8896.25" y="-512.25" name="To: Adexxin-jungle2">
+   <properties>
+    <property name="attachedTo" type="object" value="72"/>
+    <property name="path" type="object" value="454"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="455" x="7592" y="4344" name="To: Adexxin-Jungle">
+   <properties>
+    <property name="attachedTo" type="object" value="60"/>
+    <property name="path" type="object" value="455"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="456" x="9232" y="1360" name="To: Adventurers Guild Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="62"/>
+    <property name="path" type="object" value="456"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="457" x="8944" y="1072" name="To: Adventurers Guild Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="62"/>
+    <property name="path" type="object" value="457"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="458" x="-10336" y="-11008" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="458"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="459" x="-9824" y="-11040" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="459"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="460" x="6616" y="5064" name="To: Adexxin-New">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="460"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="461" x="5912" y="5000" name="To: Adexxin-New">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="461"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="462" x="6632" y="6920" name="To: Adexxin-town">
+   <properties>
+    <property name="attachedTo" type="object" value="54"/>
+    <property name="path" type="object" value="462"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="463" x="5464" y="5032" name="To: Adexxin-New">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="463"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="464" x="5912" y="4648" name="To: Adexxin-New">
+   <properties>
+    <property name="attachedTo" type="object" value="58"/>
+    <property name="path" type="object" value="464"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="465" x="-9628" y="1340" name="To: Adexxin-bnb">
+   <properties>
+    <property name="attachedTo" type="object" value="69"/>
+    <property name="path" type="object" value="465"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="466" x="-8832" y="-11104" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="466"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="467" x="-8576" y="-10496" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="467"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="468" x="-11104" y="-8384" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="468"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="469" x="-2734.25" y="3854.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="469"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="470" x="-3246.25" y="3534.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="470"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="471" x="-2574.25" y="3950.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="471"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="472" x="-3214.25" y="2830.25" name="To: Mistwood Sewers">
+   <properties>
+    <property name="attachedTo" type="object" value="71"/>
+    <property name="path" type="object" value="472"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="473" x="-9584" y="-6928" name="To: Mistwood Village Church">
+   <properties>
+    <property name="attachedTo" type="object" value="82"/>
+    <property name="path" type="object" value="473"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="474" x="4288" y="9600" name="To: Hank Feo Jera Underground City">
+   <properties>
+    <property name="attachedTo" type="object" value="28"/>
+    <property name="path" type="object" value="474"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="475" x="-3176" y="4728" name="To: Mistwood Village Assassin's Guild">
+   <properties>
+    <property name="attachedTo" type="object" value="17"/>
+    <property name="path" type="object" value="475"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="476" x="7208" y="5016" name="To: Adexxin-Jungle">
+   <properties>
+    <property name="attachedTo" type="object" value="60"/>
+    <property name="path" type="object" value="476"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="477" x="8992" y="-1600" name="To: bcave">
+   <properties>
+    <property name="attachedTo" type="object" value="73"/>
+    <property name="path" type="object" value="477"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="478" x="9280" y="-1632" name="To: bcave">
+   <properties>
+    <property name="attachedTo" type="object" value="73"/>
+    <property name="path" type="object" value="478"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="479" x="-7528" y="5304" name="To: North Jab/stab">
+   <properties>
+    <property name="attachedTo" type="object" value="21"/>
+    <property name="path" type="object" value="479"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="480" x="-7960" y="5176" name="To: bcavebs">
+   <properties>
+    <property name="attachedTo" type="object" value="74"/>
+    <property name="path" type="object" value="480"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="481" x="8704" y="-1376" name="To: bcave">
+   <properties>
+    <property name="attachedTo" type="object" value="73"/>
+    <property name="path" type="object" value="481"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="482" x="-10284.5" y="1292.5" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="482"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="483" x="-7544" y="8504" name="To: Adexxin-ChillZone">
+   <properties>
+    <property name="attachedTo" type="object" value="1"/>
+    <property name="path" type="object" value="483"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="484" x="-9728" y="-9760" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="484"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="485" x="4176" y="7952" name="To: Floor 2: N Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="43"/>
+    <property name="path" type="object" value="485"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="486" x="-10880" y="-10240" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="486"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="487" x="-11244.5" y="876.5" name="To: Floor 2: Evergreen Hollow">
+   <properties>
+    <property name="attachedTo" type="object" value="19"/>
+    <property name="path" type="object" value="487"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="488" x="-10976" y="-10944" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="488"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="489" x="-11104" y="-9792" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="489"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="490" x="7824" y="-3536" name="To: General Store Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="85"/>
+    <property name="path" type="object" value="490"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="491" x="7568" y="-3824" name="To: General Store Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="85"/>
+    <property name="path" type="object" value="491"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="492" x="-11040" y="-9184" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="492"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="493" x="3968" y="10144" name="To: Hank Feo Jera Underground City">
+   <properties>
+    <property name="attachedTo" type="object" value="28"/>
+    <property name="path" type="object" value="493"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="494" x="-240" y="-11152" name="To: Mistwood Village South Farms">
+   <properties>
+    <property name="attachedTo" type="object" value="29"/>
+    <property name="path" type="object" value="494"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="495" x="-8658" y="6562" name="To: Hank Under Ted's Barn">
+   <properties>
+    <property name="attachedTo" type="object" value="8"/>
+    <property name="path" type="object" value="495"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="496" x="-10752" y="4352" name="To: South East Ant Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="24"/>
+    <property name="path" type="object" value="496"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="497" x="3272" y="6968" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="497"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="498" x="1736" y="7896" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="498"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="499" x="2856" y="7640" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="499"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="500" x="1704" y="6680" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="500"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="501" x="2376" y="8280" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="501"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="502" x="2376" y="8312" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="502"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="503" x="1928" y="8280" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="503"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="504" x="1768" y="7544" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="504"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="505" x="2280" y="7512" name="To: Mistwood Village Mines">
+   <properties>
+    <property name="attachedTo" type="object" value="90"/>
+    <property name="path" type="object" value="505"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="506" x="-3702.2" y="-7783.92" name="To: North of Town">
+   <properties>
+    <property name="attachedTo" type="object" value="9"/>
+    <property name="path" type="object" value="506"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="507" x="1100" y="-3836" name="To: Tutorial Area">
+   <properties>
+    <property name="attachedTo" type="object" value="106"/>
+    <property name="path" type="object" value="507"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="508" x="-5352" y="-10776" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="41"/>
+    <property name="path" type="object" value="508"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="509" x="6856" y="3448" name="To: North of Nightshade Cove">
+   <properties>
+    <property name="attachedTo" type="object" value="96"/>
+    <property name="path" type="object" value="509"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="510" x="3656" y="2424" name="To: Nightshade Cove East MWV ">
+   <properties>
+    <property name="attachedTo" type="object" value="94"/>
+    <property name="path" type="object" value="510"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="511" x="-5856" y="-8128" name="To: Astraea's Abode">
+   <properties>
+    <property name="attachedTo" type="object" value="97"/>
+    <property name="path" type="object" value="511"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="512" x="5576" y="2648" name="To: North of Nightshade Cove">
+   <properties>
+    <property name="attachedTo" type="object" value="96"/>
+    <property name="path" type="object" value="512"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="513" x="-8192" y="-9632" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="513"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="514" x="6496" y="-928" name="To: South East Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="100"/>
+    <property name="path" type="object" value="514"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="515" x="-6312" y="-9752" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="41"/>
+    <property name="path" type="object" value="515"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="516" x="7880" y="-1640" name="To: East Of Town MWV">
+   <properties>
+    <property name="attachedTo" type="object" value="99"/>
+    <property name="path" type="object" value="516"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="517" x="-7176" y="-10936" name="To: North East of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="41"/>
+    <property name="path" type="object" value="517"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="518" x="-3424" y="-9792" name="To: North of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="102"/>
+    <property name="path" type="object" value="518"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="519" x="-9376" y="-11328" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="519"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="520" x="-1878.2" y="-5319.92" name="To: North of Town">
+   <properties>
+    <property name="attachedTo" type="object" value="9"/>
+    <property name="path" type="object" value="520"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="521" x="3904" y="-256" name="To: Mistwood North East Connect">
+   <properties>
+    <property name="attachedTo" type="object" value="101"/>
+    <property name="path" type="object" value="521"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="522" x="1128" y="-7656" name="To: Tutorial 2">
+   <properties>
+    <property name="attachedTo" type="object" value="107"/>
+    <property name="path" type="object" value="522"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="523" x="688" y="-11408" name="To: Mistwood Village South Farms">
+   <properties>
+    <property name="attachedTo" type="object" value="29"/>
+    <property name="path" type="object" value="523"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="524" x="-9888" y="-8224" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="524"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="525" x="-5508" y="-1756" name="To: South East of Mistwood">
+   <properties>
+    <property name="attachedTo" type="object" value="109"/>
+    <property name="path" type="object" value="525"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="526" x="-2742.25" y="-4553.75" name="To: Character Selection Screen">
+   <properties>
+    <property name="attachedTo" type="object" value="93"/>
+    <property name="path" type="object" value="526"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="527" x="168" y="-8072" name="To: Tutorial 2">
+   <properties>
+    <property name="attachedTo" type="object" value="107"/>
+    <property name="path" type="object" value="527"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="528" x="1324" y="-1852" name="To: Tutorial Area">
+   <properties>
+    <property name="attachedTo" type="object" value="106"/>
+    <property name="path" type="object" value="528"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="529" x="-8504" y="-4808" name="To: South of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="105"/>
+    <property name="path" type="object" value="529"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="530" x="-692" y="-2796" name="To: Tutorial Blacksmith">
+   <properties>
+    <property name="attachedTo" type="object" value="108"/>
+    <property name="path" type="object" value="530"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="531" x="-8208" y="112" name="To: Tutorial Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="110"/>
+    <property name="path" type="object" value="531"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="532" x="200" y="-7240" name="To: Tutorial 2">
+   <properties>
+    <property name="attachedTo" type="object" value="107"/>
+    <property name="path" type="object" value="532"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="533" x="-7480" y="-4488" name="To: South of Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="105"/>
+    <property name="path" type="object" value="533"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="534" x="-8576" y="-8224" name="To: Mistwood Village">
+   <properties>
+    <property name="attachedTo" type="object" value="59"/>
+    <property name="path" type="object" value="534"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="535" x="744" y="-8072" name="To: Tutorial 2">
+   <properties>
+    <property name="attachedTo" type="object" value="107"/>
+    <property name="path" type="object" value="535"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="536" x="-10984" y="-952" name="To: NE Caves">
+   <properties>
+    <property name="attachedTo" type="object" value="26"/>
+    <property name="path" type="object" value="536"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="537" x="-7288" y="184" name="To: Secret Entrance to Astraea's Abode">
+   <properties>
+    <property name="attachedTo" type="object" value="114"/>
+    <property name="path" type="object" value="537"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="538" x="-6340" y="-5484" name="To: Magma Cave">
+   <properties>
+    <property name="attachedTo" type="object" value="111"/>
+    <property name="path" type="object" value="538"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
 </map>
