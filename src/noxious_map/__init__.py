@@ -12,8 +12,3 @@ def main(here: Path):
         print(f"Invoking generator: {gen_cls.__name__}")
         gen = gen_cls(here)
         gen.generate()
-
-    print()
-    print()
-    print("old remaining code disabled")
-    print()
