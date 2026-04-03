@@ -43,6 +43,9 @@ class MapGenerator(BaseGenerator):
 
             tile = tile.copy() if tile else Tile(0, default_filepath, img.width, img.height)
             tile.noxious_id = tile_map.id
+            tile.source = default_filepath
+            tile.width = img.width
+            tile.height = img.height
             tileset.tiles.append(tile)
 
         max_tile_id = max(t.id for t in tileset.tiles) if tileset.tiles else 0
@@ -76,7 +79,7 @@ class MapGenerator(BaseGenerator):
             extended_map.alpha_composite(map_im, (paddings.left, paddings.top))
             extended_map.alpha_composite(obj_im)
 
-            name = normalize_name(tile_map.name)
+            name = normalize_name(tile_map.id)
             filename = f"{name}.webp"
 
             folders = [
