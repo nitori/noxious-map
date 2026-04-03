@@ -45,8 +45,12 @@
             width: 100px;
         }
 
+        .td-spawns {
+            width: 300px;
+        }
+
         .td-drops {
-            width: 1000px;
+            width: 850px;
         }
 
         input[type=text] {
@@ -55,8 +59,11 @@
             padding: 5px 10px;
         }
 
-        #search {
-
+        .spawn-point {
+            margin-bottom: 20px;
+        }
+        .spawn-point-spawn {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -71,6 +78,7 @@
             <th class="td-hostile">Hostility</th>
             <th class="td-level">Level</th>
             <th class="td-health">Health/Mana</th>
+            <th class="td-spawns">Spawn points</th>
             <th class="td-drops p-0">Drops</th>
         </tr>
         </thead>
@@ -88,6 +96,29 @@
                 <td class="td-hostile">{{ monster.hostility }}</td>
                 <td class="td-level">{{ monster.level }}</td>
                 <td class="td-health">{{ monster.maxHealth }}/{{ monster.maxMana }}</td>
+                <td class="td-spawns">
+                    {%- if monster.spawns %}
+                        {% for map, spawns in monster.spawns.values() %}
+                            <div class="spawn-point">
+                                <strong>{{ map.name }}</strong><br>
+                                <code>{{ map.id }}</code><br>
+                                {% for spawn in spawns %}
+                                    <div class="spawn-point-spawn">
+                                        Position: {{ spawn.x }}, {{ spawn.y }}<br>
+                                        Amount: {{ spawn.amount }}<br>
+                                        {% if spawn.respawnTime %}
+                                            Respawn: {{ spawn.respawnTime / 1000 / 60 }} minutes<br>
+                                        {% else %}
+                                            Respawn: <em>n/a</em><br>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    {%- else %}
+                        <em>n/a</em>
+                    {%- endif %}
+                </td>
                 <td class="td-drops p-0">
 
 

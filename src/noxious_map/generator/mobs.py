@@ -1,17 +1,30 @@
 import shutil
 import json
-import time
 from pathlib import Path
 
 from PIL import Image
 
+from noxious_map.models.map import Map, Monster
 from .base import BaseGenerator
 
 
 class MobGenerator(BaseGenerator):
+    def prepare_mob_spawns(self) -> dict[str, dict[str, tuple[Map, list[Monster]]]]:
+        tile_maps = [Map.model_validate(tm) for tm in self.load("data/maps.json")]
+
+        monster_spawns: dict[str, dict[str, tuple[Map, list[Monster]]]] = {}
+        for tile_map in tile_maps:
+            for monster in tile_map.monsters:
+                monster_spawns.setdefault(monster.monster, {})
+                _, lst = monster_spawns[monster.monster].setdefault(tile_map.id, (tile_map, []))
+                lst.append(monster)
+        return monster_spawns
+
     def generate(self):
         max_monster_sprite_width = 0
         max_drop_icon_width = 0
+
+        monster_spawns = self.prepare_mob_spawns()
 
         bundle_dir = self.root / "bundle"
 
@@ -133,6 +146,8 @@ class MobGenerator(BaseGenerator):
             monster["drops"] = sorted(
                 monster["drops"], key=lambda d: (-d["chance"], d["item"]["name"])
             )
+
+            monster["spawns"] = monster_spawns.get(monster["id"], [])
 
         print()
         monsters = sorted(
