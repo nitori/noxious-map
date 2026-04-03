@@ -37,11 +37,13 @@ class MapGenerator(BaseGenerator):
             tile_maps.append(loaded_map)
 
         for tile_map, img, default_filepath in self.generate_map_images(tile_maps):
-            tile = orig_tileset.find_tile_by_source(default_filepath)
-            if tile:
-                tileset.tiles.append(tile.copy())
-            else:
-                tileset.tiles.append(Tile(0, default_filepath, img.width, img.height))
+            tile = orig_tileset.find_tile_by_noxious_id(tile_map.id)
+            if tile is None:
+                tile = orig_tileset.find_tile_by_source(default_filepath)
+
+            tile = tile.copy() if tile else Tile(0, default_filepath, img.width, img.height)
+            tile.noxious_id = tile_map.id
+            tileset.tiles.append(tile)
 
         max_tile_id = max(t.id for t in tileset.tiles) if tileset.tiles else 0
         for tile in tileset.tiles:

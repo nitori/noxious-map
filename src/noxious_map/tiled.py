@@ -5,6 +5,8 @@ from xml.dom import minidom
 from dataclasses import dataclass, field, fields
 import textwrap
 
+NOXIOUS_NS = "https://noxious.gg/2026/tiled"
+ET.register_namespace("nox", NOXIOUS_NS)
 
 @dataclass
 class TiledWorld:
@@ -68,15 +70,20 @@ class Tile:
     source: Path
     width: int
     height: int
+    noxious_id: str | None = None
 
     def copy(self) -> Tile:
         return Tile(
-            id=self.id, source=self.source, width=self.width, height=self.height
+            id=self.id,
+            source=self.source,
+            width=self.width,
+            height=self.height,
+            noxious_id=self.noxious_id,
         )
 
     @classmethod
     def from_element(cls, path: Path, elem: ET.Element) -> Self:
-        #  <tile id="1">
+        #  <tile id="1" nox:id="abc">
         #   <image source="../../maps/default/Modern_town.webp" width="3520" height="1897"/>
         #  </tile>
 
@@ -88,11 +95,17 @@ class Tile:
         source = (path / image_tag.attrib["source"]).resolve()
         width = int(image_tag.attrib["width"])
         height = int(image_tag.attrib["height"])
+        noxious_id = elem.attrib.get(f"{{{NOXIOUS_NS}}}id")
 
-        return cls(tile_id, source, width, height)
+        return cls(id=tile_id, source=source, width=width, height=height, noxious_id=noxious_id)
 
     def to_xml(self, path: Path) -> ET.Element:
-        root = ET.Element("tile", {"id": str(self.id)})
+        tile_attrs = {
+            "id": str(self.id),
+        }
+        if self.noxious_id is not None:
+            tile_attrs[f"{{{NOXIOUS_NS}}}id"] = self.noxious_id
+        root = ET.Element("tile", tile_attrs)
         image = ET.Element(
             "image",
             {
@@ -119,6 +132,12 @@ class Tileset:
             # Note: on Windows both sources are WindowsPath, which
             # compare true if only the casing mismatches.
             if tile.source == source:
+                return tile
+        return None
+
+    def find_tile_by_noxious_id(self, noxious_id: str) -> Tile | None:
+        for tile in self.tiles:
+            if tile.noxious_id is not None and tile.noxious_id == noxious_id:
                 return tile
         return None
 
