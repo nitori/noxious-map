@@ -9,7 +9,7 @@ from PIL import Image
 from noxious_map.models import Map, MapObject
 from noxious_map.types import Paddings, ObjectMapRanges
 from noxious_map.utils import compare_depth_sort, nc
-from noxious_map.tiled import parse_world, Tile, Tileset, ImageObject
+from noxious_map.tiled import parse_world, Tile, Tileset, ImageObject, TiledWorld
 from .base import BaseGenerator
 
 
@@ -25,13 +25,17 @@ class MapGenerator(BaseGenerator):
 
     def load_maps(self):
         # loading once early on to check if file can be loaded
-        world = parse_world(self.tiled_dir / "world.tmx")
-        orig_tileset = world.tilesets[0]
+        old_world = parse_world(self.tiled_dir / "world.tmx")
+        orig_tileset = old_world.tilesets[0]
         tileset = orig_tileset.copy()
         tileset.tiles = []
-        new_map_objects = []
-        new_point_objects = []
-        world.nextobjectid = 1
+
+        new_world = old_world.copy()
+        new_world.nextobjectid = 1
+        map_objects = new_world.get_layer_by_name("Maps")
+        point_objects = new_world.get_layer_by_name("Connections")
+        map_objects.objects = []
+        point_objects.objects = []
 
         max_tile_id = max(t.id for t in orig_tileset.tiles) if orig_tileset.tiles else 0
 
@@ -41,7 +45,9 @@ class MapGenerator(BaseGenerator):
             loaded_map = Map.model_validate(tile_map_raw, extra="forbid")
             tile_maps.append(loaded_map)
 
-        for tile_map, img, default_filepath in self.generate_map_images(tile_maps):
+        for tile_map, img, paddings, default_filepath in self.generate_map_images(
+            tile_maps
+        ):
             tile = orig_tileset.find_tile_by_noxious_id(tile_map.id)
             if tile is None:
                 tile = orig_tileset.find_tile_by_source(default_filepath)
@@ -59,12 +65,13 @@ class MapGenerator(BaseGenerator):
             tile.height = img.height
             tileset.tiles.append(tile)
 
-            old_object = world.get_image_object_by_gid(tileset.firstgid + tile.id)
+            old_object = old_world.get_image_object_by_gid(tileset.firstgid + tile.id)
             if old_object:
                 obj = old_object.copy()
+                new_world.nextobjectid = max(new_world.nextobjectid, obj.id + 1)
             else:
                 obj = ImageObject(
-                    id=world.nextobjectid,
+                    id=new_world.nextobjectid,
                     x=0.0,
                     y=0.0,
                     width=None,
@@ -72,27 +79,21 @@ class MapGenerator(BaseGenerator):
                     gid=tileset.firstgid + tile.id,
                     name=tile_map.name,
                 )
-                world.nextobjectid += 1
+                new_world.nextobjectid += 1
 
             obj.width = tile.width
             obj.height = tile.height
 
-            new_map_objects.append(obj)
+            map_objects.objects.append(obj)
 
         tileset.tiles.sort(key=lambda t: t.id)
         tileset.write_xml()
 
-        maps_layer = world.get_layer_by_name("Maps")
-        maps_layer.objects = new_map_objects
-
-        connections = world.get_layer_by_name("Connections")
-        connections.objects = new_point_objects
-
-        world.write_xml(self.tiled_dir / "world.tmx")
+        new_world.write_xml(self.tiled_dir / "world.tmx")
 
     def generate_map_images(
         self, tile_maps: list[Map]
-    ) -> Generator[tuple[Map, Image.Image, Path]]:
+    ) -> Generator[tuple[Map, Image.Image, Paddings, Path]]:
         map_folder = self.out_dir / "maps"
         shutil.rmtree(map_folder)
         map_folder.mkdir(parents=True, exist_ok=True)
@@ -143,7 +144,7 @@ class MapGenerator(BaseGenerator):
                     tmp_map.save(filepath, quality=75)
 
             default_filepath = map_folder / "default" / filename
-            yield tile_map, extended_map, default_filepath
+            yield tile_map, extended_map, paddings, default_filepath
         print()
 
     @staticmethod

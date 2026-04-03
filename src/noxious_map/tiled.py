@@ -26,6 +26,23 @@ class TiledWorld:
     tilesets: list[Tileset] = field(default_factory=list)
     layers: list[ObjectGroup] = field(default_factory=list)
 
+    def copy(self) -> TiledWorld:
+        return TiledWorld(
+            version=self.version,
+            tiledversion=self.tiledversion,
+            orientation=self.orientation,
+            renderorder=self.renderorder,
+            width=self.width,
+            height=self.height,
+            tilewidth=self.tilewidth,
+            tileheight=self.tileheight,
+            infinite=self.infinite,
+            nextlayerid=self.nextlayerid,
+            nextobjectid=self.nextobjectid,
+            tilesets=[ts.copy() for ts in self.tilesets],
+            layers=[layer.copy() for layer in self.layers],
+        )
+
     def get_layer_by_name(self, name: str) -> ObjectGroup:
         for layer in self.layers:
             if layer.name == name:
@@ -132,12 +149,18 @@ class Property:
     type: str
     value: str
 
+    def copy(self) -> Property:
+        return Property(type=self.type, value=self.value)
+
 
 @dataclass
 class TiledObject:
     id: int
     x: float
     y: float
+
+    def copy(self) -> TiledObject:
+        return TiledObject(id=self.id, x=self.x, y=self.y)
 
     @classmethod
     def from_element(cls, elem: ET.Element) -> ImageObject | PointObject:
@@ -166,6 +189,17 @@ class ImageObject(TiledObject):
     gid: int | None = None
     name: str | None = None
 
+    def copy(self) -> ImageObject:
+        return ImageObject(
+            id=self.id,
+            x=self.x,
+            y=self.y,
+            width=self.width,
+            height=self.height,
+            gid=self.gid,
+            name=self.name,
+        )
+
     @classmethod
     def from_element(cls, elem: ET.Element) -> Self:
         return cls(
@@ -176,17 +210,6 @@ class ImageObject(TiledObject):
             height=tryfloat(elem.attrib.get("height")),
             gid=tryint(elem.attrib.get("gid")),
             name=elem.attrib.get("name"),
-        )
-
-    def copy(self) -> ImageObject:
-        return ImageObject(
-            id=self.id,
-            x=self.x,
-            y=self.y,
-            width=self.width,
-            height=self.height,
-            gid=self.gid,
-            name=self.name,
         )
 
     def to_xml(self) -> ET.Element:
@@ -210,6 +233,14 @@ class ImageObject(TiledObject):
 @dataclass
 class PointObject(TiledObject):
     properties: dict[str, Property] = field(default_factory=dict)
+
+    def copy(self) -> PointObject:
+        return PointObject(
+            id=self.id,
+            x=self.x,
+            y=self.y,
+            properties={name: prop.copy() for name, prop in self.properties.items()},
+        )
 
     @classmethod
     def from_element(cls, elem: ET.Element) -> Self:
@@ -253,6 +284,14 @@ class ObjectGroup:
     draworder: str | None = None
     objects: list[TiledObject] = field(default_factory=list)
 
+    def copy(self) -> ObjectGroup:
+        return ObjectGroup(
+            id=self.id,
+            name=self.name,
+            draworder=self.draworder,
+            objects=[obj.copy() for obj in self.objects],
+        )
+
     @classmethod
     def from_element(cls, elem: ET.Element) -> Self:
         # <objectgroup draworder="index" id="1" name="Maps">
@@ -267,12 +306,11 @@ class ObjectGroup:
         return cls(layer_id, layer_name, draworder, objects)
 
     def to_xml(self):
-        root_attrs = {
-            "id": str(self.id),
-            "name": str(self.name),
-        }
+        root_attrs = {}
         if self.draworder is not None:
             root_attrs["draworder"] = self.draworder
+        root_attrs["id"] = str(self.id)
+        root_attrs["name"] = str(self.name)
 
         root = ET.Element("objectgroup", root_attrs)
         for obj in self.objects:
