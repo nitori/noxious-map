@@ -102,18 +102,18 @@ class Map(BaseModel):
     name: str
     width: int
     height: int
-    mapTiles: list[MapTile]
-    mapObjects: list[MapObjectOverrides]
+    mapTiles: list[MapTile] = Field(default_factory=list)
+    mapObjects: list[MapObjectOverrides] = Field(default_factory=list)
     blockingTiles: list[BlockingTile] = Field(default_factory=list)
     teleports: list[Teleport] = Field(default_factory=list)
     monsters: list[Monster] = Field(default_factory=list)
     sitTiles: list[SitTile] = Field(default_factory=list)
     lights: list[Light] = Field(default_factory=list)
-    loopMusic: bool
+    loopMusic: bool = False
     music: str | None = None
-    pvp: bool
+    pvp: bool = False
 
-    moodlightEnabled: bool
+    moodlightEnabled: bool = False
     moodlightColor: str = ""
     moodlightLevel: int = 0
     moodlightBrightness: int = 0
