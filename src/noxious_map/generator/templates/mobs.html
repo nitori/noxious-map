@@ -97,6 +97,13 @@
             box-shadow: 0 8px 6px -4px #ffffff0f;
             z-index: 2;
         }
+
+        ::highlight(monster-search) {
+            background-color: #ff0; /* bright yellow — change as you like */
+            color: #000;
+            padding: 1px 2px; /* optional — gives a nice little box */
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
@@ -126,10 +133,18 @@
                              class="sprite" alt="Sprite of {{ monster.name }}">
                     </div>
                 </td>
-                <td class="td-name"><div class="sticky">{{ monster.name }}</div></td>
-                <td class="td-hostile"><div class="sticky">{{ monster.hostility }}</div></td>
-                <td class="td-level"><div class="sticky">{{ monster.level }}</div></td>
-                <td class="td-health"><div class="sticky">{{ monster.maxHealth }}/{{ monster.maxMana }}</div></td>
+                <td class="td-name">
+                    <div class="sticky">{{ monster.name }}</div>
+                </td>
+                <td class="td-hostile">
+                    <div class="sticky">{{ monster.hostility }}</div>
+                </td>
+                <td class="td-level">
+                    <div class="sticky">{{ monster.level }}</div>
+                </td>
+                <td class="td-health">
+                    <div class="sticky">{{ monster.maxHealth }}/{{ monster.maxMana }}</div>
+                </td>
                 <td class="td-spawns">
                     {%- if monster.spawns %}
                         {% for map, spawns in monster.spawns.values() %}
@@ -209,21 +224,84 @@
         return text.toLowerCase().split(/\s+/).map(s => s.trim()).filter(s => s !== '');
     }
 
+    // ====================== CUSTOM HIGHLIGHT HELPERS ======================
+
+    // Check if the browser supports the API
+    const supportsCustomHighlight = typeof Highlight !== 'undefined' && 'highlights' in CSS;
+
+    function getTextNodes(element) {
+        const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+        const nodes = [];
+        let node;
+        while (node = walker.nextNode()) {
+            if (node.nodeValue.trim() !== '') nodes.push(node);
+        }
+        return nodes;
+    }
+
+    function findRangesInNode(textNode, words) {
+        const ranges = [];
+        const lowerText = textNode.nodeValue.toLowerCase();
+
+        words.forEach(word => {
+            let start = 0;
+            while ((start = lowerText.indexOf(word, start)) !== -1) {
+                const range = new Range();
+                range.setStart(textNode, start);
+                range.setEnd(textNode, start + word.length);
+                ranges.push(range);
+                start += word.length; // move past this match
+            }
+        });
+        return ranges;
+    }
+
+    function applyHighlights(visibleRows, words) {
+        if (!supportsCustomHighlight) return;
+
+        // Clear previous highlight (if any)
+        CSS.highlights.delete('monster-search');
+
+        if (words.length === 0) return;
+
+        const allRanges = [];
+
+        visibleRows.forEach(tr => {
+            // Only look inside <td> cells (or <th> if you have any)
+            Q('td', tr).forEach(td => {
+                getTextNodes(td).forEach(node => {
+                    allRanges.push(...findRangesInNode(node, words));
+                });
+            });
+        });
+
+        if (allRanges.length > 0) {
+            const highlight = new Highlight(...allRanges);
+            CSS.highlights.set('monster-search', highlight);
+        }
+    }
+
+    // ====================== YOUR SEARCH LOGIC (unchanged) ======================
+
     Q1('#search').addEventListener('input', ev => {
         let words = toWords(ev.currentTarget.value);
-        if (words.length === 0) {
-            allMonsters.forEach(tr => tr.classList.remove('d-none'));
-        } else {
-            allMonsters.forEach(tr => {
-                if (words.every(word => tr.textContent.toLowerCase().includes(word))) {
-                    tr.classList.remove('d-none');
-                } else {
-                    tr.classList.add('d-none');
-                }
-            });
-        }
-    });
 
+        const visibleRows = [];
+
+        allMonsters.forEach(tr => {
+            const rowText = tr.textContent.toLowerCase();
+
+            if (words.length === 0 || words.every(word => rowText.includes(word))) {
+                tr.classList.remove('d-none');
+                visibleRows.push(tr);
+            } else {
+                tr.classList.add('d-none');
+            }
+        });
+
+        // Apply (or clear) highlights on the rows that are now visible
+        applyHighlights(visibleRows, words);
+    });
 </script>
 </body>
 </html>
