@@ -1,46 +1,71 @@
 from functools import cmp_to_key
+from typing import Generator
 import re
 import shutil
+from pathlib import Path
 
 from PIL import Image
 
 from noxious_map.models import Map, MapObject
 from noxious_map.types import Paddings, ObjectMapRanges
 from noxious_map.utils import compare_depth_sort, nc
+from noxious_map.tiled import parse_world, Tile, Tileset
 from .base import BaseGenerator
+
+
+def normalize_name(name: str) -> str:
+    return re.sub(r'[/\\ <>":|?*]', "_", name)
 
 
 class MapGenerator(BaseGenerator):
     def generate(self):
-        print("generate maps")
-        print(self.bundle_dir)
-        print(self.out_dir)
-        print(self.root)
-
+        print("generating maps...")
         self.load_maps()
+        print("Done!")
 
     def load_maps(self):
-        tile_maps = self.load("data/maps.json")
+        # loading once early on to check if file can be loaded
+        world = parse_world(self.tiled_dir / "world.tmx")
+        orig_tileset = world.tilesets[0]
+        tileset = orig_tileset.copy()
+        tileset.tiles = []
 
-        map_of_maps: dict[str, Map] = {}
+        tile_maps_raw = self.load("data/maps.json")
+        tile_maps: list[Map] = []
+        for tile_map_raw in tile_maps_raw:
+            loaded_map = Map.model_validate(tile_map_raw, extra="forbid")
+            tile_maps.append(loaded_map)
 
+        for tile_map, img, default_filepath in self.generate_map_images(tile_maps):
+            tile = orig_tileset.find_tile_by_source(default_filepath)
+            if tile:
+                tileset.tiles.append(tile.copy())
+            else:
+                tileset.tiles.append(Tile(0, default_filepath, img.width, img.height))
+
+        max_tile_id = max(t.id for t in tileset.tiles) if tileset.tiles else 0
+        for tile in tileset.tiles:
+            if tile.id != 0:
+                continue
+            max_tile_id += 1
+            tile.id = max_tile_id
+
+        tileset.tiles.sort(key=lambda t: t.id)
+        tileset.write_xml()
+
+    def generate_map_images(
+        self, tile_maps: list[Map]
+    ) -> Generator[tuple[Map, Image.Image, Path]]:
         map_folder = self.out_dir / "maps"
         shutil.rmtree(map_folder)
         map_folder.mkdir(parents=True, exist_ok=True)
 
-        for tile_map in tile_maps:
-            loaded_map = Map.model_validate(tile_map, extra="forbid")
-            assert loaded_map.id not in map_of_maps, "map id already exists"
-            map_of_maps[loaded_map.id] = loaded_map
-
-        for map_id, tile_map in map_of_maps.items():
-            print(f"Teleports of {tile_map.name} [{map_id}]:")
-            for tp in tile_map.teleports:
-                if tp.toMap in map_of_maps:
-                    other_map = map_of_maps[tp.toMap]
-                    print(f"  - {other_map.name} [{other_map.id}]")
-                else:
-                    print(f"  - missing: {tp.toMap}")
+        for i, tile_map in enumerate(tile_maps):
+            print(f"\r{(i + 1) * 100 / len(tile_maps):.1f}%", end="")
+            # if i > 5:
+            #     print("")
+            #     print("TEMPORARY BREAK")
+            #     break
 
             map_im = self.generate_base_map(tile_map)
             obj_im, paddings = self.generate_map_objects(tile_map)
@@ -49,8 +74,7 @@ class MapGenerator(BaseGenerator):
             extended_map.alpha_composite(map_im, (paddings.left, paddings.top))
             extended_map.alpha_composite(obj_im)
 
-            name = tile_map.name
-            name = re.sub(r'[/\\ <>":|?*]', "_", name)
+            name = normalize_name(tile_map.name)
             filename = f"{name}.webp"
 
             folders = [
@@ -76,10 +100,80 @@ class MapGenerator(BaseGenerator):
                     )
                     tmp_map.save(filepath, quality=75)
 
-                print(f"Saved {filepath}")
+            default_filepath = map_folder / "default" / filename
+            yield tile_map, extended_map, default_filepath
 
-    def compine_maps(self):
-        pass
+    @staticmethod
+    def group_adjacent(points):
+        # AI generated
+        """Group 8-connected points into islands. Duplicates removed automatically."""
+        if not points:
+            return []
+        positions = set(points)
+        dirs = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        visited = set()
+        groups = []
+        for start in positions:
+            if start in visited:
+                continue
+            group = []
+            stack = [start]
+            visited.add(start)
+            while stack:
+                x, y = stack.pop()
+                group.append((x, y))
+                for dx, dy in dirs:
+                    n = (x + dx, y + dy)
+                    if n in positions and n not in visited:
+                        visited.add(n)
+                        stack.append(n)
+            groups.append(group)
+        return groups
+
+    @staticmethod
+    def _get_center(points):
+        # AI generated
+        """Most central tile in the group."""
+        if len(points) == 1:
+            return points[0]
+        sx = sum(p[0] for p in points)
+        sy = sum(p[1] for p in points)
+        n = len(points)
+        cx, cy = sx / n, sy / n
+        return min(points, key=lambda p: (p[0] - cx) ** 2 + (p[1] - cy) ** 2)
+
+    def group_teleport_islands(self, teleports):
+        # AI generated
+        """Super-simple version. Returns list of dicts, one per logical portal group."""
+        if not teleports:
+            return []
+
+        from collections import defaultdict
+
+        by_map = defaultdict(list)
+        for tp in teleports:
+            by_map[tp.toMap].append(tp)
+
+        result = []
+        for dmap, tps in by_map.items():
+            mapping = {(tp.x, tp.y): (tp.toX, tp.toY) for tp in tps}
+            dest_groups = self.group_adjacent(mapping.values())
+
+            for dg in dest_groups:
+                dset = set(dg)
+                src_pts = [s for s, d in mapping.items() if d in dset]
+                for sg in self.group_adjacent(src_pts):
+                    dg_this = list({mapping[s] for s in sg})  # unique dests
+                    result.append(
+                        {
+                            "src_positions": sg,
+                            "src_center": self._get_center(sg),
+                            "dest_map": dmap,
+                            "dest_positions": dg_this,
+                            "dest_center": self._get_center(dg_this),
+                        }
+                    )
+        return result
 
     @staticmethod
     def get_base_map_size(tile_map: Map) -> tuple[int, int]:

@@ -24,6 +24,7 @@ class BaseGenerator:
         self.root = root
         self.bundle_dir = self.root / "bundle"
         self.out_dir = self.root / "html"
+        self.tiled_dir = self.out_dir / "js" / "tiled"
 
         _here = Path(__file__).absolute().parent
         self.templates_root = _here / "templates"
