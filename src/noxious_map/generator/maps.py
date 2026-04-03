@@ -9,7 +9,7 @@ from PIL import Image
 from noxious_map.models import Map, MapObject
 from noxious_map.types import Paddings, ObjectMapRanges
 from noxious_map.utils import compare_depth_sort, nc
-from noxious_map.tiled import parse_world, Tile, Tileset
+from noxious_map.tiled import parse_world, Tile, Tileset, ImageObject
 from .base import BaseGenerator
 
 
@@ -29,6 +29,11 @@ class MapGenerator(BaseGenerator):
         orig_tileset = world.tilesets[0]
         tileset = orig_tileset.copy()
         tileset.tiles = []
+        new_map_objects = []
+        new_point_objects = []
+        world.nextobjectid = 1
+
+        max_tile_id = max(t.id for t in orig_tileset.tiles) if orig_tileset.tiles else 0
 
         tile_maps_raw = self.load("data/maps.json")
         tile_maps: list[Map] = []
@@ -41,22 +46,49 @@ class MapGenerator(BaseGenerator):
             if tile is None:
                 tile = orig_tileset.find_tile_by_source(default_filepath)
 
-            tile = tile.copy() if tile else Tile(0, default_filepath, img.width, img.height)
+            if tile:
+                tile = tile.copy()
+
+            if tile is None:
+                max_tile_id += 1
+                tile = Tile(max_tile_id, default_filepath, img.width, img.height)
+
             tile.noxious_id = tile_map.id
             tile.source = default_filepath
             tile.width = img.width
             tile.height = img.height
             tileset.tiles.append(tile)
 
-        max_tile_id = max(t.id for t in tileset.tiles) if tileset.tiles else 0
-        for tile in tileset.tiles:
-            if tile.id != 0:
-                continue
-            max_tile_id += 1
-            tile.id = max_tile_id
+            old_object = world.get_image_object_by_gid(tileset.firstgid + tile.id)
+            if old_object:
+                obj = old_object.copy()
+            else:
+                obj = ImageObject(
+                    id=world.nextobjectid,
+                    x=0.0,
+                    y=0.0,
+                    width=None,
+                    height=None,
+                    gid=tileset.firstgid + tile.id,
+                    name=tile_map.name,
+                )
+                world.nextobjectid += 1
+
+            obj.width = tile.width
+            obj.height = tile.height
+
+            new_map_objects.append(obj)
 
         tileset.tiles.sort(key=lambda t: t.id)
         tileset.write_xml()
+
+        maps_layer = world.get_layer_by_name("Maps")
+        maps_layer.objects = new_map_objects
+
+        connections = world.get_layer_by_name("Connections")
+        connections.objects = new_point_objects
+
+        world.write_xml(self.tiled_dir / "world.tmx")
 
     def generate_map_images(
         self, tile_maps: list[Map]
@@ -67,7 +99,7 @@ class MapGenerator(BaseGenerator):
 
         for i, tile_map in enumerate(tile_maps):
             print(f"\r{(i + 1) * 100 / len(tile_maps):.1f}%", end="")
-            # if i > 5:
+            # if i >= 10:
             #     print("")
             #     print("TEMPORARY BREAK")
             #     break
@@ -88,7 +120,7 @@ class MapGenerator(BaseGenerator):
                 ("small", 3),
                 ("tiny", 4),
                 ("micro", 5),
-                ("fixed", (256, 256))
+                ("fixed", (256, 256)),
             ]
             for folder, resize in folders:
                 filepath = map_folder / folder / filename

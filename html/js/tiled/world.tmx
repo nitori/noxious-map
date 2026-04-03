@@ -1,113 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="64" height="20" tilewidth="64" tileheight="32" infinite="1" nextlayerid="11" nextobjectid="46">
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="64" height="20" tilewidth="64" tileheight="32" infinite="1" nextlayerid="3" nextobjectid="115">
  <tileset firstgid="1" source="maps.tsx"/>
- <objectgroup draworder="index" id="5" name="Maps">
-  <object id="21" name="East_Caves_lv_2" gid="77" x="1482" y="-3050" width="960" height="591"/>
-  <object id="19" name="East_Caves_lv_3" gid="78" x="2540.55" y="-2466.36" width="1920" height="1023"/>
-  <object id="20" name="East_Caves_lv_1" gid="76" x="1480" y="-1970" width="1760" height="1138"/>
-  <object id="44" name="stab_jab_forest" gid="20" x="-1971.75" y="-100.25" width="2567" height="1535"/>
-  <object id="45" name="West_of_Town" gid="28" x="-1316" y="-588" width="1280" height="863"/>
-  <object id="1" name="Modern_town" gid="2" x="397.667" y="245.788" width="3520" height="1897"/>
-  <object id="5" name="East_of_town" gid="80" x="1154.7" y="-852.818" width="1676" height="994"/>
-  <object id="7" name="South_of_jab_stab" gid="19" x="-2460.73" y="723.273" width="1632" height="943"/>
-  <object id="6" name="Beach_House" gid="65" x="1507.45" y="1581.15" width="1920" height="996"/>
-  <object id="13" name="East_of_town_Desert" gid="81" x="3656" y="1368" width="4736" height="2368"/>
-  <object id="11" name="Corn_Fields" gid="71" x="530.848" y="1622.85" width="2560" height="1415"/>
-  <object id="8" name="StartingTown" gid="21" x="-138.485" y="2606.12" width="1920" height="976"/>
+ <objectgroup draworder="index" id="1" name="Maps">
+  <object id="1" name="Adexxin-ChillZone" gid="45" x="-6952" y="9096" width="1280" height="640"/>
   <object id="12" name="Forest_map" gid="84" x="833" y="3093" width="1920" height="1078"/>
-  <object id="4" name="Goblin_Cave_Start" gid="85" x="-70.879" y="-4238.64" width="1280" height="722"/>
-  <object id="9" name="North_of_Town" gid="8" x="-1286.2" y="-5271.92" width="1120" height="560"/>
-  <object id="10" name="North_Flower_Fields" gid="6" x="-359.03" y="-4885.82" width="1920" height="991"/>
-  <object id="35" name="Cave_Map_-_Level_2" gid="69" x="-1356" y="-2948" width="1440" height="799"/>
-  <object id="36" name="Cave_Map_-_Level_2.5" gid="68" x="-1460" y="-1836" width="1920" height="1007"/>
-  <object id="37" name="Goblin_Caves_-_Level_1" gid="86" x="-484" y="-3260" width="1920" height="1039"/>
-  <object id="18" name="Cave_to_Winter_Town" gid="70" x="3579.12" y="-4792.94" width="1920" height="1071"/>
-  <object id="28" name="Path_to_Cave_City" gid="12" x="3362.3" y="-2394.06" width="1760" height="992"/>
-  <object id="29" name="Feo_Jera_Underground_City" gid="82" x="4786.3" y="-1466.06" width="2880" height="1519"/>
+  <object id="2" name="Modern Town Barber" gid="3" x="-6342" y="7542" width="704" height="463"/>
   <object id="32" name="Somewhere_small_(boss_map)" gid="18" x="3901" y="-4605" width="652" height="551"/>
-  <object id="16" name="North_winter_town" gid="10" x="4952" y="-6888" width="2176" height="1295"/>
-  <object id="14" name="Winter_Town" gid="29" x="5109" y="-5579" width="2578" height="1434"/>
-  <object id="15" name="Winter_Wonderland" gid="31" x="4927" y="-4589" width="1920" height="1098"/>
-  <object id="17" name="Cave_Exit_For_Winter_Town" gid="67" x="4561" y="-3999" width="1280" height="714"/>
+  <object id="3" name="Adexxin-Darkside" gid="47" x="-8790" y="7894" width="1280" height="687"/>
+  <object id="4" name="Adexxin-castle=stairs" gid="38" x="-7372" y="6876" width="960" height="591"/>
+  <object id="9" name="North_of_Town" gid="8" x="-1286.2" y="-5271.92" width="5120" height="2782"/>
+  <object id="18" name="Cave_to_Winter_Town" gid="70" x="3579.12" y="-4792.94" width="1920" height="1071"/>
+  <object id="5" name="Gourdath's Lair" gid="94" x="156" y="-1708" width="1920" height="1009"/>
+  <object id="6" name="Adexxin-castle-garden3" gid="41" x="-8108" y="8532" width="640" height="502"/>
+  <object id="7" name="Hat shop map" gid="92" x="-7974" y="7734" width="416" height="320"/>
+  <object id="8" name="Hank Under Ted's Barn" gid="95" x="-8442" y="7114" width="1120" height="560"/>
+  <object id="9" name="Threnn" gid="23" x="-8090" y="6394" width="1440" height="777"/>
+  <object id="10" name="Magic Shop in Modern Town" gid="93" x="-1584" y="5216" width="1920" height="1066"/>
+  <object id="11" name="Mimic Cave" gid="96" x="-6322" y="8450" width="960" height="591"/>
+  <object id="12" name="Adexxin-Castle-main" gid="43" x="-6194" y="6970" width="1280" height="687"/>
+  <object id="37" name="Goblin_Caves_-_Level_1" gid="86" x="-484" y="-3260" width="1920" height="1039"/>
+  <object id="13" name="Adexxin-castle-hall" gid="42" x="-5596" y="3532" width="1280" height="660"/>
+  <object id="14" name="graveyard" gid="87" x="-5504" y="544" width="1920" height="1017"/>
+  <object id="15" name="Mistwood Village West Flower Fields" gid="97" x="-1632" y="-11296" width="3840" height="1998"/>
+  <object id="16" name="Adexxin-castle-garden" gid="39" x="-5972" y="4820" width="1282" height="761"/>
+  <object id="17" name="Mistwood Village Assassin's Guild" gid="98" x="-2752" y="4816" width="928" height="660"/>
+  <object id="18" name="East Guard Break Room" gid="79" x="-6912" y="4736" width="1280" height="751"/>
+  <object id="19" name="Floor 2: Evergreen Hollow" gid="99" x="-10232" y="1912" width="2578" height="1434"/>
+  <object id="20" name="Desert map" gid="74" x="-4128" y="608" width="1920" height="1183"/>
+  <object id="21" name="North Jab/stab" gid="7" x="-6616" y="6184" width="1920" height="1071"/>
+  <object id="22" name="twilight zone" gid="25" x="-6392" y="3528" width="1280" height="751"/>
+  <object id="23" name="Floor 2: Cave Exit For S  Evergreen Hollow" gid="100" x="-7408" y="3888" width="1280" height="714"/>
+  <object id="24" name="South East Ant Cave" gid="101" x="-9840" y="4496" width="1920" height="975"/>
+  <object id="7" name="South_of_jab_stab" gid="19" x="-2460.73" y="723.273" width="1632" height="943"/>
+  <object id="8" name="StartingTown" gid="21" x="-138.485" y="2606.12" width="1920" height="976"/>
+  <object id="25" name="Floor 2: S Evergreen Hollow " gid="102" x="-9912" y="3288" width="1920" height="1098"/>
+  <object id="26" name="NE Caves" gid="103" x="-9872" y="240" width="2720" height="1618"/>
+  <object id="27" name="Ocean Map" gid="11" x="1864" y="11288" width="3200" height="1600"/>
+  <object id="28" name="Hank Feo Jera Underground City" gid="104" x="4944" y="10608" width="2880" height="1519"/>
+  <object id="29" name="Mistwood Village South Farms" gid="105" x="1792" y="-8896" width="5120" height="2826"/>
+  <object id="30" name="Forest house" gid="83" x="-4808" y="4952" width="640" height="431"/>
+  <object id="31" name="Floor 2: S Evergreen Hollow House Merchant" gid="106" x="-3920" y="5136" width="576" height="399"/>
+  <object id="32" name="Desert gear Shop" gid="73" x="-3452" y="4860" width="800" height="400"/>
+  <object id="33" name="Cape store" gid="66" x="-2728" y="5416" width="512" height="368"/>
+  <object id="34" name="Desert Medicine Store" gid="75" x="-7964" y="4364" width="800" height="400"/>
+  <object id="35" name="Under Guild Hall" gid="27" x="-8004" y="3188" width="512" height="367"/>
+  <object id="45" name="West_of_Town" gid="28" x="5116" y="-780" width="1280" height="863"/>
+  <object id="36" name="Adexxin-castle-garden2" gid="40" x="-7656" y="1240" width="1600" height="826"/>
+  <object id="37" name="Adexxin-Optic" gid="58" x="-432" y="10736" width="1920" height="1024"/>
+  <object id="13" name="East_of_town_Desert" gid="81" x="3656" y="1368" width="4736" height="2368"/>
+  <object id="38" name="StartingTownBank" gid="22" x="-8512" y="3776" width="640" height="431"/>
+  <object id="39" name="Reaper boss" gid="14" x="-7092" y="7828" width="1280" height="640"/>
+  <object id="6" name="Beach_House" gid="65" x="1507.45" y="1581.15" width="1920" height="996"/>
+  <object id="40" name="Adexxin-Castle-outdoor" gid="44" x="-8664" y="4440" width="1280" height="703"/>
+  <object id="28" name="Path_to_Cave_City" gid="12" x="3362.3" y="-2394.06" width="1760" height="992"/>
+  <object id="35" name="Cave_Map_-_Level_2" gid="69" x="-1356" y="-2948" width="1440" height="799"/>
+  <object id="41" name="North East of Mistwood Village" gid="107" x="-5304" y="-9704" width="3840" height="2114"/>
+  <object id="42" name="Snake map" gid="17" x="-5352" y="2648" width="1440" height="826"/>
+  <object id="43" name="Floor 2: N Evergreen Hollow" gid="108" x="5216" y="8544" width="2176" height="1295"/>
+  <object id="1" name="Modern_town" gid="2" x="5725.67" y="-1882.21" width="3520" height="1897"/>
+  <object id="44" name="Desert Abandoned Building" gid="72" x="-8556" y="3244" width="800" height="512"/>
+  <object id="4" name="Goblin_Cave_Start" gid="85" x="-70.879" y="-4238.64" width="2880" height="1562"/>
+  <object id="45" name="Floor 2:Evergreen Hollow Equipment Shop " gid="109" x="-9376" y="3792" width="512" height="367"/>
+  <object id="46" name="Floor 2: Evergreen Hollow Boss 1 " gid="110" x="-6440" y="2552" width="960" height="592"/>
+  <object id="47" name="Smith in spawn Town" gid="16" x="-9320" y="3112" width="704" height="463"/>
+  <object id="48" name="adexxin-Darkside-northpath" gid="48" x="-7284" y="2756" width="960" height="574"/>
+  <object id="49" name="moogle map" gid="5" x="-8344" y="2616" width="1280" height="738"/>
+  <object id="44" name="stab_jab_forest" gid="20" x="-1971.75" y="-100.25" width="2567" height="1535"/>
+  <object id="50" name="Adexxin-gate" gid="50" x="4912" y="6864" width="1920" height="1385"/>
+  <object id="51" name="Portal Room" gid="13" x="-6176" y="1504" width="1344" height="783"/>
+  <object id="52" name="Adexxin-start" gid="61" x="-9248" y="2304" width="993" height="632"/>
+  <object id="53" name="Adexxin-Hidden" gid="51" x="-7224" y="2104" width="1280" height="640"/>
+  <object id="54" name="Adexxin-town" gid="62" x="6720" y="7104" width="1920" height="1095"/>
+  <object id="55" name="Adexxin-smith" gid="60" x="-8156" y="1852" width="640" height="431"/>
+  <object id="56" name="Adexxin-armor" gid="34" x="-9052" y="1532" width="640" height="431"/>
+  <object id="57" name="Tutorial" gid="24" x="-4964" y="1380" width="1280" height="640"/>
+  <object id="58" name="Adexxin-New" gid="56" x="6664" y="5432" width="2560" height="1466"/>
+  <object id="59" name="Mistwood Village" gid="111" x="-8144" y="-8176" width="6400" height="3496"/>
+  <object id="60" name="Adexxin-Jungle" gid="53" x="8248" y="5064" width="2560" height="1280"/>
+  <object id="61" name="Adexxin-jungle-hut" gid="55" x="-9140" y="1108" width="1280" height="640"/>
+  <object id="62" name="Adventurers Guild Mistwood Village" gid="112" x="10112" y="2176" width="2560" height="1440"/>
+  <object id="63" name="Mistwood Village Magic shop" gid="113" x="9512" y="-2024" width="1920" height="1053"/>
+  <object id="64" name="Adexxin-church" gid="46" x="9632" y="3456" width="1920" height="977"/>
+  <object id="65" name="Adexxin-fightmap" gid="49" x="-4516" y="2276" width="1280" height="672"/>
+  <object id="66" name="Adexxin-Pvp" gid="59" x="-8968" y="232" width="1280" height="640"/>
+  <object id="67" name="Adexxin-newtown-house" gid="57" x="-4224" y="3120" width="1280" height="640"/>
+  <object id="68" name="Adexxin-Casino" gid="37" x="-1076" y="1380" width="1280" height="719"/>
+  <object id="69" name="Adexxin-bnb" gid="35" x="-9548" y="1516" width="640" height="399"/>
+  <object id="70" name="Adexxin-bnb-upstairs" gid="36" x="-5424" y="1744" width="640" height="362"/>
+  <object id="71" name="Mistwood Sewers" gid="114" x="-1640" y="4136" width="5159" height="2689"/>
+  <object id="72" name="Adexxin-jungle2" gid="54" x="8984" y="392" width="1951" height="1288"/>
+  <object id="73" name="bcave" gid="63" x="9696" y="-800" width="1984" height="1106"/>
+  <object id="74" name="bcavebs" gid="64" x="-7912" y="5512" width="1536" height="864"/>
+  <object id="75" name="Floor 2:  E Evergreen Hollow " gid="115" x="-2240" y="-3408" width="1280" height="772"/>
+  <object id="76" name="Connor-castle-hall" gid="116" x="-260" y="1316" width="1280" height="695"/>
+  <object id="77" name="Connor castle garden." gid="117" x="-9232" y="-2256" width="4800" height="2744"/>
+  <object id="78" name="Tomboclat - Xville" gid="118" x="1284" y="-276" width="1280" height="718"/>
+  <object id="79" name="Floor 2: NW  Evergreen Hollow Village " gid="119" x="-7128" y="-808" width="3200" height="1738"/>
+  <object id="80" name="Mistwood Village Steel Smith" gid="120" x="1260" y="420" width="842" height="576"/>
+  <object id="81" name="Floor 2 : Evergreen Hollow Archery Shop " gid="121" x="336" y="1296" width="704" height="463"/>
+  <object id="82" name="Mistwood Village Church" gid="122" x="-9472" y="-5984" width="2560" height="1671"/>
+  <object id="83" name="Omen ---- idkyet&lt;3" gid="123" x="-2312" y="9544" width="7680" height="4073"/>
+  <object id="84" name="Mistwood Village Barber" gid="124" x="-2768" y="-2160" width="1280" height="784"/>
+  <object id="85" name="General Store Mistwood Village" gid="125" x="7904" y="-3040" width="1920" height="1129"/>
+  <object id="86" name="(Omen) Hanks Big Ass Library.." gid="126" x="1168" y="8944" width="4189" height="2313"/>
+  <object id="87" name="Dungeon Forge" gid="127" x="-3528" y="-2840" width="1280" height="800"/>
+  <object id="88" name="Hank_ map used for no trespassing" gid="128" x="0" y="0" width="320" height="160"/>
+  <object id="89" name="Barn MWV" gid="129" x="2696" y="9720" width="1303" height="852"/>
+  <object id="90" name="Mistwood Village Mines" gid="130" x="3576" y="8328" width="3840" height="2049"/>
+  <object id="91" name="Hank Creepy Inn MWV" gid="131" x="-3088" y="-3744" width="1280" height="640"/>
+  <object id="92" name="Mistwood Village Assassin's Guild Top Floor" gid="132" x="-3516" y="-4516" width="928" height="592"/>
+  <object id="93" name="Character Selection Screen" gid="133" x="-2660" y="-4508" width="651" height="489"/>
+  <object id="94" name="Nightshade Cove East MWV " gid="134" x="4888" y="4936" width="5120" height="2782"/>
+  <object id="95" name="Floor 2: Evergreen Hollow (Szar)" gid="135" x="6192" y="-4400" width="2581" height="1434"/>
+  <object id="96" name="North of Nightshade Cove" gid="136" x="8088" y="3496" width="5120" height="2560"/>
+  <object id="97" name="Astraea's Abode" gid="137" x="-5808" y="-7088" width="3840" height="2062"/>
+  <object id="98" name="root test" gid="15" x="-13576" y="3752" width="9600" height="4800"/>
+  <object id="99" name="East Of Town MWV" gid="138" x="8024" y="-1592" width="2560" height="1374"/>
+  <object id="100" name="South East Mistwood Village" gid="139" x="7472" y="304" width="2560" height="1386"/>
+  <object id="101" name="Mistwood North East Connect" gid="140" x="5136" y="848" width="2560" height="1387"/>
+  <object id="102" name="North of Mistwood Village" gid="141" x="-3376" y="-8976" width="2560" height="1374"/>
+  <object id="103" name="South of MWV" gid="142" x="760" y="5000" width="3840" height="1920"/>
+  <object id="104" name="North East Caves" gid="143" x="0" y="0" width="3840" height="1920"/>
+  <object id="105" name="South of Mistwood Village" gid="144" x="-7352" y="-3784" width="2560" height="1502"/>
+  <object id="106" name="Tutorial Area" gid="145" x="3164" y="-1804" width="5120" height="2686"/>
+  <object id="107" name="Tutorial 2" gid="146" x="1176" y="-6840" width="2560" height="1470"/>
+  <object id="108" name="Tutorial Blacksmith" gid="147" x="-612" y="-2620" width="704" height="512"/>
+  <object id="109" name="South East of Mistwood" gid="148" x="-3916" y="-820" width="3040" height="1614"/>
+  <object id="110" name="Tutorial Cave" gid="149" x="-7904" y="160" width="1280" height="671"/>
+  <object id="111" name="Magma Cave" gid="150" x="-4084" y="-2332" width="6400" height="3311"/>
+  <object id="112" name="Tutorial Cave Level 2 " gid="151" x="-1040" y="-8368" width="2560" height="1311"/>
+  <object id="113" name="Tutorial Cave Level 3" gid="152" x="3264" y="-6688" width="2560" height="1375"/>
+  <object id="114" name="Secret Entrance to Astraea's Abode" gid="153" x="-6984" y="232" width="1280" height="671"/>
  </objectgroup>
- <objectgroup id="9" name="Connections">
-  <object id="24" x="1093.64" y="-1208.79">
-   <properties>
-    <property name="attachedTo" type="object" value="5"/>
-    <property name="path" type="object" value="25"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="25" x="1625.45" y="-1122.42">
-   <properties>
-    <property name="attachedTo" type="object" value="13"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="26" x="-635.152" y="-1564.85">
-   <properties>
-    <property name="attachedTo" type="object" value="1"/>
-    <property name="path" type="object" value="27"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="27" x="-1507.09" y="-5266.48">
-   <properties>
-    <property name="attachedTo" type="object" value="10"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="33" x="3291.12" y="-4812.94">
-   <properties>
-    <property name="attachedTo" type="object" value="18"/>
-    <property name="path" type="object" value="34"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="34" x="3955" y="-4455">
-   <properties>
-    <property name="attachedTo" type="object" value="17"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="38" x="2666.12" y="-5751.94">
-   <properties>
-    <property name="attachedTo" type="object" value="18"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="39" x="1862.55" y="-3412.36">
-   <properties>
-    <property name="attachedTo" type="object" value="19"/>
-    <property name="path" type="object" value="38"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="40" x="3196.3" y="-3292.06">
-   <properties>
-    <property name="attachedTo" type="object" value="28"/>
-    <property name="path" type="object" value="41"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="41" x="-1418" y="-3462">
-   <properties>
-    <property name="attachedTo" type="object" value="37"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="42" x="2378.55" y="-3424.36">
-   <properties>
-    <property name="attachedTo" type="object" value="19"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="43" x="1590.55" y="-2620.36">
-   <properties>
-    <property name="attachedTo" type="object" value="19"/>
-    <property name="path" type="object" value="42"/>
-   </properties>
-   <point/>
-  </object>
- </objectgroup>
+ <objectgroup id="2" name="Connections"/>
 </map>

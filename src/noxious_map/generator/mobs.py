@@ -16,7 +16,9 @@ class MobGenerator(BaseGenerator):
         for tile_map in tile_maps:
             for monster in tile_map.monsters:
                 monster_spawns.setdefault(monster.monster, {})
-                _, lst = monster_spawns[monster.monster].setdefault(tile_map.id, (tile_map, []))
+                _, lst = monster_spawns[monster.monster].setdefault(
+                    tile_map.id, (tile_map, [])
+                )
                 lst.append(monster)
         return monster_spawns
 
