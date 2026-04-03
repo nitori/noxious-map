@@ -19,6 +19,10 @@
             display: none !important;
         }
 
+        th {
+            vertical-align: middle;
+        }
+
         .td-img {
             width: {{ max_monster_sprite_width + 16 }}px;
             padding: 8px;
@@ -53,24 +57,52 @@
             width: 850px;
         }
 
+        .sticky {
+            position: sticky;
+            top: calc(49px + 38px); /* guesstimate */
+            z-index: 1
+        }
+
         input[type=text] {
             display: block;
-            width: 100%;
+            max-width: 100%;
             padding: 5px 10px;
         }
 
         .spawn-point {
             margin-bottom: 20px;
         }
+
         .spawn-point-spawn {
             margin-bottom: 10px;
+        }
+
+        #search {
+            position: fixed;
+            top: 0;
+            right: calc(var(--bs-gutter-x) * .5);
+            left: calc(var(--bs-gutter-x) * .5);
+            height: 38px;
+            z-index: 3;
+        }
+
+        .monster-table {
+            margin-top: 38px;
+            position: relative;
+        }
+
+        .monster-table > thead > tr {
+            position: sticky;
+            top: 38px;
+            box-shadow: 0 8px 6px -4px #ffffff0f;
+            z-index: 2;
         }
     </style>
 </head>
 <body>
 <div class="container-fluid">
     <input id="search" type="text" aria-label="Search" placeholder="Search">
-    <table class="table table-striped">
+    <table class="table table-striped monster-table">
         <thead>
         <tr>
             <th class="td-img"></th>
@@ -87,15 +119,17 @@
         {% for monster in monsters %}
             <tr class="monster-row">
                 <td class="td-img">
-                    <img src="{{ monster.sprite.path }}?ts={{ ts }}"
-                         width="{{ monster.sprite.width }}"
-                         height="{{ monster.sprite.height }}"
-                         class="sprite" alt="Sprite of {{ monster.name }}">
+                    <div class="sticky">
+                        <img src="{{ monster.sprite.path }}?ts={{ ts }}"
+                             width="{{ monster.sprite.width }}"
+                             height="{{ monster.sprite.height }}"
+                             class="sprite" alt="Sprite of {{ monster.name }}">
+                    </div>
                 </td>
-                <td class="td-name">{{ monster.name }}</td>
-                <td class="td-hostile">{{ monster.hostility }}</td>
-                <td class="td-level">{{ monster.level }}</td>
-                <td class="td-health">{{ monster.maxHealth }}/{{ monster.maxMana }}</td>
+                <td class="td-name"><div class="sticky">{{ monster.name }}</div></td>
+                <td class="td-hostile"><div class="sticky">{{ monster.hostility }}</div></td>
+                <td class="td-level"><div class="sticky">{{ monster.level }}</div></td>
+                <td class="td-health"><div class="sticky">{{ monster.maxHealth }}/{{ monster.maxMana }}</div></td>
                 <td class="td-spawns">
                     {%- if monster.spawns %}
                         {% for map, spawns in monster.spawns.values() %}
