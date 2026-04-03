@@ -115,7 +115,7 @@
             <th class="td-img"></th>
             <th class="td-name">Name</th>
             <th class="td-hostile">Hostility</th>
-            <th class="td-level">Level</th>
+            <th class="td-level">Level/Exp.</th>
             <th class="td-health">Health/Mana</th>
             <th class="td-spawns">Spawn points</th>
             <th class="td-drops p-0">Drops</th>
@@ -130,6 +130,7 @@
                         <img src="{{ monster.sprite.path }}?ts={{ ts }}"
                              width="{{ monster.sprite.width }}"
                              height="{{ monster.sprite.height }}"
+                             loading="lazy"
                              class="sprite" alt="Sprite of {{ monster.name }}">
                     </div>
                 </td>
@@ -140,7 +141,7 @@
                     <div class="sticky">{{ monster.hostility }}</div>
                 </td>
                 <td class="td-level">
-                    <div class="sticky">{{ monster.level }}</div>
+                    <div class="sticky">{{ monster.level }} / {{ monster.giveExp }}</div>
                 </td>
                 <td class="td-health">
                     <div class="sticky">{{ monster.maxHealth }}/{{ monster.maxMana }}</div>
@@ -151,15 +152,16 @@
                             <div class="spawn-point">
                                 <strong>{{ map.name }}</strong><br>
                                 <code>{{ map.id }}</code><br>
+                                <a href="/nox/maps/default/{{ map.id }}.webp" target="_blank">
+                                    <img src="/nox/maps/fixed/{{ map.id }}.webp"
+                                         width="256"
+                                         alt="{{ map.name }}"
+                                         loading="lazy">
+                                </a><br>
                                 {% for spawn in spawns %}
                                     <div class="spawn-point-spawn">
-                                        Position: {{ spawn.x }}, {{ spawn.y }}<br>
-                                        Amount: {{ spawn.amount }}<br>
-                                        {% if spawn.respawnTime %}
-                                            Respawn: {{ spawn.respawnTime / 1000 / 60 }} minutes<br>
-                                        {% else %}
-                                            Respawn: <em>n/a</em><br>
-                                        {% endif %}
+                                        (x={{ spawn.x }}, y={{ spawn.y }}) x{{ spawn.amount }}<br>
+                                        Respawn: {{ spawn.respawn_display }}
                                     </div>
                                 {% endfor %}
                             </div>
@@ -195,7 +197,8 @@
                                     {%- if drop.sprite -%}
                                         <img src="{{ drop.sprite.path }}?ts={{ ts }}"
                                              width="{{ drop.sprite.width }}"
-                                             height="{{ drop.sprite.height }}">
+                                             height="{{ drop.sprite.height }}"
+                                             loading="lazy">
                                     {%- endif -%}
                                 </td>
                                 <td>{{ drop.item.name }}</td>

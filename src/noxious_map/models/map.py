@@ -77,6 +77,19 @@ class Monster(Position):
     wanderRadius: int | str | None = None
     respawnTime: int | None = None
 
+    @property
+    def respawn_display(self) -> str:
+        if self.respawnTime is None:
+            return "n/a"
+
+        rt = self.respawnTime / 1000
+        if rt >= 60:
+            rt = rt / 60
+            if rt.is_integer():
+                return f"{rt:.0f} minutes"
+            return f"{rt / 60:.2f} minutes"
+        return f"{rt:.0f} seconds"
+
 
 class SitTile(Position):
     direction: int

@@ -82,12 +82,13 @@ class MapGenerator(BaseGenerator):
             name = normalize_name(tile_map.id)
             filename = f"{name}.webp"
 
-            folders = [
-                ["default", 1],
-                ["low", 2],
-                ["small", 3],
-                ["tiny", 4],
-                ["micro", 5],
+            folders: list[tuple[str, int | tuple[float, float]]] = [
+                ("default", 1),
+                ("low", 2),
+                ("small", 3),
+                ("tiny", 4),
+                ("micro", 5),
+                ("fixed", (256, 256))
             ]
             for folder, resize in folders:
                 filepath = map_folder / folder / filename
@@ -97,6 +98,10 @@ class MapGenerator(BaseGenerator):
 
                 if resize == 1:
                     extended_map.save(filepath, quality=75)
+                elif isinstance(resize, tuple):
+                    tmp_map = extended_map.copy()
+                    tmp_map.thumbnail(resize, Image.Resampling.BICUBIC)
+                    tmp_map.save(filepath, quality=75)
                 else:
                     w, h = extended_map.size
                     tmp_map = extended_map.resize(
@@ -107,6 +112,7 @@ class MapGenerator(BaseGenerator):
 
             default_filepath = map_folder / "default" / filename
             yield tile_map, extended_map, default_filepath
+        print()
 
     @staticmethod
     def group_adjacent(points):
