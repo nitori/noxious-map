@@ -158,9 +158,21 @@ class TiledObject:
     id: int
     x: float
     y: float
+    properties: dict[str, Property] = field(default_factory=dict)
 
     def copy(self) -> TiledObject:
-        return TiledObject(id=self.id, x=self.x, y=self.y)
+        return TiledObject(id=self.id, x=self.x, y=self.y,
+                           properties={name: prop.copy() for name, prop in self.properties.items()}, )
+
+    @staticmethod
+    def parse_properties(elem: ET.Element) -> dict[str, Property]:
+        properties = {}
+        for prop in elem.findall("properties/property"):
+            name = prop.attrib["name"]
+            type = prop.attrib.get("type")
+            value = prop.attrib["value"]
+            properties[name] = Property(type=type, value=value)
+        return properties
 
     @classmethod
     def from_element(cls, elem: ET.Element) -> ImageObject | PointObject:
@@ -171,8 +183,23 @@ class TiledObject:
 
         raise NotImplementedError(f"Unsupported object element: {elem}")
 
+    def props_to_xml(self) -> ET.Element:
+        props = ET.Element("properties")
+        for name, prop in self.properties.items():
+            attrs = {"name": name}
+            if prop.type is not None and prop.type != 'string':
+                attrs['type'] = prop.type
+            attrs["value"] = prop.value
+            props.append(
+                ET.Element(
+                    "property",
+                    attrs
+                )
+            )
+        return props
+
     def to_xml(self) -> ET.Element:
-        return ET.Element(
+        root = ET.Element(
             "object",
             {
                 "id": str(self.id),
@@ -180,6 +207,8 @@ class TiledObject:
                 "y": float_str(self.y),
             },
         )
+        root.append(self.props_to_xml())
+        return root
 
 
 @dataclass
@@ -198,6 +227,7 @@ class ImageObject(TiledObject):
             height=self.height,
             gid=self.gid,
             name=self.name,
+            properties={name: prop.copy() for name, prop in self.properties.items()},
         )
 
     @classmethod
@@ -210,6 +240,7 @@ class ImageObject(TiledObject):
             height=tryfloat(elem.attrib.get("height")),
             gid=tryint(elem.attrib.get("gid")),
             name=elem.attrib.get("name"),
+            properties=cls.parse_properties(elem),
         )
 
     def to_xml(self) -> ET.Element:
@@ -227,13 +258,13 @@ class ImageObject(TiledObject):
             root.attrib["width"] = float_str(self.width)
         if self.height is not None:
             root.attrib["height"] = float_str(self.height)
+        root.append(self.props_to_xml())
         return root
 
 
 @dataclass
 class PointObject(TiledObject):
     name: str | None = None
-    properties: dict[str, Property] = field(default_factory=dict)
 
     def copy(self) -> PointObject:
         return PointObject(
@@ -246,38 +277,19 @@ class PointObject(TiledObject):
 
     @classmethod
     def from_element(cls, elem: ET.Element) -> Self:
-        properties = {}
-        for prop in elem.findall("properties/property"):
-            name = prop.attrib["name"]
-            type = prop.attrib.get("type")
-            value = prop.attrib["value"]
-            properties[name] = Property(type=type, value=value)
-
         return cls(
             name=elem.attrib.get("name"),
             id=int(elem.attrib["id"]),
             x=float(elem.attrib["x"]),
             y=float(elem.attrib["y"]),
-            properties=properties,
+            properties=cls.parse_properties(elem),
         )
 
     def to_xml(self) -> ET.Element:
         root = super().to_xml()
         if self.name is not None:
             root.attrib["name"] = self.name
-        props = ET.Element("properties")
-        for name, prop in self.properties.items():
-            attrs = {"name": name}
-            if prop.type is not None and prop.type != 'string':
-                attrs['type'] = prop.type
-            attrs["value"] = prop.value
-            props.append(
-                ET.Element(
-                    "property",
-                    attrs
-                )
-            )
-        root.append(props)
+        root.append(self.props_to_xml())
         root.append(ET.Element("point"))
         return root
 

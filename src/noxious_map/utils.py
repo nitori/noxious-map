@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Generator, Iterable, Collection
 from pathlib import Path
 import hashlib
 import math
@@ -8,6 +8,7 @@ if TYPE_CHECKING:
     from noxious_map.models import MapObject as BaseMapObject
     from noxious_map.models.map import MapObjectOverrides
     from PIL import Image
+
 
     class SortParam(TypedDict):
         obj: MapObjectOverrides
@@ -37,7 +38,7 @@ def pretty_size(size: int, *, space: bool = True) -> str:
     prefixes = ["", "K", "M", "G", "T"]
     exp = int(math.log(size, 1024))
     exp = min(exp, len(prefixes) - 1)
-    fsize = size / 1024**exp
+    fsize = size / 1024 ** exp
     ssize = f"{fsize:.1f}".replace(".0", "")
     return f"{ssize}{space_char}{prefixes[exp]}iB"
 
@@ -48,6 +49,23 @@ def nc(*values):
         if value is not None:
             return value
     return None
+
+
+def progress[T](iterable: Iterable[T] | Collection[T], *, max: int | None = None):
+    if max is None and hasattr(iterable, '__len__'):
+        max = len(iterable)
+    bar_width = 40
+    for i, item in enumerate(iterable):
+        if max is not None:
+            ratio = i / max
+            filled = round(ratio * bar_width)
+            empty = bar_width - filled
+            print(f"\r[{'#' * filled}{' ' * empty}] {ratio * 100:.1f}%", end="")
+        else:
+            char = "-\\|/"[i % 4]
+            print(f"\r[{char}] ---%", end="")
+        yield item
+    print(f"\r[{'#' * bar_width}] {100:.1f}%")
 
 
 def compare_depth_sort(A: SortParam, B: SortParam):

@@ -1,3 +1,4 @@
+from random import Random
 from functools import cmp_to_key
 from typing import Generator, TypedDict, Collection
 import re
@@ -8,10 +9,13 @@ from PIL import Image, ImageDraw
 
 from noxious_map.models import Map, MapObject
 from noxious_map.types import Paddings, ObjectMapRanges
-from noxious_map.utils import compare_depth_sort, nc
+from noxious_map.utils import compare_depth_sort, nc, progress
 from noxious_map.tiled import parse_world, Tile, ImageObject, PointObject, Property
 from .base import BaseGenerator
 from ..models.map import Teleport
+
+random = Random()
+random.seed(123)
 
 
 class Telepad(TypedDict):
@@ -40,17 +44,11 @@ class MapGenerator(BaseGenerator):
         tileset.tiles = []
 
         new_world = old_world.copy()
-        new_world.nextobjectid = 1
+        # new_world.nextobjectid = 1
         map_objects = new_world.get_layer_by_name("Maps")
         point_objects = new_world.get_layer_by_name("Connections")
         map_objects.objects = []
         point_objects.objects = []
-
-        # map_id -> list of (center, PointObject)
-        point_centers: dict[str, list[tuple[float, float, PointObject]]] = {}
-        tile_map_paddings: dict[str, Paddings] = {}
-        tile_map_image_sizes: dict[str, tuple[int, int]] = {}
-        tile_map_image_objects: dict[str, ImageObject] = {}
 
         max_tile_id = max(t.id for t in orig_tileset.tiles) if orig_tileset.tiles else 0
 
@@ -62,12 +60,7 @@ class MapGenerator(BaseGenerator):
             tile_maps.append(loaded_map)
             id_map_tile_map[loaded_map.id] = loaded_map
 
-        for tile_map, img, paddings, default_filepath in self.generate_map_images(
-            tile_maps
-        ):
-            tile_map_paddings[tile_map.id] = paddings
-            tile_map_image_sizes[tile_map.id] = img.size
-
+        for tile_map, img, paddings, default_filepath in self.generate_map_images(tile_maps):
             tile = orig_tileset.find_tile_by_noxious_id(tile_map.id)
             if tile is None:
                 tile = orig_tileset.find_tile_by_source(default_filepath)
@@ -92,8 +85,8 @@ class MapGenerator(BaseGenerator):
             else:
                 obj = ImageObject(
                     id=new_world.nextobjectid,
-                    x=0.0,
-                    y=0.0,
+                    x=random.randint(-10000, 10000),
+                    y=random.randint(-10000, 10000),
                     width=None,
                     height=None,
                     gid=tileset.firstgid + tile.id,
@@ -103,10 +96,10 @@ class MapGenerator(BaseGenerator):
 
             obj.width = tile.width
             obj.height = tile.height
-            tile_map_image_objects[tile_map.id] = obj
+            obj.properties["tileMapId"] = Property(type="string", value=tile_map.id)
+            obj.properties["tileMapName"] = Property(type="string", value=tile_map.name)
 
             map_objects.objects.append(obj)
-
             for group in self.group_teleport_islands(tile_map.teleports):
                 dest_tile_map = id_map_tile_map[group["dest_map"]]
                 src_x, src_y = group["src_center"]
@@ -121,72 +114,15 @@ class MapGenerator(BaseGenerator):
                     y=world_y,
                     properties={
                         "attachedTo": Property(type="object", value=str(obj.id)),
+                        "srcMapId": Property(type="string", value=tile_map.id),
+                        "srcMapName": Property(type="string", value=tile_map.name),
                         "destMapId": Property(type="string", value=dest_tile_map.id),
-                        "destMapX": Property(type="int", value=str(group["dest_center"][0])),
-                        "destMapY": Property(type="int", value=str(group["dest_center"][1])),
+                        "destMapName": Property(type="string", value=dest_tile_map.name),
+                        "destPos": Property(type="string", value=str(group["dest_center"])),
                     },
                 )
+                new_world.nextobjectid += 1
                 point_objects.objects.append(pobject)
-                point_centers.setdefault(tile_map.id, []).append((src_x, src_y, pobject))
-                new_world.nextobjectid += 1
-
-        for pobj in point_objects.objects:
-            if not isinstance(pobj, PointObject):
-                continue
-            dest_id = pobj.properties["destMapId"].value
-            dest_x = int(pobj.properties["destMapX"].value)
-            dest_y = int(pobj.properties["destMapY"].value)
-
-            found_dest_point: PointObject | None = None
-            if dest_id in point_centers:
-                dest_centers = point_centers[dest_id]
-                for dx, dy, dest_point in dest_centers:
-                    if dest_x == dx and dest_y == dy:
-                        found_dest_point = dest_point
-                        break
-
-            if found_dest_point:
-                pobj.properties["path"] = Property(type="object", value=str(found_dest_point.id))
-            else:
-                dest_tile_map = id_map_tile_map[dest_id]
-                dest_paddings = tile_map_paddings[dest_id]
-                dest_img_size = tile_map_image_sizes[dest_id]
-                dest_image_object = tile_map_image_objects[dest_id]
-
-                local_xy = self.get_tile_center(dest_x, dest_y, dest_tile_map, dest_paddings)
-                world_x, world_y = self.to_tiled_image_position(
-                    local_xy, (dest_image_object.x, dest_image_object.y), dest_img_size
-                )
-
-                dest_pobject = PointObject(
-                    name=f"To: {dest_tile_map.name}",
-                    id=new_world.nextobjectid,
-                    x=world_x,
-                    y=world_y,
-                    properties={
-                        "attachedTo": Property(type="object", value=str(dest_image_object.id)),
-                        "destMapId": Property(type="string", value=dest_tile_map.id),
-                        "destMapX": Property(type="int", value=str(dest_x)),
-                        "destMapY": Property(type="int", value=str(dest_y)),
-                    },
-                )
-                new_world.nextobjectid += 1
-
-                point_objects.objects.append(dest_pobject)
-                # in case we need it a second time
-                point_centers.setdefault(dest_tile_map.id, []).append((dest_x, dest_y, dest_pobject))
-
-                pobj.properties["path"] = Property(type="object", value=str(dest_pobject.id))
-
-        for pobj in point_objects.objects:
-            if not isinstance(pobj, PointObject):
-                continue
-            if "destMapId" in pobj.properties:
-                del pobj.properties["destMapId"]
-            if "destMapX" in pobj.properties:
-                del pobj.properties["destMapX"]
-            if "destMapY" in pobj.properties:
-                del pobj.properties["destMapY"]
 
         tileset.tiles.sort(key=lambda t: t.id)
         tileset.write_xml()
@@ -236,8 +172,10 @@ class MapGenerator(BaseGenerator):
         shutil.rmtree(map_folder)
         map_folder.mkdir(parents=True, exist_ok=True)
 
-        for i, tile_map in enumerate(tile_maps):
-            print(f"\r{(i + 1) * 100 / len(tile_maps):.1f}%", end="")
+        for tile_map in progress(tile_maps):
+            # if tile_map.id not in ("xf07cohu0dqymrh", "a2f5vu1iw2okj2o"):
+            #     continue
+
             # if i >= 5:
             #     print("")
             #     print("TEMPORARY BREAK")
@@ -283,7 +221,6 @@ class MapGenerator(BaseGenerator):
 
             default_filepath = map_folder / "default" / filename
             yield tile_map, extended_map, paddings, default_filepath
-        print()
 
     @staticmethod
     def group_adjacent(
