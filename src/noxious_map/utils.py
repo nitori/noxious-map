@@ -9,7 +9,6 @@ if TYPE_CHECKING:
     from noxious_map.models.map import MapObjectOverrides
     from PIL import Image
 
-
     class SortParam(TypedDict):
         obj: MapObjectOverrides
         base_obj: BaseMapObject
@@ -38,7 +37,7 @@ def pretty_size(size: int, *, space: bool = True) -> str:
     prefixes = ["", "K", "M", "G", "T"]
     exp = int(math.log(size, 1024))
     exp = min(exp, len(prefixes) - 1)
-    fsize = size / 1024 ** exp
+    fsize = size / 1024**exp
     ssize = f"{fsize:.1f}".replace(".0", "")
     return f"{ssize}{space_char}{prefixes[exp]}iB"
 
@@ -52,7 +51,7 @@ def nc(*values):
 
 
 def progress[T](iterable: Iterable[T] | Collection[T], *, max: int | None = None):
-    if max is None and hasattr(iterable, '__len__'):
+    if max is None and hasattr(iterable, "__len__"):
         max = len(iterable)
     bar_width = 40
     for i, item in enumerate(iterable):

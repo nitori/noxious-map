@@ -153,16 +153,11 @@ class Property:
         return Property(type=self.type, value=self.value)
 
 
-@dataclass
-class TiledObject:
-    id: int
-    x: float
-    y: float
+class PropertiesMixin:
     properties: dict[str, Property] = field(default_factory=dict)
 
-    def copy(self) -> TiledObject:
-        return TiledObject(id=self.id, x=self.x, y=self.y,
-                           properties={name: prop.copy() for name, prop in self.properties.items()}, )
+    def copy_properties(self) -> dict[str, Property]:
+        return {name: prop.copy() for name, prop in self.properties.items()}
 
     @staticmethod
     def parse_properties(elem: ET.Element) -> dict[str, Property]:
@@ -174,6 +169,32 @@ class TiledObject:
             properties[name] = Property(type=type, value=value)
         return properties
 
+    def props_to_xml(self) -> ET.Element:
+        props = ET.Element("properties")
+        for name, prop in self.properties.items():
+            attrs = {"name": name}
+            if prop.type is not None and prop.type != "string":
+                attrs["type"] = prop.type
+            attrs["value"] = prop.value
+            props.append(ET.Element("property", attrs))
+        return props
+
+
+@dataclass
+class TiledObject(PropertiesMixin):
+    id: int
+    x: float
+    y: float
+    properties: dict[str, Property] = field(default_factory=dict)
+
+    def copy(self) -> TiledObject:
+        return TiledObject(
+            id=self.id,
+            x=self.x,
+            y=self.y,
+            properties=self.copy_properties(),
+        )
+
     @classmethod
     def from_element(cls, elem: ET.Element) -> ImageObject | PointObject:
         if "gid" in elem.attrib:
@@ -182,21 +203,6 @@ class TiledObject:
             return PointObject.from_element(elem)
 
         raise NotImplementedError(f"Unsupported object element: {elem}")
-
-    def props_to_xml(self) -> ET.Element:
-        props = ET.Element("properties")
-        for name, prop in self.properties.items():
-            attrs = {"name": name}
-            if prop.type is not None and prop.type != 'string':
-                attrs['type'] = prop.type
-            attrs["value"] = prop.value
-            props.append(
-                ET.Element(
-                    "property",
-                    attrs
-                )
-            )
-        return props
 
     def to_xml(self) -> ET.Element:
         root = ET.Element(
@@ -227,7 +233,7 @@ class ImageObject(TiledObject):
             height=self.height,
             gid=self.gid,
             name=self.name,
-            properties={name: prop.copy() for name, prop in self.properties.items()},
+            properties=self.copy_properties(),
         )
 
     @classmethod
@@ -272,7 +278,7 @@ class PointObject(TiledObject):
             id=self.id,
             x=self.x,
             y=self.y,
-            properties={name: prop.copy() for name, prop in self.properties.items()},
+            properties=self.copy_properties(),
         )
 
     @classmethod
@@ -350,14 +356,14 @@ class ObjectGroup:
 
 
 @dataclass
-class Tile:
+class Tile(PropertiesMixin):
     """Image tile currently only"""
 
     id: int
     source: Path
     width: int
     height: int
-    noxious_id: str | None = None
+    properties: dict[str, Property] = field(default_factory=dict)
 
     def copy(self) -> Tile:
         return Tile(
@@ -365,12 +371,15 @@ class Tile:
             source=self.source,
             width=self.width,
             height=self.height,
-            noxious_id=self.noxious_id,
+            properties=self.copy_properties(),
         )
 
     @classmethod
     def from_element(cls, path: Path, elem: ET.Element) -> Self:
-        #  <tile id="1" nox:id="abc">
+        #  <tile id="1">
+        #   <properties>
+        #     <property type="object" name="foobar" value="123"/>
+        #   </properties>
         #   <image source="../../maps/default/Modern_town.webp" width="3520" height="1897"/>
         #  </tile>
 
@@ -382,18 +391,19 @@ class Tile:
         source = (path / image_tag.attrib["source"]).resolve()
         width = int(image_tag.attrib["width"])
         height = int(image_tag.attrib["height"])
-        noxious_id = elem.attrib.get(f"{{{NOXIOUS_NS}}}id")
 
         return cls(
-            id=tile_id, source=source, width=width, height=height, noxious_id=noxious_id
+            id=tile_id,
+            source=source,
+            width=width,
+            height=height,
+            properties=cls.parse_properties(elem),
         )
 
     def to_xml(self, path: Path) -> ET.Element:
         tile_attrs = {
             "id": str(self.id),
         }
-        if self.noxious_id is not None:
-            tile_attrs[f"{{{NOXIOUS_NS}}}id"] = self.noxious_id
         root = ET.Element("tile", tile_attrs)
         image = ET.Element(
             "image",
@@ -403,6 +413,7 @@ class Tile:
                 "height": str(self.height),
             },
         )
+        root.append(self.props_to_xml())
         root.append(image)
         return root
 
@@ -432,7 +443,10 @@ class Tileset:
 
     def find_tile_by_noxious_id(self, noxious_id: str) -> Tile | None:
         for tile in self.tiles:
-            if tile.noxious_id is not None and tile.noxious_id == noxious_id:
+            if (
+                "noxious_id" in tile.properties
+                and tile.properties["noxious_id"].value == noxious_id
+            ):
                 return tile
         return None
 

@@ -47,6 +47,9 @@ class MapGenerator(BaseGenerator):
         # new_world.nextobjectid = 1
         map_objects = new_world.get_layer_by_name("Maps")
         point_objects = new_world.get_layer_by_name("Connections")
+        original_map_order = [
+            obj.properties["tileMapId"].value for obj in map_objects.objects
+        ]
         map_objects.objects = []
         point_objects.objects = []
 
@@ -60,19 +63,23 @@ class MapGenerator(BaseGenerator):
             tile_maps.append(loaded_map)
             id_map_tile_map[loaded_map.id] = loaded_map
 
-        for tile_map, img, paddings, default_filepath in self.generate_map_images(tile_maps):
+        for tile_map, img, paddings, default_filepath in self.generate_map_images(
+            tile_maps
+        ):
             tile = orig_tileset.find_tile_by_noxious_id(tile_map.id)
             if tile is None:
                 tile = orig_tileset.find_tile_by_source(default_filepath)
 
             if tile:
                 tile = tile.copy()
+            else:
+                raise ValueError(f"Tile not found: {tile_map.id}  {tile_map.name}")
 
             if tile is None:
                 max_tile_id += 1
                 tile = Tile(max_tile_id, default_filepath, img.width, img.height)
 
-            tile.noxious_id = tile_map.id
+            tile.properties["noxious_id"] = Property(type="string", value=tile_map.id)
             tile.source = default_filepath
             tile.width = img.width
             tile.height = img.height
@@ -85,8 +92,8 @@ class MapGenerator(BaseGenerator):
             else:
                 obj = ImageObject(
                     id=new_world.nextobjectid,
-                    x=random.randint(-10000, 10000),
-                    y=random.randint(-10000, 10000),
+                    x=0.0,
+                    y=0.0,
                     width=None,
                     height=None,
                     gid=tileset.firstgid + tile.id,
@@ -117,8 +124,12 @@ class MapGenerator(BaseGenerator):
                         "srcMapId": Property(type="string", value=tile_map.id),
                         "srcMapName": Property(type="string", value=tile_map.name),
                         "destMapId": Property(type="string", value=dest_tile_map.id),
-                        "destMapName": Property(type="string", value=dest_tile_map.name),
-                        "destPos": Property(type="string", value=str(group["dest_center"])),
+                        "destMapName": Property(
+                            type="string", value=dest_tile_map.name
+                        ),
+                        "destPos": Property(
+                            type="string", value=str(group["dest_center"])
+                        ),
                     },
                 )
                 new_world.nextobjectid += 1
@@ -126,6 +137,14 @@ class MapGenerator(BaseGenerator):
 
         tileset.tiles.sort(key=lambda t: t.id)
         tileset.write_xml()
+
+        def _sorter(obj: ImageObject) -> int | float:
+            noxid = obj.properties["tileMapId"].value
+            if noxid in original_map_order:
+                return original_map_order.index(noxid)
+            return float("inf")
+
+        map_objects.objects.sort(key=_sorter)
 
         new_world.write_xml(self.tiled_dir / "world.tmx")
 

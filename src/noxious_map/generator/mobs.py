@@ -5,6 +5,7 @@ from pathlib import Path
 from PIL import Image
 
 from noxious_map.models.map import Map, Monster
+from noxious_map.utils import progress
 from .base import BaseGenerator
 
 
@@ -52,9 +53,7 @@ class MobGenerator(BaseGenerator):
         monsters.sort(key=lambda m: m["level"])
 
         print("Generating monster drop table...")
-        for i, monster in enumerate(monsters):
-            print(f"\r{(i + 1) * 100 / len(monsters):.1f}%", end="")
-
+        for monster in progress(monsters):
             sprite = dict(path="sprites/default.png", width=64, height=64)
 
             monster_sprite = self.bundle(f"textures/sprites/{monster['sprite']}.png")
@@ -151,7 +150,6 @@ class MobGenerator(BaseGenerator):
 
             monster["spawns"] = monster_spawns.get(monster["id"], [])
 
-        print()
         monsters = sorted(
             enumerate(monsters),
             key=lambda m: (m[1]["level"], m[0]),
