@@ -444,14 +444,17 @@ async function addMarkers(world, tileset, map) {
         const label = obj.name || obj.properties.tileMapName;
         if (!label) return;
 
-        const center = imageObjectLatLngBounds(obj, world.projection).getCenter();
+        const tileMapId = obj.properties.tileMapId;
+        const tile = tileset.byNoxiousId[tileMapId];
+        const tilePos = tilePosToLatLng(Math.ceil(tile.mapColumns / 2), Math.ceil(tile.mapRows / 2), obj, tile, world.projection);
+
         const icon = new L.Icon({
             iconUrl: poiIconUrl('#8ff'),
             iconSize: [32, 32],
             iconAnchor: [16, 32],
             tooltipAnchor: [0, -32],
         });
-        const marker = new L.Marker(center, {icon});
+        const marker = new L.Marker(tilePos, {icon});
         marker.bindTooltip(label, {direction: 'top'});
         marker.addTo(map);
         poiMarkers.push(marker);
