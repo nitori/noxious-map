@@ -56,6 +56,15 @@ class TiledWorld:
                 return tileset.find_tile_by_id(tile_id)  # if not found, returns None
         return None
 
+    def get_image_object_by_tile_map_id(self, tile_map_id: str) -> ImageObject | None:
+        for layer in self.layers:
+            for obj in layer.objects:
+                if isinstance(obj, ImageObject):
+                    tmi = obj.properties.get("tileMapId")
+                    if tmi is not None and tmi.value == tile_map_id:
+                        return obj
+        return None
+
     def get_image_object_by_gid(self, gid: int) -> ImageObject | None:
         for layer in self.layers:
             for obj in layer.objects:
@@ -172,7 +181,7 @@ class PropertiesMixin:
 
     def props_to_xml(self) -> ET.Element:
         props = ET.Element("properties")
-        for name, prop in self.properties.items():
+        for name, prop in sorted(self.properties.items(), key=lambda e: e[0]):
             attrs = {"name": name}
             if prop.type is not None and prop.type != "string":
                 attrs["type"] = prop.type
@@ -292,9 +301,14 @@ class PointObject(TiledObject):
         )
 
     def to_xml(self) -> ET.Element:
-        root = super().to_xml()  # calls props_to_xml() and appends
+        # <object id="1613" name="To: Reaper boss" x="1088" y="-16056">
+        attrs = {"id": str(self.id)}
         if self.name is not None:
-            root.attrib["name"] = self.name
+            attrs["name"] = self.name
+        attrs["x"] = float_str(self.x)
+        attrs["y"] = float_str(self.y)
+        root = ET.Element("object", attrs)
+        root.append(self.props_to_xml())
         root.append(ET.Element("point"))
         return root
 

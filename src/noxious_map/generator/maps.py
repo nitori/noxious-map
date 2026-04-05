@@ -5,12 +5,19 @@ import re
 import shutil
 from pathlib import Path
 
-from PIL import Image, ImageDraw
+from PIL import Image
 
 from noxious_map.models import Map, MapObject
 from noxious_map.types import Paddings, ObjectMapRanges
 from noxious_map.utils import compare_depth_sort, nc, progress
-from noxious_map.tiled import parse_world, Tile, ImageObject, PointObject, Property
+from noxious_map.tiled import (
+    parse_world,
+    Tile,
+    TiledObject,
+    ImageObject,
+    PointObject,
+    Property,
+)
 from .base import BaseGenerator
 from ..models.map import Teleport
 
@@ -44,7 +51,7 @@ class MapGenerator(BaseGenerator):
         tileset.tiles = []
 
         new_world = old_world.copy()
-        # new_world.nextobjectid = 1
+        new_world.nextobjectid = 1
         map_objects = new_world.get_layer_by_name("Maps")
         point_objects = new_world.get_layer_by_name("Connections")
         original_map_order = [
@@ -63,6 +70,8 @@ class MapGenerator(BaseGenerator):
             tile_maps.append(loaded_map)
             id_map_tile_map[loaded_map.id] = loaded_map
 
+        missing_teleport_destination_maps = []
+
         for tile_map, img, paddings, default_filepath in self.generate_map_images(
             tile_maps
         ):
@@ -78,7 +87,12 @@ class MapGenerator(BaseGenerator):
 
             if tile is None:
                 max_tile_id += 1
-                tile = Tile(max_tile_id, default_filepath, img.width, img.height)
+                tile = Tile(
+                    id=max_tile_id,
+                    source=default_filepath,
+                    width=img.width,
+                    height=img.height,
+                )
 
             tile.properties["noxious_id"] = Property(type="string", value=tile_map.id)
             tile.properties["paddings"] = Property(type="string", value=str(paddings))
@@ -96,10 +110,11 @@ class MapGenerator(BaseGenerator):
             tile.height = img.height
             tileset.tiles.append(tile)
 
-            old_object = old_world.get_image_object_by_gid(tileset.firstgid + tile.id)
+            old_object = old_world.get_image_object_by_tile_map_id(tile_map.id)
             if old_object:
                 obj = old_object.copy()
-                new_world.nextobjectid = max(new_world.nextobjectid, obj.id + 1)
+                obj.id = new_world.nextobjectid
+                new_world.nextobjectid += 1
             else:
                 obj = ImageObject(
                     id=new_world.nextobjectid,
@@ -121,10 +136,7 @@ class MapGenerator(BaseGenerator):
             for group in self.group_teleport_islands(tile_map.teleports):
                 dest_tile_map = id_map_tile_map.get(group["dest_map"])
                 if dest_tile_map is None:
-                    print()
-                    print(
-                        f"{tile_map.name} [{tile_map.id}] has a teleport to a map that does not exist: {group['dest_map']}, at {group['dest_positions']}"
-                    )
+                    missing_teleport_destination_maps.append((tile_map, group))
                     continue
                 src_x, src_y = group["src_center"]
                 local_xy = self.get_tile_center(src_x, src_y, tile_map, paddings)
@@ -140,7 +152,9 @@ class MapGenerator(BaseGenerator):
                         "attachedTo": Property(type="object", value=str(obj.id)),
                         "srcMapId": Property(type="string", value=tile_map.id),
                         "srcMapName": Property(type="string", value=tile_map.name),
-                        "srcPos": Property(type="string", value=str(group["src_center"])),
+                        "srcPos": Property(
+                            type="string", value=str(group["src_center"])
+                        ),
                         "destMapId": Property(type="string", value=dest_tile_map.id),
                         "destMapName": Property(
                             type="string", value=dest_tile_map.name
@@ -153,13 +167,18 @@ class MapGenerator(BaseGenerator):
                 new_world.nextobjectid += 1
                 point_objects.objects.append(pobject)
 
+        for tm, group in missing_teleport_destination_maps:
+            print(
+                f"[{tm.id}] {tm.name} missing teleport map: {group['dest_map']}, at {group['dest_center']}"
+            )
+
         tileset.tiles.sort(key=lambda t: t.id)
         tileset.write_xml()
 
-        def _sorter(obj: ImageObject) -> int | float:
-            noxid = obj.properties["tileMapId"].value
-            if noxid in original_map_order:
-                return original_map_order.index(noxid)
+        def _sorter(obj: TiledObject) -> int | float:
+            noxid = obj.properties.get("tileMapId")
+            if noxid is not None and noxid.value in original_map_order:
+                return original_map_order.index(noxid.value)
             return float("inf")
 
         map_objects.objects.sort(key=_sorter)
