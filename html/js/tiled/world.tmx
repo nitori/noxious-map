@@ -140,12 +140,6 @@
     <property name="tileMapName" value="Floor 2: Cave Exit For S  Evergreen Hollow"/>
    </properties>
   </object>
-  <object id="80" name="South East Ant Cave" gid="101" x="13782" y="-4763" width="1920" height="975">
-   <properties>
-    <property name="tileMapId" value="eerh1qgc2ubmdp2"/>
-    <property name="tileMapName" value="South East Ant Cave"/>
-   </properties>
-  </object>
   <object id="82" name="South of jab/stab" gid="19" x="-533" y="-12406" width="1632" height="943">
    <properties>
     <property name="tileMapId" value="jycefj51rxaj8ls"/>
@@ -590,6 +584,12 @@
     <property name="tileMapName" value="Mistwood Village South Farms"/>
    </properties>
   </object>
+  <object id="80" name="South East Ant Cave" gid="101" x="19148" y="6655" width="1920" height="975">
+   <properties>
+    <property name="tileMapId" value="eerh1qgc2ubmdp2"/>
+    <property name="tileMapName" value="South East Ant Cave"/>
+   </properties>
+  </object>
   <object id="415" name="Tutorial Cave Level 2 " gid="151" x="12398" y="7218" width="2560" height="1311">
    <properties>
     <property name="tileMapId" value="1mof597j9xc85mh"/>
@@ -998,17 +998,6 @@
     <property name="destPos" value="(14, 29)"/>
     <property name="srcMapId" value="v5zr5mlohl110kd"/>
     <property name="srcMapName" value="Floor 2: Cave Exit For S  Evergreen Hollow"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="751" name="To: South East of Mistwood" x="12838" y="-5387">
-   <properties>
-    <property name="attachedTo" type="object" value="80"/>
-    <property name="destMapId" value="vxn87et5ot28ge2"/>
-    <property name="destMapName" value="South East of Mistwood"/>
-    <property name="destPos" value="(43, 14)"/>
-    <property name="srcMapId" value="eerh1qgc2ubmdp2"/>
-    <property name="srcMapName" value="South East Ant Cave"/>
    </properties>
    <point/>
   </object>
@@ -1823,6 +1812,17 @@
     <property name="destPos" value="(6, 5)"/>
     <property name="srcMapId" value="o8efa9jk66iiywb"/>
     <property name="srcMapName" value="Portal Room"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="751" name="To: South East of Mistwood" x="18204" y="6031">
+   <properties>
+    <property name="attachedTo" type="object" value="80"/>
+    <property name="destMapId" value="vxn87et5ot28ge2"/>
+    <property name="destMapName" value="South East of Mistwood"/>
+    <property name="destPos" value="(43, 14)"/>
+    <property name="srcMapId" value="eerh1qgc2ubmdp2"/>
+    <property name="srcMapName" value="South East Ant Cave"/>
    </properties>
    <point/>
   </object>
