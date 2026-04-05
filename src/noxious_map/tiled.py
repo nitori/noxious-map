@@ -144,7 +144,7 @@ def float_str(value: float) -> str:
     return str(value)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class Property:
     value: str
     type: str | None = None
@@ -153,6 +153,7 @@ class Property:
         return Property(type=self.type, value=self.value)
 
 
+@dataclass(kw_only=True)
 class PropertiesMixin:
     properties: dict[str, Property] = field(default_factory=dict)
 
@@ -180,12 +181,11 @@ class PropertiesMixin:
         return props
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TiledObject(PropertiesMixin):
     id: int
     x: float
     y: float
-    properties: dict[str, Property] = field(default_factory=dict)
 
     def copy(self) -> TiledObject:
         return TiledObject(
@@ -217,7 +217,7 @@ class TiledObject(PropertiesMixin):
         return root
 
 
-@dataclass
+@dataclass(kw_only=True)
 class ImageObject(TiledObject):
     width: float | None = None
     height: float | None = None
@@ -268,7 +268,7 @@ class ImageObject(TiledObject):
         return root
 
 
-@dataclass
+@dataclass(kw_only=True)
 class PointObject(TiledObject):
     name: str | None = None
 
@@ -292,15 +292,14 @@ class PointObject(TiledObject):
         )
 
     def to_xml(self) -> ET.Element:
-        root = super().to_xml()
+        root = super().to_xml()  # calls props_to_xml() and appends
         if self.name is not None:
             root.attrib["name"] = self.name
-        root.append(self.props_to_xml())
         root.append(ET.Element("point"))
         return root
 
 
-@dataclass
+@dataclass(kw_only=True)
 class ObjectGroup:
     id: int
     name: str
@@ -326,7 +325,7 @@ class ObjectGroup:
         for obj_elem in elem:
             objects.append(TiledObject.from_element(obj_elem))
 
-        return cls(layer_id, layer_name, draworder, objects)
+        return cls(id=layer_id, name=layer_name, draworder=draworder, objects=objects)
 
     def to_xml(self):
         root_attrs = {}
@@ -355,7 +354,7 @@ class ObjectGroup:
         return "\n".join([f"{self.__class__.__name__}(", *attrs, ")"])
 
 
-@dataclass
+@dataclass(kw_only=True)
 class Tile(PropertiesMixin):
     """Image tile currently only"""
 
@@ -418,7 +417,7 @@ class Tile(PropertiesMixin):
         return root
 
 
-@dataclass
+@dataclass(kw_only=True)
 class Tileset:
     version: str
     tiledversion: str

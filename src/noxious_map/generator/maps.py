@@ -82,9 +82,15 @@ class MapGenerator(BaseGenerator):
 
             tile.properties["noxious_id"] = Property(type="string", value=tile_map.id)
             tile.properties["paddings"] = Property(type="string", value=str(paddings))
-            tile.properties["baseSize"] = Property(type="string", value=str(self.get_base_map_size(tile_map)))
-            tile.properties["mapWidth"] = Property(type="int", value=str(tile.width))
-            tile.properties["mapHeight"] = Property(type="int", value=str(tile.height))
+            tile.properties["baseSize"] = Property(
+                type="string", value=str(self.get_base_map_size(tile_map))
+            )
+            tile.properties["mapWidth"] = Property(
+                type="int", value=str(tile_map.width)
+            )
+            tile.properties["mapHeight"] = Property(
+                type="int", value=str(tile_map.height)
+            )
             tile.source = default_filepath
             tile.width = img.width
             tile.height = img.height
