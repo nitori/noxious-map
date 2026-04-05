@@ -73,13 +73,18 @@ class MapGenerator(BaseGenerator):
             if tile:
                 tile = tile.copy()
             else:
-                raise ValueError(f"Tile not found: {tile_map.id}  {tile_map.name}")
+                print()
+                print(f"Tile not found: {tile_map.id}  {tile_map.name}")
 
             if tile is None:
                 max_tile_id += 1
                 tile = Tile(max_tile_id, default_filepath, img.width, img.height)
 
             tile.properties["noxious_id"] = Property(type="string", value=tile_map.id)
+            tile.properties["paddings"] = Property(type="string", value=str(paddings))
+            tile.properties["baseSize"] = Property(type="string", value=str(self.get_base_map_size(tile_map)))
+            tile.properties["mapWidth"] = Property(type="int", value=str(tile.width))
+            tile.properties["mapHeight"] = Property(type="int", value=str(tile.height))
             tile.source = default_filepath
             tile.width = img.width
             tile.height = img.height
@@ -108,7 +113,13 @@ class MapGenerator(BaseGenerator):
 
             map_objects.objects.append(obj)
             for group in self.group_teleport_islands(tile_map.teleports):
-                dest_tile_map = id_map_tile_map[group["dest_map"]]
+                dest_tile_map = id_map_tile_map.get(group["dest_map"])
+                if dest_tile_map is None:
+                    print()
+                    print(
+                        f"{tile_map.name} [{tile_map.id}] has a teleport to a map that does not exist: {group['dest_map']}, at {group['dest_positions']}"
+                    )
+                    continue
                 src_x, src_y = group["src_center"]
                 local_xy = self.get_tile_center(src_x, src_y, tile_map, paddings)
                 world_x, world_y = self.to_tiled_image_position(
@@ -188,7 +199,8 @@ class MapGenerator(BaseGenerator):
         self, tile_maps: list[Map]
     ) -> Generator[tuple[Map, Image.Image, Paddings, Path]]:
         map_folder = self.out_dir / "maps"
-        shutil.rmtree(map_folder)
+        if map_folder.exists():
+            shutil.rmtree(map_folder)
         map_folder.mkdir(parents=True, exist_ok=True)
 
         for tile_map in progress(tile_maps):

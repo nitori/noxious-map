@@ -34,7 +34,8 @@ class MobGenerator(BaseGenerator):
         monsters_file = self.bundle("data/monsters.json")
         out_sprites_dir = self.out("sprites")
 
-        shutil.rmtree(out_sprites_dir)
+        if out_sprites_dir.exists():
+            shutil.rmtree(out_sprites_dir)
         out_sprites_dir.mkdir(parents=True, exist_ok=True)
 
         textures_data = (bundle_dir / "data" / "textures.json").read_text(

@@ -15,3 +15,13 @@ class Paddings:
     top: int
     right: int
     bottom: int
+
+    def __iter__(self):
+        # CSS order
+        yield self.top
+        yield self.right
+        yield self.bottom
+        yield self.left
+
+    def __str__(self):
+        return ",".join(str(val) for val in self)

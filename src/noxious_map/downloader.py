@@ -20,7 +20,7 @@ def download_data(here: Path, *, force=False):
     checksum = r.headers["Etag"].strip("\"'").lower()
     file_size = int(r.headers.get("Content-Length", "0"))
 
-    if force or checksum != checksum_file(filename):
+    if force or not filename.exists() or checksum != checksum_file(filename):
         r = requests.get(url, stream=True)
 
         print("  downloading...")
@@ -40,7 +40,8 @@ def download_data(here: Path, *, force=False):
         print("  skipping download.")
 
     print("  unzipping...")
-    shutil.rmtree(bundle_dir)
+    if bundle_dir.exists():
+        shutil.rmtree(bundle_dir)
     with zipfile.ZipFile(filename, "r") as zf:
         zf.extractall(bundle_dir)
 
