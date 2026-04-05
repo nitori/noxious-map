@@ -301,10 +301,12 @@ function imageObjectLatLngBounds(obj, proj) {
  * @param tileset {{tiles: Object.<number, TilesetTile>}}
  */
 async function buildMap(world, tileset) {
-    // Draw maps from top to bottom (higher up in the world first) so that
-    // later-drawn (lower) maps sit on top if they overlap, matching the old
-    // script's `b.pos[1] - a.pos[1]` sort.
-    const mapObjects = [...world.imageObjects].sort((a, b) => a.y - b.y);
+    // Respect Tiled's authored draw order. The "Maps" object group uses
+    // draworder="index": objects are drawn in document order, so the
+    // first object in the XML is at the bottom and the last one is on top.
+    // Leaflet also draws later-added overlays on top, so iterating the
+    // image objects in document order gives the right stacking.
+    const mapObjects = [...world.imageObjects];
 
     const map = L.map('map', {
         crs: L.CRS.Simple,
