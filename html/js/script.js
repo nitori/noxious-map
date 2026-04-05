@@ -401,7 +401,7 @@ async function addMarkers(world, map) {
 
         const center = imageObjectLatLngBounds(obj, world.projection).getCenter();
         const icon = new L.Icon({
-            iconUrl: poiIconUrl('#00f'),
+            iconUrl: poiIconUrl('#8ff'),
             iconSize: [32, 32],
             iconAnchor: [16, 32],
             tooltipAnchor: [0, -32],
@@ -418,7 +418,7 @@ async function addMarkers(world, map) {
 
         const isConnection = pt.group === 'Connections';
         const color = pt.properties.color
-            || (isConnection ? '#c00' : '#fff');
+            || (isConnection ? '#c44' : '#fff');
 
         const icon = isConnection
             ? new L.Icon({
