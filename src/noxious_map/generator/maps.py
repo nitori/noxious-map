@@ -140,6 +140,7 @@ class MapGenerator(BaseGenerator):
                         "attachedTo": Property(type="object", value=str(obj.id)),
                         "srcMapId": Property(type="string", value=tile_map.id),
                         "srcMapName": Property(type="string", value=tile_map.name),
+                        "srcPos": Property(type="string", value=str(group["src_center"])),
                         "destMapId": Property(type="string", value=dest_tile_map.id),
                         "destMapName": Property(
                             type="string", value=dest_tile_map.name

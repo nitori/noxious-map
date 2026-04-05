@@ -110,13 +110,11 @@ function parseProperties(elem) {
  *     noxiousId: string,
  *     paddings: {top:number,right:number,bottom:number,left:number},
  *     baseSize: [number, number], // (base_w, base_h) of un-padded iso diamond
- *     mapWidth: number,           // final padded image width (pixels)
- *     mapHeight: number,          // final padded image height (pixels)
- *     mapColumns: number|null,    // iso tile columns (optional, future-proof)
- *     mapRows: number|null,       // iso tile rows (optional, future-proof)
+ *     mapColumns: number,         // iso tile columns (tile_map.width)
+ *     mapRows: number,            // iso tile rows (tile_map.height)
  *     imageSource: string,        // relative path stored in the .tsx
- *     imageWidth: number,
- *     imageHeight: number,
+ *     imageWidth: number,         // final padded image width (pixels)
+ *     imageHeight: number,        // final padded image height (pixels)
  * }} TilesetTile
  */
 
@@ -160,10 +158,13 @@ function parseTileset(doc, firstgid) {
             noxiousId: props.noxious_id,
             paddings,
             baseSize,
-            mapWidth: props.mapWidth != null ? Number(props.mapWidth) : parseInt(imgElem.getAttribute('width'), 10),
-            mapHeight: props.mapHeight != null ? Number(props.mapHeight) : parseInt(imgElem.getAttribute('height'), 10),
-            mapColumns: props.mapColumns != null ? Number(props.mapColumns) : null,
-            mapRows: props.mapRows != null ? Number(props.mapRows) : null,
+            // NOTE: The `mapWidth` / `mapHeight` properties on each tile in
+            // maps.tsx store the map's *tile grid* dimensions (columns/rows,
+            // i.e. tile_map.width / tile_map.height on the Python side), NOT
+            // the pixel dimensions. The padded image's pixel size lives on
+            // the <image> element's width/height attributes.
+            mapColumns: Number(props.mapWidth),
+            mapRows: Number(props.mapHeight),
             imageSource: imgElem.getAttribute('source'),
             imageWidth: parseInt(imgElem.getAttribute('width'), 10),
             imageHeight: parseInt(imgElem.getAttribute('height'), 10),
@@ -292,6 +293,49 @@ function imageObjectLatLngBounds(obj, proj) {
     );
 }
 
+/**
+ * Given a tile-grid position (tx, ty) on a specific map, return the Leaflet
+ * [lat, lng] of that isometric-tile's center, using the same math as the
+ * Python generator's `get_tile_center` + `to_tiled_image_position` pair.
+ *
+ * The local pixel coord inside the padded image:
+ *     local_x = paddings.left + (tx - ty) * 32 + rows * 32
+ *     local_y = paddings.top  + (tx + ty) * 16 + 16
+ * where `rows` = tile_map.height (= tile.mapRows here).
+ *
+ * Image local pixel (lx, ly) sits at screen-delta (lx - w/2, ly - h) from
+ * the image object's bottom-center anchor in screen space.
+ *
+ * @param {number} tx
+ * @param {number} ty
+ * @param {WorldImageObject} imageObject
+ * @param {TilesetTile} tile
+ * @param proj
+ * @returns {[number, number]}
+ */
+function tilePosToLatLng(tx, ty, imageObject, tile, proj) {
+    const rows = tile.mapRows;
+    const localX = tile.paddings.left + (tx - ty) * 32 + rows * 32;
+    const localY = tile.paddings.top + (tx + ty) * 16 + 16;
+
+    const {sx, sy} = imageObjectScreenAnchor(imageObject, proj);
+    const pointSx = sx + (localX - tile.imageWidth / 2);
+    const pointSy = sy + (localY - tile.imageHeight);
+    return screenToLatLng(pointSx, pointSy);
+}
+
+/**
+ * Parse a Tiled `"(x, y)"` tuple property. Returns [x, y] or null.
+ * @param {string|undefined|null} value
+ * @returns {[number, number] | null}
+ */
+function parseTuple(value) {
+    if (!value) return null;
+    const m = String(value).match(/\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)/);
+    if (!m) return null;
+    return [Number(m[1]), Number(m[2])];
+}
+
 // ---------------------------------------------------------------------------
 // Leaflet map building
 // ---------------------------------------------------------------------------
@@ -385,9 +429,10 @@ async function buildMap(world, tileset) {
  * Each point may carry a `color` property to override its icon color.
  *
  * @param {ParsedWorld} world
+ * @param tileset {{tiles: Object.<number, TilesetTile>, byNoxiousId: Object.<string, TilesetTile>}}
  * @param {L.Map} map
  */
-async function addMarkers(world, map) {
+async function addMarkers(world, tileset, map) {
     /** @type {L.Marker[]} */
     const poiMarkers = [];
     /** @type {L.Marker[]} */
@@ -411,6 +456,51 @@ async function addMarkers(world, map) {
         marker.addTo(map);
         poiMarkers.push(marker);
     });
+
+    // Index map image objects by their tileMapId (= noxious_id of the
+    // underlying map), so connection points can look up their destination
+    // map from their `destMapId` property.
+    /** @type {Object.<string, WorldImageObject>} */
+    const mapByNoxId = {};
+    world.imageObjects.forEach(obj => {
+        if (obj.group !== 'Maps') return;
+        const nox = obj.properties.tileMapId;
+        if (nox) mapByNoxId[nox] = obj;
+    });
+
+    // Ephemeral hover layer: a dashed line + destination marker shown
+    // while the cursor is over a connection marker. Cleared on mouseout
+    // and whenever a different marker is hovered.
+    let hoverLine = null;
+    let hoverDest = null;
+    const clearHover = () => {
+        hoverLine?.remove();
+        hoverDest?.remove();
+        hoverLine = null;
+        hoverDest = null;
+    };
+
+    /**
+     * Resolve a connection point's destination to leaflet [lat, lng],
+     * treating destPos as an arbitrary tile on the destination map.
+     * Returns null if the destination map can't be found.
+     */
+    const resolveDestination = (pt) => {
+        const dstId = pt.properties.destMapId;
+        if (!dstId) return null;
+        const dstObj = mapByNoxId[dstId];
+        if (!dstObj) return null;
+        const tile = tileset.tiles[dstObj.gid];
+        if (!tile) return null;
+
+        const destPos = parseTuple(pt.properties.destPos);
+        if (destPos) {
+            return tilePosToLatLng(destPos[0], destPos[1], dstObj, tile, world.projection);
+        }
+        // Fallback: center of the destination map.
+        const c = imageObjectLatLngBounds(dstObj, world.projection).getCenter();
+        return [c.lat, c.lng];
+    };
 
     world.pointObjects.forEach(pt => {
         const {sx, sy} = isoToScreen(pt.x, pt.y, world.projection);
@@ -441,6 +531,31 @@ async function addMarkers(world, map) {
         const marker = new L.Marker(pos, {icon});
         marker.bindTooltip(label, {direction: 'top'});
         marker.addTo(map);
+
+        if (isConnection) {
+            marker.on('mouseover', () => {
+                clearHover();
+                const destLatLng = resolveDestination(pt);
+                if (!destLatLng) return;
+                hoverLine = L.polyline([pos, destLatLng], {
+                    color: '#ff0',
+                    weight: 2,
+                    dashArray: '6, 6',
+                    interactive: false,
+                }).addTo(map);
+                const destIcon = new L.Icon({
+                    iconUrl: connectionIconUrl('#ff0'),
+                    iconSize: [32, 42],
+                    iconAnchor: [16, 42],
+                    tooltipAnchor: [0, -42],
+                });
+                hoverDest = new L.Marker(destLatLng, {
+                    icon: destIcon,
+                    interactive: false,
+                }).addTo(map);
+            });
+            marker.on('mouseout', clearHover);
+        }
 
         (isConnection ? connectionMarkers : poiMarkers).push(marker);
     });
@@ -498,7 +613,7 @@ function poiIconUrl(color) {
 
     const map = await buildMap(world, tileset);
 
-    await addMarkers(world, map);
+    await addMarkers(world, tileset, map);
 
     const poisButton = document.querySelector('#toggle-pois');
     const connectionsButton = document.querySelector('#toggle-connections');
