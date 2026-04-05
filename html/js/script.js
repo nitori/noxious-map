@@ -391,6 +391,25 @@ async function addMarkers(world, map) {
     /** @type {L.Marker[]} */
     const connectionMarkers = [];
 
+    // One POI marker at the center of each named map image object.
+    world.imageObjects.forEach(obj => {
+        if (obj.group !== 'Maps') return;
+        const label = obj.name || obj.properties.tileMapName;
+        if (!label) return;
+
+        const center = imageObjectLatLngBounds(obj, world.projection).getCenter();
+        const icon = new L.Icon({
+            iconUrl: poiIconUrl('#00f'),
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            tooltipAnchor: [0, -32],
+        });
+        const marker = new L.Marker(center, {icon});
+        marker.bindTooltip(label, {direction: 'top'});
+        marker.addTo(map);
+        poiMarkers.push(marker);
+    });
+
     world.pointObjects.forEach(pt => {
         const {sx, sy} = isoToScreen(pt.x, pt.y, world.projection);
         const pos = screenToLatLng(sx, sy);
