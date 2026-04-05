@@ -404,17 +404,37 @@ async function buildMap(world, tileset) {
     });
 
     let stored = JSON.parse(localStorage.getItem('mapBounds') || 'null');
-    let initialBounds;
-    if (Array.isArray(stored) && stored.length === 2) {
+    let initialBounds = null;
+
+    // check if url has a bounds
+    let hash = location.hash;
+    if (hash.substring(0, 1) === '#') {
+        hash = hash.substring(1);
+    }
+    let parts = hash.split(';');
+    if (parts.length === 2) {
+        parts = parts.map(part => part.split(','));
+        parts = parts.map(part => [parseFloat(part[0]), parseFloat(part[1])]);
+        parts = parts.filter(latLng => !isNaN(latLng[0]) && !isNaN(latLng[1]));
+        parts = parts.map(latLng => L.latLng(latLng));
+        if (parts.length === 2) {
+            initialBounds = L.latLngBounds(parts[0], parts[1]);
+        }
+    }
+
+    if (initialBounds === null && Array.isArray(stored) && stored.length === 2) {
         initialBounds = L.latLngBounds(stored[0], stored[1]);
-    } else {
+    } else if (initialBounds == null) {
         initialBounds = overallBounds;
     }
     map.fitBounds(initialBounds);
 
     map.on('moveend', () => {
         const b = map.getBounds();
-        localStorage.setItem('mapBounds', JSON.stringify([b.getSouthWest(), b.getNorthEast()]));
+        const sw = b.getSouthWest();
+        const ne = b.getNorthEast();
+        localStorage.setItem('mapBounds', JSON.stringify([sw, ne]));
+        history.pushState({}, '', `#${sw.lat},${sw.lng};${ne.lat},${ne.lng}`);
     });
 
     return map;
