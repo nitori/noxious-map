@@ -547,10 +547,17 @@ async function addMarkers(world, tileset, map) {
                 tooltipAnchor: [0, -32],
             });
 
-        const label = pt.name
+        let label = htmlEscape(
+            pt.name
             || pt.properties.destMapName
             || pt.properties.srcMapName
-            || (isConnection ? 'Connection' : 'POI');
+            || (isConnection ? 'Connection' : 'POI')
+        );
+
+        if (pt.properties.itemName) {
+            label += `<br>Req. item: ${htmlEscape(pt.properties.itemName)}`;
+        }
+
         const marker = new L.Marker(pos, {icon});
         marker.bindTooltip(label, {direction: 'top'});
         marker.addTo(map);
