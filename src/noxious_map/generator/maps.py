@@ -188,7 +188,7 @@ class MapGenerator(BaseGenerator):
 
         for tm, tp in missing_teleport_destination_maps:
             print(
-                f"[{tm.id}] {tm.name} missing teleport map: {tp.toMap}, at {(tp.toX, tp.toY)}"
+                f"[{tm.id}] {tm.name} {(tp.x, tp.y)} missing teleport map: {tp.toMap}, at {(tp.toX, tp.toY)}"
             )
 
         tileset.tiles.sort(key=lambda t: t.id)
