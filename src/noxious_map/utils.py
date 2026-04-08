@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Generator, Iterable, Collection
+from typing import TYPE_CHECKING, Callable, Iterable, Collection
 from pathlib import Path
 import hashlib
 import math
@@ -50,21 +50,37 @@ def nc(*values):
     return None
 
 
-def progress[T](iterable: Iterable[T] | Collection[T], *, max: int | None = None):
+def progress[T](
+    iterable: Iterable[T] | Collection[T],
+    *,
+    max: int | None = None,
+    incfunc: Callable[[T], int] | None = None,
+):
     if max is None and hasattr(iterable, "__len__"):
         max = len(iterable)
     bar_width = 40
-    for i, item in enumerate(iterable):
+
+    current = 0
+    for item in iterable:
         if max is not None:
-            ratio = i / max
+            ratio = current / max
             filled = round(ratio * bar_width)
             empty = bar_width - filled
             print(f"\r[{'#' * filled}{' ' * empty}] {ratio * 100:.1f}%", end="")
+            current += 1 if incfunc is None else incfunc(item)
         else:
-            char = "-\\|/"[i % 4]
+            char = "-\\|/"[current % 4]
             print(f"\r[{char}] ---%", end="")
+            current += 1
         yield item
-    print(f"\r[{'#' * bar_width}] {100:.1f}%")
+
+    if max is not None:
+        ratio = current / max
+        filled = round(ratio * bar_width)
+        empty = bar_width - filled
+        print(f"\r[{'#' * filled}{' ' * empty}] {ratio * 100:.1f}%")
+    else:
+        print(f"\r[{'#' * bar_width}] {100:.1f}%")
 
 
 def compare_depth_sort(A: SortParam, B: SortParam):

@@ -6,7 +6,7 @@ import secrets
 
 import requests
 
-from .utils import checksum_file, pretty_size
+from .utils import checksum_file, pretty_size, progress
 
 
 def download_data(here: Path, *, force=False):
@@ -26,16 +26,9 @@ def download_data(here: Path, *, force=False):
         print("  downloading...")
         collected = 0
         with filename.open("wb") as f:
-            for chunk in r.iter_content(1 << 16):
+            for chunk in progress(r.iter_content(1 << 16), max=file_size, incfunc=len):
                 collected += len(chunk)
-                if file_size:
-                    print(
-                        f"\r  {collected / file_size * 100:.1f}%",
-                        f"({pretty_size(collected)} of {pretty_size(file_size)})",
-                        end="",
-                    )
                 f.write(chunk)
-        print()
     else:
         print("  skipping download.")
 
