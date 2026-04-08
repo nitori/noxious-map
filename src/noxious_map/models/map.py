@@ -82,13 +82,14 @@ class Monster(Position):
         if self.respawnTime is None:
             return "n/a"
 
-        rt = self.respawnTime / 1000
-        if rt >= 60:
-            rt = rt / 60
-            if rt.is_integer():
-                return f"{rt:.0f} minutes"
-            return f"{rt / 60:.2f} minutes"
-        return f"{rt:.0f} seconds"
+        seconds = self.respawnTime // 1000
+        hours, seconds = divmod(seconds, 3600)
+        minutes, seconds = divmod(seconds, 60)
+        if hours > 0:
+            return f"{hours:02d}h:{minutes:02d}m:{seconds:02d}s"
+        if minutes > 0:
+            return f"{minutes:02d}m:{seconds:02d}s"
+        return f"{seconds:02d}s"
 
 
 class SitTile(Position):
