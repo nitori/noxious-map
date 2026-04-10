@@ -108,6 +108,30 @@
             padding: 1px 2px; /* optional — gives a nice little box */
             border-radius: 2px;
         }
+
+        .back-to-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            position: fixed;
+            z-index: 5;
+            bottom: 10px;
+            right: 10px;
+            background: var(--bs-body-bg);
+            color: white;
+            --bs-link-color-rgb: 255, 255, 255;
+            border-radius: 25px;
+            border: 1px solid var(--bs-border-color);
+            font-size: 34px;
+        }
+
+        .back-to-top svg {
+            display: block;
+            width: 1em;
+            height: 1em;
+        }
     </style>
 </head>
 <body>
@@ -220,6 +244,14 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
+<div class="back-to-top">
+    <a href="#top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor">
+            <!--!Font Awesome Pro v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2026 Fonticons, Inc.-->
+            <path d="M320.3 178.7L342.9 201.3L525.5 383.9L480.2 429.2L457.6 406.6L320.2 269.2L182.8 406.6L160.2 429.2L114.9 383.9L137.5 361.3L297.5 201.3L320.1 178.7z"/>
+        </svg>
+    </a>
 </div>
 <script>
     Q = (selector, root) => Array.from((root || document).querySelectorAll(selector));
@@ -394,8 +426,14 @@
         Array.from(document.querySelectorAll('a[href^="#"]')).forEach(/** @param link {HTMLAnchorElement} */link => {
             link.addEventListener('click', ev => {
                 let href = link.getAttribute('href');
+                if (href.substring(0, 1) !== '#') {
+                    return;
+                }
                 if (href === '#' || href === '#top') {
                     ev.preventDefault();
+                    let url = new URL(location.href);
+                    url.hash = '';
+                    history.pushState({}, '', url);
                     smoothScrollTo(document.body);
                     return;
                 }
@@ -405,6 +443,10 @@
                 } catch (e) {
                     return;
                 }
+                ev.preventDefault();
+                let url = new URL(location.href);
+                url.hash = href;
+                history.pushState({}, '', url);
                 smoothScrollTo(target);
             });
         });
