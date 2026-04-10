@@ -11,8 +11,7 @@
           crossorigin="anonymous">
     <style>
         :root {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+            scroll-behavior: auto;
         }
 
         img.sprite {
@@ -129,7 +128,7 @@
         <tbody>
 
         {% for monster in monsters %}
-            <tr class="monster-row" id="m_{{ monster.id }}">
+            <tr class="monster-row" id="{{ monster.anchor }}">
                 <td class="td-img">
                     <div class="sticky">
                         <img src="{{ monster.sprite.path }}"
@@ -140,7 +139,7 @@
                     </div>
                 </td>
                 <td class="td-name">
-                    <div class="sticky"><a href="#m_{{ monster.id }}">¶</a> {{ monster.name }}</div>
+                    <div class="sticky"><a href="#{{ monster.anchor }}">{{ monster.name }}</a></div>
                 </td>
                 <td class="td-hostile">
                     <div class="sticky">{{ monster.hostility }}</div>
@@ -321,6 +320,109 @@
             }
         }
     });
+
+    /**
+     * @callback EasingCallback
+     * @param {int} x
+     * @return {int}
+     */
+
+    /**
+     * @param top {number|(()=>number)}
+     * @param msTime {number}
+     * @param [easing] {EasingCallback}
+     * @return {Promise<unknown>}
+     */
+    function smoothy(top, msTime, easing) {
+        return new Promise(resolve => {
+            /** @type {null|number} */
+            let startTime = null;
+            let endTime = 0;
+            /** @type {EasingCallback} */
+            let easingFunction = typeof easing === 'function' ? easing : (x) => x;
+            const startScrollY = window.scrollY;
+
+            /**
+             * @param t {number}
+             */
+            function scroller(t) {
+                if (startTime === null) {
+                    startTime = t;
+                    endTime = startTime + msTime;
+                }
+
+                const delta = t - startTime;
+                const linearProgress = Math.min(1.0, delta / msTime);
+                const easedProgress = easingFunction(linearProgress);
+
+                const targetScrollY = typeof top === 'function' ? top() : top;
+                const currentScrollY = startScrollY + (targetScrollY - startScrollY) * easedProgress
+                window.scrollTo(0, currentScrollY);
+
+                if (linearProgress < 1.0) {
+                    window.requestAnimationFrame(scroller);
+                } else {
+                    resolve();
+                }
+            }
+
+            window.requestAnimationFrame(scroller);
+        });
+    }
+
+    function easeOutQuint(x) {
+        return 1 - Math.pow(1 - x, 5);
+    }
+
+    function smoothScrollTo(target) {
+        if (!target) {
+            return;
+        }
+
+        const oldId = target.getAttribute('id');
+        target.setAttribute('id', '');
+
+        smoothy(() => {
+            const rect = target.getBoundingClientRect();
+            return (rect.top + window.scrollY) - 80;
+        }, 2000, easeOutQuint).then(() => {
+            target.setAttribute('id', oldId);
+        });
+    }
+
+    function initSmoothScroll() {
+        Array.from(document.querySelectorAll('a[href^="#"]')).forEach(/** @param link {HTMLAnchorElement} */link => {
+            link.addEventListener('click', ev => {
+                let href = link.getAttribute('href');
+                if (href === '#' || href === '#top') {
+                    ev.preventDefault();
+                    smoothScrollTo(document.body);
+                    return;
+                }
+                let target;
+                try {
+                    target = document.querySelector(href);
+                } catch (e) {
+                    return;
+                }
+                smoothScrollTo(target);
+            });
+        });
+
+        let hash = location.hash;
+        if (hash !== '#' && hash !== '#top') {
+            let target;
+            try {
+                target = document.querySelector(hash);
+            } catch (e) {
+                return;
+            }
+            smoothScrollTo(target);
+        }
+
+    }
+
+    initSmoothScroll();
 </script>
 </body>
 </html>

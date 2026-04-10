@@ -2,6 +2,7 @@ from typing import TYPE_CHECKING, Callable, Iterable, Collection
 from pathlib import Path
 import hashlib
 import math
+import re
 
 if TYPE_CHECKING:
     from typing import TypedDict
@@ -48,6 +49,13 @@ def nc(*values):
         if value is not None:
             return value
     return None
+
+
+def slugify(text: str) -> str:
+    text = text.lower()
+    text = re.sub(r"[^a-z0-9\-]+", "-", text)
+    text = text.strip('-')
+    return text
 
 
 def progress[T](

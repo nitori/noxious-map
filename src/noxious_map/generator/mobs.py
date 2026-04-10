@@ -5,7 +5,7 @@ from pathlib import Path
 from PIL import Image
 
 from noxious_map.models.map import Map, Monster
-from noxious_map.utils import progress
+from noxious_map.utils import progress, slugify
 from .base import BaseGenerator
 
 
@@ -52,10 +52,24 @@ class MobGenerator(BaseGenerator):
             monsters = json.load(f)
 
         monsters.sort(key=lambda m: m["level"])
+        anchors = set()
 
         print("Generating monster drop table...")
         for monster in progress(monsters):
             sprite = dict(path="sprites/default.png", width=64, height=64)
+
+            base_anchor = slugify(monster["name"])
+            if not base_anchor:
+                base_anchor = f"m{monster["id"]}"
+            if not base_anchor[0].isalpha():
+                base_anchor = f"z{base_anchor}"
+            anchor = base_anchor
+            num = 1
+            while anchor in anchors:
+                anchor = f"{base_anchor}-{num}"
+                num += 1
+            monster["anchor"] = anchor
+            anchors.add(anchor)
 
             monster_sprite = self.bundle(f"textures/sprites/{monster['sprite']}.png")
             if monster_sprite.exists():
