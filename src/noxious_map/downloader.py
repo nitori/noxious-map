@@ -6,7 +6,8 @@ import secrets
 
 import requests
 
-from .utils import checksum_file, pretty_size, progress
+from .models import Map
+from .utils import checksum_file, pretty_size, progress, normalize_name
 
 
 def download_data(here: Path, *, force=False):
@@ -27,6 +28,7 @@ def download_data(here: Path, *, force=False):
         collected = 0
         with filename.open("wb") as f:
             for chunk in progress(r.iter_content(1 << 16), max=file_size, incfunc=len):
+                print(f' [{pretty_size(collected)}/{pretty_size(file_size)}]', end='')
                 collected += len(chunk)
                 f.write(chunk)
     else:
@@ -51,5 +53,18 @@ def download_data(here: Path, *, force=False):
 
         shutil.copyfile(tmp_json_file, json_file)
         tmp_json_file.unlink()
+
+    # dump all maps in individual files for easier inspection
+    maps_json = bundle_dir / "data/maps.json"
+    maps_folder = bundle_dir / "maps"
+    if maps_folder.exists():
+        shutil.rmtree(maps_folder)
+    maps_folder.mkdir(parents=True, exist_ok=True)
+    with maps_json.open('r', encoding='utf-8') as f:
+        maps = json.load(f)
+    for tile_map in maps:
+        map_file = maps_folder / f"{tile_map['id']}_{normalize_name(tile_map['name'])}.json"
+        with map_file.open('w', encoding='utf-8', newline='\n') as f:
+            json.dump(tile_map, f, indent=4)
 
     print("Update complete!")

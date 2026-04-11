@@ -10,7 +10,7 @@ from PIL import Image
 from noxious_map.models import Map, MapObject, Item
 from noxious_map.models.map import Teleport
 from noxious_map.types import Paddings, ObjectMapRanges
-from noxious_map.utils import compare_depth_sort, nc, progress
+from noxious_map.utils import compare_depth_sort, nc, progress, normalize_name
 from noxious_map.tiled import (
     parse_world,
     Tile,
@@ -31,10 +31,6 @@ class Telepad(TypedDict):
     dest_map: str
     dest_positions: list[tuple[int, int]]
     dest_center: tuple[int, int]
-
-
-def normalize_name(name: str) -> str:
-    return re.sub(r'[/\\ <>":|?*]', "_", name)
 
 
 class MapGenerator(BaseGenerator):

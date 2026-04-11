@@ -58,6 +58,10 @@ def slugify(text: str) -> str:
     return text
 
 
+def normalize_name(name: str) -> str:
+    return re.sub(r'[/\\ <>":|?*]', "_", name)
+
+
 def progress[T](
     iterable: Iterable[T] | Collection[T],
     *,
