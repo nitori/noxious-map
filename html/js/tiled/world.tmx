@@ -38,7 +38,7 @@
     <property name="tileMapName" value="Somewhere small (boss map)"/>
    </properties>
   </object>
-  <object id="27" name="Hank Under Ted's Barn" gid="95" x="-6970" y="-18898" width="1120" height="560">
+  <object id="27" name="Hank Under Ted's Barn" gid="95" x="13994" y="5890" width="1120" height="560">
    <properties>
     <property name="tileMapId" value="xlt8tejjnirxvhl"/>
     <property name="tileMapName" value="Hank Under Ted's Barn"/>
@@ -440,7 +440,7 @@
     <property name="tileMapName" value="Hank_ map used for no trespassing"/>
    </properties>
   </object>
-  <object id="334" name="Barn MWV" gid="129" x="-6844" y="-18072" width="1303" height="852">
+  <object id="334" name="Barn MWV" gid="129" x="14736" y="5980" width="1303" height="852">
    <properties>
     <property name="tileMapId" value="sfp1hxbrtopcxb2"/>
     <property name="tileMapName" value="Barn MWV"/>
@@ -844,7 +844,7 @@
    </properties>
    <point/>
   </object>
-  <object id="28" name="To: Mistwood Village South Farms" x="-7474" y="-18970">
+  <object id="28" name="To: Mistwood Village South Farms" x="13490" y="5818">
    <properties>
     <property name="attachedTo" type="object" value="27"/>
     <property name="destMapId" value="im7tnzcv0euj62h"/>
@@ -2606,7 +2606,7 @@
    </properties>
    <point/>
   </object>
-  <object id="218" name="To: West of Town" x="-84.25" y="-14043.75">
+  <object id="218" name="To: West of Town" x="-84.25" y="-14043.8">
    <properties>
     <property name="attachedTo" type="object" value="217"/>
     <property name="destMapId" value="xd8416fuujirfcy"/>
@@ -2618,7 +2618,7 @@
    </properties>
    <point/>
   </object>
-  <object id="219" name="To: West of Town" x="-84.25" y="-14075.75">
+  <object id="219" name="To: West of Town" x="-84.25" y="-14075.8">
    <properties>
     <property name="attachedTo" type="object" value="217"/>
     <property name="destMapId" value="xd8416fuujirfcy"/>
@@ -2630,7 +2630,7 @@
    </properties>
    <point/>
   </object>
-  <object id="220" name="To: West of Town" x="-84.25" y="-14011.75">
+  <object id="220" name="To: West of Town" x="-84.25" y="-14011.8">
    <properties>
     <property name="attachedTo" type="object" value="217"/>
     <property name="destMapId" value="xd8416fuujirfcy"/>
@@ -2642,7 +2642,7 @@
    </properties>
    <point/>
   </object>
-  <object id="221" name="To: South of jab/stab" x="-916.25" y="-13371.75">
+  <object id="221" name="To: South of jab/stab" x="-916.25" y="-13371.8">
    <properties>
     <property name="attachedTo" type="object" value="217"/>
     <property name="destMapId" value="jycefj51rxaj8ls"/>
@@ -2654,7 +2654,7 @@
    </properties>
    <point/>
   </object>
-  <object id="222" name="To: South of jab/stab" x="-948.25" y="-13371.75">
+  <object id="222" name="To: South of jab/stab" x="-948.25" y="-13371.8">
    <properties>
     <property name="attachedTo" type="object" value="217"/>
     <property name="destMapId" value="jycefj51rxaj8ls"/>
@@ -2666,7 +2666,7 @@
    </properties>
    <point/>
   </object>
-  <object id="223" name="To: North Jab/stab" x="-788.25" y="-14619.75">
+  <object id="223" name="To: North Jab/stab" x="-788.25" y="-14619.8">
    <properties>
     <property name="attachedTo" type="object" value="217"/>
     <property name="destMapId" value="qhz6ir4o5w1xoyz"/>
@@ -2678,7 +2678,7 @@
    </properties>
    <point/>
   </object>
-  <object id="224" name="To: North Jab/stab" x="-756.25" y="-14619.75">
+  <object id="224" name="To: North Jab/stab" x="-756.25" y="-14619.8">
    <properties>
     <property name="attachedTo" type="object" value="217"/>
     <property name="destMapId" value="qhz6ir4o5w1xoyz"/>
@@ -2690,7 +2690,7 @@
    </properties>
    <point/>
   </object>
-  <object id="225" name="To: North Jab/stab" x="-820.25" y="-14619.75">
+  <object id="225" name="To: North Jab/stab" x="-820.25" y="-14619.8">
    <properties>
     <property name="attachedTo" type="object" value="217"/>
     <property name="destMapId" value="qhz6ir4o5w1xoyz"/>
@@ -2702,7 +2702,7 @@
    </properties>
    <point/>
   </object>
-  <object id="226" name="To: North Jab/stab" x="-852.25" y="-14619.75">
+  <object id="226" name="To: North Jab/stab" x="-852.25" y="-14619.8">
    <properties>
     <property name="attachedTo" type="object" value="217"/>
     <property name="destMapId" value="qhz6ir4o5w1xoyz"/>
@@ -3742,7 +3742,7 @@
    </properties>
    <point/>
   </object>
-  <object id="335" name="To: Mistwood Village South Farms" x="-7150.75" y="-18085.25">
+  <object id="335" name="To: Mistwood Village South Farms" x="14429.3" y="5966.75">
    <properties>
     <property name="attachedTo" type="object" value="334"/>
     <property name="destMapId" value="im7tnzcv0euj62h"/>
@@ -3754,7 +3754,7 @@
    </properties>
    <point/>
   </object>
-  <object id="336" name="To: Mistwood Village South Farms" x="-7118.75" y="-18085.25">
+  <object id="336" name="To: Mistwood Village South Farms" x="14461.3" y="5966.75">
    <properties>
     <property name="attachedTo" type="object" value="334"/>
     <property name="destMapId" value="im7tnzcv0euj62h"/>
@@ -3766,7 +3766,7 @@
    </properties>
    <point/>
   </object>
-  <object id="337" name="To: Mistwood Village South Farms" x="-7182.75" y="-18085.25">
+  <object id="337" name="To: Mistwood Village South Farms" x="14397.3" y="5966.75">
    <properties>
     <property name="attachedTo" type="object" value="334"/>
     <property name="destMapId" value="im7tnzcv0euj62h"/>
@@ -3778,7 +3778,7 @@
    </properties>
    <point/>
   </object>
-  <object id="338" name="To: Hank Under Ted's Barn" x="-7406.75" y="-18693.25">
+  <object id="338" name="To: Hank Under Ted's Barn" x="14173.3" y="5358.75">
    <properties>
     <property name="attachedTo" type="object" value="334"/>
     <property name="denyMessage" value="Looks like I may need a key for this, I wonder if the Farmer has one?"/>
@@ -4201,7 +4201,7 @@
    </properties>
    <point/>
   </object>
-  <object id="379" name="To: Floor 2: S Evergreen Hollow " x="-15765.25" y="-2992.75">
+  <object id="379" name="To: Floor 2: S Evergreen Hollow " x="-15765.3" y="-2992.75">
    <properties>
     <property name="attachedTo" type="object" value="378"/>
     <property name="destMapId" value="k6e5vpu45hkz0of"/>
@@ -4213,7 +4213,7 @@
    </properties>
    <point/>
   </object>
-  <object id="380" name="To: Floor 2: S Evergreen Hollow " x="-15733.25" y="-2992.75">
+  <object id="380" name="To: Floor 2: S Evergreen Hollow " x="-15733.3" y="-2992.75">
    <properties>
     <property name="attachedTo" type="object" value="378"/>
     <property name="destMapId" value="k6e5vpu45hkz0of"/>
@@ -4225,7 +4225,7 @@
    </properties>
    <point/>
   </object>
-  <object id="381" name="To: StartingTownBank" x="-15957.25" y="-3376.75">
+  <object id="381" name="To: StartingTownBank" x="-15957.3" y="-3376.75">
    <properties>
     <property name="attachedTo" type="object" value="378"/>
     <property name="destMapId" value="x1k1935mm4w1ldy"/>
@@ -4237,7 +4237,7 @@
    </properties>
    <point/>
   </object>
-  <object id="382" name="To: Floor 2:Evergreen Hollow Equipment Shop " x="-15957.25" y="-3792.75">
+  <object id="382" name="To: Floor 2:Evergreen Hollow Equipment Shop " x="-15957.3" y="-3792.75">
    <properties>
     <property name="attachedTo" type="object" value="378"/>
     <property name="destMapId" value="nt7324rr6wyabd6"/>
@@ -4249,7 +4249,7 @@
    </properties>
    <point/>
   </object>
-  <object id="383" name="To: Floor 2: N Evergreen Hollow" x="-15733.25" y="-4240.75">
+  <object id="383" name="To: Floor 2: N Evergreen Hollow" x="-15733.3" y="-4240.75">
    <properties>
     <property name="attachedTo" type="object" value="378"/>
     <property name="destMapId" value="b5apw8ooyjc7eh4"/>
@@ -4261,7 +4261,7 @@
    </properties>
    <point/>
   </object>
-  <object id="384" name="To: Floor 2: N Evergreen Hollow" x="-15765.25" y="-4240.75">
+  <object id="384" name="To: Floor 2: N Evergreen Hollow" x="-15765.3" y="-4240.75">
    <properties>
     <property name="attachedTo" type="object" value="378"/>
     <property name="destMapId" value="b5apw8ooyjc7eh4"/>
@@ -4273,7 +4273,7 @@
    </properties>
    <point/>
   </object>
-  <object id="385" name="To: Floor 2:  E Evergreen Hollow " x="-15061.25" y="-3568.75">
+  <object id="385" name="To: Floor 2:  E Evergreen Hollow " x="-15061.3" y="-3568.75">
    <properties>
     <property name="attachedTo" type="object" value="378"/>
     <property name="destMapId" value="8qm9rjkv6zlwf77"/>
@@ -4285,7 +4285,7 @@
    </properties>
    <point/>
   </object>
-  <object id="386" name="To: Floor 2:  E Evergreen Hollow " x="-15061.25" y="-3600.75">
+  <object id="386" name="To: Floor 2:  E Evergreen Hollow " x="-15061.3" y="-3600.75">
    <properties>
     <property name="attachedTo" type="object" value="378"/>
     <property name="destMapId" value="8qm9rjkv6zlwf77"/>
@@ -4297,7 +4297,7 @@
    </properties>
    <point/>
   </object>
-  <object id="387" name="To: Floor 2 : Evergreen Hollow Archery Shop " x="-16053.25" y="-4080.75">
+  <object id="387" name="To: Floor 2 : Evergreen Hollow Archery Shop " x="-16053.3" y="-4080.75">
    <properties>
     <property name="attachedTo" type="object" value="378"/>
     <property name="destMapId" value="kudim6y9nbvedwt"/>
